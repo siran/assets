@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="author" content="Alex Mercer" />
+  <meta name="dcterms.date" content="2026-01-16" />
+  <meta name="keywords" content="Maxwell theory, glossary, continuity
+equation, divergence-free fields, energy flow, electromagnetic
+foundations" />
+  <title>Canonical Glossary of Terms and Symbols for the Maxwell Universe Research Program</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Canonical Glossary of Terms and Symbols for the
+Maxwell Universe Research Program</h1>
+<p class="subtitle">Operational Definitions for Energy, Flow, Fields,
+and Structure</p>
+<p class="author">An M. Rodriguez</p>
+<p class="author">Alex Mercer</p>
+<p class="date">2026-01-16</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> This document defines,
+exhaustively and operationally, the terms and symbols used throughout
+the Maxwell Universe Research Program, fixing meanings and preventing
+hidden assumptions.</p>
+<p><strong>Abstract.</strong> We provide a complete glossary of terms
+and symbols used across the Maxwell Universe Research Program. All
+definitions are operational and descriptive, not metaphysical. The
+glossary separates representation from dynamics, avoids particle or
+spacetime primitives, and fixes terminology to ensure consistency across
+documents. This glossary is intended to be canonical.</p>
+<p><strong>Keywords.</strong> Maxwell theory, glossary, continuity
+equation, divergence-free fields, energy flow, electromagnetic
+foundations</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#summary">Summary</a>
+</li>
+<li><a href="#fundamental-quantities">Fundamental Quantities</a>
+<ul>
+</li>
+<li><a href="#energy">Energy</a>
+</li>
+<li><a href="#energy-density">Energy density</a>
+</li>
+<li><a href="#energy-flux">Energy flux</a>
+</li></ul>
+</li>
+<li><a href="#continuity-and-transport">Continuity and Transport</a>
+<ul>
+</li>
+<li><a href="#continuity-equation">Continuity equation</a>
+</li>
+<li><a href="#continuity">Continuity</a>
+</li>
+<li><a href="#transport">Transport</a>
+</li>
+<li><a href="#flow">Flow</a>
+</li></ul>
+</li>
+<li><a href="#kinematic-vs-dynamic">Kinematic vs Dynamic</a>
+<ul>
+</li>
+<li><a href="#kinematic">Kinematic</a>
+</li>
+<li><a href="#dynamic">Dynamic</a>
+</li>
+<li><a href="#dynamical-closure">Dynamical closure</a>
+</li>
+<li><a href="#minimal-dynamical-closure">Minimal dynamical closure</a>
+</li></ul>
+</li>
+<li><a href="#field-structure">Field Structure</a>
+<ul>
+</li>
+<li><a href="#vector-field">Vector field</a>
+</li>
+<li><a href="#divergence-free">Divergence-free</a>
+</li>
+<li><a href="#source-free">Source-free</a>
+</li>
+<li><a href="#circulation">Circulation</a>
+</li></ul>
+</li>
+<li><a href="#differential-operators">Differential Operators</a>
+<ul>
+</li>
+<li><a href="#gradient">Gradient</a>
+</li>
+<li><a href="#curl">Curl</a>
+</li>
+<li><a href="#spatial-differential-operator">Spatial differential operator</a>
+</li></ul>
+</li>
+<li><a href="#electromagnetic-fields">Electromagnetic Fields</a>
+<ul>
+</li>
+<li><a href="#electric-field">Electric field</a>
+</li>
+<li><a href="#magnetic-field">Magnetic field</a>
+</li>
+<li><a href="#maxwell-electromagnetism">Maxwell electromagnetism</a>
+</li></ul>
+</li>
+<li><a href="#representation">Representation</a>
+<ul>
+</li>
+<li><a href="#representation">Representation</a>
+</li>
+<li><a href="#reconstruction">Reconstruction</a>
+</li>
+<li><a href="#polarization">Polarization</a>
+</li>
+<li><a href="#duality">Duality</a>
+</li></ul>
+</li>
+<li><a href="#geometry-and-topology">Geometry and Topology</a>
+<ul>
+</li>
+<li><a href="#topology">Topology</a>
+</li>
+<li><a href="#toroidal-shell">Toroidal shell</a>
+</li>
+<li><a href="#winding-numbers">Winding numbers</a>
+</li>
+<li><a href="#knot">Knot</a>
+</li></ul>
+</li>
+<li><a href="#dimensionality">Dimensionality</a>
+<ul>
+</li>
+<li><a href="#three-dimensionality">Three-dimensionality</a>
+</li></ul>
+</li>
+<li><a href="#relation-and-change">Relation and Change</a>
+<ul>
+</li>
+<li><a href="#configuration">Configuration</a>
+</li>
+<li><a href="#relation-between-configurations">Relation between configurations</a>
+</li>
+<li><a href="#two-snapshots-define-flow">Two snapshots define flow</a>
+</li></ul>
+</li>
+<li><a href="#modeling-and-ontology">Modeling and Ontology</a>
+<ul>
+</li>
+<li><a href="#model">Model</a>
+</li>
+<li><a href="#ontology">Ontology</a>
+</li></ul>
+</li>
+<li><a href="#closing-summary">Closing Summary</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="summary"><span class="header-section-number">1</span> Summary</h1>
+<p>This document defines the meaning of all technical terms and symbols
+used in the Maxwell Universe Research Program.</p>
+<p>Definitions are operational, descriptive, and context-specific. They
+describe how quantities are used and related in the theory; they do not
+assert what reality “is made of.”</p>
+<p>No term implies particles, separate substances, or
+non-electromagnetic forces.</p>
+<p>This glossary is intended to be canonical.</p>
+<h1 data-number="2" id="fundamental-quantities"><span class="header-section-number">2</span> Fundamental Quantities</h1>
+<h2 data-number="2.1" id="energy"><span class="header-section-number">2.1</span> Energy</h2>
+<p>A conserved physical quantity inferred from experimental
+regularities. In this program, energy is treated operationally through
+its measurable density and transport.</p>
+<p>Energy is not assumed to be a substance or object. It is what is
+transported, and its transport is what gives rise to observable physical
+phenomena.</p>
+<p>If there is no energy transport, there is nothing to describe.</p>
+<p>Energy is positive by definition as a measure of presence relative to
+absence. Negative values, when used, represent differences relative to a
+chosen reference configuration.</p>
+<h2 data-number="2.2" id="energy-density"><span class="header-section-number">2.2</span> Energy density</h2>
+<p><img role="img" aria-label="u(\mathbf{x},t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAATBAMAAAAkFJMsAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEUlEQVQYGVWNv0vDUBSFv4TUJrGpWZwtuCiIZnB0CAXp2sHBwSGD4Br6FxQ3Nycnh07ipoODWwLOQmdxyOAoUvyBoILel/fyihdyznfuee8F9AyMa2vPUzZHIS9pYnvckFqnbDSx24DyKMdme0IVSzFBT4HMgzaty+BnOKu4CUPaxaf/8aSak5dzZNFvxQs51/Lyj1fv4VHaGeMVWnFYCRebE1GZL/n24IwrnEp491VExh+K3MAt93jyFNF3KgpBJiLlO0eucna2KlHolv26mHn7l8hvg9PgjfAQFuOccAp3a+slI4JiGvw+OwfgjiZ0yvoyXBjH1RClZmHBFPZgmJgTPe3bJsLxv6IT2yK0pEDSHxQsMyyM762EAAAAAElFTkSuQmCC" alt="u(\mathbf{x},t)" title="u(\mathbf{x},t)" class="math inline" /></p>
+<p>A nonnegative scalar field representing the amount of electromagnetic
+energy associated with a region of space at a given time.</p>
+<p>Energy density is a bookkeeping quantity. By itself, it does not
+encode motion, direction, or causation.</p>
+<h2 data-number="2.3" id="energy-flux"><span class="header-section-number">2.3</span> Energy flux</h2>
+<p><img role="img" aria-label="\mathbf{S}(\mathbf{x},t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAATBAMAAAAkFJMsAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIElEQVQYGVWNMUvDUBSFv5iWRprE4tjFgJOD2KI/oIt7ZqcOrkJHB0FBVzGDkyDJ4Co6uLVCQTcHO4tIfkCHBkRoEeN9ec+0vse759xz7nkX9PkwqMEXsNa3d7sQaMVUT5S1HhcBfm/B8EY8wwYsBdQXdOxU9VdQC9TE/KyEOEO2BiNC2nMZ9orZ43x6Dgl+/FObPSr/sH+mBPcun4VEYH96hQ474k4kdZpH1r3w+KWhApDJu5X/aWZVZbx9K1UmEynXcnEyLxJuT0dSpQ2kJFyCPxGE/VeVg3rnXRlxSjNF1jonzhfWJiyHKVaL9lN/AGOcuOXkD9UbcMcNKp0iDKsGcTWx9TpZ/EeMUQ5aXRMZajwwLRz9MyphaVglU0S6X824RUDC0XaoAAAAAElFTkSuQmCC" alt="\mathbf{S}(\mathbf{x},t)" title="\mathbf{S}(\mathbf{x},t)" class="math inline" /></p>
+<p>A vector field representing the local rate and direction of
+electromagnetic energy transport through space.</p>
+<p><img role="img" aria-label="\mathbf{S}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANBAMAAABiGeI2AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVklEQVQIHWNgVDZ2TWCQL2DoV2DQZGBgUmCYxcDArsCgv+cCQwBD/f+fvQwMPOv//woAijb/nwAUY5D6yDCXgYHjI8MUBga+DwzzHzBIPWAwPLx7DwMA/+sW2j/5FiYAAAAASUVORK5CYII=" alt="\mathbf{S}" title="\mathbf{S}" class="math inline" /> describes how
+energy moves. It does not imply a mechanical fluid or particle substrate
+distinct from the field itself. In this program, the electromagnetic
+field is the continuous medium of energy transport.</p>
+<h1 data-number="3" id="continuity-and-transport"><span class="header-section-number">3</span> Continuity and Transport</h1>
+<h2 data-number="3.1" id="continuity-equation"><span class="header-section-number">3.1</span> Continuity equation</h2>
+<p><img role="img" aria-label="\partial_t u + \nabla \cdot \mathbf{S} = 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAAQBAMAAAAv7abWAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABt0lEQVQoFZ1SOywEURQ9M2Zm164ZE51qpyESERsR9TYKIrEkChpTDYWERITOhqhtIVHawhKJhAQVCZVKoaG0CoVyV3wSrHHfm3nPK0ThFu/cc885L3c+AFp68e/SR0z/l3DIqy6U29OjQdEr2JzDkkJFu742RuXH1H5C8lVIHPX5FUITGFDHWkQyPmEiFxFY90AQ9xEMoemad8PquMHjLMk2TgnBKQLtgnA8QaIEGPM9k+o4DmtsS/kqrc8RGKoLz9Dpwj7oezTuL2GCq3EYB7SVzyd06GH46ArC0KjDqMGg/IcGLb+BKa6KcKYE0dJ8PAw3CFIBqwLdRuE6mgrQXtLXulEFUyETqTosPrjLMeg4/+IsPihJ+YwHs9oIJH27SsJOMHMZTDOH/Y5R7hzwaEviW/QcsuxnmDV0u7C297NwvIZDLsldZ11feh0XWFfDeIJZRIU+s7sINLvWXJ6ZZbhS5pxf4GSBZerkM+MICR/pvPaAYwqjtctjRhm2lF/KeYO9yVRZnfwn2V1yUaRMuW2VKzJsv0gn0jdnVz97sLm5sBLJ2gVtJUqGkROjv7Gs+DT3b6+ifgO4GWbJK4gfRQAAAABJRU5ErkJggg==" alt="\partial_t u + \nabla \cdot \mathbf{S} = 0" title="\partial_t u + \nabla \cdot \mathbf{S} = 0" class="math display" /></p>
+<p>A relation expressing local conservation of energy during continuous
+transport.</p>
+<p>In this program, the continuity equation is treated as a description
+of observed energy transport through space, not as a metaphysical
+postulate.</p>
+<h2 data-number="3.2" id="continuity"><span class="header-section-number">3.2</span> Continuity</h2>
+<p>The empirical observation that, when energy moves through space,
+changes in energy density are accounted for by transport rather than
+unexplained creation or destruction.</p>
+<p>Continuity constrains allowed histories but does not specify
+dynamics.</p>
+<h2 data-number="3.3" id="transport"><span class="header-section-number">3.3</span> Transport</h2>
+<p>Spatial redistribution of energy over time.</p>
+<p>Transport through space requires spatial structure. Purely algebraic
+or purely temporal change cannot, by itself, produce transport.</p>
+<h2 data-number="3.4" id="flow"><span class="header-section-number">3.4</span> Flow</h2>
+<p>A descriptive term for continuous transport of a conserved quantity,
+represented mathematically by a vector field.</p>
+<p>Flow refers to organized energy transport. It does not imply
+particles or a separate mechanical medium; the field itself carries the
+flow.</p>
+<h1 data-number="4" id="kinematic-vs-dynamic"><span class="header-section-number">4</span> Kinematic vs Dynamic</h1>
+<h2 data-number="4.1" id="kinematic"><span class="header-section-number">4.1</span> Kinematic</h2>
+<p>Constraints that restrict allowed configurations or histories without
+specifying how evolution occurs.</p>
+<p>Continuity is kinematic.</p>
+<h2 data-number="4.2" id="dynamic"><span class="header-section-number">4.2</span> Dynamic</h2>
+<p>Rules specifying how quantities evolve in time.</p>
+<p>Dynamics describe how transport and reconfiguration occur.</p>
+<h2 data-number="4.3" id="dynamical-closure"><span class="header-section-number">4.3</span> Dynamical closure</h2>
+<p>A specification of time evolution that completes a kinematic
+description.</p>
+<p>A closure answers the question: how do allowed configurations change
+in time?</p>
+<h2 data-number="4.4" id="minimal-dynamical-closure"><span class="header-section-number">4.4</span> Minimal dynamical closure</h2>
+<p>The weakest evolution rule capable of describing observed behavior
+while preserving imposed constraints.</p>
+<p>Minimal means: - no auxiliary fields, - no nonlocal prescriptions, -
+no higher-order structure than required.</p>
+<p>It does not mean unique, complete, or final.</p>
+<h1 data-number="5" id="field-structure"><span class="header-section-number">5</span> Field Structure</h1>
+<h2 data-number="5.1" id="vector-field"><span class="header-section-number">5.1</span> Vector field</h2>
+<p>A mathematical object assigning a direction and magnitude to each
+point in space.</p>
+<p>Vector fields are descriptive tools, not assumed physical
+substances.</p>
+<h2 data-number="5.2" id="divergence-free"><span class="header-section-number">5.2</span> Divergence-free</h2>
+<p>A property of a vector field <img role="img" aria-label="\mathbf{F}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d74lURKsiu3ZmEJlws2FlAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAQ0lEQVQIHWMQMnFScnFlYGDI/8DA7gGhGYqgNDOY5lzADaZ5FgAphvxP9hD6wz0ozQilGSYApUHmgAGUFrL/pAbkAwDPVRdmy+HupAAAAABJRU5ErkJggg==" alt="\mathbf{F}" title="\mathbf{F}" class="math inline" />
+satisfying</p>
+<p><img role="img" aria-label="\nabla \cdot \mathbf{F} = 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAAOBAMAAAB6N5c4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3vzbv/ZXcJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABCElEQVQoFX1RsUoDQRSc8+JdciJeb6G1jULs9wp723QWFmLnB3iQP7C38gf0C4QEsdTKWliwsttIQoIQdGaX3bNyijcz7w33HnvY+fGo4dE+vr6/PAX9t258DYnj2DIO1XM0nqvLA2BzLn0RB0zhPhrPLba56FDLxnGg1FY0nj9QcHrWAIOrODAus0U0npeopkB/BvRS37iBTUainKFc8LAVcJsGZj2xMv0TYR+omOJ3cFOjIWFXa40bWZkERhgE9sb5nZrXqsaVltQhWyLnRvQW3VlMoe4iUt/Ip6RsNZQL0EsI6S58omjUOfVVShsDd/XBvyoPO0q9drJ+SyaI/Jx/iCiD/af+AodIQ8yAxVb8AAAAAElFTkSuQmCC" alt="\nabla \cdot \mathbf{F} = 0" title="\nabla \cdot \mathbf{F} = 0" class="math display" /></p>
+<p>in a given region.</p>
+<p>Divergence-free means there are no local sources or sinks.</p>
+<h2 data-number="5.3" id="source-free"><span class="header-section-number">5.3</span> Source-free</h2>
+<p>A description of regions where divergence-free structure holds.</p>
+<p>Source-free does not deny the existence of localized structures in
+nature; it denies primitive creation or destruction at points.</p>
+<h2 data-number="5.4" id="circulation"><span class="header-section-number">5.4</span> Circulation</h2>
+<p>Closed or looping transport of a divergence-free flow.</p>
+<p>Circulation is a geometric property of transport, not a force or
+interaction.</p>
+<h1 data-number="6" id="differential-operators"><span class="header-section-number">6</span> Differential Operators</h1>
+<h2 data-number="6.1" id="gradient"><span class="header-section-number">6.1</span> Gradient</h2>
+<p><img role="img" aria-label="\nabla \phi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAARBAMAAAAxo6E+AAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAIolUqxB2MplmRM273boxIgAAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACoSURBVAgdPY6xCsJAEETnvJyaQklplU+QYPyAA3tJbWFra2kZsJcrxEIsztLO77FSMZDKb3B2IS7Mu5ll9+4w/mplAAqg9y5ZcwYEwH3EbCgTiakM1ZSlsPZAuqWZCIYvIOE5u+045VrgzEZYmTubhwweuPCBhimvbQQeCE5S0nCNLliZNG1JPl0cyaVYemJvq4UE5AXRP54qTQNlquygH+sCrn8nJlA/MPUjM67kqqQAAAAASUVORK5CYII=" alt="\nabla \phi" title="\nabla \phi" class="math display" /></p>
+<p>A vector derived from a scalar field <img role="img" aria-label="\phi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAARBAMAAAD5z0voAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAVGYiRJkyiasQzbvddoKiWg4AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABZSURBVAgdY2BgYGAEYiBgglAmEEoATDGHgSjGErVgINXE6WAFVLaBkYFvAgOPAxPDvAlAxMQgxcDAxzCF4RgDA6uAJAdI46WmmyB9DApgkgFiFosBmAe2BgBZyQrsbqmTVQAAAABJRU5ErkJggg==" alt="\phi" title="\phi" class="math inline" />.</p>
+<p>Gradient-driven evolution generically creates or destroys divergence
+and cannot serve as a general source-free transport description.</p>
+<h2 data-number="6.2" id="curl"><span class="header-section-number">6.2</span> Curl</h2>
+<p><img role="img" aria-label="\nabla \times \mathbf{F}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAOBAMAAACfqVJUAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3N77tjHqOnAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAzklEQVQYGV2OwW3CQBBFn7GNIZe4AoxoACQoYDtICYm4kCMVIFcAV8QBuQEkSuBuKIEiiBKJUzYzsxYK/pf/dv7u/OXVm3Ieyurr+XId0vmaimaPuUDs4eBIv3W4aCcvJxjrorKdcIR3B/2lJJHE3UpAtg34gN4NEjmDlM3VJdmrp3fYKdAvu0P12Ne/6mxynAHbT/PYp2uDooyrkCRSK5JtK4PkJ9TA1mo0iSyJ7lPzfz3hDG8ukPxtpCRvGhUTg8hBp4Ks9ucwIWtuPNsfLF4ykBXXGTIAAAAASUVORK5CYII=" alt="\nabla \times \mathbf{F}" title="\nabla \times \mathbf{F}" class="math display" /></p>
+<p>A vector operator in three dimensions measuring local
+circulation.</p>
+<p>Curl-based evolution preserves divergence-free structure
+identically.</p>
+<h2 data-number="6.3" id="spatial-differential-operator"><span class="header-section-number">6.3</span> Spatial differential
+operator</h2>
+<p>An operator involving derivatives with respect to spatial
+coordinates.</p>
+<p>Transport is spatial redistribution and therefore requires spatial
+derivatives.</p>
+<h1 data-number="7" id="electromagnetic-fields"><span class="header-section-number">7</span> Electromagnetic Fields</h1>
+<h2 data-number="7.1" id="electric-field"><span class="header-section-number">7.1</span> Electric field</h2>
+<p><img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /></p>
+<p>A vector field used, together with <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" />, as part of a
+local representation of electromagnetic energy transport and
+rotation.</p>
+<p><img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> is
+representational, not assumed fundamental.</p>
+<h2 data-number="7.2" id="magnetic-field"><span class="header-section-number">7.2</span> Magnetic field</h2>
+<p><img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" /></p>
+<p>A vector field paired with <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> to represent
+rotational aspects of electromagnetic energy transport.</p>
+<p><img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" /> is
+representational, not assumed fundamental.</p>
+<h2 data-number="7.3" id="maxwell-electromagnetism"><span class="header-section-number">7.3</span> Maxwell electromagnetism</h2>
+<p>The curl-based dynamical system governing the coupled evolution of
+<img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" />.</p>
+<p>In this program, Maxwell electromagnetism is understood as the
+minimal dynamical description capable of transporting divergence-free
+energy flow while respecting continuity.</p>
+<h1 data-number="8" id="representation"><span class="header-section-number">8</span> Representation</h1>
+<h2 data-number="8.1" id="representation-1"><span class="header-section-number">8.1</span> Representation</h2>
+<p>A mapping from observable transport quantities (such as <img role="img" aria-label="u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO+rdkSJIt1muyIVtOIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA3SURBVAgdY2BUZmAyYHBiFWArYGiQY2AVYGCYxrCOgYFhB8NZIPmEIZ2JgeEBS8QKBobDGpoHALCxCaVmVwkTAAAAAElFTkSuQmCC" alt="u" title="u" class="math inline" /> and <img role="img" aria-label="\mathbf{S}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANBAMAAABiGeI2AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVklEQVQIHWNgVDZ2TWCQL2DoV2DQZGBgUmCYxcDArsCgv+cCQwBD/f+fvQwMPOv//woAijb/nwAUY5D6yDCXgYHjI8MUBga+DwzzHzBIPWAwPLx7DwMA/+sW2j/5FiYAAAAASUVORK5CYII=" alt="\mathbf{S}" title="\mathbf{S}" class="math inline" />) to auxiliary
+fields (such as <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" />).</p>
+<p>Representations may be non-unique and need not determine
+dynamics.</p>
+<h2 data-number="8.2" id="reconstruction"><span class="header-section-number">8.2</span> Reconstruction</h2>
+<p>The process of constructing fields <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" /> that
+reproduce a given energy density <img role="img" aria-label="u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO+rdkSJIt1muyIVtOIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA3SURBVAgdY2BUZmAyYHBiFWArYGiQY2AVYGCYxrCOgYFhB8NZIPmEIZ2JgeEBS8QKBobDGpoHALCxCaVmVwkTAAAAAElFTkSuQmCC" alt="u" title="u" class="math inline" /> and flux <img role="img" aria-label="\mathbf{S}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANBAMAAABiGeI2AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVklEQVQIHWNgVDZ2TWCQL2DoV2DQZGBgUmCYxcDArsCgv+cCQwBD/f+fvQwMPOv//woAijb/nwAUY5D6yDCXgYHjI8MUBga+DwzzHzBIPWAwPLx7DwMA/+sW2j/5FiYAAAAASUVORK5CYII=" alt="\mathbf{S}" title="\mathbf{S}" class="math inline" />.</p>
+<p>Reconstruction is generally non-unique.</p>
+<h2 data-number="8.3" id="polarization"><span class="header-section-number">8.3</span> Polarization</h2>
+<p>Degrees of freedom not fixed by <img role="img" aria-label="u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO+rdkSJIt1muyIVtOIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA3SURBVAgdY2BUZmAyYHBiFWArYGiQY2AVYGCYxrCOgYFhB8NZIPmEIZ2JgeEBS8QKBobDGpoHALCxCaVmVwkTAAAAAElFTkSuQmCC" alt="u" title="u" class="math inline" /> and <img role="img" aria-label="\mathbf{S}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANBAMAAABiGeI2AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVklEQVQIHWNgVDZ2TWCQL2DoV2DQZGBgUmCYxcDArsCgv+cCQwBD/f+fvQwMPOv//woAijb/nwAUY5D6yDCXgYHjI8MUBga+DwzzHzBIPWAwPLx7DwMA/+sW2j/5FiYAAAAASUVORK5CYII=" alt="\mathbf{S}" title="\mathbf{S}" class="math inline" /> alone.</p>
+<p>Polarization corresponds exactly to the non-uniqueness of
+reconstruction.</p>
+<h2 data-number="8.4" id="duality"><span class="header-section-number">8.4</span> Duality</h2>
+<p>Continuous transformations of <img role="img" aria-label="(\mathbf{E},\mathbf{B})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQYGWWQrU4DURBGT3/YUGjDekJagQdLEAheYE2D5L7B1mEQ8ATdpCHBkNTUoNBF7Jo1GF4AQhV6TYOhaWfm7i5NuMndb+Y7M3cmC40B/495LfL5bPg8M5yny+HrGRxpdgxxQWdshHhKd50RjCSNjNAPDQnh4s5cpdKTtbKafL3AN+wmRqLgj6QLuIQ9KY2LZiSiR16brETF3td0mdZk9Xn+IdYBPCgp2jWZwnghPSG5EdnQM93t/VeeCjn0hO6pBDaH/o/N8RtAb1AT7RF7J9Q5cOImEulujWtpf4SmQ39Wuk7eRlg4v5KKG+hIQXlcFYjel9dbzot+rf6pyoMqEO3pzLYrnW1ya15Skm0RbwOCjFBb3+kluwAAAABJRU5ErkJggg==" alt="(\mathbf{E},\mathbf{B})" title="(\mathbf{E},\mathbf{B})" class="math inline" /> that leave observable quantities invariant.</p>
+<p>Duality reflects representational freedom, not physical
+ambiguity.</p>
+<h1 data-number="9" id="geometry-and-topology"><span class="header-section-number">9</span> Geometry and Topology</h1>
+<h2 data-number="9.1" id="topology"><span class="header-section-number">9.1</span> Topology</h2>
+<p>Global properties of field organization invariant under continuous
+deformation.</p>
+<p>Topology constrains which configurations can change smoothly.</p>
+<h2 data-number="9.2" id="toroidal-shell"><span class="header-section-number">9.2</span> Toroidal shell</h2>
+<p>A closed, surface-like organization of energy flow supporting
+persistent circulation.</p>
+<p>Toroidal shells are membrane-like structures.</p>
+<h2 data-number="9.3" id="winding-numbers"><span class="header-section-number">9.3</span> Winding numbers</h2>
+<p><img role="img" aria-label="(m,n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8UlEQVQYGW2PsU7CUBSGP0ptBSR0YzAmTSBx1d3BhBfo5AwDxPEmDpDooDwBAyQuxoXE1UfAwcWBR2Ds7Ormfw8WE8pJb/Kf7zs3PRcqKaUyVC1hOPOse0BETjA7IDw0WXI5HM9KVKAHdYjP23cfoysbiJRXRhsw/3LRDbcmfH6EFiygf0/8TseEcnChGwmf6jdUU6YmtplGwqn6JfVV5WcrlrS0jv6sr/bNK3F27Y3yMDR6lIgxoZm62qU2zNjE8AxBn8CRE+acvKl1rAcw1l3tUFRUBJ6U/PmrnbDplwLrQUVsJkrhrv0XDzahtfdL6BecJii7EZchWQAAAABJRU5ErkJggg==" alt="(m,n)" title="(m,n)" class="math inline" /></p>
+<p>Integers labeling how a flow wraps around the independent cycles of a
+toroidal surface.</p>
+<p><img role="img" aria-label="(m,n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8UlEQVQYGW2PsU7CUBSGP0ptBSR0YzAmTSBx1d3BhBfo5AwDxPEmDpDooDwBAyQuxoXE1UfAwcWBR2Ds7Ormfw8WE8pJb/Kf7zs3PRcqKaUyVC1hOPOse0BETjA7IDw0WXI5HM9KVKAHdYjP23cfoysbiJRXRhsw/3LRDbcmfH6EFiygf0/8TseEcnChGwmf6jdUU6YmtplGwqn6JfVV5WcrlrS0jv6sr/bNK3F27Y3yMDR6lIgxoZm62qU2zNjE8AxBn8CRE+acvKl1rAcw1l3tUFRUBJ6U/PmrnbDplwLrQUVsJkrhrv0XDzahtfdL6BecJii7EZchWQAAAABJRU5ErkJggg==" alt="(m,n)" title="(m,n)" class="math inline" /> characterize global
+flow organization, not local field values.</p>
+<h2 data-number="9.4" id="knot"><span class="header-section-number">9.4</span> Knot</h2>
+<p>A topologically nontrivial closed configuration of energy flow.</p>
+<p>Knots cannot be undone by continuous deformation without
+reconnection.</p>
+<h1 data-number="10" id="dimensionality"><span class="header-section-number">10</span> Dimensionality</h1>
+<h2 data-number="10.1" id="three-dimensionality"><span class="header-section-number">10.1</span> Three-dimensionality</h2>
+<p>The spatial dimensionality in which: - curl maps vectors to vectors,
+- divergence-free flows admit circulation, - knotted structures
+exist.</p>
+<p>Many stability features described in this program rely essentially on
+three dimensions.</p>
+<h1 data-number="11" id="relation-and-change"><span class="header-section-number">11</span> Relation and Change</h1>
+<h2 data-number="11.1" id="configuration"><span class="header-section-number">11.1</span> Configuration</h2>
+<p>A spatial distribution of a quantity at a given time.</p>
+<h2 data-number="11.2" id="relation-between-configurations"><span class="header-section-number">11.2</span> Relation between
+configurations</h2>
+<p>The comparison between scalar configurations at different times.</p>
+<p>Flow is defined by relations between configurations, not by a single
+snapshot.</p>
+<h2 data-number="11.3" id="two-snapshots-define-flow"><span class="header-section-number">11.3</span> Two snapshots define flow</h2>
+<p>A shorthand statement meaning:</p>
+<p>A single scalar configuration does not encode transport. Directional
+transport is defined by how scalar configurations change relative to
+each other under continuity.</p>
+<h1 data-number="12" id="modeling-and-ontology"><span class="header-section-number">12</span> Modeling and Ontology</h1>
+<h2 data-number="12.1" id="model"><span class="header-section-number">12.1</span> Model</h2>
+<p>A mathematical description of observed regularities.</p>
+<p>Models do not assert ultimate ontology.</p>
+<h2 data-number="12.2" id="ontology"><span class="header-section-number">12.2</span> Ontology</h2>
+<p>Claims about what exists fundamentally.</p>
+<p>This program deliberately limits ontological commitments.</p>
+<h1 data-number="13" id="closing-summary"><span class="header-section-number">13</span> Closing Summary</h1>
+<p>All terms in this glossary are defined operationally.</p>
+<p>The electromagnetic field is treated as the continuous medium of
+energy transport. No additional substrate is assumed.</p>
+<p>The framework is descriptive, minimal, and grounded in observed
+continuity of energy transport through space.</p>
+</body>
+</html>
