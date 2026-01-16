@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="author" content="Alex Mercer" />
+  <meta name="dcterms.date" content="2026-01-16" />
+  <meta name="keywords" content="Maxwell theory, foundations of physics,
+continuity equation, divergence-free flow, minimal dynamics, field-only
+ontology, topology" />
+  <title>The Maxwell Universe Research Program</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">The Maxwell Universe Research Program</h1>
+<p class="subtitle">Foundations, Method, and Boundaries</p>
+<p class="author">An M. Rodriguez</p>
+<p class="author">Alex Mercer</p>
+<p class="date">2026-01-16</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> A precise statement of the
+methodological foundations, assumptions, and limits of the Maxwell
+Universe Research Program.</p>
+<p><strong>Abstract.</strong> This document consolidates the guiding
+principles of the Maxwell Universe Research Program. It fixes the
+ontological stance, methodological rules, and logical boundaries that
+unify the program’s published works. The aim is not to introduce new
+results, but to preserve conceptual coherence, prevent regressions, and
+enable extension without reintroducing hidden postulates.</p>
+<p><strong>Keywords.</strong> Maxwell theory, foundations of physics,
+continuity equation, divergence-free flow, minimal dynamics, field-only
+ontology, topology</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#purpose-of-this-document">Purpose of this document</a>
+</li>
+<li><a href="#ontological-stance">Ontological stance</a>
+</li>
+<li><a href="#what-is-meant-by-source-free">What is meant by “source-free”</a>
+</li>
+<li><a href="#minimal-assumption-principle">Minimal assumption principle</a>
+</li>
+<li><a href="#representation-versus-dynamics">Representation versus dynamics</a>
+</li>
+<li><a href="#continuity-as-the-only-conservation-assumption">Continuity as the only conservation assumption</a>
+</li>
+<li><a href="#geometry-and-topology-as-generative-structure">Geometry and topology as generative structure</a>
+</li>
+<li><a href="#minimality-versus-uniqueness">Minimality versus uniqueness</a>
+</li>
+<li><a href="#what-is-closed">What is closed</a>
+</li>
+<li><a href="#why-this-program-matters">Why this program matters</a>
+</li>
+<li><a href="#closing-statement">Closing statement</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="purpose-of-this-document"><span class="header-section-number">1</span> Purpose of this document</h1>
+<p>This document exists to prevent loss.</p>
+<p>Not loss of results, but loss of discipline.</p>
+<p>The Maxwell Universe Research Program is a constrained way of
+reasoning about physical phenomena starting from experimentally grounded
+structure, using electromagnetic energy flow as the medium through which
+causal effects manifest.</p>
+<p>That stance must be stated explicitly if the program is to remain
+coherent under extension, critique, or reinterpretation.</p>
+<p>This document therefore specifies:</p>
+<ul>
+<li>what is taken as primitive,</li>
+<li>what is deliberately not taken as primitive,</li>
+<li>how derivations are evaluated,</li>
+<li>and where the program explicitly stops.</li>
+</ul>
+<h1 data-number="2" id="ontological-stance"><span class="header-section-number">2</span> Ontological stance</h1>
+<p>The program adopts a <strong>field-only, flow-first
+ontology</strong>.</p>
+<p>Physical reality is described in terms of continuous electromagnetic
+energy transport in three spatial dimensions, constrained by
+experimentally abstracted regularities.</p>
+<p>No fundamental particles are assumed. No fundamental strings or
+membranes are assumed. No spacetime substance is assumed.</p>
+<p>Electric and magnetic fields are not ontological primitives. They are
+representational variables used to describe how energy transport is
+organized.</p>
+<p>What <em>is</em> taken as primitive is:</p>
+<ul>
+<li>the observed continuity of energy transport through space,</li>
+<li>divergence-free structure in regions without primitive sources,</li>
+<li>local transport.</li>
+</ul>
+<p>Everything else is description.</p>
+<h1 data-number="3" id="what-is-meant-by-source-free"><span class="header-section-number">3</span> What is meant by
+“source-free”</h1>
+<p>“Source-free” does not mean that localized electromagnetic structures
+do not exist.</p>
+<p>It means that no ontological creation or destruction of
+electromagnetic energy at points is introduced.</p>
+<p>Within this program, objects conventionally described as “charges” or
+“currents” are understood as stable, localized configurations of
+divergence-free electromagnetic energy flow. These configurations are
+typically associated with circulation, winding, or topological
+constraint.</p>
+<p>Energy does not originate or terminate at points. All configurations
+are closed, globally continuous, and dynamically self-consistent.</p>
+<p>This mirrors experimental practice: even apparent sources are
+implemented through boundary conditions, circuits, and global
+constraints, not literal energy creation.</p>
+<p>“Source-free” is therefore not a self-imposed restriction of the
+framework, but an acknowledgement that energy is not observed to be
+created or destroyed at points in space.</p>
+<h1 data-number="4" id="minimal-assumption-principle"><span class="header-section-number">4</span> Minimal assumption principle</h1>
+<p>The program follows a strict methodological rule:</p>
+<p><strong>No structure is introduced unless it is
+required.</strong></p>
+<p>This applies to:</p>
+<ul>
+<li>entities (particles, strings, spacetime points),</li>
+<li>laws (forces, potentials),</li>
+<li>symmetries,</li>
+<li>conservation principles beyond continuity,</li>
+<li>quantization rules.</li>
+</ul>
+<p>If a phenomenon follows from continuity, geometry, or topology, no
+additional postulate is added.</p>
+<p>Minimal does not mean final. Minimal means <strong>frugal in
+assumptions</strong>.</p>
+<h1 data-number="5" id="representation-versus-dynamics"><span class="header-section-number">5</span> Representation versus
+dynamics</h1>
+<p>A foundational distinction runs through all program documents:</p>
+<ul>
+<li><strong>Representation</strong> concerns how a configuration is
+described.</li>
+<li><strong>Dynamics</strong> concerns how configurations evolve.</li>
+</ul>
+<p>Confusing these leads to false derivations.</p>
+<p>Examples:</p>
+<ul>
+<li><img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" />
+represent energy content and transport.</li>
+<li><img role="img" aria-label="(\mathbf{E},\mathbf{B})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQYGWWQrU4DURBGT3/YUGjDekJagQdLEAheYE2D5L7B1mEQ8ATdpCHBkNTUoNBF7Jo1GF4AQhV6TYOhaWfm7i5NuMndb+Y7M3cmC40B/495LfL5bPg8M5yny+HrGRxpdgxxQWdshHhKd50RjCSNjNAPDQnh4s5cpdKTtbKafL3AN+wmRqLgj6QLuIQ9KY2LZiSiR16brETF3td0mdZk9Xn+IdYBPCgp2jWZwnghPSG5EdnQM93t/VeeCjn0hO6pBDaH/o/N8RtAb1AT7RF7J9Q5cOImEulujWtpf4SmQ39Wuk7eRlg4v5KKG+hIQXlcFYjel9dbzot+rf6pyoMqEO3pzLYrnW1ya15Skm0RbwOCjFBb3+kluwAAAABJRU5ErkJggg==" alt="(\mathbf{E},\mathbf{B})" title="(\mathbf{E},\mathbf{B})" class="math inline" /> represent one local encoding of that
+transport.</li>
+<li>Maxwell’s equations specify a particular dynamical evolution, not a
+definition of energy itself.</li>
+</ul>
+<p>The program enforces this separation rigorously.</p>
+<h1 data-number="6" id="continuity-as-the-only-conservation-assumption"><span class="header-section-number">6</span> Continuity as the only
+conservation assumption</h1>
+<p>Only one conservation principle is assumed:</p>
+<p><img role="img" aria-label="\partial_t u + \nabla \cdot \mathbf{S} = 0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAAQBAMAAAAmBgasAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAByUlEQVQoFaVSPywDcRT+7np3pXpcbKbeYhIh0phvMUgkSmJhcJaSEJqI6FjEZCDSVXRQIpGQYBKJhclgNZWwmJQgQare+/V+d23SWLzhvfd93/t+f+5+AFrj+EeoQ7pbx14WUfIUc/osnqszBbQ4SNcR1ldHKFxPKdhYl32FUueXRaMD/d6QKEoFxFyqYacCMAsYTAQxgOiNhwYDFgjZAjXwuSNSeAJUVwJRTxHOcaPN94wLwkueXfkg7H/UuUsLTvUU3qBuMNELdZ9KXw6jDOXuOKSzuYKh1FX+WZK9qFoJ2gt1Gq3xrUBJZDEpBG93xHL+SoC+Xf50SI4kOTJ0FbLz9aIZKO9NN6pWRJZgsHukBIOx+chZXSvfcZVBXloBiNnQi41Ag2sWCe4mZ66SUzxkfmGYq7ZJyQFu5RtgEuYbdD58lwVj56AbzXboSAjy8JizXEFwuqf1a+x4hU7XRoF+u7VIr8cyUgme9O2FvMDM4YHeQJGqf3ccI+wS0ZRQHnFCdrR12oQDu8G/zovnFG5TEojaQc/GnAD20hY2yJVvXxG8v7v5Hsyfj11fBog7fWEZ2pbglIvuQPPtcALy7y5fNalYf8/WqL9IT2q3MazF2QAAAABJRU5ErkJggg==" alt="\partial_t u + \nabla \cdot \mathbf{S} = 0." title="\partial_t u + \nabla \cdot \mathbf{S} = 0." class="math display" /></p>
+<p>This relation is treated as a <strong>description of observed
+continuous energy transport through space</strong>, not as a
+metaphysical axiom or fundamental restriction.</p>
+<p>No independent postulates of momentum conservation, inertia, force,
+or mass are assumed.</p>
+<p>Momentum, inertia, tension, and effective forces are derived as
+consequences of energy continuity combined with geometry and
+topology.</p>
+<p>This avoids circular reasoning.</p>
+<h1 data-number="7" id="geometry-and-topology-as-generative-structure"><span class="header-section-number">7</span> Geometry and topology as
+generative structure</h1>
+<p>Geometry and topology are treated as active constraints, not passive
+background.</p>
+<p>Key consequences established across the program include:</p>
+<ul>
+<li>Curved transport paths generate effective inertia.</li>
+<li>Closed circulation generates stability <strong>without invoking
+forces</strong>, because energy confined to closed or topologically
+constrained paths cannot disperse continuously.</li>
+<li>Toroidal surfaces enforce integer winding numbers.</li>
+<li>Knotted configurations prevent continuous unwinding.</li>
+<li>Three-dimensionality is essential: circulation, curl, and knots rely
+on it.</li>
+</ul>
+<p>No microscopic constituents are required for these effects to
+appear.</p>
+<h1 data-number="8" id="minimality-versus-uniqueness"><span class="header-section-number">8</span> Minimality versus uniqueness</h1>
+<p>A critical clarification:</p>
+<p>The program does <strong>not</strong> claim absolute uniqueness.</p>
+<p>It claims minimality under explicit constraints.</p>
+<p>For example:</p>
+<ul>
+<li>Maxwell electromagnetism is minimal among local,
+divergence-preserving, first-order transport dynamics.</li>
+<li>More complex theories may exist, but they introduce additional,
+identifiable structure.</li>
+</ul>
+<p>Minimality establishes a baseline, not a prohibition.</p>
+<h1 data-number="9" id="what-is-closed"><span class="header-section-number">9</span> What is closed</h1>
+<p>The program closes the following conceptual gaps, conditionally and
+explicitly:</p>
+<ul>
+<li>Refraction without matter.</li>
+<li>Inertia without mass postulates.</li>
+<li>Stability without forces.</li>
+<li>String- and membrane-like structure without new objects.</li>
+<li>Electromagnetic dynamics without concepts beyond continuity and
+locality.</li>
+</ul>
+<p>Each closure is documented and scoped.</p>
+<h1 data-number="10" id="why-this-program-matters"><span class="header-section-number">10</span> Why this program matters</h1>
+<p>Most foundational confusion in physics arises not from incorrect
+equations, but from hidden assumptions.</p>
+<p>The Maxwell Universe Research Program removes those assumptions
+deliberately.</p>
+<p>What remains is a clear, constrained framework grounded in
+observation.</p>
+<h1 data-number="11" id="closing-statement"><span class="header-section-number">11</span> Closing statement</h1>
+<p>This program aims to describe nature using continuity of energy
+transport, divergence-free structure, and local dynamics only.</p>
+<p>Within this framework, observed physical phenomena are understood as
+organized energy flow through space.</p>
+<p>No additional primitives are required.</p>
+<p>Continuity, divergence-free structure, and local transport are not
+interpretations. They are observed regularities.</p>
+</body>
+</html>
