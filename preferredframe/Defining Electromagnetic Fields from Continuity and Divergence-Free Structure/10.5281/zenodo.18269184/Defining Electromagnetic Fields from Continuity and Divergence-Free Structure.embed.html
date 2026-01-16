@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="author" content="Alex Mercer" />
+  <meta name="dcterms.date" content="2026-01-16" />
+  <meta name="keywords" content="Maxwell theory, continuity equation,
+divergence-free fields, Poynting vector, energy density, field
+reconstruction, circulation, topology" />
+  <title>Defining Electromagnetic Fields from Continuity and Divergence-Free Structure</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Defining Electromagnetic Fields from Continuity and
+Divergence-Free Structure</h1>
+<p class="subtitle">Two snapshots of a single scalar field define
+flow</p>
+<p class="author">An M. Rodriguez</p>
+<p class="author">Alex Mercer</p>
+<p class="date">2026-01-16</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> Continuity and divergence-free
+structure force electromagnetic energy to be described by directional,
+circulating degrees of freedom; however, energy density and flux alone
+do not uniquely determine the electric and magnetic fields without
+additional relational data.</p>
+<p><strong>Abstract.</strong> We clarify the conceptual bridge between a
+field-only ontology of electromagnetic energy flow and the usual
+electric and magnetic field variables. We show rigorously that a single
+scalar energy density does not define propagation, but that the relation
+between scalar configurations at different times, constrained by
+continuity, forces the introduction of directional transport. We prove a
+reconstruction result: given an energy density u and an energy flux S
+satisfying |S| &lt;= c u, one can always construct at least one pair of
+fields E and B that reproduce u and S. The non-uniqueness of this
+reconstruction matches the true physical degrees of freedom identified
+as polarization. We conclude with a precise statement of what is implied
+by continuity and what requires the full Maxwell dynamical law.</p>
+<p><strong>Keywords.</strong> Maxwell theory, continuity equation,
+divergence-free fields, Poynting vector, energy density, field
+reconstruction, circulation, topology</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#motivation">Motivation</a>
+</li>
+<li><a href="#assumptions">Assumptions</a>
+</li>
+<li><a href="#why-a-scalar-field-alone-cannot-encode-propagation">Why a scalar field alone cannot encode propagation</a>
+</li>
+<li><a href="#divergence-free-structure-and-circulation-in-3d">Divergence-free structure and circulation in 3D</a>
+</li>
+<li><a href="#what-it-means-to-define-the-electromagnetic-field">What it means to define the electromagnetic field</a>
+</li>
+<li><a href="#reconstruction-lemma-from-umathbfs-to-mathbfemathbfb">Reconstruction lemma: from $(u,\mathbf{S})$ to $(\mathbf{E},\mathbf{B})$</a>
+</li>
+<li><a href="#why-orthogonal-coupling-appears">Why orthogonal coupling appears</a>
+</li>
+<li><a href="#where-toroidal-winding-numbers-mn-enter">Where toroidal winding numbers $(m,n)$ enter</a>
+</li>
+<li><a href="#conclusions">Conclusions</a>
+</li>
+<li><a href="#closing-statement">Closing statement</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="motivation"><span class="header-section-number">1</span> Motivation</h1>
+<p>A recurring conceptual objection is:</p>
+<p>If electromagnetic energy is taken as primary, and energy density is
+a scalar field, how do vector fields such as <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" /> arise?</p>
+<p>The objection is valid if one assumes that vectors must be extracted
+directly from a single scalar configuration. They cannot.</p>
+<p>A single scalar field does not define flow. Flow is defined by the
+<strong>relation between scalar configurations at different times under
+continuity</strong>.</p>
+<p>This distinction is central and non-negotiable.</p>
+<p>The correct ordering is:</p>
+<ul>
+<li>a scalar energy density <img role="img" aria-label="u(\mathbf{x},t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAATBAMAAAAkFJMsAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEUlEQVQYGVWNv0vDUBSFv4TUJrGpWZwtuCiIZnB0CAXp2sHBwSGD4Br6FxQ3Nycnh07ipoODWwLOQmdxyOAoUvyBoILel/fyihdyznfuee8F9AyMa2vPUzZHIS9pYnvckFqnbDSx24DyKMdme0IVSzFBT4HMgzaty+BnOKu4CUPaxaf/8aSak5dzZNFvxQs51/Lyj1fv4VHaGeMVWnFYCRebE1GZL/n24IwrnEp491VExh+K3MAt93jyFNF3KgpBJiLlO0eucna2KlHolv26mHn7l8hvg9PgjfAQFuOccAp3a+slI4JiGvw+OwfgjiZ0yvoyXBjH1RClZmHBFPZgmJgTPe3bJsLxv6IT2yK0pEDSHxQsMyyM762EAAAAAElFTkSuQmCC" alt="u(\mathbf{x},t)" title="u(\mathbf{x},t)" class="math inline" /> is
+an observable of a process,</li>
+<li>continuity relates changes of that observable across time,</li>
+<li>the relation between two scalar configurations requires directional
+transport,</li>
+<li>directional transport is necessarily described in vectorial
+language.</li>
+</ul>
+<p>Thus, vectors do not arise from scalars by inspection. They arise
+from <strong>change under constraint</strong>.</p>
+<p>This document makes that chain explicit and states precisely what can
+be reconstructed from energy density and energy flow alone.</p>
+<h1 data-number="2" id="assumptions"><span class="header-section-number">2</span> Assumptions</h1>
+<p>We assume a source-free region.</p>
+<p>We assume that electromagnetic energy admits:</p>
+<ol type="1">
+<li><p>A nonnegative energy density <img role="img" aria-label="u(\mathbf{x},t) \ge 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAATBAMAAAAexCxfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABiUlEQVQoFW1RO0jDUBQ9DalNYj9ZnBsQ0YLYDo4KoSDi5uDg4NBBdC0VHCUIIk46OSlkErc6OLg14CQiFF1EFDoIoogUPwgq6L3vU4z1QO753PPyIYDEpGJJqZj7Yyoxb5ZiNmZSwS9r+hhmS6yxfhJomdWCOVOF8M5CqOJECw9Kyrtok3Nhe2yc8YCJDntYkgq40oK5D7AqIjB3PcF0eA1I9MMoYRqpxrv1dsuLjacdUCCxEjHnQ+R9lJNuTxUH9JAvUzSBa1q2ucE49WhsUjVEkEfSdVrkGyMhTcIHXTNC0Ztc+KSoR21sow76QmDimQbB4ocfCgnj3mdRd1EkcYQzmPQCyHySI9gVGlwH0neCkAswQOoVi4bYjBVbYpGNyqo6dS6byERYJtk2Z/dBH2Rv2S9w5oFetwqnSRvrUjVhNcUvOB4qRKjBbjTt78fEHGDUQqQj3ZI8WAh0sKeFIUXG10EXd1aq2jna1YRTUpkneZTJumGoROY8V5X0BKddZf8jJxbGnVr9ANT7UW4eoMSWAAAAAElFTkSuQmCC" alt="u(\mathbf{x},t) \ge 0" title="u(\mathbf{x},t) \ge 0" class="math inline" />.</p></li>
+<li><p>An energy flux <img role="img" aria-label="\mathbf{S}(\mathbf{x},t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAATBAMAAAAkFJMsAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIElEQVQYGVWNMUvDUBSFv5iWRprE4tjFgJOD2KI/oIt7ZqcOrkJHB0FBVzGDkyDJ4Co6uLVCQTcHO4tIfkCHBkRoEeN9ec+0vse759xz7nkX9PkwqMEXsNa3d7sQaMVUT5S1HhcBfm/B8EY8wwYsBdQXdOxU9VdQC9TE/KyEOEO2BiNC2nMZ9orZ43x6Dgl+/FObPSr/sH+mBPcun4VEYH96hQ474k4kdZpH1r3w+KWhApDJu5X/aWZVZbx9K1UmEynXcnEyLxJuT0dSpQ2kJFyCPxGE/VeVg3rnXRlxSjNF1jonzhfWJiyHKVaL9lN/AGOcuOXkD9UbcMcNKp0iDKsGcTWx9TpZ/EeMUQ5aXRMZajwwLRz9MyphaVglU0S6X824RUDC0XaoAAAAAElFTkSuQmCC" alt="\mathbf{S}(\mathbf{x},t)" title="\mathbf{S}(\mathbf{x},t)" class="math inline" /> satisfying a continuity description</p>
+<p><img role="img" aria-label="\partial_t u + \nabla \cdot \mathbf{S} = 0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAAQBAMAAAAmBgasAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAByUlEQVQoFaVSPywDcRT+7np3pXpcbKbeYhIh0phvMUgkSmJhcJaSEJqI6FjEZCDSVXRQIpGQYBKJhclgNZWwmJQgQare+/V+d23SWLzhvfd93/t+f+5+AFrj+EeoQ7pbx14WUfIUc/osnqszBbQ4SNcR1ldHKFxPKdhYl32FUueXRaMD/d6QKEoFxFyqYacCMAsYTAQxgOiNhwYDFgjZAjXwuSNSeAJUVwJRTxHOcaPN94wLwkueXfkg7H/UuUsLTvUU3qBuMNELdZ9KXw6jDOXuOKSzuYKh1FX+WZK9qFoJ2gt1Gq3xrUBJZDEpBG93xHL+SoC+Xf50SI4kOTJ0FbLz9aIZKO9NN6pWRJZgsHukBIOx+chZXSvfcZVBXloBiNnQi41Ag2sWCe4mZ66SUzxkfmGYq7ZJyQFu5RtgEuYbdD58lwVj56AbzXboSAjy8JizXEFwuqf1a+x4hU7XRoF+u7VIr8cyUgme9O2FvMDM4YHeQJGqf3ccI+wS0ZRQHnFCdrR12oQDu8G/zovnFG5TEojaQc/GnAD20hY2yJVvXxG8v7v5Hsyfj11fBog7fWEZ2pbglIvuQPPtcALy7y5fNalYf8/WqL9IT2q3MazF2QAAAABJRU5ErkJggg==" alt="\partial_t u + \nabla \cdot \mathbf{S} = 0." title="\partial_t u + \nabla \cdot \mathbf{S} = 0." class="math display" /></p></li>
+</ol>
+<p>This equation expresses the observed fact that when energy moves
+through space, it does so continuously: changes in density are accounted
+for by transport.</p>
+<p>We also assume the empirically observed causal bound</p>
+<p><img role="img" aria-label="|\mathbf{S}| \le c\,u," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAAATBAMAAAA0dN3wAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyIqtmRInd781UEHbcgkVCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABMklEQVQoFWMQYIAAGA3lolAKDCxBSskCDAoooqgcBQb/Aob+ACQ1V1AVAHkKDJEMDKxIai4qY1Ezi4GBHaHGFVMJ0Jz4PRcYDGB2FYVgmAKyq/7/z14QDQKHgCww4Mk5wsBgI8BwEMRTYOBZ//8X1BzLtxAVDAxhDBEMvAcWM8RB1DCwN/2fADGHQweqhm8Dw1kGduYPDIshagwYGLy+QO3i2wZRxJ8AojkCWD6AaAWGuUAOTA0Dj8YFkKg/mOQsYFMA8RQYpjEw8H2AmgMMBkUHoKg9AwMvAwP/BdYHB8Bq5j9g8HoAV8PAHAYU5XRgSAGqYbhVUuB6ASincmj3HpB5yICl5xjQNjaZmjYGqwS4HKoaZPUHSFdTpAQEsDCCmsWDcAdOu4BqDKDKYTSyS6BsAA8KPTSZ8jE9AAAAAElFTkSuQmCC" alt="|\mathbf{S}| \le c\,u," title="|\mathbf{S}| \le c\,u," class="math display" /></p>
+<p>which states that the rate of energy transport does not exceed the
+maximal observed propagation rate. This is an operational fact about how
+energy is seen to move through space, not a restriction on the possible
+ways transport may be organized or described.</p>
+<p>We do not assume particles, matter, constitutive media, quantum
+axioms, or mechanical primitives.</p>
+<p>We do not derive Maxwell’s dynamical equations from continuity alone.
+We instead establish what continuity and divergence-free structure
+<em>force</em>, and what additional structure is required to describe
+evolution.</p>
+<h1 data-number="3" id="why-a-scalar-field-alone-cannot-encode-propagation"><span class="header-section-number">3</span> Why a scalar field alone cannot
+encode propagation</h1>
+<p>A scalar field <img role="img" aria-label="u(\mathbf{x},t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAATBAMAAAAkFJMsAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEUlEQVQYGVWNv0vDUBSFv4TUJrGpWZwtuCiIZnB0CAXp2sHBwSGD4Br6FxQ3Nycnh07ipoODWwLOQmdxyOAoUvyBoILel/fyihdyznfuee8F9AyMa2vPUzZHIS9pYnvckFqnbDSx24DyKMdme0IVSzFBT4HMgzaty+BnOKu4CUPaxaf/8aSak5dzZNFvxQs51/Lyj1fv4VHaGeMVWnFYCRebE1GZL/n24IwrnEp491VExh+K3MAt93jyFNF3KgpBJiLlO0eucna2KlHolv26mHn7l8hvg9PgjfAQFuOccAp3a+slI4JiGvw+OwfgjiZ0yvoyXBjH1RClZmHBFPZgmJgTPe3bJsLxv6IT2yK0pEDSHxQsMyyM762EAAAAAElFTkSuQmCC" alt="u(\mathbf{x},t)" title="u(\mathbf{x},t)" class="math inline" /> at
+a single time slice contains no information about direction. It
+specifies magnitude only.</p>
+<p>Two scalar snapshots, however, allow us to define transport. Given
+<img role="img" aria-label="u(\mathbf{x},t_1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAATBAMAAAA3w9PYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABKklEQVQoFU2OvUvDQByGn4TUJrGpWZwNuCho7eDoUAri2sHBwSGD4Br6FxQ3NxedHDqJIKiDg1sDboLQuTh0cBQpfiCooL+7XK7ecM9z73tfUIwtwymqU02nasxrllG1V5rQa+nFShnVS1GMMr2ymd2l4rlYl0GiASNDjfli4ac4i7hNOlQHn/7Hk4oPX06LtkO7Es9kXMtLP57u4BFvVdUTegtU4nAsPmj0ZZbxhdtQ3IYTrnDG4puvKgG/A5dKbuCWBzy5lui7pSKC1JSy6Z19Vz4EG2tjmaGet4uTEk68nXPkK8FR8Ea4B7NxpstwCHdLyzldgsEw+H12dsHt9nVZy/VFcGaIW8iFIGqZ0EpR+sf3/w6ETbMrMRSsWz0wltikFlsNrZUiyR+kiTkFPx65xAAAAABJRU5ErkJggg==" alt="u(\mathbf{x},t_1)" title="u(\mathbf{x},t_1)" class="math inline" />
+and <img role="img" aria-label="u(\mathbf{x},t_2)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAATBAMAAAA3w9PYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABOUlEQVQoFV2RvUvDQBjGfwlpm8S2ZnHVgouCaAdHh1IQ1wwODg4ZBHGL/QuKm5uTIDh0Urc6OLil4OQgdBaHDI4ixQ/ED6jvXS6p+MC9z++e9+7yQiDThvGJVSYYTdCQ08yjSjcncaelN0t5VM9BeS3WuyIrTql4OtBNr6EN7o1rm8k2boQ1j90kpJJ8uO+PKj58Ps26Ie1SUI65lC/9OLoHD9i3atQR3TlKgZ8KJ8s9qaIvztkT34Rj+lip8PqLFJEbMsudwBVcCzjyLLXvllTwIiknskJ4Y9dWztpKKhXqgzaO3FLhyNm6QEbxjrxX/B2YCmLKAfhDuFlYHNDBS4be+MnaBrvTY9+H6kC9IzrLTDoa3K78k1rLhAVkzf74888Fv2lONYyLrRZ4YKhRJFWZyUgG+CdJfgG4vDs6kAE4yQAAAABJRU5ErkJggg==" alt="u(\mathbf{x},t_2)" title="u(\mathbf{x},t_2)" class="math inline" />, continuity requires that differences between
+them be explained by motion through space.</p>
+<p>That motion cannot be described without direction.</p>
+<p>Thus, the continuity equation does not close on <img role="img" aria-label="u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO+rdkSJIt1muyIVtOIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA3SURBVAgdY2BUZmAyYHBiFWArYGiQY2AVYGCYxrCOgYFhB8NZIPmEIZ2JgeEBS8QKBobDGpoHALCxCaVmVwkTAAAAAElFTkSuQmCC" alt="u" title="u" class="math inline" /> alone. It introduces <img role="img" aria-label="\mathbf{S}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANBAMAAABiGeI2AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVklEQVQIHWNgVDZ2TWCQL2DoV2DQZGBgUmCYxcDArsCgv+cCQwBD/f+fvQwMPOv//woAijb/nwAUY5D6yDCXgYHjI8MUBga+DwzzHzBIPWAwPLx7DwMA/+sW2j/5FiYAAAAASUVORK5CYII=" alt="\mathbf{S}" title="\mathbf{S}" class="math inline" /> as a
+necessary relational quantity. The pair <img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" /> is
+the minimal description of conserved flow.</p>
+<p>Vectors are therefore not additional structure. They are the minimal
+language required to describe change consistently.</p>
+<h1 data-number="4" id="divergence-free-structure-and-circulation-in-3d"><span class="header-section-number">4</span> Divergence-free structure and
+circulation in 3D</h1>
+<p>In three dimensions, divergence-free vector fields have a canonical
+geometric feature: they admit circulation and vortex-like
+organization.</p>
+<p>The mathematical statement is standard:</p>
+<p>If a vector field <img role="img" aria-label="\mathbf{F}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d74lURKsiu3ZmEJlws2FlAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAQ0lEQVQIHWMQMnFScnFlYGDI/8DA7gGhGYqgNDOY5lzADaZ5FgAphvxP9hD6wz0ozQilGSYApUHmgAGUFrL/pAbkAwDPVRdmy+HupAAAAABJRU5ErkJggg==" alt="\mathbf{F}" title="\mathbf{F}" class="math inline" /> is
+divergence-free on a simply connected region, then there exists a vector
+potential <img role="img" aria-label="\mathbf{A}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAANBAMAAACEMClyAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMA3VREzbsiEJl274mrMmYDlppeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVUlEQVQIHWNgYGBgVAASIGDvAKYYGOK/QRjsjj8gDE7NXxAGC/t/BTDLmuG8A5hxnOE+WDX7Fxd/sGpOBQY+sGpGBgaIagugwnig6ivrBRhS5L80AABarhKxjCcu6QAAAABJRU5ErkJggg==" alt="\mathbf{A}" title="\mathbf{A}" class="math inline" /> such that</p>
+<p><img role="img" aria-label="\mathbf{F} = \nabla \times \mathbf{A}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAOBAMAAABUcraqAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d74lURKsiu3ZmEJlws2FlAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABOElEQVQoFVVQvUoDQRD+Yojm2Lsj3At4RLDVwv5AFLTSSkuv0sJiRbDVAxubELGy0nuDVGLtC4hPYK6ySeFxiJgmcXZnN+wO7Mz3M7Azg2Rru7+zCzfmOqauBLRzw2WNlT2DuZwcnVIUnoab1HDqx6XnjQuioudpGNn/VH/b8zrKij0J0drMCLIOSuGZ0R/RNyU90XtVAOL8R1dA1mFpoC3f90ChyHIBcajVpWieawDZZKVC8Z0K7Y4rhBfafceLrrjCMGUk68+S0SLHU3SZhJOKwQCrZmFZt0rWFjmY4cyQW65R098wC9N9aFw/hh8FC+GExxc5QrOwuqcKZ348f+Vag52fDm4Xtv3cwLmrLkpB9+noD66JjFIEAyRZs649NwW/zB6pHNNLDjbxkDVVa9/tcnDPwR78B2J7VrEYPYmDAAAAAElFTkSuQmCC" alt="\mathbf{F} = \nabla \times \mathbf{A}." title="\mathbf{F} = \nabla \times \mathbf{A}." class="math display" /></p>
+<p>This is a general theorem about solenoidal fields. Locally,
+divergence-free structure is equivalent to curl structure and hence to
+circulation. Globally, the existence of nontrivial circulation depends
+on the topology of the domain.</p>
+<p>This distinction underlies the appearance of toroidal shells and
+winding numbers: in three dimensions, divergence-free structure
+naturally organizes into tubes and closed surfaces when the topology
+permits it.</p>
+<h1 data-number="5" id="what-it-means-to-define-the-electromagnetic-field"><span class="header-section-number">5</span> What it means to define the
+electromagnetic field</h1>
+<p>There are two distinct tasks that must be separated:</p>
+<ol type="1">
+<li>Representation: showing that <img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" /> can
+be represented by fields <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" />.</li>
+<li>Dynamics: specifying how <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" /> evolve in
+time.</li>
+</ol>
+<p>Continuity addresses the first task partially and constrains the
+second, but does not uniquely determine dynamics. This document focuses
+exclusively on the representation problem.</p>
+<h1 data-number="6" id="reconstruction-lemma-from-umathbfs-to-mathbfemathbfb"><span class="header-section-number">6</span> Reconstruction lemma: from <img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" /> to
+<img role="img" aria-label="(\mathbf{E},\mathbf{B})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQYGWWQrU4DURBGT3/YUGjDekJagQdLEAheYE2D5L7B1mEQ8ATdpCHBkNTUoNBF7Jo1GF4AQhV6TYOhaWfm7i5NuMndb+Y7M3cmC40B/495LfL5bPg8M5yny+HrGRxpdgxxQWdshHhKd50RjCSNjNAPDQnh4s5cpdKTtbKafL3AN+wmRqLgj6QLuIQ9KY2LZiSiR16brETF3td0mdZk9Xn+IdYBPCgp2jWZwnghPSG5EdnQM93t/VeeCjn0hO6pBDaH/o/N8RtAb1AT7RF7J9Q5cOImEulujWtpf4SmQ39Wuk7eRlg4v5KKG+hIQXlcFYjel9dbzot+rf6pyoMqEO3pzLYrnW1ya15Skm0RbwOCjFBb3+kluwAAAABJRU5ErkJggg==" alt="(\mathbf{E},\mathbf{B})" title="(\mathbf{E},\mathbf{B})" class="math inline" /></h1>
+<p>We now show that if <img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" /> obeys
+<img role="img" aria-label="|\mathbf{S}| \le c u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyIqtmRInd781UEHbcgkVCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIElEQVQoFWMQYIAAGA3lwikFBpYgpWQBBgW4CCpDgcG/gKE/AEn+CooCBYZIBgZWJPmLymjysxgY2BHyrqjSQHPj91xgMICZXxSCopsBKF7//2cviAaBQ0AWGPDkHGE+yMAjABTnWf//F1S/5VuoNEMYQ8QdLgPWByB97E3/J0D0c+hA5fk2MJwtsGfgAukzYGDw+gKRZ+DbBlHAnwCkWxn8QfbOZWDggMkz8GhcAKnwB5HTGZJA8tMYGPg+QPUDLVN0AErZMzDwMvxliOMBis9/wOAFdgdQHAiYw4AEpwNDCsMH3uXuQHmVQ7v3gMxBBiw9xy4wJB4/kQAXR5VHqIWJw2iEDIQFEwfTRUpAAAsDLPIQIRQSGDpgAKNRJBkYAFOyOUh4MHzuAAAAAElFTkSuQmCC" alt="|\mathbf{S}| \le c u" title="|\mathbf{S}| \le c u" class="math inline" />, then one can always construct at least one pair
+of fields <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" /> satisfying
+the standard electromagnetic energy and flux relations.</p>
+<h2 data-number="6.1" id="lemma-existence-non-uniqueness"><span class="header-section-number">6.1</span> Lemma (existence,
+non-uniqueness)</h2>
+<p>Given scalar <img role="img" aria-label="u&gt;0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAANBAMAAADChorYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAtUlEQVQYGWNgwADtJxswxBgYGB8wvEIIu8CYvAoMxTA2A4OzIZTNL8DQCtSjzMBkABLxzICIyy9gkHdgcGIVYCsAC/DcAVP9QOEFDA3yDKwCEHUcmQ5ABlAMKMMwjWE9RJSBgekjkLVegEHfgYFhB8NZqDBH8gIgi7+BQRVIfWFIZwKL81wHU7wHGMqAjA8sEStAfPdLYFEGjgtg7xzW0DwAFHBOhIgyMKhrNsCYDAxLEEwgCwAoUyGbThxgUQAAAABJRU5ErkJggg==" alt="u&gt;0" title="u&gt;0" class="math inline" /> and vector <img role="img" aria-label="\mathbf{S}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANBAMAAABiGeI2AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVklEQVQIHWNgVDZ2TWCQL2DoV2DQZGBgUmCYxcDArsCgv+cCQwBD/f+fvQwMPOv//woAijb/nwAUY5D6yDCXgYHjI8MUBga+DwzzHzBIPWAwPLx7DwMA/+sW2j/5FiYAAAAASUVORK5CYII=" alt="\mathbf{S}" title="\mathbf{S}" class="math inline" /> with <img role="img" aria-label="|\mathbf{S}| \le c u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyIqtmRInd781UEHbcgkVCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIElEQVQoFWMQYIAAGA3lwikFBpYgpWQBBgW4CCpDgcG/gKE/AEn+CooCBYZIBgZWJPmLymjysxgY2BHyrqjSQHPj91xgMICZXxSCopsBKF7//2cviAaBQ0AWGPDkHGE+yMAjABTnWf//F1S/5VuoNEMYQ8QdLgPWByB97E3/J0D0c+hA5fk2MJwtsGfgAukzYGDw+gKRZ+DbBlHAnwCkWxn8QfbOZWDggMkz8GhcAKnwB5HTGZJA8tMYGPg+QPUDLVN0AErZMzDwMvxliOMBis9/wOAFdgdQHAiYw4AEpwNDCsMH3uXuQHmVQ7v3gMxBBiw9xy4wJB4/kQAXR5VHqIWJw2iEDIQFEwfTRUpAAAsDLPIQIRQSGDpgAKNRJBkYAFOyOUh4MHzuAAAAAElFTkSuQmCC" alt="|\mathbf{S}| \le c u" title="|\mathbf{S}| \le c u" class="math inline" />, there exist vectors <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" /> such that</p>
+<p><img role="img" aria-label="u = \frac{\epsilon_0}{2}|\mathbf{E}|^2 + \frac{1}{2\mu_0}|\mathbf{B}|^2," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAAApBAMAAABaYt+AAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC5ElEQVRIDc2Wz2sTQRSA3ybbZLNNkwXBHhv1oIEeFoR4rXpRBOOl4KFoBKn0ovUfkCAUeiqRYkDpIUcv0oogHhe8eFBY/QtiwV4iJZUqWrHrm5+bTWYnu9WDU+jMm/e9b192N2EAjj6sT0evja+07+/FJ/8m819o80+ayT5Dum63AaZPJxGn0mYbAH7RS+BNpS0vbVgNw//X2noH8q5xLaKdXY+EPFB2q0YByh0ouHZEay/nWgqvShuDAmQ93q0rTK7RLfoiGJh/iLUkIQ5FcmP2UsNCjW/05nc/z3cB14WWUMjZbB8+4gGSwW7vVQdrlKio6ZI3wYdMAPC8T9grcyKlmpH8BjCDN0WPTlexmmnNfcLeYjZTJaUkanO/qZajalJoDTT6kHc6FCs26TT8j3Wb/UW0Ah1mZEy7LcEJZFdhmW5rtZM/iZahxinIuNIUWVDtA9zy7SBojdXa99Aj0AsTTo50UlvEsTSi7R0SrdyO7zY4W3vphGhzBiYwVA3a7RpmkmjxkU3Rm8BNbdiMOgM2yHuFL1gJ/4S2tnh3h36iMmfYRK5LXjAjcCQKr+F9VCsjqgU4HrIQfxNQawZeiO7DnQyaYu4tZs6FrF4b6bZvXn8mG4wsWLf5r0m1V7/zx2DfBnhzpupFbDJg3/TgIIGW/ibcQA99DMaCdCgW4kkl0MpqVkPu6ujIr38kmwqtOcdoTrBggOQ1au1TqHtYodAKDydEKEleUxGJyPwCslu4IWG5kBQnRBwCbFURici8AIU+bjhiUy7EBnBCxCEQrkRucJ7qDkaqNRK5JnxQpeL3NvVXxUIkyh38iU92UOFX+hJ/xZBYgcxWwoMKKyp447SEaEPWTXhQYbp346xAiG2YrIwcVDSVVgU8TRpTlDiA+vnLQwcVXdmx1YeuLg9ACGsPHhfTdHszCMZoCVHYOXnxrUUPKvoe0mVLFcLTg0q6Qj2NR0Ac9KCiB9NlV9LhSemqBvwD14cDKWTvuusAAAAASUVORK5CYII=" alt="u = \frac{\epsilon_0}{2}|\mathbf{E}|^2 + \frac{1}{2\mu_0}|\mathbf{B}|^2," title="u = \frac{\epsilon_0}{2}|\mathbf{E}|^2 + \frac{1}{2\mu_0}|\mathbf{B}|^2," class="math display" /></p>
+<p><img role="img" aria-label="\mathbf{S} = \frac{1}{\mu_0}\,\mathbf{E}\times \mathbf{B}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAApBAMAAAAbumB6AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB6klEQVRIDe2Uv0vDUBDHv2lNW7G2nTto0EEEpYh/gB3UueCmiEXEOejoYEEQQUQRcRClutrBjko7FJ0cpI6Cg53EQbAqgj+Q592LSlrzEukmeIX0+v3cN+/dvaSAY8ylHGVvsW2iUSei/06P+f6xCZke7RDWOvuH0vVlF4lD61EY28oV9nM2rB+JwtF6jJV2E6uGDdWl5Sq0AbsWfgUmnljpBnyGHdXm5MTVuU1jp++RhS0gaNhIXUrOlM/auUXYGXjhPFE8h538dObDxLU0EDEJsrP5mavmxcsKfyuiXI3kJToGbjghp5ZIy+xAvPKagQ6ODEv2KL9lLWdTOpJhEBbTk5tsoC4XxJpMHC/latByYvhaFvBu/XK3ZI/f15ii4jOqJNOE8vSh8K3JKnbqglzYAUK1TlnwdeFT0Q3+NSzblBNqFUkSNmhmRJV9EgtUiH/3+b1mtoI4E0XwmnclgjTbJa7h3V4+QOtF30mhyIpzjGXfClkRo/M0qCuTds7PbS4Jfc/Z8K96TKAL/pRHiQLf08us31YU1EUO7uIUfgy6lChQyMA0ZjCiwC5ySwnbuMaoS4kCRWOt7+OLiCuwizyfCu0mG1pzuedsypzBrMvNFUi+Oy2NzFb+Rei3GcWN1TIdZ4MRzvzK+AGFqpE3GhiEAAAAAABJRU5ErkJggg==" alt="\mathbf{S} = \frac{1}{\mu_0}\,\mathbf{E}\times \mathbf{B}." title="\mathbf{S} = \frac{1}{\mu_0}\,\mathbf{E}\times \mathbf{B}." class="math display" /></p>
+<p>The pair <img role="img" aria-label="(\mathbf{E},\mathbf{B})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQYGWWQrU4DURBGT3/YUGjDekJagQdLEAheYE2D5L7B1mEQ8ATdpCHBkNTUoNBF7Jo1GF4AQhV6TYOhaWfm7i5NuMndb+Y7M3cmC40B/495LfL5bPg8M5yny+HrGRxpdgxxQWdshHhKd50RjCSNjNAPDQnh4s5cpdKTtbKafL3AN+wmRqLgj6QLuIQ9KY2LZiSiR16brETF3td0mdZk9Xn+IdYBPCgp2jWZwnghPSG5EdnQM93t/VeeCjn0hO6pBDaH/o/N8RtAb1AT7RF7J9Q5cOImEulujWtpf4SmQ39Wuk7eRlg4v5KKG+hIQXlcFYjel9dbzot+rf6pyoMqEO3pzLYrnW1ya15Skm0RbwOCjFBb3+kluwAAAABJRU5ErkJggg==" alt="(\mathbf{E},\mathbf{B})" title="(\mathbf{E},\mathbf{B})" class="math inline" /> is not unique. There is an infinite family of
+solutions corresponding to polarization and duality degrees of
+freedom.</p>
+<h2 data-number="6.2" id="construction"><span class="header-section-number">6.2</span> Construction</h2>
+<p>Let <img role="img" aria-label="\hat{\mathbf{s}}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOBAMAAADgeEClAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAELuZInZmRKuJzd0yVJg1CbgAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABBSURBVAgdY2BgVGRgYGB2BhIBjAlAEgWwN09ewCDHwLKB4Zw5QwED07tXBxgYKvUeMpQy8LxlqHNgeMhQZGFRAAA3iw2fZTGECQAAAABJRU5ErkJggg==" alt="\hat{\mathbf{s}}" title="\hat{\mathbf{s}}" class="math inline" />
+be a unit vector in the direction of <img role="img" aria-label="\mathbf{S}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANBAMAAABiGeI2AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVklEQVQIHWNgVDZ2TWCQL2DoV2DQZGBgUmCYxcDArsCgv+cCQwBD/f+fvQwMPOv//woAijb/nwAUY5D6yDCXgYHjI8MUBga+DwzzHzBIPWAwPLx7DwMA/+sW2j/5FiYAAAAASUVORK5CYII=" alt="\mathbf{S}" title="\mathbf{S}" class="math inline" /> if <img role="img" aria-label="\mathbf{S}\neq 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAARCAMAAABzYqU5AAAAPFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMAIqu7ZjKZRInd781UEHbD2cfTHWlc4QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOVJREFUKBWVkVsWwyAIRFFi8VX7YP97LWBMjB89LR9GcbhMEMB5RNzCDZZwbUkAOCbJRfbrjb8fGWpbVJVPlvKrdmoUikiKA0jZtLRq8cRiFUkTk55L1XSwkmOheGyB9Y6ESSyR4knpmgkbWNpDYJHUrOo8uDev8XjKsqNp12oFUERBd96+TlghqkorOs9lSww9zbN15reKh9SdxosWR5F97QWq/Fva7Nx4v1a/r7d6Hn4BVdJkqIm1n8tz1ysWSM/6FugqllJ03CNqbzWOMqpW7Y3PzLHTJ/0xthX7pe4PLM3WL8gPcRMGNrT7nwoAAAAASUVORK5CYII=" alt="\mathbf{S}\neq 0" title="\mathbf{S}\neq 0" class="math inline" />;
+if <img role="img" aria-label="\mathbf{S}=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAANBAMAAADChorYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAqklEQVQYGWNgVDZ2TWDAAPIFDP0KKKJ1HgUMDJoMDEwowqwbGDYyMMxiYGBHEWY+wPCMgUF/zwWGAGRD+AMYqhgY6v//7EUWZYgXYIi/wMCz/v8vkOokJSDQADLqgcICQJOb/09AVg4UA8oAVUp9RBaWD2A4f4FhLgMDB4owfwHDKQaGKQwMfB+QzWZ2YHjEwDD/AYPUA2RD2A1A3jE8vHsPsigDw7kTBQwAHZspIGQCh8UAAAAASUVORK5CYII=" alt="\mathbf{S}=0" title="\mathbf{S}=0" class="math inline" />, choose
+any unit vector.</p>
+<p>Choose a unit vector <img role="img" aria-label="\hat{\mathbf{e}}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOBAMAAAAPuiubAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAELuZInZmVKsyiUTd78029z3jAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAR0lEQVQIHWNgYBASYAACEwMgwcogBmJjgKIOTQYGrt8M8Q4M/gcY+A0Y6m+tWq/AUP8ApFL+AgPDBgbWrwxcCQwMm160MwAAZf4ODPikxCkAAAAASUVORK5CYII=" alt="\hat{\mathbf{e}}" title="\hat{\mathbf{e}}" class="math inline" />
+orthogonal to <img role="img" aria-label="\hat{\mathbf{s}}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOBAMAAADgeEClAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAELuZInZmRKuJzd0yVJg1CbgAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABBSURBVAgdY2BgVGRgYGB2BhIBjAlAEgWwN09ewCDHwLKB4Zw5QwED07tXBxgYKvUeMpQy8LxlqHNgeMhQZGFRAAA3iw2fZTGECQAAAABJRU5ErkJggg==" alt="\hat{\mathbf{s}}" title="\hat{\mathbf{s}}" class="math inline" />
+and define <img role="img" aria-label="\hat{\mathbf{b}} := \hat{\mathbf{s}} \times \hat{\mathbf{e}}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAASBAMAAAA+r0T5AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAELuZInZmRN3vzauJVDIJvVddAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABD0lEQVQoFWNgYBASYCAOmBgQp46VQYw4hRSpYlRE1Q7yRsUsVDEwj9kZVRDkDZZfqGJgXgBjArIo2BuM2BQiq4KxqaGQBegy1gK4iT+Cdx0AcV46gEgwYN98eAGIcZuBIQZE82pvesDA+L8A4h9vAebdIHCAgUGegaWBAQjYDFgPgOjzBaxfGBh/MDDsTwBxEeC9OQPExuRgkCALUMlnsMLzQMcgA6b/vx6A+dwNIIr355kzn7AqZKjR/whWmAxxIjgEwVZfAAvD3VjKwPcXJAJ1I+NPBgZ2oGcesHwCiXoLgEgwqHdgAJsI9PUZkEB8AMMxBsaW6F0BIB5S8BRZWxcARVg2MDDwgBjsWrsvAADQ90p5S0LOywAAAABJRU5ErkJggg==" alt="\hat{\mathbf{b}} := \hat{\mathbf{s}} \times \hat{\mathbf{e}}" title="\hat{\mathbf{b}} := \hat{\mathbf{s}} \times \hat{\mathbf{e}}" class="math inline" />, forming a right-handed orthonormal frame.</p>
+<p>Define</p>
+<p><img role="img" aria-label="\mathbf{E} := E\,\hat{\mathbf{e}}, \qquad \mathbf{B} := B\,\hat{\mathbf{b}}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL4AAAAWBAMAAACMFTstAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZiWYc3XEcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACP0lEQVRIDbWUy2sTURTGv2AzvUnzGEp3LjqkKxeiCxEUISWIdVElO3dmtgEhdVXFhcGNO1taBLOQzrZQSKGLbgSzaTVgIehK6NBZ9A9IU7FaH+M5dzJmZm4qhTon5N57vu/cH3MfM0Bc8bweF9njbrdi5afxIlb+KeHi0SkLTyobv1Iq3Cwp7qdZ+/MsqZkHiuUJiSm3MHXNVNxscWf3CbDxF1npQnuqlI3OAW9ItYSjeJ6Q/AJMHqjmY+CtDq3nO8THQt3P/D5vAWk/GdozP3WkWneBfAciyNdTerRukpRkVAzlzM8chiROtK9ArRzmG0mF30ROmRoWmH/uV1ijLDcNzCPETxtclbjFrR/zqMrhvcZDX4r0xNdWWixOmNz2I7UoNi3iH64tdaRU6RUNHmiv0G5QvJbqjH2R++wPNE0pKE3S/dC+IdddrWd4YkPyRrbu79IM4a73j7jSHTOUydoBzrNYu4x8S3GlwPszqu5PzcQYHYGgk1lxuJDuj0G/cOS60FEm8469Nxe2/Iz5CVcuwJe436f/scffa7HA9zOxyKNApAzasDKZ1J8QzBeuE3Xf0cTfUX7GkmWD/R/p0OUjbWEaWJee0gSfP7D/1+nQbvf3hx7Qe/4mjeh8B1EjqE1p+hhZp1ofGIMR85995zzoC3qj92mycHXtiJnjxV6h6Jrh+5m9tGMvf+O5mxdeYsLhUSTk96fksBq8nx9/2u33pImrq0tW5M5z7dCQ6xzq/B8xZv6/v0NnX8JZ+H8A4EuhMqMrhu8AAAAASUVORK5CYII=" alt="\mathbf{E} := E\,\hat{\mathbf{e}}, \qquad \mathbf{B} := B\,\hat{\mathbf{b}}." title="\mathbf{E} := E\,\hat{\mathbf{e}}, \qquad \mathbf{B} := B\,\hat{\mathbf{b}}." class="math display" /></p>
+<p>Then</p>
+<p><img role="img" aria-label="\mathbf{E}\times \mathbf{B} = EB\,\hat{\mathbf{s}}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAAOBAMAAADnOp6wAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZiWYc3XEcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABwklEQVQoFZ1STUvjUBQ9ARtj09Yi7q3+AGdgunKTIi7cOPQXmIK4KAi6c4aZofkHBhVBFMxexO6GWU0VxA8sFjciKrhwKUzGhYuZMp1zbySJW2949513zjvv5r4EeFNYn9Q2VJ4cm5pMnzDkPI192EgzxPly+269hbzTvv3CZW4h0t0QZuPVVrcCo1d8RQHLgN0CPgM/KQXWveo0Y8VT+JJoxs5SmiH+wxEAH4HBTiLRXBzgYUmI+eJ9shZk/GaqwnwGFquJRHMpI2ZpY1d4MTsdQUlkQ9xzVahoAzHvhtmSLjI+smqhud6N9Qj0L5k+0YBvfQ84/2gfKu8+OSUFeMRexHTP1w4E5TYl9MC+b5cy9x3N3tYAK8ScbIAb2iUFKJy1FMhrN9QS8ZIXi0ZTphpstm10m7Zq0jMfiTXN2vOIXFAqfsFABnggJffe6I2qKJ/K8AUWzqJyUnnln4pxWiWaB44BUxT7queJJuZcICjuuQJo5VTPM9RbwAT/tWl6A4xUyah5XxBvO6+lWdl654sWh/mXrg4sNvPQpPkZg17dg/zJTq/GbXWOGw5hyuMEqbjs3l07HjidnpC2v25vYbj2H8ulhY1EohwnAAAAAElFTkSuQmCC" alt="\mathbf{E}\times \mathbf{B} = EB\,\hat{\mathbf{s}}." title="\mathbf{E}\times \mathbf{B} = EB\,\hat{\mathbf{s}}." class="math display" /></p>
+<p>Imposing the flux condition yields</p>
+<p><img role="img" aria-label="\frac{1}{\mu_0}EB = |\mathbf{S}|." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAAApBAMAAAA8FOGSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARM0yInYQiau771TdmWZCMSfKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB9UlEQVRIDe1SPUvkUBQ9MXFmopnJYOMHLIqNC1usW1iKaYSBLcZ/MIKFlazYRERxKrFY2Nm1cZpV8AMs1GlWQUFsxNKp/MBGWyt1VCzUeJ/x7byYFzZptvIUuS/3nPPevfc9gNDQyb4R0NsT1QHz3RF6wP9lVul/lJN85Xkc/NHhXuH4qj26CsQPjiZ+evbQgUzxdzcoeqEXgA+UmgVaPc9Ah3aF+L3fYfYBteRYA8xhcTMdiV1g2u9gL7Ie0G6AbMnrMOaBJr8jhxTTpYgtssVf0BnXG1D9jiIyTJTIx5qpPgE6FMfZ7/c7VuwOJqs73ZmwKCanGVhDNKMtx1nwObQKvhCNrAWFWhHApto49+A6HA6q/xKdoI4viL8V9OwMlQaybr29j0QbpclxQuHpjcPoByZ9jjoqmb2DPbr2ZYpiH8YZkHOrIoYjmwZsIFahwmgpQIdxC22JHNqUkI5/PrK/3wEjj/bxoZCnpQ7966/2EkV10csE/fGOeQzSVfNcyWOVCVpxJY9BumqeK3msMkErur8XuDGRxkyQUp43rdgduv7ISWm2BfW7KKTOpKQ0OYpkWcmrBSkpTX6CUaotq/NSUpq8wbeBwbIW3qFUMJaKdEb84/bQuZJXwvdRU2K1tkWYlWkxR9cm+4ZDSziZoIqwuet6BonJaxuxjk88AAAAAElFTkSuQmCC" alt="\frac{1}{\mu_0}EB = |\mathbf{S}|." title="\frac{1}{\mu_0}EB = |\mathbf{S}|." class="math display" /></p>
+<p>The energy condition gives</p>
+<p><img role="img" aria-label="u = \frac{\epsilon_0}{2}E^2 + \frac{1}{2\mu_0}B^2." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJgAAAApBAMAAAA7ev3CAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC10lEQVRIDcVVTWgTQRh9yeZnd7ttFjzUkw3tQQM97En8oRB/DhUPKfRSRDGiRIqX9uipoVLozUpoIDbgntRbKnjwuCBCCwrRiycl9iAIoqntQYu4zmQy6W4yk12C4HfY75v33rx8s7vZDxgo1E8DbRNu0hd3hfiA4P8xS1aKgf2G7mwHGD0eYBfWTMkDdcPp7xbWLDVfVfOR+r8xy9lIWpEZbhbdtnjpyd2dTZY8pKdM2dAsvWP2BPMekpddZvpCYo1Tvqw4vs6O4Y2PZouffizSMOp+hK+qk9N5lXIbs5XyLFDhRCfHyn8e8MXGXmWqCGjizqiq0Xqaw8TxHmLP+T5hHs5DJYe+nBWyFBzN0GtqAUgiYdIayLauPZe4A/wCbvQQXcAYsYliUWfwVhfbXtZs6D+QNG0x3UGXYABqMckAidkrgNyOVZBTIDKBqNXZ7i8+4DFQc8khaEjMCph+D91114jkfNxMUNOTBRJdb9S1yhfq0g6J2ez49hkuKY4hbvKFP+u7OOpBxGb6AXDf5rIyarxk2WXRhNGEiTQDlULhW6FAjpJq0ywBxgx76kz2QviGUy7RAPQ0rVoh7kypk9vqtCXYx+0oqQX3LE4aUbhM9gCGFoD1LFc1Y3NPee3PtaLvryTuLGfCmGvt028BL09kHL9Je6V9P125s39ICc2IqHQz2xJFrhxqAyuhWeAu3J1KC0QXGZYsvROQUkizY7+lJB4i58jZHmbIxNkesAM8g7LZWQQX5KPySK66Cq0pZ0XMRxHIseEGEkW85cugTP6VfaJmImXH9oMnNfMYcfp44Suwguhm8KRmJtV+Xhr5pTIUK3hSt1wMIpfHa0LtYCjtndRyNZbp51oWahoODpA7d8kzqWVi8iU/tTohZ4+sLltktq0b4TqLu+6e3Oy661ra5/ELWyqb1HJlSGYkTYVsUofcIpelbMqxSS1XhWRWQupCyTJi1V8VEbTrafZKmgAAAABJRU5ErkJggg==" alt="u = \frac{\epsilon_0}{2}E^2 + \frac{1}{2\mu_0}B^2." title="u = \frac{\epsilon_0}{2}E^2 + \frac{1}{2\mu_0}B^2." class="math display" /></p>
+<p>Using <img role="img" aria-label="c^2 = 1/(\mu_0\epsilon_0)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAVBAMAAABGR4Y+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3Zm7RO8boHsfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABw0lEQVQ4EZVSPSwDYRh+2muvvbanhxDjIRIDSQc/g4SLkNgQTEJqMIhIKmHvoAMGnVgEo/EiBuONbI1ILCIdjRIkTLzve3W+u3TxDPc9z/O+T79+3/sBhFify8u/MILpf/Vz8wkGmmWyQLoYLeiBsRQwhQwDCUX6NP17jPRluPZYZb0AbIV9Vm0NKyE9QX3kXLQHlAIvIKkG29ACS0ieM0YRMZvWCJKWGGbt72RiSCZbQK4QCZA0HRpOd/vE90e4Jpkc0EJ2ooY7qa6v+E11YPJ3ONkpxhwXJHMPZJgX0p847kTKgrFWJOMVegldRMKQzAwwSvYzYhfw4vY1kEMPGS/I2+F2UZJxeNjAIrKu6Rje+5L9gFMyLjFRpiUKzsTofg6osI2MpbvGyxuwiTMy6jinB+JHIufhJ8B38Iaj/Yqr1SmzjHHJZAro9TPKN18D9kinyjC/sBqnfepXjX00D9p8W1npFlqZ3a1ikKhuIbnTejhoOqaX7O5/wBMQt6Ptf9ojqjl8xYSSdKb43nJlNppCc9m+pfHwetzBX2NtDhhi1hx6lf0xGk8ENxGtSHo5BNOSDRQ/Lr+lGArVfC7/TLFB/g890FHSqLeKbAAAAABJRU5ErkJggg==" alt="c^2 = 1/(\mu_0\epsilon_0)" title="c^2 = 1/(\mu_0\epsilon_0)" class="math inline" /> and eliminating <img role="img" aria-label="B" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2Zu0SrMu9mIlQQds0LZxKKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAZUlEQVQIHWNgYBD6LGgSwMDAwJLAwPodSHNMYGD4CKTXL2Dg+g2kZwClHIB0GsNRXyDF0Lx7ohWQ4vrFwBC/gIGBs4GBgf8CAwOzA1ALUCsTkC1xgIHhfAEDZysDA+N7Q+HkAwwAMVwV8OSeZpAAAAAASUVORK5CYII=" alt="B" title="B" class="math inline" /> leads to a quadratic equation for <img role="img" aria-label="E^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAQBAMAAAAL9CkWAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid3vmau7RHYyVGYizRAHtTi9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiElEQVQIHWNggILVIjAWA08DqwCMw3mBOwHIFjIRFDVhYGAEibMBBUoYGB49ALL5GxgYOBgYIoFMhvkTGBi4GDgmHACy+xm4gWQ5QwOQTGM4ysDA8/8/SK+Z4EUgCQY8Pxmmw9jcHxgmMCyA8FgvAFVD2cxAPSxQRecLGBgEIWzG+46CQf/AbACMfBiSes3F0AAAAABJRU5ErkJggg==" alt="E^2" title="E^2" class="math inline" /> with real solutions
+whenever <img role="img" aria-label="|\mathbf{S}| \le c u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyIqtmRInd781UEHbcgkVCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIElEQVQoFWMQYIAAGA3lwikFBpYgpWQBBgW4CCpDgcG/gKE/AEn+CooCBYZIBgZWJPmLymjysxgY2BHyrqjSQHPj91xgMICZXxSCopsBKF7//2cviAaBQ0AWGPDkHGE+yMAjABTnWf//F1S/5VuoNEMYQ8QdLgPWByB97E3/J0D0c+hA5fk2MJwtsGfgAukzYGDw+gKRZ+DbBlHAnwCkWxn8QfbOZWDggMkz8GhcAKnwB5HTGZJA8tMYGPg+QPUDLVN0AErZMzDwMvxliOMBis9/wOAFdgdQHAiYw4AEpwNDCsMH3uXuQHmVQ7v3gMxBBiw9xy4wJB4/kQAXR5VHqIWJw2iEDIQFEwfTRUpAAAsDLPIQIRQSGDpgAKNRJBkYAFOyOUh4MHzuAAAAAElFTkSuQmCC" alt="|\mathbf{S}| \le c u" title="|\mathbf{S}| \le c u" class="math inline" />. Choosing either root completes the
+construction.</p>
+<h2 data-number="6.3" id="interpretation"><span class="header-section-number">6.3</span> Interpretation</h2>
+<ul>
+<li><p>The inequality <img role="img" aria-label="|\mathbf{S}| \le c u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyIqtmRInd781UEHbcgkVCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIElEQVQoFWMQYIAAGA3lwikFBpYgpWQBBgW4CCpDgcG/gKE/AEn+CooCBYZIBgZWJPmLymjysxgY2BHyrqjSQHPj91xgMICZXxSCopsBKF7//2cviAaBQ0AWGPDkHGE+yMAjABTnWf//F1S/5VuoNEMYQ8QdLgPWByB97E3/J0D0c+hA5fk2MJwtsGfgAukzYGDw+gKRZ+DbBlHAnwCkWxn8QfbOZWDggMkz8GhcAKnwB5HTGZJA8tMYGPg+QPUDLVN0AErZMzDwMvxliOMBis9/wOAFdgdQHAiYw4AEpwNDCsMH3uXuQHmVQ7v3gMxBBiw9xy4wJB4/kQAXR5VHqIWJw2iEDIQFEwfTRUpAAAsDLPIQIRQSGDpgAKNRJBkYAFOyOUh4MHzuAAAAAElFTkSuQmCC" alt="|\mathbf{S}| \le c u" title="|\mathbf{S}| \le c u" class="math inline" /> is exactly the condition required for
+reconstruction.</p></li>
+<li><p>The choice of transverse frame corresponds to polarization
+freedom.</p></li>
+<li><p>Continuous duality rotations leave <img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" />
+invariant.</p></li>
+</ul>
+<p>Thus, <img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" />
+underdetermines <img role="img" aria-label="(\mathbf{E},\mathbf{B})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQYGWWQrU4DURBGT3/YUGjDekJagQdLEAheYE2D5L7B1mEQ8ATdpCHBkNTUoNBF7Jo1GF4AQhV6TYOhaWfm7i5NuMndb+Y7M3cmC40B/495LfL5bPg8M5yny+HrGRxpdgxxQWdshHhKd50RjCSNjNAPDQnh4s5cpdKTtbKafL3AN+wmRqLgj6QLuIQ9KY2LZiSiR16brETF3td0mdZk9Xn+IdYBPCgp2jWZwnghPSG5EdnQM93t/VeeCjn0hO6pBDaH/o/N8RtAb1AT7RF7J9Q5cOImEulujWtpf4SmQ39Wuk7eRlg4v5KKG+hIQXlcFYjel9dbzot+rf6pyoMqEO3pzLYrnW1ya15Skm0RbwOCjFBb3+kluwAAAABJRU5ErkJggg==" alt="(\mathbf{E},\mathbf{B})" title="(\mathbf{E},\mathbf{B})" class="math inline" /> by exactly two local degrees of freedom. This
+matches the two missing local degrees of freedom identified as
+polarization.</p>
+<h1 data-number="7" id="why-orthogonal-coupling-appears"><span class="header-section-number">7</span> Why orthogonal coupling
+appears</h1>
+<p>The frequent question “why does one generate the other orthogonally?”
+should be recast as:</p>
+<p>Why does divergence-free propagation require rotational coupling?</p>
+<p>The minimal structural answer is:</p>
+<ul>
+<li><p>To propagate while remaining divergence-free, degrees of freedom
+must rotate into one another. In three dimensions, this rotation is
+encoded by curl.</p></li>
+<li><p>Maxwell evolution uses curl operators, which are sufficient to
+transport divergence-free structure without creating sources or
+sinks.</p></li>
+</ul>
+<p>Continuity alone does not fix this evolution uniquely; curl dynamics
+is a minimal realization of divergence-free propagation.</p>
+<p>In this sense, electric and magnetic fields are names for the two
+interlocked rotational aspects of a single propagating, divergence-free
+energy flow.</p>
+<h1 data-number="8" id="where-toroidal-winding-numbers-mn-enter"><span class="header-section-number">8</span> Where toroidal winding numbers
+<img role="img" aria-label="(m,n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8UlEQVQYGW2PsU7CUBSGP0ptBSR0YzAmTSBx1d3BhBfo5AwDxPEmDpDooDwBAyQuxoXE1UfAwcWBR2Ds7Ormfw8WE8pJb/Kf7zs3PRcqKaUyVC1hOPOse0BETjA7IDw0WXI5HM9KVKAHdYjP23cfoysbiJRXRhsw/3LRDbcmfH6EFiygf0/8TseEcnChGwmf6jdUU6YmtplGwqn6JfVV5WcrlrS0jv6sr/bNK3F27Y3yMDR6lIgxoZm62qU2zNjE8AxBn8CRE+acvKl1rAcw1l3tUFRUBJ6U/PmrnbDplwLrQUVsJkrhrv0XDzahtfdL6BecJii7EZchWQAAAABJRU5ErkJggg==" alt="(m,n)" title="(m,n)" class="math inline" /> enter</h1>
+<p>The reconstruction above is local. Toroidal winding numbers are
+global.</p>
+<p>On an invariant torus <img role="img" aria-label="T^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAQBAMAAAAG6llRAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVO+rid2ZInYQZkTNMrtEdbKeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAe0lEQVQIHWNggAApNyiDgb2B2QHK5j3A9YCBUdkl1CXVgYHFgYG5gCGMgbGBYeoEhlkMnB8Z2Dcw2DIwSDIw/mTgLuC4UMAwgYEtgIGTYTdDA9AEngQGBvb//x2ATH4BIAEB+wtgLAYnOIvhMIL5C87k/g5jcrh+doewAZRxF0rYJ1OaAAAAAElFTkSuQmCC" alt="T^2" title="T^2" class="math inline" />, a smooth source-free
+tangent flow decomposes into windings around the two fundamental cycles.
+For example, a linear flow of rational slope on <img role="img" aria-label="T^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAQBAMAAAAG6llRAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVO+rid2ZInYQZkTNMrtEdbKeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAe0lEQVQIHWNggAApNyiDgb2B2QHK5j3A9YCBUdkl1CXVgYHFgYG5gCGMgbGBYeoEhlkMnB8Z2Dcw2DIwSDIw/mTgLuC4UMAwgYEtgIGTYTdDA9AEngQGBvb//x2ATH4BIAEB+wtgLAYnOIvhMIL5C87k/g5jcrh+doewAZRxF0rYJ1OaAAAAAElFTkSuQmCC" alt="T^2" title="T^2" class="math inline" /> closes after <img role="img" aria-label="(m,n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8UlEQVQYGW2PsU7CUBSGP0ptBSR0YzAmTSBx1d3BhBfo5AwDxPEmDpDooDwBAyQuxoXE1UfAwcWBR2Ds7Ormfw8WE8pJb/Kf7zs3PRcqKaUyVC1hOPOse0BETjA7IDw0WXI5HM9KVKAHdYjP23cfoysbiJRXRhsw/3LRDbcmfH6EFiygf0/8TseEcnChGwmf6jdUU6YmtplGwqn6JfVV5WcrlrS0jv6sr/bNK3F27Y3yMDR6lIgxoZm62qU2zNjE8AxBn8CRE+acvKl1rAcw1l3tUFRUBJ6U/PmrnbDplwLrQUVsJkrhrv0XDzahtfdL6BecJii7EZchWQAAAABJRU5ErkJggg==" alt="(m,n)" title="(m,n)" class="math inline" /> windings, enforcing
+discrete circulation classes.</p>
+<p>The integers <img role="img" aria-label="(m,n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8UlEQVQYGW2PsU7CUBSGP0ptBSR0YzAmTSBx1d3BhBfo5AwDxPEmDpDooDwBAyQuxoXE1UfAwcWBR2Ds7Ormfw8WE8pJb/Kf7zs3PRcqKaUyVC1hOPOse0BETjA7IDw0WXI5HM9KVKAHdYjP23cfoysbiJRXRhsw/3LRDbcmfH6EFiygf0/8TseEcnChGwmf6jdUU6YmtplGwqn6JfVV5WcrlrS0jv6sr/bNK3F27Y3yMDR6lIgxoZm62qU2zNjE8AxBn8CRE+acvKl1rAcw1l3tUFRUBJ6U/PmrnbDplwLrQUVsJkrhrv0XDzahtfdL6BecJii7EZchWQAAAABJRU5ErkJggg==" alt="(m,n)" title="(m,n)" class="math inline" /> do not define the
+electric or magnetic fields pointwise.</p>
+<p>They characterize the global organization of a particular energy
+flow: how that flow wraps, closes, and circulates on a toroidal
+surface.</p>
+<p>The fields <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" /> are a
+different kind of description. They provide a local, differential
+account of how energy is transported and rotated through space.</p>
+<p>These are not competing structures. They are complementary
+descriptions of the same underlying process.</p>
+<p>In the same way that energy and frequency describe the same
+electromagnetic phenomenon from different perspectives, <img role="img" aria-label="(m,n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8UlEQVQYGW2PsU7CUBSGP0ptBSR0YzAmTSBx1d3BhBfo5AwDxPEmDpDooDwBAyQuxoXE1UfAwcWBR2Ds7Ormfw8WE8pJb/Kf7zs3PRcqKaUyVC1hOPOse0BETjA7IDw0WXI5HM9KVKAHdYjP23cfoysbiJRXRhsw/3LRDbcmfH6EFiygf0/8TseEcnChGwmf6jdUU6YmtplGwqn6JfVV5WcrlrS0jv6sr/bNK3F27Y3yMDR6lIgxoZm62qU2zNjE8AxBn8CRE+acvKl1rAcw1l3tUFRUBJ6U/PmrnbDplwLrQUVsJkrhrv0XDzahtfdL6BecJii7EZchWQAAAABJRU5ErkJggg==" alt="(m,n)" title="(m,n)" class="math inline" /> describe the global
+pattern of a flow, while <img role="img" aria-label="(\mathbf{E},\mathbf{B})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQYGWWQrU4DURBGT3/YUGjDekJagQdLEAheYE2D5L7B1mEQ8ATdpCHBkNTUoNBF7Jo1GF4AQhV6TYOhaWfm7i5NuMndb+Y7M3cmC40B/495LfL5bPg8M5yny+HrGRxpdgxxQWdshHhKd50RjCSNjNAPDQnh4s5cpdKTtbKafL3AN+wmRqLgj6QLuIQ9KY2LZiSiR16brETF3td0mdZk9Xn+IdYBPCgp2jWZwnghPSG5EdnQM93t/VeeCjn0hO6pBDaH/o/N8RtAb1AT7RF7J9Q5cOImEulujWtpf4SmQ39Wuk7eRlg4v5KKG+hIQXlcFYjel9dbzot+rf6pyoMqEO3pzLYrnW1ya15Skm0RbwOCjFBb3+kluwAAAABJRU5ErkJggg==" alt="(\mathbf{E},\mathbf{B})" title="(\mathbf{E},\mathbf{B})" class="math inline" /> describe its local transport.</p>
+<h1 data-number="9" id="conclusions"><span class="header-section-number">9</span> Conclusions</h1>
+<ul>
+<li><p>A scalar energy density alone cannot encode propagation.</p></li>
+<li><p>Continuity forces directional transport and hence vector
+structure.</p></li>
+<li><p>Divergence-free structure locally forces circulation in three
+dimensions.</p></li>
+<li><p>Given <img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" /> with
+<img role="img" aria-label="|\mathbf{S}|\le c u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyIqtmRInd781UEHbcgkVCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIElEQVQoFWMQYIAAGA3lwikFBpYgpWQBBgW4CCpDgcG/gKE/AEn+CooCBYZIBgZWJPmLymjysxgY2BHyrqjSQHPj91xgMICZXxSCopsBKF7//2cviAaBQ0AWGPDkHGE+yMAjABTnWf//F1S/5VuoNEMYQ8QdLgPWByB97E3/J0D0c+hA5fk2MJwtsGfgAukzYGDw+gKRZ+DbBlHAnwCkWxn8QfbOZWDggMkz8GhcAKnwB5HTGZJA8tMYGPg+QPUDLVN0AErZMzDwMvxliOMBis9/wOAFdgdQHAiYw4AEpwNDCsMH3uXuQHmVQ7v3gMxBBiw9xy4wJB4/kQAXR5VHqIWJw2iEDIQFEwfTRUpAAAsDLPIQIRQSGDpgAKNRJBkYAFOyOUh4MHzuAAAAAElFTkSuQmCC" alt="|\mathbf{S}|\le c u" title="|\mathbf{S}|\le c u" class="math inline" />, one can construct <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" /> reproducing
+the same energy and flux.</p></li>
+<li><p>The reconstruction is necessarily non-unique, matching
+polarization degrees of freedom.</p></li>
+</ul>
+<h1 data-number="10" id="closing-statement"><span class="header-section-number">10</span> Closing statement</h1>
+<p>A scalar energy observable does not generate electromagnetic vector
+fields by itself. The evolution of energy under continuity forces
+transport, and transport forces directional, circulating structure in
+three dimensions.</p>
+<p>Electric and magnetic fields provide a minimal local representation
+of this structure while reproducing the observable pair <img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" />.</p>
+<p>This provides a precise conceptual bridge between a flow-first
+Maxwell ontology and the standard <img role="img" aria-label="(\mathbf{E},\mathbf{B})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQYGWWQrU4DURBGT3/YUGjDekJagQdLEAheYE2D5L7B1mEQ8ATdpCHBkNTUoNBF7Jo1GF4AQhV6TYOhaWfm7i5NuMndb+Y7M3cmC40B/495LfL5bPg8M5yny+HrGRxpdgxxQWdshHhKd50RjCSNjNAPDQnh4s5cpdKTtbKafL3AN+wmRqLgj6QLuIQ9KY2LZiSiR16brETF3td0mdZk9Xn+IdYBPCgp2jWZwnghPSG5EdnQM93t/VeeCjn0hO6pBDaH/o/N8RtAb1AT7RF7J9Q5cOImEulujWtpf4SmQ39Wuk7eRlg4v5KKG+hIQXlcFYjel9dbzot+rf6pyoMqEO3pzLYrnW1ya15Skm0RbwOCjFBb3+kluwAAAABJRU5ErkJggg==" alt="(\mathbf{E},\mathbf{B})" title="(\mathbf{E},\mathbf{B})" class="math inline" /> description.</p>
+</body>
+</html>
