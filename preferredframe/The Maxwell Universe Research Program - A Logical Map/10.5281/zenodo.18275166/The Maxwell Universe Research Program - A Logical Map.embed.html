@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="author" content="Alex Mercer" />
+  <meta name="dcterms.date" content="2026-01-16" />
+  <meta name="keywords" content="Maxwell Universe, research program map,
+continuity equation, divergence-free flow, electromagnetic foundations,
+topology, minimal dynamics" />
+  <title>The Maxwell Universe Research Program — A Logical Map</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">The Maxwell Universe Research Program — A Logical
+Map</h1>
+<p class="subtitle">Section-by-Section Structure, Claims, Dependencies,
+and Status</p>
+<p class="author">An M. Rodriguez</p>
+<p class="author">Alex Mercer</p>
+<p class="date">2026-01-16</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> A complete logical map of the
+Maxwell Universe Research Program, organizing its output documents by
+sections, claims, dependencies, and production status.</p>
+<p><strong>Abstract.</strong> This document provides a systematic,
+section-by-section map of the Maxwell Universe Research Program. Each
+output document is identified by its title and production status
+(published with DOI or in preparation). For every major section, we list
+its key claims, logical dependencies, consequences for later documents,
+and current status. The purpose is to preserve conceptual continuity,
+make dependencies explicit, and provide a stable reference point for
+extension and critique.</p>
+<p><strong>Keywords.</strong> Maxwell Universe, research program map,
+continuity equation, divergence-free flow, electromagnetic foundations,
+topology, minimal dynamics</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#light-speed-as-an-emergent-property-of-electromagnetic-superposition">Light Speed as an Emergent Property of Electromagnetic Superposition</a>
+</li>
+<li><a href="#string-theory-derivation-in-a-maxwell-universe">String Theory Derivation in a Maxwell Universe</a>
+</li>
+<li><a href="#geometric-inertia-mass-as-trapped-energy">Geometric Inertia: Mass as Trapped Energy</a>
+</li>
+<li><a href="#defining-electromagnetic-fields-from-continuity-and-divergence-free-structure">Defining Electromagnetic Fields from Continuity and Divergence-Free Structure</a>
+</li>
+<li><a href="#maxwell-electromagnetism-as-the-minimal-dynamics-of-divergence-free-energy-flow">Maxwell Electromagnetism as the Minimal Dynamics of Divergence-Free Energy Flow</a>
+</li>
+<li><a href="#canonical-glossary-of-terms-and-symbols">Canonical Glossary of Terms and Symbols</a>
+</li>
+<li><a href="#the-maxwell-universe-research-program">The Maxwell Universe Research Program</a>
+</li>
+<li><a href="#global-program-status">Global program status</a>
+</li>
+<li><a href="#closing-note">Closing note</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<p>This document serves as a <strong>conceptual checkpoint</strong> for
+the Maxwell Universe Research Program.</p>
+<p>It does not introduce new results. It does not reinterpret existing
+ones.</p>
+<p>Its sole purpose is to <strong>preserve structure</strong>: to record
+what has been established, how results depend on one another, and where
+the program remains open.</p>
+<p>The map is organized <strong>by document</strong>, and within each
+document <strong>by section</strong>. For each section we record:</p>
+<ul>
+<li>the key claim,</li>
+<li>its logical dependencies,</li>
+<li>what it enables downstream,</li>
+<li>its production status.</li>
+</ul>
+<h1 data-number="1" id="light-speed-as-an-emergent-property-of-electromagnetic-superposition"><span class="header-section-number">1</span> Light Speed as an Emergent
+Property of Electromagnetic Superposition</h1>
+<p>DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18209801" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18209801</a></p>
+<h2 data-number="1.1" id="program-role"><span class="header-section-number">1.1</span> Program role</h2>
+<p>Establishes that effective propagation speed is not a primitive
+constant, but an emergent property of electromagnetic superposition.</p>
+<h2 data-number="1.2" id="maxwell-theory-and-superposition"><span class="header-section-number">1.2</span> Maxwell theory and
+superposition</h2>
+<p><strong>Key claim</strong> Maxwell’s equations are linear, but
+physical observables are quadratic. Linearity does not imply
+non-interaction.</p>
+<p><strong>Depends on</strong> - Linearity of Maxwell equations -
+Quadratic form of energy and phase observables</p>
+<p><strong>Enables</strong> - Phase delay without matter - Emergent
+refractive behavior</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="1.3" id="quadratic-observables-and-phase-delay"><span class="header-section-number">1.3</span> Quadratic observables and phase
+delay</h2>
+<p><strong>Key claim</strong> Overlapping electromagnetic fields with
+different phases produce a total field whose evolution is slower than
+any individual component.</p>
+<p><strong>Depends on</strong> - Definition of electromagnetic energy
+density - Superposition of phase-shifted fields</p>
+<p><strong>Enables</strong> - Effective susceptibility without matter -
+Self-induced delay mechanisms</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="1.4" id="effective-light-speed-variation"><span class="header-section-number">1.4</span> Effective light-speed
+variation</h2>
+<p><strong>Key claim</strong> Local effective propagation speed depends
+on electromagnetic energy density and superposition structure.</p>
+<p><strong>Depends on</strong> - Previous sections - Operational
+definition of phase velocity</p>
+<p><strong>Enables</strong> - Refraction without matter - Field-only
+waveguiding - Basis for later self-confinement</p>
+<p><strong>Status</strong> Resolved.</p>
+<h1 data-number="2" id="string-theory-derivation-in-a-maxwell-universe"><span class="header-section-number">2</span> String Theory Derivation in a
+Maxwell Universe</h1>
+<p>DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18249258" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18249258</a></p>
+<h2 data-number="2.1" id="program-role-1"><span class="header-section-number">2.1</span> Program role</h2>
+<p>Shows how closed electromagnetic energy flow produces string- and
+membrane-like structure without introducing new objects.</p>
+<h2 data-number="2.2" id="energy-transport-in-maxwell-theory"><span class="header-section-number">2.2</span> Energy transport in Maxwell
+theory</h2>
+<p><strong>Key claim</strong> Energy transport is intrinsic to Maxwell
+theory through the Poynting vector.</p>
+<p><strong>Depends on</strong> - Maxwell equations - Poynting
+theorem</p>
+<p><strong>Enables</strong> - Definition of flow velocity - Flow-first
+ontology</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="2.3" id="toroidal-organization-and-winding-numbers"><span class="header-section-number">2.3</span> Toroidal organization and
+winding numbers</h2>
+<p><strong>Key claim</strong> Closed divergence-free flows on a torus
+enforce integer winding numbers <img role="img" aria-label="(m,n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8UlEQVQYGW2PsU7CUBSGP0ptBSR0YzAmTSBx1d3BhBfo5AwDxPEmDpDooDwBAyQuxoXE1UfAwcWBR2Ds7Ormfw8WE8pJb/Kf7zs3PRcqKaUyVC1hOPOse0BETjA7IDw0WXI5HM9KVKAHdYjP23cfoysbiJRXRhsw/3LRDbcmfH6EFiygf0/8TseEcnChGwmf6jdUU6YmtplGwqn6JfVV5WcrlrS0jv6sr/bNK3F27Y3yMDR6lIgxoZm62qU2zNjE8AxBn8CRE+acvKl1rAcw1l3tUFRUBJ6U/PmrnbDplwLrQUVsJkrhrv0XDzahtfdL6BecJii7EZchWQAAAABJRU5ErkJggg==" alt="(m,n)" title="(m,n)" class="math inline" />.</p>
+<p><strong>Depends on</strong> - Topology of the torus - Divergence-free
+tangent flows</p>
+<p><strong>Enables</strong> - Discrete global classification -
+Topological stability</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="2.4" id="tension-and-inertia-from-energy-flow"><span class="header-section-number">2.4</span> Tension and inertia from energy
+flow</h2>
+<p><strong>Key claim</strong> Localized circulating energy defines
+effective tension and inertial mass density.</p>
+<p><strong>Depends on</strong> - Energy density - Momentum density</p>
+<p><strong>Enables</strong> - Mass without particles - Energy–inertia
+equivalence</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="2.5" id="stability-and-discrete-excitation-spectrum"><span class="header-section-number">2.5</span> Stability and discrete
+excitation spectrum</h2>
+<p><strong>Key claim</strong> Self-induced refraction and periodicity
+produce stable, discrete modes.</p>
+<p><strong>Depends on</strong> - Emergent refraction - Periodic boundary
+conditions</p>
+<p><strong>Enables</strong> - Particle-like persistence - Quantized
+excitations</p>
+<p><strong>Status</strong> Resolved.</p>
+<h1 data-number="3" id="geometric-inertia-mass-as-trapped-energy"><span class="header-section-number">3</span> Geometric Inertia: Mass as
+Trapped Energy</h1>
+<p>DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18249230" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18249230</a></p>
+<h2 data-number="3.1" id="program-role-2"><span class="header-section-number">3.1</span> Program role</h2>
+<p>Derives inertial mass from geometry and circulation alone.</p>
+<h2 data-number="3.2" id="geometry-of-constrained-motion"><span class="header-section-number">3.2</span> Geometry of constrained
+motion</h2>
+<p><strong>Key claim</strong> Local propagation at the maximal rate
+combined with curved paths produces reduced effective translation.</p>
+<p><strong>Depends on</strong> - Euclidean geometry - Path length versus
+displacement</p>
+<p><strong>Enables</strong> - Subluminal effective motion without
+slowing local propagation</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="3.3" id="momentum-decomposition"><span class="header-section-number">3.3</span> Momentum decomposition</h2>
+<p><strong>Key claim</strong> Momentum splits into translational and
+circulating components; only the former contributes to net motion.</p>
+<p><strong>Depends on</strong> - Momentum density - Directional
+decomposition</p>
+<p><strong>Enables</strong> - Definition of inertial resistance</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="3.4" id="mass-from-circulation"><span class="header-section-number">3.4</span> Mass from circulation</h2>
+<p><strong>Key claim</strong> Inertial mass measures momentum trapped in
+circulation.</p>
+<p><strong>Depends on</strong> - Previous decomposition</p>
+<p><strong>Enables</strong> - Mass without matter</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="3.5" id="topological-stability"><span class="header-section-number">3.5</span> Topological stability</h2>
+<p><strong>Key claim</strong> Knotted or wound circulation prevents
+continuous unwinding, stabilizing mass (self-sustaining electromagnetic
+knots.)</p>
+<p><strong>Depends on</strong> - Topology - Integer winding</p>
+<p><strong>Enables</strong> - Persistent objects</p>
+<p><strong>Status</strong> Resolved.</p>
+<h1 data-number="4" id="defining-electromagnetic-fields-from-continuity-and-divergence-free-structure"><span class="header-section-number">4</span> Defining Electromagnetic Fields
+from Continuity and Divergence-Free Structure</h1>
+<p>DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18269184" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18269184</a></p>
+<h2 data-number="4.1" id="program-role-3"><span class="header-section-number">4.1</span> Program role</h2>
+<p>Clarifies how vector fields arise from scalar energy descriptions
+without adding new primitives.</p>
+<h2 data-number="4.2" id="scalar-configurations-and-spatial-flow"><span class="header-section-number">4.2</span> Scalar configurations and
+spatial flow</h2>
+<p><strong>Key claim</strong> A single scalar configuration by itself
+does not define flow; flow is defined by the spatial relation between
+scalar configurations under continuity.</p>
+<p><strong>Depends on</strong> - Continuity equation</p>
+<p><strong>Enables</strong> - Necessity of vectorial description</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="4.3" id="divergence-free-structure-and-circulation"><span class="header-section-number">4.3</span> Divergence-free structure and
+circulation</h2>
+<p><strong>Key claim</strong> Locally, divergence-free structure implies
+curl structure and circulation; globally, topology determines allowed
+circulation.</p>
+<p><strong>Depends on</strong> - Vector calculus identities -
+Topological conditions</p>
+<p><strong>Enables</strong> - Toroidal shells - Circulating energy
+structures</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="4.4" id="representation-versus-dynamics"><span class="header-section-number">4.4</span> Representation versus
+dynamics</h2>
+<p><strong>Key claim</strong> <img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" />
+represent energy content and flow; <img role="img" aria-label="(\mathbf{E},\mathbf{B})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQYGWWQrU4DURBGT3/YUGjDekJagQdLEAheYE2D5L7B1mEQ8ATdpCHBkNTUoNBF7Jo1GF4AQhV6TYOhaWfm7i5NuMndb+Y7M3cmC40B/495LfL5bPg8M5yny+HrGRxpdgxxQWdshHhKd50RjCSNjNAPDQnh4s5cpdKTtbKafL3AN+wmRqLgj6QLuIQ9KY2LZiSiR16brETF3td0mdZk9Xn+IdYBPCgp2jWZwnghPSG5EdnQM93t/VeeCjn0hO6pBDaH/o/N8RtAb1AT7RF7J9Q5cOImEulujWtpf4SmQ39Wuk7eRlg4v5KKG+hIQXlcFYjel9dbzot+rf6pyoMqEO3pzLYrnW1ya15Skm0RbwOCjFBb3+kluwAAAABJRU5ErkJggg==" alt="(\mathbf{E},\mathbf{B})" title="(\mathbf{E},\mathbf{B})" class="math inline" /> are one possible encoding. Dynamics must not be
+conflated with representation.</p>
+<p><strong>Depends on</strong> - Degree-of-freedom counting</p>
+<p><strong>Enables</strong> - Avoidance of false derivations</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="4.5" id="reconstruction-lemma"><span class="header-section-number">4.5</span> Reconstruction lemma</h2>
+<p><strong>Key claim</strong> Given <img role="img" aria-label="(u,\mathbf{S})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAklEQVQYGWXOMU/CUBDA8X9LKbxKCJOLSwc/QGUycZBvoIvMHUhkwXR00EQ23EjAhcSAiYmjkpiYuNiFWfgIxsUNGIWh3quNeYYb3t39Xu7eA8vnf9i6zRmm9jsXU2sqsmvosMY84FTk2NADGQ3IgxsZ+gpOQDmk2DX0sF4h1hcelFq4+gU4StYfkkZswbYX53yNuI/JKoYFN1B7x5Nah/OVPMEdE6k/GaYmOxl8w5gd6Z85/9UxlEVH+jWWVN2UX8BeaM1XZLt131d74m8+Ax91hR3CZeMsKj2IXjdP6lCIUEE6K7/KMhRlvL2hPZHbTMMsw0wqJ2v/tBCL0tWHEQp+AMhlNd9F7Hd7AAAAAElFTkSuQmCC" alt="(u,\mathbf{S})" title="(u,\mathbf{S})" class="math inline" /> with
+<img role="img" aria-label="|\mathbf{S}|\le cu" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyIqtmRInd781UEHbcgkVCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIElEQVQoFWMQYIAAGA3lwikFBpYgpWQBBgW4CCpDgcG/gKE/AEn+CooCBYZIBgZWJPmLymjysxgY2BHyrqjSQHPj91xgMICZXxSCopsBKF7//2cviAaBQ0AWGPDkHGE+yMAjABTnWf//F1S/5VuoNEMYQ8QdLgPWByB97E3/J0D0c+hA5fk2MJwtsGfgAukzYGDw+gKRZ+DbBlHAnwCkWxn8QfbOZWDggMkz8GhcAKnwB5HTGZJA8tMYGPg+QPUDLVN0AErZMzDwMvxliOMBis9/wOAFdgdQHAiYw4AEpwNDCsMH3uXuQHmVQ7v3gMxBBiw9xy4wJB4/kQAXR5VHqIWJw2iEDIQFEwfTRUpAAAsDLPIQIRQSGDpgAKNRJBkYAFOyOUh4MHzuAAAAAElFTkSuQmCC" alt="|\mathbf{S}|\le cu" title="|\mathbf{S}|\le cu" class="math inline" />, at least one pair <img role="img" aria-label="(\mathbf{E},\mathbf{B})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQYGWWQrU4DURBGT3/YUGjDekJagQdLEAheYE2D5L7B1mEQ8ATdpCHBkNTUoNBF7Jo1GF4AQhV6TYOhaWfm7i5NuMndb+Y7M3cmC40B/495LfL5bPg8M5yny+HrGRxpdgxxQWdshHhKd50RjCSNjNAPDQnh4s5cpdKTtbKafL3AN+wmRqLgj6QLuIQ9KY2LZiSiR16brETF3td0mdZk9Xn+IdYBPCgp2jWZwnghPSG5EdnQM93t/VeeCjn0hO6pBDaH/o/N8RtAb1AT7RF7J9Q5cOImEulujWtpf4SmQ39Wuk7eRlg4v5KKG+hIQXlcFYjel9dbzot+rf6pyoMqEO3pzLYrnW1ya15Skm0RbwOCjFBb3+kluwAAAABJRU5ErkJggg==" alt="(\mathbf{E},\mathbf{B})" title="(\mathbf{E},\mathbf{B})" class="math inline" /> exists reproducing them.</p>
+<p><strong>Depends on</strong> - Algebraic constraints - Energy and flux
+definitions</p>
+<p><strong>Enables</strong> - Field reconstruction - Interpretation of
+polarization</p>
+<p><strong>Status</strong> Resolved.</p>
+<h1 data-number="5" id="maxwell-electromagnetism-as-the-minimal-dynamics-of-divergence-free-energy-flow"><span class="header-section-number">5</span> Maxwell Electromagnetism as the
+Minimal Dynamics of Divergence-Free Energy Flow</h1>
+<p>DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18264435" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18264435</a></p>
+<h2 data-number="5.1" id="program-role-4"><span class="header-section-number">5.1</span> Program role</h2>
+<p>Explains why Maxwell’s equations appear as the minimal evolution law
+compatible with divergence-free transport.</p>
+<h2 data-number="5.2" id="continuity-as-kinematic"><span class="header-section-number">5.2</span> Continuity as kinematic</h2>
+<p><strong>Key claim</strong> Continuity constrains accounting, not
+motion.</p>
+<p><strong>Depends on</strong> - Definition of continuity</p>
+<p><strong>Enables</strong> - Need for a dynamical closure</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="5.3" id="failure-of-gradient-driven-dynamics"><span class="header-section-number">5.3</span> Failure of gradient-driven
+dynamics</h2>
+<p><strong>Key claim</strong> Gradient-driven evolution generically
+creates divergence and cannot describe source-free transport.</p>
+<p><strong>Depends on</strong> - Vector calculus identities</p>
+<p><strong>Enables</strong> - Exclusion of algebraic-only evolution</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="5.4" id="curl-as-minimal-divergence-preserving-operator"><span class="header-section-number">5.4</span> Curl as minimal
+divergence-preserving operator</h2>
+<p><strong>Key claim</strong> Curl-based evolution preserves
+divergence-free structure identically.</p>
+<p><strong>Depends on</strong> - Identity: divergence of a curl
+vanishes</p>
+<p><strong>Enables</strong> - Justification of curl dynamics</p>
+<p><strong>Status</strong> Resolved.</p>
+<h2 data-number="5.5" id="dimensionality"><span class="header-section-number">5.5</span> Dimensionality</h2>
+<p><strong>Key claim</strong> Curl, circulation, and knots coexist only
+in three dimensions.</p>
+<p><strong>Depends on</strong> - Differential geometry - Knot theory</p>
+<p><strong>Enables</strong> - Dimensional selectivity</p>
+<p><strong>Status</strong> Resolved.</p>
+<h1 data-number="6" id="canonical-glossary-of-terms-and-symbols"><span class="header-section-number">6</span> Canonical Glossary of Terms and
+Symbols</h1>
+<p>DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18272625" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18272625</a></p>
+<h2 data-number="6.1" id="program-role-5"><span class="header-section-number">6.1</span> Program role</h2>
+<p>Fixes terminology and prevents conceptual regression.</p>
+<p><strong>Status</strong> Resolved, authoritative.</p>
+<h1 data-number="7" id="the-maxwell-universe-research-program"><span class="header-section-number">7</span> The Maxwell Universe Research
+Program</h1>
+<p>DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18274175" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18274175</a></p>
+<h2 data-number="7.1" id="program-role-6"><span class="header-section-number">7.1</span> Program role</h2>
+<p>Defines stance, scope, and boundaries of the program.</p>
+<h2 data-number="7.2" id="key-clarifications"><span class="header-section-number">7.2</span> Key clarifications</h2>
+<ul>
+<li>Source-free does not deny localized structures.</li>
+<li>Charges and currents are configurations, not primitives.</li>
+<li>Stability arises from topology, not forces.</li>
+<li>Minimal does not mean unique or final.</li>
+</ul>
+<p><strong>Status</strong> Resolved.</p>
+<h1 data-number="8" id="global-program-status"><span class="header-section-number">8</span> Global program status</h1>
+<h2 data-number="8.1" id="fully-established"><span class="header-section-number">8.1</span> Fully established</h2>
+<ul>
+<li>Refraction without matter</li>
+<li>Mass without particles</li>
+<li>Stability without forces (stability arising from circulation and
+topology rather than force balance)</li>
+<li>String- and membrane-like structure as effective descriptions</li>
+<li>Maxwell dynamics as minimal divergence-preserving evolution</li>
+<li>Vector fields arising from scalar relations under continuity</li>
+</ul>
+<h1 data-number="9" id="closing-note"><span class="header-section-number">9</span> Closing note</h1>
+<p>This map is a <strong>stability surface</strong>.</p>
+<p>It preserves what is logically forced, records what remains open, and
+prevents regression.</p>
+<p>Nothing here is speculative. Nothing here is implicit.</p>
+<p>Everything else in a Maxwell Universe builds from this.</p>
+</body>
+</html>
