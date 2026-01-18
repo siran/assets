@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="author" content="Alex Mercer" />
+  <meta name="dcterms.date" content="2026-01-18" />
+  <meta name="keywords" content="Navier–Stokes, Millennium Prize
+Problem, continuity equation, energy flow, causal transport, Maxwell
+universe, blow-up" />
+  <title>Why Water Does Not Blow Up</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Why Water Does Not Blow Up</h1>
+<p class="subtitle">Reconceptualizing Flow for the Navier–Stokes
+Millennium Problem</p>
+<p class="author">An M. Rodriguez</p>
+<p class="author">Alex Mercer</p>
+<p class="date">2026-01-18</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> The Navier–Stokes blow-up
+problem arises from a Newtonian abstraction that ignores the causal
+nature of energy transport; when flow is reconceptualized as bounded,
+continuous energy transport, finite-time blow-up is excluded for
+physical fluids.</p>
+<p><strong>Keywords.</strong> Navier–Stokes, Millennium Prize Problem,
+continuity equation, energy flow, causal transport, Maxwell universe,
+blow-up</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#abstract">Abstract</a>
+</li>
+<li><a href="#the-clay-problem-and-its-hidden-assumption">The Clay problem and its hidden assumption</a>
+</li>
+<li><a href="#flow-as-energy-transport">Flow as energy transport</a>
+</li>
+<li><a href="#the-only-empirical-bound-causal-transport">The only empirical bound: causal transport</a>
+</li>
+<li><a href="#why-continuity-plus-a-speed-bound-forbids-blow-up">Why continuity plus a speed bound forbids blow-up</a>
+</li>
+<li><a href="#reconceptualizing-navierstokes">Reconceptualizing Navier–Stokes</a>
+</li>
+<li><a href="#statement-relative-to-the-clay-problem">Statement relative to the Clay problem</a>
+</li>
+<li><a href="#conclusion">Conclusion</a>
+</li>
+<li><a href="#closing-remark">Closing remark</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="abstract"><span class="header-section-number">1</span> Abstract</h1>
+<p>The Clay Millennium Problem on the global regularity of the
+three-dimensional incompressible Navier–Stokes equations asks whether
+smooth initial data can develop finite-time singularities. We argue that
+this question is ill-posed as a statement about physical fluids.</p>
+<p>The Navier–Stokes equations are a Newtonian approximation that
+permits arbitrarily fast transport of momentum and energy. In contrast,
+all observed fluids transport energy continuously and causally. We show
+that once flow is reconceptualized as bounded energy transport
+—expressed solely through continuity and a causal flux bound—
+finite-time blow-up is kinematically impossible. The conclusion is a
+physical resolution of the flow problem: water does not blow up because
+it flows, and flow is causally bounded.</p>
+<h1 data-number="2" id="the-clay-problem-and-its-hidden-assumption"><span class="header-section-number">2</span> The Clay problem and its hidden
+assumption</h1>
+<p>The incompressible Navier–Stokes equations on <img role="img" aria-label="\mathbb{R}^3" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAQBAMAAAAG6llRAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZs2r3btUEIkimXYyRO+nKML3AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAfElEQVQIHWNggIDcrAIoi+EB8wYYcwLTAQYhZaeQMAYGzt0MDOwNBpxtCxjYbxWAmAwGOxkYuAIgzINsAYwOEGYu7wauBrDatQYMghIgbcFx2hAj2RsslxvAmAY92+BMZlaI/UBz2SQhKtgbFjCYZ4NVJGk5H5i6rgHIBgAtJx4m16DLVQAAAABJRU5ErkJggg==" alt="\mathbb{R}^3" title="\mathbb{R}^3" class="math inline" /> are</p>
+<p><img role="img" aria-label="\partial_t u + (u\cdot\nabla)u = -\nabla p + \nu \Delta u,
+\qquad
+\nabla\cdot u = 0," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV0AAAATBAMAAADBg8MsAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAD0ElEQVRIDbVWS4sUSRD+qqYf09Pd04UgogenLruyoEzjC9FLHfTQIHQruD4QLC8qItg+UBFEQfTgxcYHeGzQUQRBF/ciXua0sAeh8eDBXbZV9geMiCIjohFRmVWZNdnjyThkRHzxxSMrs7oawJL1cInXdaFO0EX8aZi/oxi7ipcssPFNZLDCQi1HUywwc7zZzHZZSYOvrpCFNSKcswDlnLTA8c+7SH5HsWnBpqMpJmbY4x8Mx2Fev8IdYkckgVZtCsUoAi2T5Cln1gThfWL3NGDDJielaFBXSvxlzzTu1lMx4eXIHQQKs3ihY21tsB4Lxcs/yOsDgvvAFYk6F03RQVVJud326KNhyjhfhQlFXqiqHZwXtHBq7QEzrLpUeT5DePtjEfCrgeVMTdGwNa/XrfZ0wKnleNyvPvPp2v4meRvhPyRjWx/7xFddKnQE+1DsC0bLBG2fX8GKDeswa0XZfWFdX2BVaX8PpQhlFOgCWyWFlC2P6QnF2l1AbA/QDihaoF1/8eB1buGwkFWXSWBpJSp1dQFvHlhLTiOF7x8iOaLjpBOKt+MD7gqqKpVjDAMsA+gCWyWNVDan+voukqOJaZNpmpc2hNoleB+rA78wh1ucpXP+BcI2KhEh//EC2n5MqhJomEFbhOL7PVwVXM1bbeIacAKgCzw6V46HDzDpt4BIw07zvFMhinN0+ONxfY7c+4eO/SUPbTs5VzGkFa2Q12G/yHoy0DCDIv5zlqam0PM8SnhaqTGovwV/fWq9tKTKtFR9HjsFkH6qd8oYRjgQkDcdoHTvUROT4dgTCaqnspKcd9iS8lF6L7unrVlwRqD7LZRqB7fNSi3UQpSpl08XeGQuZRwP4qxantgIsZej9ARbwVm6l0Gp22FAzUtz4T0O06+zkvr8LrYIV3B6tTQDCaUR+G8EUpXOYAZ8fYG/01yJ55fhjAyQwPkmdKvOcKTa8f7Hn/weLV8TMqC61OiBzHk3XjKUyPGY9T95OAkmq1DaQS0SV1V6+npAP9tbSS42pWT9oJmT2SX5Jinf7k2H84S+F69oqAfnAvRozJlfLptdyh1g8849zazckBBgXR7OCHRYTDm/4UKCqXnvMJj8O3gjJQs3zZzMrn/M7FxvCuzeE6KVjOPNJlroqks9NpLFLMj6Rx42faE81YiqpN1MZ5csw9iKbNfh8dZJZiJRsnhBYrsHW7iNLFNZ/F0V0ZW0n+pR86aEkYaa1xV/7QIxoXbjDApIP+Q/kkW6Lp662EZ9Z9XRH3jdafVnbY3Uzsoj2UZgsXkxMIip6QTT6M83vgP0tO1q4frLswAAAABJRU5ErkJggg==" alt="\partial_t u + (u\cdot\nabla)u = -\nabla p + \nu \Delta u,
+\qquad
+\nabla\cdot u = 0," title="\partial_t u + (u\cdot\nabla)u = -\nabla p + \nu \Delta u,
+\qquad
+\nabla\cdot u = 0," class="math display" /></p>
+<p>with smooth divergence-free initial data <img role="img" aria-label="u_0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAKBAMAAABPkMOvAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAWElEQVQIHWNgVGZgMmAAAidWAbYCxqIChgZ5BlYBXoYzDAzTGNYztDHIMjDsYDjLUMwgysDwhSGdaTLDUgaGDywRK8AihzU0D7Qx9IJMYGDgA+kCAcaiCQDdihFe1GRPgQAAAABJRU5ErkJggg==" alt="u_0" title="u_0" class="math inline" />.</p>
+<p>The Millennium Problem asks whether solutions remain smooth for all
+time.</p>
+<p>Implicit in this formulation is a Newtonian assumption: the velocity
+field <img role="img" aria-label="u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO+rdkSJIt1muyIVtOIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA3SURBVAgdY2BUZmAyYHBiFWArYGiQY2AVYGCYxrCOgYFhB8NZIPmEIZ2JgeEBS8QKBobDGpoHALCxCaVmVwkTAAAAAElFTkSuQmCC" alt="u" title="u" class="math inline" /> is unconstrained in magnitude, and
+transport may occur arbitrarily fast. Nothing in the equations forbids
+the instantaneous delivery of large amounts of energy or momentum into
+an arbitrarily small region.</p>
+<p>This assumption is mathematical, not physical.</p>
+<h1 data-number="3" id="flow-as-energy-transport"><span class="header-section-number">3</span> Flow as energy transport</h1>
+<p>In physical fluids, what is observed is not an abstract velocity
+field but the transport of energy.</p>
+<p>To avoid confusion with the Navier–Stokes velocity, we emphasize that
+in what follows <img role="img" aria-label="u(x,t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABDElEQVQYGVWNu0rEQBiFv8TELNlbEKwNbOEFi32EQYVtLS3T2QafIAj6ACm2lK2WNLJrZzmynZdOEMQihY1gobAP4J/LJPjDP+c75wwzUM2k1kri1kUtCh03zksahBNsbezAQKFvkBt/aKDQX0iNfzcgap3CtcgIe4xwZ5StlOSdmy+NC0dusBmzhC3ro5tIQV/DEJId3MDPIbbWvSJnOANXwZQFVi6BF8khcyXbVXDPC448xSCUQ2YqK3+w5twuPk8Wyityvp2wLH6cs4xPessn9chcwZ30t3JhtbevucBPszRgW8PuATxLUc7cQFjBq/F9VVNYqh/VFn9ckV3JhjIFl/+KhybHb1FoBn+j1jH7YVWS7AAAAABJRU5ErkJggg==" alt="u(x,t)" title="u(x,t)" class="math inline" /> denotes
+<strong>energy density</strong>, not velocity.</p>
+<p>We therefore take as primitive:</p>
+<ul>
+<li>an energy density <img role="img" aria-label="u(x,t)\ge 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFIAAAATBAMAAADxBkdhAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABgklEQVQoFWVRO0vDUBg9uSYm3D4RXDXQwQcO/QPCRQVx6+jYSdfSWSQIurl0KC5Kp9JFWjfHSDerSxUUqdBBkIKDhQzSye8+Io09kO88vnPJC9DYNaypknBJU07Y7YRLGDeYsjtgobS2kFPCO7rQAsjGQvILMJTMDxqSCEvINpQANgwrGgM1JfhmoPM+3KJWeDMsySoBZ9rbl74SY3glWAWwImjpFVpdQbl3NQrhqAKN45CGNYEVYcvJz1fQARasQSqgGJkQyEmh0PPpMDUnCJbh5PkQqFhRWu1yDcARSlLpiRTVqIw62rCGtHDLNAindKWEVAAbCZp8DBYBt3iETXdH1qdBqNNlnjP9qRL8gNGbRDhk8o2CtnBV/mX7prnX10UM1A2/7f0WPpDu9MQ9mgK4oQPXsuK9miLO1Zfvrq6FqILXWrU8FkNgZR14iDuaWfXvbzbjja/Fc+xnOCNM5CvmZWNniRd1xjTNCcneu4Qv5RROtDbNu6nNf8kTQSPhtPkFattRlpSgQKkAAAAASUVORK5CYII=" alt="u(x,t)\ge 0" title="u(x,t)\ge 0" class="math inline" />,</li>
+<li>an energy flux <img role="img" aria-label="S(x,t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIl2ZiJU75ndu6vNMhBVgMKNAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABI0lEQVQYGVWPu0oDQRSGv8lekizZZCst0nhjGy22shO2UNBCSMDKFC6oYGGhb5BH2F60UVuJbxAktVgpWA3YWPkE3s7M7uJ6YM75v/MPc85AGW+VsDWxWS2v7MHkn/NuKUad40Q15wM/FVRjyOnUDK5hKtxKYYGjuvMFsXAgEwbc1pzwDPrC/ueGZAF1MtzWItXaQ0pTBK8/V2YSz+FNOzKNIIWeEagLvCkk4bdruTeApjYzOCWcAs5EksS8nLYmlAf6dHOhTiZJYlWOzHEyuLcbRAfakR7MuplxZGk3gUfcfEdvMdJwKRf2odFYWpR763jxMH7iJYXDY9iUXhGjSmSFuKuYQJcys9Ur1xTwxraDX5SWLqrJc4Usnd0/A6+m7fd/AXweMeedc5tBAAAAAElFTkSuQmCC" alt="S(x,t)" title="S(x,t)" class="math inline" />,</li>
+</ul>
+<p>related by the continuity equation</p>
+<p><img role="img" aria-label="\partial_t u + \nabla\cdot S = 0.
+\tag{1}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWcAAAATBAMAAAC+UtHdAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACcklEQVRIDdVVz2sTQRT+dpJNY7ZJRm96MHtR8SANtRSPe/FQFBIF8QdCFw/Rm0GLFk/BmurNIv0DcjCKIFjBPyAHjwoBwYOKURDPQawHbanvzexOdqUed9s8mPe+782S79vJzCyAfTMYi7CayqbK4oztb2N6S8WmmRH3l94ZsiMgp1UPcCl7WNzGxMP2OQrfzLQhHhnC4MgJN8YTJzcA8Rqwq6RkA3MxQalYxacy4SlMSXSALyHhmu3hbZQnj3soLvwkmZ6WqsUUpxXL884omIkCvV/LMAJOHXeiPHGsVphNt2lkb07PxxS1aesXNUdH1PGBfvQx2lVHozxx7LA8mz5MYxbiGZWTHVyiQqFN4wU95KsGJ3tjwWAFan3UZLyVLNvDP8+mCWRXgD8WrPoqrmrVwHSlg4yrO5xPbX3l8qRBcY3AFJnmd08tSqzEpsvAZAvWutMX2SFWtYHAdGET+pL57Km++K6ng0yOyXeK8Ym11EpLVFzYQ1rxvF8cUrfQaLxpNFqEir9xlgrdLS4l8neZiYmBh3lpWArgNGuw6ZLElETu8fMqSm5mTUsHK43r0tcNyllXHwDTQNnFxRFLAR1kDbXSwICWUt6mnSJzzbrSDk0Puppzc4LgFQZmTztV3OJGahE9iE7d+oZXvL33H3OVg9B0ji+9IOjGyzRDoqpYo4/LexnrJUomWesHjY80ni5KrACZ7qElLRqaLq5rzjmff3B3xBQ6f8HFXP+fZoKU/mxreeMecFyLWL1qRC00DS/S3HlY9AMPL4Pa9QLAZW8E7yYYmDXmd5O3/3r5oGcKvLfHJkRdWZ0ZG8PKqD71lP8Cekx3w5Vlh+sAAAAASUVORK5CYII=" alt="\partial_t u + \nabla\cdot S = 0.
+\tag{1}" title="\partial_t u + \nabla\cdot S = 0.
+\tag{1}" class="math display" /></p>
+<p>This equation expresses local bookkeeping: changes in energy density
+are accounted for by transport.</p>
+<p>Continuity alone does not prescribe how energy moves, but it
+constrains any admissible evolution.</p>
+<h1 data-number="4" id="the-only-empirical-bound-causal-transport"><span class="header-section-number">4</span> The only empirical bound: causal
+transport</h1>
+<p>All observed energy transport satisfies a causal bound: energy does
+not propagate faster than a maximal speed <img role="img" aria-label="c" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIBAMAAAA2IaO4AAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAVGYiq4l2zRAy3TJfpZAAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAuSURBVAgdY2BgVBRmYHBicGVgK2CQYOBWYGBgsG4AErMZGDgYuAwYlBmYA4UaAEZkBBf/RikeAAAAAElFTkSuQmCC" alt="c" title="c" class="math inline" />.</p>
+<p>Operationally, this is expressed as</p>
+<p><img role="img" aria-label="|S(x,t)| \le c\,u(x,t)
+\quad \text{for all } (x,t).
+\tag{2}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAacAAAATBAMAAADG7d98AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyRIl2ZiJU792rzRA6DTNHAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEVUlEQVRIDa1VS2hcVRj+OncedyaTO6E+UhDai6B1Ee21uNCgdHwEbXURhCIBtSOYRcHCrWIsFMpVUrqpZOKjj1WzENxJwCKuwiBad5qNWgXldlMogom4UFBSv//cc+aeO68aZ36Yc/7X+f7/u+cxmIAWr2E0mYv87bAdWf16xmxkrP5Gd4n+uduPaPQGV/r8zcyfCFGlkopHsrnU7NRaGcc12/Ims0E4+6L9f6mM7hL2wmF1jS7N+EChiUN1vGqBejHO26S8yApSLdYt+zeUQ8usnlqzLFFrERJS3SU6MocyiT6/s6ma8YHHgTFg3ULMNTBukfJ2BlaQKoOp3JtdSwod0ibVXaIjcyhzHYXI+1M14wOT3Kzs164Fsn3m+LlfdHCSbUzlD2AutVCLLUOphlRmQ5MSnalD2EQfC3CXasYHpgAXucgCnAbyLUMqP2WHVNZ9Vq6zAjxn2f1J9ShhrRtWJXolxBHVjA9c+p47USHowV1P7xbsmZ9fAFY0qfI9sfgo5y9GcJZRnmAM+eXF4zGd+Ze+C9Vi6iLOkTvicwv1/E9nror51nx6p3qUkJQRiaAD9ysmPvvY93cst8pp7g8vq9BejpsJKeezWLmAalidxY1KUG1gFXjE2TtWl0guZNs6RaZaVJzliV4Kb6NRbBb99kPRo4S1bliV6DxxvAtsxhf92Rbelf+mAzE7pMhj9YneqeebygUcQzlG/QAqgbsONJytkgrwxqAS6xxOtWgjxhI2AnEVWs5mm1SPEumyoTWi8wVj/2zG531CeR2Pie81GXikVjisaVI4xkQRPiyUF9mwQ1IotjhQDvE3FouWSC26RGZ1MlNyJiXVo0SSM5JRofPaSDM+HlKvwq+C/GMCX2hxNncKeO9lcbtbMuIyXoe3SmW8qWyyTC5kYslOJaSU7X71cEqqRwmzaASzoJfk+/Ny+TjK61IXNc++GwI/Ht6wSeGJXXTyHCEGtnClLA9FfSku0gv84DXth4KklmKe4w0VrITuZsADqv58e5RQSaMZiI6D4JVQpKaABRKJcbK0Vorcb7iBQQOub44fkx+VL/A5ShHfD++jRfyC0urJ+ATOxsCn5PYOw0ZqUWEWdyI5fhtBeSs0pHqUEIARCdGd259aVs34mD18uC7vFE5fmHkfzse8Ykcj2Unz56urnr54itrxDz4Mubnu3OJcgGmSPXeBD3famLPnChbebOa//Vp8pclnXnlyz5cP/lOn0aPEdET/aITolZs3f1fN+BrSbWmlnMy5uJOUjst01ujNRHnA2APnHiUG5m8v2EZnM75ZahrTpNh3x06ZRM5knEhCqo2nvf2m7hL9Mv+PX6NLM75Z/7ZW9MffrUnl7xbRTpPrTiSa/gA7YhMYPHeXGJy/vahGl2Z8szKvG0+mUjBop/jMKNGk3jAYt5i7S9xiwbbCGl2aYfNaIqPIzH9kOLYjq0s4lShVB2uZxCzG4IX/KZqgc/wXp20ICE4QjhEAAAAASUVORK5CYII=" alt="|S(x,t)| \le c\,u(x,t)
+\quad \text{for all } (x,t).
+\tag{2}" title="|S(x,t)| \le c\,u(x,t)
+\quad \text{for all } (x,t).
+\tag{2}" class="math display" /></p>
+<p>This inequality is not an axiom added for convenience; it is an
+empirical fact about how energy is observed to flow spatially in
+nature.</p>
+<p>Defining the flow velocity by</p>
+<p><img role="img" aria-label="v(x,t) := \frac{S(x,t)}{u(x,t)} \quad (u&gt;0),
+\tag{3}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZEAAAAsBAMAAABWLJh7AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO8izUR2iatm3bsfPVmmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE2UlEQVRoBdVXTYgcRRT+ZnZ+emZ6fgis3rIti9EsAdcfvFpkk0MEYQMeInpoUHBxxV1EDAQPzYJCouAYL+Jewlz8yR5G9GD0YEvAgySyQg4LXhYRRdjDCIMiBJL3qqq7q/ZvdibT2ZkHW++nqt73XvdU17dAf3LGWl6yvHFxnC/WXgfaVrm5WcsdE6cF5xxKgVFtTuCE4Y6L6dDjX0fRLLfWtH1zboTtiRC4Yr+DegNlb4RL3qO0Gp0QH3+as5OAY58bc3Zk7ex/H1Ft81T89MJ1wWVeOr8mA2yPlRy9c4tPCo5ktqqBrHyLxs5Y9aCLdX5DYRloZrquivxL6vnx68QHHkGGOkGprap35knTexozyQTA+8itU9lFT9Ve5o64m/GSkgd8KwsPloQiKcXw5Ah2kmuaD3YXOkUfYZfWvAV3/ab4CYsCqDaaKGya++wsyYyVPAkPw9KQCULFyroLnSqXv/yc1lxGobXQamAyBLKXfbikE7GzJPG5xBy2pSEThE8MhP3o1GK0zlNGTUQB1maWKH7x5wDZMPKGrgnyxmrTQFg2IPajU3HlntoQdyZdM4tOSF+7t4FdJvT8vapllEP8nyBYD20/OlWYVdBZXcFTZiVGllNRvObhY6AVucPWBFnexIsJQs03IPalUytqoe7EbRj7YGSZe1xP0GN5l7/fKYmEzN2WCJlpnPbzBLTy9AfyCSd0atLfiV+wQrZHWShbVr62Z+mTzTLlY0qA86ciMnGJfrxknMw3ikGVavCOhhsSbYvGDluLYuJ7livsHEAoC2WrNOVSl9MAH1InPurSTmEgSLhP0kAIwRRK/qvEQejZhRJrYDpFWShbviGzwPlOkEFtUDN5NtMQgqRW/qB3IoCrcPEgB1Z5INY+T8MOOnVnL5FvT26UWa5iSTl03/xD1lIDjwlURRQcspaF4y+6pglhgzp5jgHeVCjlNmnupm/hLBv4Re9zvvbJqgd4WP6KdXTIiiArDTwj5Ens4gHWTqGLJuOYdKq/c8LHr4tr6rvm/i2LroX8rnkmFaHESx5+UAhdhCgK3HRvuX7hG5NOMbnqRygLOrlzC7znzO9qp7PJN+Mb4MwpCEGWRe4FRgBmTtBx9/DasUsPIfOSSad2+Qpv44jyJcYFUhZcf3QmpMDcV1H0+ExAhEJmjkJD1Az56SoNN3TSQlsb+sarCe1vVxU7kBA3jsdZgFfsdfRx0Znt+D17MSQhKIkMjWfTqWgRaSJsiZwyiJuMRlmSJcpivHQ6gYaMO8LLGtxTWl72OmSpZdOjM235cRZzEdsTAvDYGL7owhlBieMprZRNp9SMHLOh4YDui5bpI8piBcn5kf687cHh+BqSEbT4kcHaplPGTM03nMz8DmpoThsr9wgbKwY3Ve5+EI7MYlreCxHTdD67EKZ3UQzeWq+dOe8srqFqMs1aKIlbr52jNu9kOjgLImwJ06z7dLWKUSu0dz3ldqFjMU3+Dyo9ati7oIFXVAN302KaRKJTJFQD19l7Y11Uml7eYJp4J+eN44mnf8pOvxcQYYuZJn4tKeLW+ymM1gr3iZU1i2ni+LGEuI1WrQeoJqY3EYvai2kdINchL4kq153EnR1yWQPAb2OaCXEbINfhbok4oqfKMIjb4dY1ALpv7bE9a+q+O3cBS177L7A0Q0AAAAAASUVORK5CYII=" alt="v(x,t) := \frac{S(x,t)}{u(x,t)} \quad (u&gt;0),
+\tag{3}" title="v(x,t) := \frac{S(x,t)}{u(x,t)} \quad (u&gt;0),
+\tag{3}" class="math display" /></p>
+<p>we obtain immediately</p>
+<p><img role="img" aria-label="|v(x,t)| \le c.
+\tag{4}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVUAAAATBAMAAADSVIPYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyVBDvIs1EdomrZt2kxb4DAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACO0lEQVRIDcWUz2vUUBDHv90kZpO6Sf+E+AtBEVYo0pONgghCIT2I4EEEDz14iZ4sLHQvHqQUliKePOyhIt48RBEU2Yt4kEKKQi8qC/4Dgnj3O++9bN/6B7zMYb7zZt4yn51MgiVou21Uy5jSVOYK7g/BWPUUn6kImBjVsk7J5jKtHY7rzhZRPLJgbsKvbdZbVs15+Iodvdc2UddmOAcMLdb1U3bRdUwSJNxHasaQtqZF+z9ANatg0CqqPGF8J+sR0VmL1bsLPJ+x7n62Su7DTskVuEhWRbS8FGyAeNGVzYOCMNG77RrHGtarbwyf/+26e1IICHoLZBWiIL+HJ5gCy96FZCQ4nRpIDevlF5IR28cXHbj1CdvVwipEkfcbL8MhMPb+9hRHWvJfFHqTF08btHiIayZ0Ko+4An01VyFanKD2hgSIJ5riGSUxrIh3dDLlsNuwFa4AhFUR8cHXwZQc3VzDfKDM9hX++ULSW8rrCy79HeDg/cftviZKC6+Ud2u0VcSKYifILVZEJ0qmV4HAJWPTS94tdDhXNb204Jo+Rm/6szjEgOP7ReSHzXeAN719uqTEYfhJfujWuvI8hVUR+VUN7CGsNqs+LjG+wY/TD4tVwYXVWuFtuOWUbnHOYb29X1pEg4aCJbEz/7PqtHsfTkzPI6KOjFosV15uZCpq3ZFRzCIKuRFivpYFomcS7p6kNd9YXXPsH+h+MyIen+qUYf3KU6YzbfsoVwRC1DcsoVEtpVWZK7RwEBaA/h8ioV9AnvzOLgAAAABJRU5ErkJggg==" alt="|v(x,t)| \le c.
+\tag{4}" title="|v(x,t)| \le c.
+\tag{4}" class="math display" /></p>
+<p>Thus, physical flow is a transport process with bounded speed.</p>
+<h1 data-number="5" id="why-continuity-plus-a-speed-bound-forbids-blow-up"><span class="header-section-number">5</span> Why continuity plus a speed bound
+forbids blow-up</h1>
+<p>Finite-time blow-up would require the concentration of a nonzero
+amount of energy into an arbitrarily small region in finite time.</p>
+<p>Let <img role="img" aria-label="\Omega\subset\mathbb{R}^3" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAARBAMAAACVyRntAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIplmds0Q3VQyRKu774nYjM3IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABFElEQVQYGWNgwAm6mhJwyjEwXOB2wCMrwDqBgYFR2VgRVY1pdOnxE0AJF6CwawKDuAGKNNuDDYwvFBjYFiUwcPxkYOACYiQAlGXY4MjAwHSAgbUAKP4bLJesc+ZMA5AFlp3McYC5gIH/AJBfDsQMzCcSQBRUtovLgekBA28AkH8VJNgHIkAAZK/WBgZjO6DhH4DcLyCxA0ACDNgenD4bAmEy/gKaeQHI5nKACID0blTbAOU8YmDgMQCyWRYgZDe89IByWBkYUkFMZL0buHkSwNJZzAsYrDiATLYDQAIMgK7iMIQYzZdmwOCWBxJFcrMCw7YWsEKe/woM5z+BmMynEsAiDK1B1RNkdB9AOHASFFYg9yEAAGo5RyAdwhn5AAAAAElFTkSuQmCC" alt="\Omega\subset\mathbb{R}^3" title="\Omega\subset\mathbb{R}^3" class="math inline" /> be any bounded region. Integrating (1) gives</p>
+<p><img role="img" aria-label="\frac{d}{dt}\int_\Omega u\,dx
+=
+-\int_{\partial\Omega} S\cdot n\,d\sigma
+\le
+\int_{\partial\Omega} |S|\,d\sigma
+\le
+c\int_{\partial\Omega} u\,d\sigma.
+\tag{5}" style="vertical-align:middle" src="data:image/png;base64,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" alt="\frac{d}{dt}\int_\Omega u\,dx
+=
+-\int_{\partial\Omega} S\cdot n\,d\sigma
+\le
+\int_{\partial\Omega} |S|\,d\sigma
+\le
+c\int_{\partial\Omega} u\,d\sigma.
+\tag{5}" title="\frac{d}{dt}\int_\Omega u\,dx
+=
+-\int_{\partial\Omega} S\cdot n\,d\sigma
+\le
+\int_{\partial\Omega} |S|\,d\sigma
+\le
+c\int_{\partial\Omega} u\,d\sigma.
+\tag{5}" class="math display" /></p>
+<p>This inequality bounds the rate at which energy can enter <img role="img" aria-label="\Omega" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIplmds0Q3VQyRKu774nYjM3IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAZUlEQVQIHWNgYFQ2VmQAAtcEBnEDBgaOnwwMXEDMWgAU+83AwH8ASJczMPAGAOmrDAxMHxgY2L4wMDD+YmBgvgAUe8TAwGMApFkZGFKBVBbzAgYrDgYGvjQDBrc8oNx/BYbznxgAWBkSJijPedsAAAAASUVORK5CYII=" alt="\Omega" title="\Omega" class="math inline" /> by a surface
+term.</p>
+<p>Now take <img role="img" aria-label="\Omega = B_r(x)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAAATBAMAAAAaMfxiAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIplmds0Q3VQyRKu774nYjM3IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABe0lEQVQoFX1RPUvDUBQ9ado0rU3bTahCK4IIilQriEIhi+IknZwfog4OkkFwtNg/0NExo6BgZ10qgoMKFkTnUhA6iVYR1EHvy/W1qUgu5J6Pe95HEiC41nlsS9BGCyMsuz25N9W6YlVjWJOwKDCYZ93t18BJVaqwy55JCfMDiNPTV3dAqimdiLJLxB0SX8pg1F6AbFnyChtAm9bWSewqg1FvADcePVeDI8CifXGvDMaBmnFse5SWxPczMwIWEHoGjDeyQ2eymjJgjVdaaUngAAexi6iLFH2kT0Ce5q9sGnG6Kg1LgB1712mxAFpAIu/PAUWS8hjEKIlwjVpUeB9ig6i/Jmm3V6xUXMMhO1KmRvfc0l0smMR999wBkg+mdWCjAbhZEfaSyc08lrYp2SuDfkTR1YbJWYXuzIlpgETiO4fbTi9G7LHzNDEGzBJdhtbOtKtAoS/xR5ySHlLepSL/YZ3MhOCJJt8/sLQcj0OCMaAf8mw+IPI70hjTwA/yNE7PSY8bqgAAAABJRU5ErkJggg==" alt="\Omega = B_r(x)" title="\Omega = B_r(x)" class="math inline" />, a
+ball of radius <img role="img" aria-label="r" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIBAMAAAA2IaO4AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMARIkiZlTdqxDvmc12Bf+SEwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACpJREFUCB1jYFQ0cmRgNVNQZ4iQbBBmaNBiAIKtQMxxA0iwbgASPAcYGAByEwXc4G6iEwAAAABJRU5ErkJggg==" alt="r" title="r" class="math inline" />. The maximal inflow scales like</p>
+<p><img role="img" aria-label="\text{inflow} \;\lesssim\; c\, r^2 \sup_{B_r} u." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJsAAAAhBAMAAAA8HsSsAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZt1EqzK7IplUEHbvzYnKXLkIAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACoklEQVRIDcWUQWgTQRSG/81mu9mNJI2CVAO16qHgQYIWo+AhICIo2BxqaUExUjw3llKKQpMgovXSBAoaT3tLoGISRdCDkoNFCoK9iHiRiBXqJSQkEM2hOju7k6zZTWQl4Bx23vvf/N/M29kEsD2k4bhtTw/DLVzsUbVduoK9tj0GQ8YQa2HZpJgFv3/TLBLlyYdOWT7SqbRzbkSLXXmp0lbbUXamHeuRM2ySWgIf0kKvIlrhFs00PBdb7q5BDla4ietmAx9wm8VOxRK3cK5zGcljv3YsVF2abAizN1YD/Ep5uwKp8Ay7d+brwqEkLS/cNRhT6Sj4r0t7NGlfKjLZ4GeVEzXfMlGm43hICw3k8kIR9HSv4RrkK3iLBzpmon0856CzBGmutEVLQgkhuYGYIlbhSEJOruOCjvMG5CbFkYm8wA0cxaCOw/xZFr2CpODRaSVIBekjwmjAqxAPVwQvVLDOcFFoOPVTqWFLOgatV7W+yC6jqmbKtvpUx/ibKMMJDcAT0m+SbPEnLsY5phVqoY+sxhObNPvECuJqk+By6ulUnCPARWjJgCMWoQnHS0+CmdQ5QxPSDRQQsza4KJYJLqY3S7p25mlLKo68VHoVZbjycBfFDd1knEZBENImw8XxDYdxICz/VK8CXjwOBuYVTNUvrZyZqh8fvzP2I8wVvgNyHBEjR4+X0vsBd57hCqkkTvquzsi11G2iccunvuBy1MJnkNzv70O90B6j1X6PNaw0lHkahotllrMdXAji55svLDFMtIMjb8rzLs6clvNYPWyp/3cxe9B/vo+HcJdwr4+4gQCu9RG3S1ljX3U/qHPp4b/8DGztMgR+xJah9+IE+GLvFbaqoxjIe/xxW57ui9eqvgSCm/28DUjJ7vv9Q6Xj7+Y3kpK8oto5d3IAAAAASUVORK5CYII=" alt="\text{inflow} \;\lesssim\; c\, r^2 \sup_{B_r} u." title="\text{inflow} \;\lesssim\; c\, r^2 \sup_{B_r} u." class="math display" /></p>
+<p>For a point singularity to form at <img role="img" aria-label="x" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARFSZImYQMrvddqvNiR1MEkMAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA1SURBVAgdY2AQMhE1Y2BXqAiYyMDFUJcQwMDAsBqIGRgOATEjyzOGBQyRrNNYHRh8VWTVGQC/jQgwYH9M7AAAAABJRU5ErkJggg==" alt="x" title="x" class="math inline" /> in finite time, the energy density
+would need to scale like</p>
+<p><img role="img" aria-label="u \sim r^{-3}
+\quad \text{as } r\to 0," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAVBAMAAABWCwqnAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABtUlEQVQ4Ea2Sv0vDUBDHv3ltTRpq6SyiBUUqOBRxVAj+A3ZRHByKCOJQLDpIwUEQHYpCRajtlsHBX6CL4Fh0UKFCcFYQR6cIHcRBvHttJUltaaEHyX3ve587XsIDmkdsyGje7LCT6El3ONEcN8OR5s0OO/pGhwMtcP+20aLbditTLB4BPqvNAW2z0JoUVuiqNfHXHUDY/Cv+E1ral/vPd3p+Q1bPUONOu1GXHxs9j6NUV3xCS1BHGYJw7dQKpw+eCS7LGeB2zCLlAtiA8g2lQnk6EJFXUlznAGHQc57Lk+8JNapaSg5Jsl3ALnMa7fqmvDWIQITywFkKCJIY3jGylDwRTCq2+ACTLkAskUOLaB1FHpecJvgG9JIwDrlsjAsbq3Mm+TUg9Srjhxz9E4K/ETd44hQHpo4XWb3zyxv6Sp8NfUROOAFfmskviATnCpYFpRKgznLDL3kSrgiUdLvfxDiZLuBeUi9Qkyxs//yJNGov8eas6nomIirlOA6odgGWBPbprur05+5io6X6BGdVntrpsA5NZtf3NseiJJ2AVoXFWgHKAnNdCv5T3Ypu7op261C0J/oLHI1gS3HCHUkAAAAASUVORK5CYII=" alt="u \sim r^{-3}
+\quad \text{as } r\to 0," title="u \sim r^{-3}
+\quad \text{as } r\to 0," class="math display" /></p>
+<p>so that a finite amount of energy accumulates at a point.</p>
+<p>But then the required inflow rate would scale like <img role="img" aria-label="r^{-1}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAQBAMAAAARyMmYAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARIkiZlTdqxDvmc12uwoKO8UAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABMSURBVAgdY2CAg9YLcCaQEboBmcdMDO+QkpIOA16VCQwMjIpGjhCThaYYMLCaKagj7ImQbBBG8Bq0EGwgaysyj+MFMo8VxXU8B5DkAI9fDjAHUyc4AAAAAElFTkSuQmCC" alt="r^{-1}" title="r^{-1}" class="math inline" />, which is
+incompatible with the surface bound in (5).</p>
+<p>Therefore:</p>
+<blockquote>
+<p>Energy cannot be supplied to a point fast enough to produce a
+finite-time singularity if transport speed is bounded.</p>
+</blockquote>
+<p>This argument is purely geometric and kinematic. It relies only on
+continuity and the causal bound (2), and does not invoke viscosity,
+smoothness, or any constitutive law.</p>
+<h1 data-number="6" id="reconceptualizing-navierstokes"><span class="header-section-number">6</span> Reconceptualizing
+Navier–Stokes</h1>
+<p>The Navier–Stokes equations allow velocity fields with no intrinsic
+speed limit. As a result, they permit mathematical scenarios in which
+energy is delivered to a point arbitrarily fast.</p>
+<p>Physical fluids do not behave this way.</p>
+<p>When flow is reconceptualized as bounded energy transport
+satisfying</p>
+<p><img role="img" aria-label="\partial_t u + \nabla\cdot S = 0,
+\qquad
+|S|\le c\,u," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOsAAAATBAMAAACD5eeSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACvklEQVRIDa2Uv2sTYRjHv5fcXWLSaw43BcktghrUKKKTEASHgmhUsujQEyE6KFpKMYNDrAjdDNo/IKBRBMGAVkQHC4KuNxW3Ll2FqK2DEvV5f9+VayrUZ7jn1/d9P++9974HYPsR/F/ryukKo6bNnHXClP4fbkPd2dM6XtXJ6KBPbSYvjpKVamil9O/fa5CFqpOvY2+gEuYz07PxNB4TlssNdle8LWIHmIhXLZGUQ/K5mkiAfcC4irk/hbEoUTAJYblcY3e+Ms1YdCYWIxvwLM/213ydR/QGcRUWkOsmCiYhLJcr7FIa1Z4+PGmGQGGtH1Q0h+014MVVWEWmkyiYhLBcLrGV66ZloqPIPKPsZBcXeFG+LV5EQMgr7DH5qaZjFthD2F8TFZMQlssF9uId1TnfiDTGpjX/smDV53GF9xW23FUvzsr2+98+uUKTWZtOFGHNMWcKY4Tlco49PaUabtVta8xYG9ZaMcrYA8xzgcIWhnBZwVsR4w6EwosnMYmcboQFSM6x+QUlug3H15hyAGewjQ5M6A1I8KR57WPzKlN6P3GOefsBSwBnkWXKvFU4G2+ykItNzn2QY74zLzE46MN9/LyK8SDLV2l29oYfygHACdpWk7HyNzgd3U4GfSkXWDhvfNb3+CoVZpmurX8LKPnuzTprq03Gco/nrIYZwA3I62+Ll8iFVEizvpRLLDJvI5LRV4SvMcW6tQK6WCXs2B+wSTTWZVdIGl2IYyoWvkK/C+9SsiazPrs/JFdY2JdZ5wuykcAs+cDTlo8O0Xq77/JhGuutyWnItefmApOxyJmZhf0wWZNZX8o1VtQ/Nw5JzESVV6xF4XmisagJ+Ygn/VhTrC9r67AxZV3EvZqpWb6JN4u2iN1s+o36ctXr2om3rbwj03dXKNNXu26WEek/YNNGbxWbNif0mbDT26z6F731livO46zLAAAAAElFTkSuQmCC" alt="\partial_t u + \nabla\cdot S = 0,
+\qquad
+|S|\le c\,u," title="\partial_t u + \nabla\cdot S = 0,
+\qquad
+|S|\le c\,u," class="math display" /></p>
+<p>finite-time blow-up is kinematically excluded.</p>
+<p>Thus, the Millennium Problem does not describe a mystery of nature,
+but a limitation of a Newtonian approximation.</p>
+<h1 data-number="7" id="statement-relative-to-the-clay-problem"><span class="header-section-number">7</span> Statement relative to the Clay
+problem</h1>
+<p>The original formulation of the Clay Millennium Problem is purely
+mathematical and permits flow regimes that are physically unrealizable,
+including unbounded transport speed and instantaneous energy
+delivery.</p>
+<p>As a mathematical exercise, the problem is well posed. As a statement
+about physical fluids, it is not.</p>
+<p>Rather than attempting to resolve the mathematical question within an
+unphysical Newtonian abstraction, we address the physical phenomenon the
+equations were intended to model. When flow is understood as continuous,
+causally bounded energy transport, finite-time blow-up is excluded on
+purely geometric grounds.</p>
+<p>We therefore assert:</p>
+<blockquote>
+<p>The physical phenomenon Navier–Stokes attempts to model —water flow—
+cannot blow up, because energy transport is continuous and causally
+bounded.</p>
+</blockquote>
+<p>Any mathematical model that permits unbounded transport speed
+necessarily admits unphysical singularities.</p>
+<h1 data-number="8" id="conclusion"><span class="header-section-number">8</span> Conclusion</h1>
+<p>Water does not blow up because it flows.</p>
+<p>Flow is the continuous, bounded transport of energy. Once this is
+taken as fundamental, finite-time singularities are excluded by geometry
+alone.</p>
+<p>The Navier–Stokes blow-up problem is therefore not a question about
+fluids, but about the consequences of removing causality from a
+mathematical model.</p>
+<h1 data-number="9" id="closing-remark"><span class="header-section-number">9</span> Closing remark</h1>
+<p>The Clay Millennium Problem asks whether a Newtonian abstraction is
+globally regular. Physics answers a different question: how energy
+moves.</p>
+<p>Energy flows. It flows causally. And because of that, it does not
+blow up.</p>
+</body>
+</html>
