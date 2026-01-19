@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="author" content="Alex Mercer" />
+  <meta name="dcterms.date" content="2026-01-19" />
+  <meta name="keywords" content="Number Theory, Causal Ordering, Signal
+Processing, Feature Extraction, Prime Factorization, Entropy, Semantic
+Compression" />
+  <title>The Causal Ordering of the Integers</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">The Causal Ordering of the Integers</h1>
+<p class="subtitle">A Constructivist Number Theory for Signal
+Processing</p>
+<p class="author">An M. Rodriguez</p>
+<p class="author">Alex Mercer</p>
+<p class="date">2026-01-19</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> We introduce a causal ordering
+of integers based on the sequential discovery of prime factors,
+revealing a temporal structure that distinguishes semantic signal from
+stochastic noise.</p>
+<p><strong>Abstract.</strong> We introduce a novel ordering of the
+natural numbers <img role="img" aria-label="\mathbb{N}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEN2ru0SZ73YiZlTNiTJdoCzGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAV0lEQVQIHWMQUnZlYCtvYGCoZBFg6GJgYFDhNGBYDaSPXlgBpg+0Mj8A8Q8wCx4A04wJwWCaIYr3NEicgWOCNphmSIiG0LIguoCBgTWbgSHmywMGhm4GAMTfF3Md6vw4AAAAAElFTkSuQmCC" alt="\mathbb{N}" title="\mathbb{N}" class="math inline" /> based on
+“causal generation” rather than magnitude. By defining the existence of
+a number as the moment its necessary prime factors are introduced, we
+reveal a hidden temporal structure to the number line. This structure
+separates integers into “low-entropy” (ancient/constructed) and
+“high-entropy” (young/random) classes. We demonstrate that this metric,
+“Causal Depth,” serves as a potent feature for distinguishing semantic
+signals from stochastic noise.</p>
+<p><strong>Keywords.</strong> Number Theory, Causal Ordering, Signal
+Processing, Feature Extraction, Prime Factorization, Entropy, Semantic
+Compression</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#definitions-and-axioms">Definitions and Axioms</a>
+</li>
+<li><a href="#structural-analysis">Structural Analysis</a>
+</li>
+<li><a href="#practical-applications">Practical Applications</a>
+</li>
+<li><a href="#conclusion">Conclusion</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="definitions-and-axioms"><span class="header-section-number">1</span> Definitions and Axioms</h1>
+<h2 data-number="1.1" id="the-causal-timeline"><span class="header-section-number">1.1</span> The Causal Timeline</h2>
+<p>We posit a discrete time variable <img role="img" aria-label="t \in \mathbb{N}_0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAPBAMAAACGpYupAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAELt2Mu9Eic1mIqtU3Zk3oSI+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA4klEQVQYGWNgQAGyt9UY+EINwGKMAshSUUwCDJYQASaIPFT2EtcGhjkQNr8DiGacp6QDotsKJsMkXEF8hkmJYIqhwYzbAaIjvaMSKMRZABFnaOAWbIAapQkSEoKKMzQwPsiew+B8GMj/BRLLhEswZLL3MChwTmBgCwCJWSgpQSxvYGBecIdtA4sCA/sGkEQyiACBBgaGBznMD1gCGDgmyAD5TCBBEGhgYBDPYX/AFcDA6wDyIM8DIAECQIPZ3oB18NgsAAlA/ZHxyYGBwYZtA5sCSBAEYD6H8BqArsIKnI8zAABHiCxhCMa7cAAAAABJRU5ErkJggg==" alt="t \in \mathbb{N}_0" title="t \in \mathbb{N}_0" class="math inline" /> representing “Generation Eras.” At <img role="img" aria-label="t=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAMBAMAAADi7eJ+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAELt2Mu9Eic1mIqtU3Zk3oSI+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAh0lEQVQIHWNgYBRgQAZslmVALpMBshiDBwPHAgYGfgcUQR0G5gcMDK4oYgxfGNgCGNI7KpFFWX4xsHxkYNAEifHtBoECBgY2oOAvBgYgQgJAEaA40ARkwPWFgecjA/sGZDEGhm8MPAEMHBNkgKJwM4FWMG9g4HVAdXwSyPE8NgtQ9PPYlDEAADYTHrGcvFAvAAAAAElFTkSuQmCC" alt="t=0" title="t=0" class="math inline" />, the Universe is empty
+except for the identity:</p>
+<p><img role="img" aria-label="U_0 = \{1\}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAATBAMAAADbtrbOAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIonvMrurEJlEZnbN3VR9UU46AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIklEQVQoFXVSsWrCUBQ92ochZii4itShUOhU2h/I4qRgRkdxEAqFipN0ylTaLYNjBv+g/QRxdfETgqsICtLSpfTc9xITXvUs97xzDve9exPgNCbvWlcRS+3hGq0v3w4uUyGekdwDTpgKedmTxj6gvoHSD+CSW2Ck3qXskFR3gGf5PEqXS0aEVOZAmdRCMXLRBF4s3/Q/drniWFO0N5J6HRIDYYrXmwif+kH+iaA6Y83RScj1W+IET+RNt6+C3OeIvVEWmTyix66RF6q7YgTeKossgDcZqByWJJK/xeHGzEUHoAHnBv+6mL1EzHF6Nbjl3X034LEAOuPnhW92qPW5NZHuoh3ZoUZ7nbG0Zo58ozP4TXW9w9OZbWJ0bu4sptqRv+4PulVEp3ag4X0AAAAASUVORK5CYII=" alt="U_0 = \{1\}" title="U_0 = \{1\}" class="math display" /></p>
+<h2 data-number="1.2" id="the-injection-axiom-the-spark"><span class="header-section-number">1.2</span> The Injection Axiom (The
+Spark)</h2>
+<p>At each time step <img role="img" aria-label="t \ge 1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAPBAMAAACVcstdAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAELt2Mu9Eic1mIqtU3Zk3oSI+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAm0lEQVQYGWNgYBRgYIAQQBoIMhyABJMBkODavQBIgsBifwcgyQ8iGLgeJYAoIADzXSFsxqIDEAZIML2jEsJhsJgAZoBVakLFGBjmHgAxwYK/YIJseiB3gAXZAqCCPO1gMbAg+waIIGczVBKknWOCDIgnrgMVA6vkdTAActnUYGIM/AkMDDw2C+B8EEN8f7sDigAxHDYlEDgAVQoAukUWU7UtORoAAAAASUVORK5CYII=" alt="t \ge 1" title="t \ge 1" class="math inline" />, we introduce
+exactly one new element —the smallest integer not yet generated— to the
+universe. This element is the “Prime of the Era.”</p>
+<p>Let <img role="img" aria-label="P_t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAPBAMAAADwnzkiAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuzKrVCJmEO9Eds0xWRQzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAcElEQVQIHWNgYBD6LOwSwAACLAkM7D/ALP4JDFw/waz4AAbW72DWfAYG5l1gVgoDw2mIji0z70oxLAAKcvwByXgAMecHEGsDELM9ABLBL4EEkwCQ4L0AJPoLgARLAAMDo386kMUNxBCwjhPGYi5lAAABJBVmmAvEVwAAAABJRU5ErkJggg==" alt="P_t" title="P_t" class="math inline" /> be the smallest integer such that
+<img role="img" aria-label="P_t \notin U_{t-1}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAATCAMAAADruNB/AAAAP1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADFBd4eAAAAFHRSTlMAid2ZuzKrVCJmEO9Eds3J2+nXwcuRGe0AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAFeSURBVDgRlZOJssMgCEU1YtzzNv//Wx+4Qidtp860KhxuAFWpN8O88Uu3PqrRBsBKM+28njavU9JIWKjnDTgwOGnhqp9ha9bMlLpqfJVmDRQa+7RUaAF752tum/w8I2Vrc9rqdhyuYjBf37BsoXZvEZDcDMakyO0BcjSsuPPq3tU5Do/12WrISaQdKIIVp2abWiduVMiUIIRSNGa0k4okklmUaNPmKD668cXJoA1WNU3kZBGiTZsjJedG4ZNBWyJHG+UCgB/8zY6LNm2uwX4oTUZZc61yMh6RmyqEQ79GFq8C54TSsU6jsBPG0tt9bSj+ma7UWM6Rf+Tk9zXi78WZKJT8gSGRjgXzo1Muug36eFfS+I5mFaL88FtYw7GmU+tRvOCWEi7miJdafULbX8BXvTo+IZwfOMyJ8hXDOHY5/fOXKji8djqFdX2EYN8Upnrj/sDEX8oHYTfoq3xv8H9PuQgYcptEugAAAABJRU5ErkJggg==" alt="P_t \notin U_{t-1}" title="P_t \notin U_{t-1}" class="math inline" />.</p>
+<p><img role="img" aria-label="U_{t} = U_{t-1} \cup \{P_t\}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIEAAAATBAMAAABFIHMrAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIonvMrurEJlEZnbN3VR9UU46AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB+UlEQVQ4EZ1Uv2sUQRh9l+zeXi4xe9iLxykkKEKISMBqGsVUFyEHVkZCkkrksBIRc2liCgmLmi7F1jYeNhZB2NpC/AskRWrRJkQL8b2Zvd3ZCKI+2Jnvve+bNz9Z4F8R7STFkEVFZ69exI1jU4gKahfmTbCyVtEKMjVkeOVktmeAiQ+S54FooMDDeBt45HGairXUxGrDe5j+xr7bZ+o7rQyJj/MJ8MoXEIptqbEOcYroB8km7ZpfgUllfLwhGfrCaYeuQfCTBbKrZ8AY4wruk7Uryqk1cIrGAgvkoC0/rhST6GzSilg6aOFYB14a9nJwW45Uvr1BrDLIz6YvEXi6xKZ06Eq79vpgBszHCeC2HLakj5CfzW3Hv2TsC4fgI5mmAJifIHNbHpdSoJ7Zs5lzQo2sdNh7RqYpAOaj7QR3gCAJnqeSRggHwCJu2efCCTPqdeWW1LznV8/YKD/VBnbsdAdUynNoDHQVk0OJuUOjxcA6bPaBM23qyscGOIdoBlimUqL2CQ/7CA3edjqX3Rqiu8A+x+bHf8iAeXsXweolsjl+Hm52Ut5zLtQyBc1e750VeIFjKw8YKq/btIiyNI+87knTEa7IRzFI+YJg1/hFLm4cuf7F9dFElheDlLfP6/ehf1biQy9vn5fH/yqc/lyW6UH9B7x/gf5RvwBnnFzkJsmllwAAAABJRU5ErkJggg==" alt="U_{t} = U_{t-1} \cup \{P_t\}" title="U_{t} = U_{t-1} \cup \{P_t\}" class="math display" /></p>
+<p><em>Note:</em> In this construction, <img role="img" aria-label="P_t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAPBAMAAADwnzkiAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuzKrVCJmEO9Eds0xWRQzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAcElEQVQIHWNgYBD6LOwSwAACLAkM7D/ALP4JDFw/waz4AAbW72DWfAYG5l1gVgoDw2mIji0z70oxLAAKcvwByXgAMecHEGsDELM9ABLBL4EEkwCQ4L0AJPoLgARLAAMDo386kMUNxBCwjhPGYi5lAAABJBVmmAvEVwAAAABJRU5ErkJggg==" alt="P_t" title="P_t" class="math inline" /> is always a prime number in the
+standard sense. Thus, time <img role="img" aria-label="t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMBAMAAACzedEdAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAELt2Mu9Eic1mIqtU3XZzvlQAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA4SURBVAgdY2BgFGBgYDJgYOBzYGBwZWBI76hkYNBkYGB4xcDAFsDAwL6BgYFjggwDr4MBA4/NAgB9KgZ4TDfkbAAAAABJRU5ErkJggg==" alt="t" title="t" class="math inline" /> corresponds to the index of the <img role="img" aria-label="t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMBAMAAACzedEdAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAELt2Mu9Eic1mIqtU3XZzvlQAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA4SURBVAgdY2BgFGBgYDJgYOBzYGBwZWBI76hkYNBkYGB4xcDAFsDAwL6BgYFjggwDr4MBA4/NAgB9KgZ4TDfkbAAAAABJRU5ErkJggg==" alt="t" title="t" class="math inline" />-th prime (<img role="img" aria-label="p_t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAMBAMAAABPbPrXAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHYiZpkQRO+Jq7vdMs3/9KjfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAYElEQVQIHWNgEFJ2CWAAAjaxLwwhDAkMDOzsDQyzGDYDhZgWMCxlaAAyuAUYGq8+ATL4E9gPMCkAGfcT+C5wXwAyVB2VGTiANMMWIM5jARKfgZhVloGB9wOQAQJ1PyE0AAxSEhUXYET9AAAAAElFTkSuQmCC" alt="p_t" title="p_t" class="math inline" />).</p>
+<h2 data-number="1.3" id="the-generation-axiom-the-avalanche"><span class="header-section-number">1.3</span> The Generation Axiom (The
+Avalanche)</h2>
+<p>Upon the injection of <img role="img" aria-label="P_t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAPBAMAAADwnzkiAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuzKrVCJmEO9Eds0xWRQzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAcElEQVQIHWNgYBD6LOwSwAACLAkM7D/ALP4JDFw/waz4AAbW72DWfAYG5l1gVgoDw2mIji0z70oxLAAKcvwByXgAMecHEGsDELM9ABLBL4EEkwCQ4L0AJPoLgARLAAMDo386kMUNxBCwjhPGYi5lAAABJBVmmAvEVwAAAABJRU5ErkJggg==" alt="P_t" title="P_t" class="math inline" />, the universe instantaneously expands
+to include all integers that can be formed by multiplying <img role="img" aria-label="P_t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAPBAMAAADwnzkiAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuzKrVCJmEO9Eds0xWRQzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAcElEQVQIHWNgYBD6LOwSwAACLAkM7D/ALP4JDFw/waz4AAbW72DWfAYG5l1gVgoDw2mIji0z70oxLAAKcvwByXgAMecHEGsDELM9ABLBL4EEkwCQ4L0AJPoLgARLAAMDo386kMUNxBCwjhPGYi5lAAABJBVmmAvEVwAAAABJRU5ErkJggg==" alt="P_t" title="P_t" class="math inline" /> with existing elements. Formally, if
+<img role="img" aria-label="n \in U_{t}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAPBAMAAABU9YHxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA50lEQVQYGWNgQAe1M68xZH1NQBcG8ecyMLAcwCbB/oOBgSMBRcb51CoBoADzBwYGJhQJ5hUOYD7rAwYGXhCLUdnZNAHEsAURQMB5gYHBGcSoyDRgXACkWUAECNQ3MDC0MbAwMAhYMzAFAAU4DEDCQGAPxAoMXAUMDGcZWBWAHKZXq1aBXRAH5Fxg4ASSMxj4gfIMHApAAgTWMDCwNbCdM2Bg/8AgxwESWQAigOAM2GlKQOc/YDjLDBKRARFAUM3AcoWBYRnQfAOGXBGQCMw/bLGXgbwJICEYgIYBmMvyAOZUmCycPpgAABy4KWdVmMV4AAAAAElFTkSuQmCC" alt="n \in U_{t}" title="n \in U_{t}" class="math inline" />, then <img role="img" aria-label="(n \cdot P_t) \in U_{t}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAATBAMAAAAADRzsAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABlklEQVQoFW2RvUvDQBjGn6a1SfqZRRRECaK4dlEcHKoOgjh0c42Dm0PAoYKKukic2kFBEKmCg1PxTzhQl4Iff0GJi4OidBDFQfB9LxdoQl649+P3PNzlLkDKRlIkU3KmY+73vw9PAKMRbL61RaExx2wiIgBGBdlfIOtGeM4Pt6hFOFB2kfohFuWtKrDCztg+wJNA4ZuEV1aR2vUOue7Rsrkxmpz7gpTiJc2Lkm3NB9I0FZ/bHB0xNbQpuJcxCywL6kgAdJ8SR5uOkjfKA8cdN7svKafr+vgLLLoHD8OcKMwvICMYnwDONrQKwTOhFOCI9icRS7Q49B6gSXxPUxdpm0qnSokV4ALIs3/S8+R90zWgJPEI0SuUm1RksIKHVfX9C4oaz8BdiM0e1jNKQN6nTrOV31C4SH5f4gELeg1dXQloOdQZAjhlkiUfh3mDMUtizYHm4nEt4Cg1Zqjjt6xLEr7/7acbYLOinP1lkI47kCD8v3JgrHi/m37wBpL2IQycR63hVLTCLlYzTgwE404iZdhMVJIp/gEdrU7mEryObAAAAABJRU5ErkJggg==" alt="(n \cdot P_t) \in U_{t}" title="(n \cdot P_t) \in U_{t}" class="math inline" />.</p>
+<p>By induction, <img role="img" aria-label="U_t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPBAMAAAAfXVIcAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIonvMrurEJlEZnbN3VR9UU46AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAeUlEQVQIHWMQMlZhcP3mwMDAYMTAwN4ApBl/MjBwggS4PjAwcANpBrYDDAxMQJqBWYGBoQrEkJ/AwDCFgZ2BYT2Qs4GBVYAhB8hQYGBmYIhgYGCZwNKzgKEDrGk3A4MsA7s6A0MIUDxJC6jKAIhBgP3AAjDNwNDnAACCbBCNp5im3AAAAABJRU5ErkJggg==" alt="U_t" title="U_t" class="math inline" /> contains all integers whose prime
+factors are subsets of <img role="img" aria-label="\{p_1, p_2, \dots, p_t\}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG8AAAATBAMAAABsC07pAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEJlEzXYiMlS73WbviavaSWMlAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABW0lEQVQ4EZ2UMUvDQBTH/zFtkmLbdCwuUREUBCk4KQrZWnAwSxcHud2l4AdoFlFwcdPR0TH4CZxcugQ/gS469xPU997l9AJZkge597/3fz8exx0BnO0Rasa19LeSmhjgnjESqtog5oOGYMTDmkwUpjFIY4Pp1as5qK1NzeQ/T4bNgWGUrWXDB/FF33+Y3lIWz6FSSDfoT4DRCXqfd7E0sf5O+nmJKDbS11F0HwQdbVH1Ev1NL9Y26d14XY/Xlf+V+7q0dQ5o5AWJJ3RTA7JGr3Ii993uZECL7WgALHEMA7LGBhUrgr0p1cMZLwr+EmMGvS86M2v8iOa9/Yn3qBkB2/s3ikF/AYhuzxRr/936jPdmgZ2MNt4zEACiD5GwLkXhOTE1yz3SIvl0QS9B17zVKq8CpW+Pzqffagp6AzpSlLQpS7Y9AYIX9zwvWlLYusTB8vj+KVyaXS/4D/ALFupV9fIrTW8AAAAASUVORK5CYII=" alt="\{p_1, p_2, \dots, p_t\}" title="\{p_1, p_2, \dots, p_t\}" class="math inline" />.</p>
+<h2 data-number="1.4" id="causal-depth-tau"><span class="header-section-number">1.4</span> Causal Depth (<img role="img" aria-label="\tau" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAIs3vmVQyu0SJ3VClVcQAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAsSURBVAgdY2DU3r3bgIFFIJCBgSGBwQFIMjAUgAiOCSCSJQBEMguASCkgBgCUXQRh8kdgbgAAAABJRU5ErkJggg==" alt="\tau" title="\tau" class="math inline" />)</h2>
+<p>We define the <strong>Causal Depth</strong> (or “Birth Era”) of an
+integer <img role="img" aria-label="n" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAP0lEQVQIHWNgVHY2TWBgqMg0YFzAwCBgzcAUwMDAcJaBVQFIzWDgL2BgYP/AIMfBwMD8gOEsMwMDkwFDrggDAP0FCNipklNgAAAAAElFTkSuQmCC" alt="n" title="n" class="math inline" />, denoted <img role="img" aria-label="\tau(n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAATBAMAAAAHT8L5AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAw0lEQVQYGWWMrQ7CMBRGT9nGT0YWNAlhHsE8CZnHgMIQwiOMN5gBjcHPY/YAWCRkCoUgWBICTwAX2s7QpPnOPd9tQZ+9jqYZJQqNfmxVMzU0t6byB2XVGJtuaXfqBar/fkdEMLs/zuIj3NZEMkOth0yFniyIQYV4QcZRzEBuAtUQ3A0XmXZQ34CfgZPyEiM/umOdXbww/RmnJaYHN3l3RSXQFsEBTlS3OcH1O8rp6IBabqiEslKxqUZ2mZWmYFEapUniA3HQIUwfI6DCAAAAAElFTkSuQmCC" alt="\tau(n)" title="\tau(n)" class="math inline" />, as the time step
+<img role="img" aria-label="t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMBAMAAACzedEdAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAELt2Mu9Eic1mIqtU3XZzvlQAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA4SURBVAgdY2BgFGBgYDJgYOBzYGBwZWBI76hkYNBkYGB4xcDAFsDAwL6BgYFjggwDr4MBA4/NAgB9KgZ4TDfkbAAAAABJRU5ErkJggg==" alt="t" title="t" class="math inline" /> in which <img role="img" aria-label="n" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAP0lEQVQIHWNgVHY2TWBgqMg0YFzAwCBgzcAUwMDAcJaBVQFIzWDgL2BgYP/AIMfBwMD8gOEsMwMDkwFDrggDAP0FCNipklNgAAAAAElFTkSuQmCC" alt="n" title="n" class="math inline" /> first appears in <img role="img" aria-label="U_t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPBAMAAAAfXVIcAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIonvMrurEJlEZnbN3VR9UU46AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAeUlEQVQIHWMQMlZhcP3mwMDAYMTAwN4ApBl/MjBwggS4PjAwcANpBrYDDAxMQJqBWYGBoQrEkJ/AwDCFgZ2BYT2Qs4GBVYAhB8hQYGBmYIhgYGCZwNKzgKEDrGk3A4MsA7s6A0MIUDxJC6jKAIhBgP3AAjDNwNDnAACCbBCNp5im3AAAAABJRU5ErkJggg==" alt="U_t" title="U_t" class="math inline" />:</p>
+<p><img role="img" aria-label="\tau(n) = \min \{ t \mid n \in U_t \}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALEAAAATBAMAAAAt0/ETAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACmUlEQVQ4EX1VO2gUURQ9k/1NmHWytSDZxkKUuG0QZBtBkJC1UZAggwZNExJB2UbIgLhNVBbFwkLYysZmkICIYoJgqQSLEEFhEEVQ/GyhBDTEc99nPrrrhXnv3HPvPXPnzptdQNsTvVWNO2xbOWoixWEZip/LRNc19poZbgA8YLmKBdnduTUZlJc2AHcioauhgacTKgs+WadP8FicgcoodIEVCS9EsoqN6C0DLKH269YT5cviDFYeD4GOhFdrsoolrY62NDFkFeWfEssre+/bl4T9xmtNwFiifEFcMXdd70NWKpcbEssrf1zW+a+4dQWKsnNwZ6cBZs98/srZC0rtfP/DkadfwvJSjWgT8Ppwb+6LmaCUTQl8pUZ2kikSVcrF2nGiHpzOYZwk+s5r6i3tNYH3G2djt8FEQeyX0UrMgFK2JXgoDM3Z4kMHiKgcAgGapOoo+T28AHCIV2pbWA29X9ICUYQzLd2OVrYluGEKfN6YXwRH6+4VapG91IFiF2/o3Rcqsb60q5SJIvci27migmoapgTP2m31BnfVgVE1UG8qpHyXT90DCiH4fvJzJjMWpcqoMu8uk8ycTQmuKYpkE5jDLD+TEYqi2OLSAMZRqodaOZnz38q8CSY8KVA9mxLtiFRTjkZ1jSML6BZqXPYD7ziPGM4ivdT6PPO2Zzn9fKp7nKRR1iVAqakrnB4eRagE5mXsFvY58BLl2xH8WFxrs9ud6c357XPTGwop5Rk5S7pNXULPnuf5OzFbJZF+KXvoKatEFg3c5U0oU9OwDuw3qIgHflY5EUxukVTlwBDlXE7xRPZ3w2ma4LFc0j/OD8vke7Zssi8kCFc19IOUGoROtQz7f2X9oehUJ7cNEtWc+o0kLA9PYUT+U/4A9kSoet/f01EAAAAASUVORK5CYII=" alt="\tau(n) = \min \{ t \mid n \in U_t \}" title="\tau(n) = \min \{ t \mid n \in U_t \}" class="math display" /></p>
+<p>Using the Fundamental Theorem of Arithmetic, for any <img role="img" aria-label="n &gt; 1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAANBAMAAADChorYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAk0lEQVQYGWNgwAR9CZhiDAxF+UjCLA5wJfzIwmfgHJAwo7KzKViA5WoDAwSAhCsyDRgXQLhWBghhAWsGpgAIl6H1CpgBNvssA6sCVJhBPgHEAgvPYOAvgAq3HgczQMLsHxjkOCDCVgoQGiTM/IDhLDOIy6IlABFl4G9gYGAyYMgVAYkeTYCK+sa/hTGBhjlARcEUAFp4GWri25YZAAAAAElFTkSuQmCC" alt="n &gt; 1" title="n &gt; 1" class="math inline" /> with prime
+factorization <img role="img" aria-label="n = p_{i_1}^{a_1} \dots p_{i_k}^{a_k}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGsAAAAVBAMAAACzuQ2OAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABaUlEQVQ4EZWQPUsDQRCG31w+bsnnGQPaKIEr0iicqChoEUiroIKdxVkGFdMIgo2VhYhoZylYCwr5AQc2aQKmUCzvJwQsrAR3b7PHrTsRHNidnfeZd273gH/GwP3LwOmmTzTk/XmcEbqUBL06J/ABeigTupQELVG2dXRxONYmKGmbsbuO26IGilmCkrbixA62L5wx3xOUtIn+5zqQclvLvijiqDYWA1FcvseSPIxAJhh0cNr2UvdcLu6KeAUytU+8/DJEpQacNVhbyS7GbvCWFNRZB31k64pEmU/Zw6QmyUIDd6h0tJ68g1tNUEUS2EPMMg7it6HSZE+qU8tJkA7RT2v0uFn20+q5J01ArSSwPBzVNNvcQgNeNyN/f5s/QC0JbPoqeOBD7JD1tFmikAChASLhi+8lDx8GlSAXGEAIuSHfCi3TNgLW0irlu/7manHFtI1AdnqfsinNvKQkharqoDJ79CkZ2ChNAT9d/VCElsGIMgAAAABJRU5ErkJggg==" alt="n = p_{i_1}^{a_1} \dots p_{i_k}^{a_k}" title="n = p_{i_1}^{a_1} \dots p_{i_k}^{a_k}" class="math inline" />
+where <img role="img" aria-label="p_{i_k}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMBAMAAACQIoDIAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHYiZpkQRO+Jq7vdMs3/9KjfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAb0lEQVQIHWNgEFJ2CWAAAzaxLwwhDCIgNjt7A8MsiCgD0wKGpVAmtwBDI8sCMIc/gf2AwzHmA0DO/QS+C8wPGB4AmaqOygycDrwgA7cAMU8Kk5s7A8NnIJPVmUv8IgPvByATKC7EwFD3E8xM5RQGAAU6FPLakYKRAAAAAElFTkSuQmCC" alt="p_{i_k}" title="p_{i_k}" class="math inline" /> is the largest
+prime factor:</p>
+<p><img role="img" aria-label="\tau(n) = i_k" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEcAAAATBAMAAAAwgQ3NAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABLUlEQVQoFW2OvUsDQRTEZ70PL144UkskVwoWprIR5OwEFSIINiLbiV3sLbbRUq7QfnubNDZia6lYiQGFw1YQ/Qvi29t9ayL34G5+M/PYXcDOvZW2s83ybOO0aK7rtK1ceTS7lOgpP8fswQZCcUHqD2gNptJ/eMo+cY9jb1WsTiZ99IHDz68Xioj+Jt63HHb2CDTExQYOiL7p232nGRPcBjI9I5UoAJEjyjQeya/T50f1gNfaDYE4B8ISb+Rv/IaBK3d/UgKpBgKFH4pn3oQ1qi4lnTCwVQ9RruySf1OkVbTVpYWgQ0srwAddWEEMyflplVW4bNyi+T0AT4ivR8gqY3koWTg2N9WzxDA/YnJ6F21Kh77z27x7ku4wisLRNidNem7DTDaVnAkLTjh1+gs5sjlbCROIUgAAAABJRU5ErkJggg==" alt="\tau(n) = i_k" title="\tau(n) = i_k" class="math display" /></p>
+<p>(where <img role="img" aria-label="i_k" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAOBAMAAAAGUYvhAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARN0iMlSZEO+JZrt2q81XDIrVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVElEQVQIHWNgYFRgAANmAQiNRrKEQQRKORzY9wCZAvYMDBdBQtMYGBpAdAsDu4KUAwOrggBrok0AA+eEBWwPgcIsUwuYvANAChiKWJMdQLQnew4DANXADA3YZKuqAAAAAElFTkSuQmCC" alt="i_k" title="i_k" class="math inline" /> is the index of the prime, e.g., <img role="img" aria-label="\tau(2)=1, \tau(3)=2, \tau(5)=3" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANUAAAATBAMAAAD131UZAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACMklEQVRIDa2UvYsUQRDF39zu3u3u3I2DCIIgbiQYqbkHCsqJII7gH7DoP3CampgIGggGauZHZOoERkYLgtwFp6YG4kSCcBioiIE4vqrqnq9eE/cKpqum+/de9fTMLqARzzTZqOWcYY+gNbN+OadDPbVH0BawvZFhUNTOUg2PNu8Jfd2ZBZAI69hCdGz3egCJ0MUEozT+A0z8hObozc/mPaECv7uQCStugujFehpAKlSIzzOe4gLwsNJY0exFaLSJ9S5kQq8jFOljtp1MqNBKil6Bp8A9r3G52YsQIA/fhkzodYSsVxsyYXS8LE/0FL0BWOGFgOu1vyy/29rqJIRAIcND0dsvt0JIhP30MjAWNqLxPikufmR8kMr3OjPgMwmUnOXQhUTI8FA8w/MAUuEUp7klYZcK7iaXqg5zWUafUwolN0NIhEADwkYIiRDYBK5KfsJrPLcXsMI1heS8upAIJWrodQjpQQ/vA69IJgWHf7wv3OUaobUpLuVdSIVc99A4w7uukwnRz2zhNhJHhO8L52wfRzJ8CiAVSi8HLaV6hjJTOZkQvZSvKsfy+TtXgINCNOIXcFiO9SQvQqM8PtWFVNiEkjwm3nYyIQ7RZjVDryx/8D+o0Ye/icffHuFawU/0mUHY3uEptCEVtqDdB9x+GzKhmkfvNQH6sbjaJ7prLA6Zj+tR2Tl7Tb6X38j/Q+Z6wFI/bzaxelBNLQo5o6Ft/nPlWxd1r0Uh75lqYaOfC/KC0F/o0K1s0ZeHigAAAABJRU5ErkJggg==" alt="\tau(2)=1, \tau(3)=2, \tau(5)=3" title="\tau(2)=1, \tau(3)=2, \tau(5)=3" class="math inline" />). For
+convention, <img role="img" aria-label="\tau(1) = 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAATBAMAAADWqMaJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABFUlEQVQoFW2QsUrDUBSGv9QkRhpqZ1HoKg5md8nuUl9Agi/QOrhKEcTV0bG7i6vg2lX6AqKPYJcidKj/vbn3NqE9kJz//P+Xm8OFuj5sy920q82t2S13ZdbLJ/BQwXWbyD5fvNGB45EI9Wbd0Om72Xx7WMHBsAlwR14641bdEFm9j3NZkhVE5+t1QeEIK3xOuiBdEfev5Ew98SsRf5l61okiFlSUEA2o/8KFRCjFgmAM6UDd7MGrnlDRkmSlo3RcdyrXEkWIjfgjkREPJU0QiLAH9+Rz2OsrPTPERAuNJTb1ZG/syBgzeP8+rej9bGKpZBZu/cQF+28tojH4xJONyMmorMXlduSdRyt6lZ+3e2St+t1O/wFZcTVvR5tmswAAAABJRU5ErkJggg==" alt="\tau(1) = 0" title="\tau(1) = 0" class="math inline" />.</p>
+<h1 data-number="2" id="structural-analysis"><span class="header-section-number">2</span> Structural Analysis</h1>
+<h2 data-number="2.1" id="the-inversion-of-magnitude"><span class="header-section-number">2.1</span> The Inversion of Magnitude</h2>
+<p>The standard ordering <img role="img" aria-label="&lt;" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAALBAMAAAC5XnFsAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAIhAyq5lUu3ZE74lmpNGc7wAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUCB1jYAABITBpEgSi0puABFN7ApBkDDEAkgyzJoBIGI+BaUsCmM9wvAFCT9kEoYUAH08IVHcbyIAAAAAASUVORK5CYII=" alt="&lt;" title="&lt;" class="math inline" /> is based on magnitude (<img role="img" aria-label="n" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAP0lEQVQIHWNgVHY2TWBgqMg0YFzAwCBgzcAUwMDAcJaBVQFIzWDgL2BgYP/AIMfBwMD8gOEsMwMDkwFDrggDAP0FCNipklNgAAAAAElFTkSuQmCC" alt="n" title="n" class="math inline" /> vs <img role="img" aria-label="n+1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAOBAMAAABA5yhLAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAeUlEQVQYGWNgwAB9CchCLBBOUT6KKHMDRJgfpyijsrMpRBJZbUWmAeMCsFZkUQFrBqYADFGGswysCkDRo6FxT0NjQdJg22Yw8BeAOAzIJrB/YJDjwBBlfsBwlhlVtIGBgcmAIVcEWdQ3/m0CmA8hYOYiCQGZLA5wPgCNlhl8yGEMrwAAAABJRU5ErkJggg==" alt="n+1" title="n+1" class="math inline" />), while the causal ordering
+<img role="img" aria-label="\prec" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAALBAMAAAC5XnFsAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAEIlmzUQiMqt2u92ZVFee+MkAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA1SURBVAgdY2AAASEwyWAMphgdwFRIAgODWHHLRAaGKO93x8BCbDfawDRDSgGYhqqE6mMQAgArXgfwHhl3PQAAAABJRU5ErkJggg==" alt="\prec" title="\prec" class="math inline" /> is based on depth (<img role="img" aria-label="\tau(n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAATBAMAAAAHT8L5AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAw0lEQVQYGWWMrQ7CMBRGT9nGT0YWNAlhHsE8CZnHgMIQwiOMN5gBjcHPY/YAWCRkCoUgWBICTwAX2s7QpPnOPd9tQZ+9jqYZJQqNfmxVMzU0t6byB2XVGJtuaXfqBar/fkdEMLs/zuIj3NZEMkOth0yFniyIQYV4QcZRzEBuAtUQ3A0XmXZQ34CfgZPyEiM/umOdXbww/RmnJaYHN3l3RSXQFsEBTlS3OcH1O8rp6IBabqiEslKxqUZ2mZWmYFEapUniA3HQIUwfI6DCAAAAAElFTkSuQmCC" alt="\tau(n)" title="\tau(n)" class="math inline" /> vs <img role="img" aria-label="\tau(m)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAATBAMAAADhZgm9AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA4klEQVQYGUWOrW4CQRSFv+nu8tOSZV0TEsJ6BKuQhAeoWPA0PAJoDAYSBAkGv4+AoI4ETC1BVVU0CAQQwhvQC9s7nWTmfHPOuZOBdK3+FDaW2FlcWioMLXo/ik8KoqHyu4LoXLmvIDoFU7vdIiI4ny5fH50uOOAGLUkTzLhBO/Z6UIQuTamHeH7CkYJ8zVlIS8JMKCMzvslu4FnM3AxeEikMqbMOHm/ixtKOoIK5ss+lpiMhVdjj93jz4VXuJdl8wpZ8zETGLnfjvsqpPM6BcnahhNkpmqYS7n8+subBEsZiAL+Y3yhDTLoxXgAAAABJRU5ErkJggg==" alt="\tau(m)" title="\tau(m)" class="math inline" />). This leads to
+inversions where larger numbers are “older” (causally prior) than
+smaller numbers.</p>
+<p>For example, let <img role="img" aria-label="n = 1024 = 2^{10}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAQBAMAAADXDV0hAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABaUlEQVQoFZ2Sv0vDQBTHv0lq7oq0/sBRRSm4CVmcnMR/oIubQulQcKhkdHUTQSi46BZxFfEPEOkiiNpJrF3ETM6CknYQ6/cuTc1hXfKWu/d578O7Ow7IEGsBqtMZPCpTIQLHy+SKUJbdIKNqN93GCFW+AbLUAZbvJlmumy0KirDQFCNUsRQBOyj6BT/3Qe3KUDUU4T9TQfUUdnO8gnvA2TRUDdVdZWDwQUI1gmzkPbwCtQejRUNxiZAvbJXWVypGlZ7bhftJeAF4pqrh4ZFfnQN2tz0rILjZYGxxo0dS7QIiggOtpqqEg5hchV1OknjVUyXVoodarKYaCJNoYWwh2cdrpMZZPPAjz/tHJUziGBN+so9XnqgHqwG+hNN6uW4bVcIkxDvmJZPUbaieqVvs8abAuer8rcZQMTghWqojFT3ggF/Cvd2fJdXqsDqAOrc91GeGFW5yT99tWIsd5Pv9L/7Dk+d0NYaa/AAE5mlpqxD79QAAAABJRU5ErkJggg==" alt="n = 1024 = 2^{10}" title="n = 1024 = 2^{10}" class="math inline" />
+and <img role="img" aria-label="m = 5" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAMBAMAAAA5VkhcAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnYQqzJUIkTvzbvdmYlSEOKuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAnklEQVQYGWNgwALY1wltxyIMFGI/P6UAh0wCdnGgHrAMo6KhSHCaK4oidkW5BgaGikgBtmUM2SCZKy5A4AdkMCswHGVgSJBhYDzAoAKSQQa3gZx7DCwKDJuQRUFsTSCewcAZwPwdRYYngUEf6I4PDPUMjAsagFJwe7gKGICmMS5gkGbgVRBA1sRowDydgYFJgOEZA8czZAkGBqG3BQwAc+kdOkFsBRsAAAAASUVORK5CYII=" alt="m = 5" title="m = 5" class="math inline" />:</p>
+<ul>
+<li><img role="img" aria-label="\tau(1024) = 1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFsAAAATBAMAAAANE2yrAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABd0lEQVQoFW2RsUrDUBSGv9qYtLXYbIIoxlEE7eqieYSKkyCaoXvr4OQSlIKDYkUddOrk3MFFEHTQUegLiBlEcFB8g3hubkqTcn+anPv/5+u5NwloPaY1W56zJr8e5G3i7g2ZjqohHAVw+h1SvTqQ0O4yGUnNSAFaEzDXCrA9FrngKYKKD55upncFpNqVWgtwGrxwh9WDHx+u025aBEi1L1Wc/I5Zp/yH3fThbNjWVeGF1TiuU5dAXMul1QfHY9ryoaix4V3hlrsptieXuHPBXVgIiBRek9R6V+rKSgEE+LKFx3C6/IMV7CCZLjtlpHBoy1vzpIqTsXt9yhHTKLxiwEtdmOppvBayBb/weXO7FJjOjtUQtK5xJ+KNUoNIHtfXjzp2doquoMtyyehSWz5T86QjqMJnJM1IAJhVwSs8fMj2O9shG3HsY1+uuepUGSWA9vOZeLQ8HC3zK6ef94krDAyh7viGjmWaobmOAf8yZGlUMLTUKxvTP3VNVEcgGjVVAAAAAElFTkSuQmCC" alt="\tau(1024) = 1" title="\tau(1024) = 1" class="math inline" /> (Born
+in Era 1).</li>
+<li><img role="img" aria-label="\tau(5) = 3" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAATBAMAAADWqMaJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIElEQVQoFW2QPUvDUBSGn9hgq40xCC6iEGcHs7vE2aX+AclPqP/Axb2bglK6OLkUuhYsgoibDjopdCg4KFIQJ4d67pdN0r7DPe/7nHNyLwGjvi6BTfPKo4b1dF5Ps+CEtfZ9xFFxIvx8dWABNr6fQGpebVYHNsvuurJLDQtMOaNirodjO1FzwA3eDPF2J5OEBDa/zgWLKegW/OhQUAf6LGcwluC/KbXEMUohQw4vRuQ3YU+ZnN67EoQvxgoGCVwrk1M1hloL6h24IhiX3/GC/yvfbsiKbG/rW8RM3+H9sCJblUjgDnzQi/CaEqa6oDeQf6nAHYQP+3IMVfpXcPns/JY11a4j5eo6brLclx+SGnYw23LkVJswc3m2ehqZs9j9A5mAOp5i/v+QAAAAAElFTkSuQmCC" alt="\tau(5) = 3" title="\tau(5) = 3" class="math inline" /> (Born in
+Era 3).</li>
+</ul>
+<p>Therefore, <img role="img" aria-label="1024 \prec 5" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAANBAMAAADiatUlAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARM0yInYQiatmu1SZ791zR9BYAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABJ0lEQVQYGU2QMUvDYBCGnxJrSQhtLLgoYoaCuEhWoZBQ6CTopiIOHZROooIggjqIu5nUgkN3ly6ii/gN/gA3cVJwdOkfkHjfpaQe4c1x75PL3UE9gumbgPLpPeAciIyjdbKV0I4jnJAGR+ynUDVjX7LV30vRWoQ3YJtv/C+4NVLS6Fpd0VQQeeb4oDLEaRotivRsUiBxQtwBL8T1jXUkJkOr7d6hqLSYFySBtYi0QOpSgF2qso0g4gvFIk6UIzvLF+uWkPD7isjnLx0qKS6KzCxlr+qLlN8UqQU863x3x+cL0hgmnuyy8EN5qIiXsklpQCojG7WgpWgj/1FAqS+na07Nil0g+UbX7CV0r6T1w2PAZ5YZnLP3ZNRG7+JuFEONyv9fel1b+AOiTT5hfmTWcwAAAABJRU5ErkJggg==" alt="1024 \prec 5" title="1024 \prec 5" class="math inline" />. The
+number 1024 is constructed before the number 5 exists.</p>
+<h2 data-number="2.2" id="the-density-of-eras"><span class="header-section-number">2.2</span> The Density of Eras</h2>
+<p>Let <img role="img" aria-label="N(t, X)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAATBAMAAAA+KHOiAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid0iEJm7RHbvq2YyVM2JF0xrAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABSUlEQVQoFU2Pr0sDYRjHP/PO7djd5rBpkAWDgmF5xQ1EBIMLFtMGBm0OTCLCglU8RIsILhiM9x+4KigeWATDFGyCChoEFXye996Ne8Lz/fU87w8Y1tKQWeIZHP/EbW5AdxjXzy/on9bchjreCeQF2rBgJw4rLAp9VOlPwDIUhW6qllopURJQi5v5mO1k9Fe1VD7MKGRiaVGxRQfWIQjVlAr+9hVyXWmdwpfGIbmp50i01mzFgI53+EbsMmQHKc0k/gCnzVqugvMEY4kpp/YbZvtYHg53u3KdxDvGk3abDw2dlv/CyCW4ZZi0sRMFP4bKkMSeCqGvbmzcOrwNYjnY1f++wJxHtSav6cJVTyynxeiRbDSEH8DDPdcRwdYZwfuMWH4kzVY1weT4hGdrNhOwPB3bDTPj6A0UDLdtNS32VKRjv5eOnbRQLsY/zkVCKiAfYL0AAAAASUVORK5CYII=" alt="N(t, X)" title="N(t, X)" class="math inline" /> be the count of
+integers <img role="img" aria-label="n \le X" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAQBAMAAABJt1qBAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAzUlEQVQYGWNgwAS+80MY5Kc6oEq4Q7j6BQxeqBIMPssgAv4XGC6gSpVCZRhYJ/CiynSFw/hsH1VATEZlZ9MEEEPqCoiEgJ0FILoi04BxAZDOBisEiQDBebCUgDUDUwCQx7sQLAgmOOQPgOmzDKwKIAbTYzAXRCSyTgCzZzDwg7UzMK51AAswsBuwfQax2D8wyHFAhDjWQNT4MjC8A4kwP2A4ywyRYmALBjHYgVbbJwAZTAYMuSIgERhgWz+Nge39JhiXbLprFRAg+Y2BAQBcWya8ihiVHAAAAABJRU5ErkJggg==" alt="n \le X" title="n \le X" class="math inline" /> such that <img role="img" aria-label="\tau(n) = t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAATBAMAAADSXRa0AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABF0lEQVQoFWWOPUvDUBSGn9SkTU2JnQticHWwuyDZRahTF5FA/0D9A5JFwa2Lq2R3yeLm0KWj0kkQFIKrIPoL6rm9HzXtCzfnfZ9zTu4FrSddOiZulrlGUbrZWpJObhoX9YGoNLlhuTMatKam4RbbAzu6rDuZiZcWh+YxJo/AO1ws+vTh/Ov7VbC4lW737/G7ZwIKvJtjhuJ+5Jx+iN7U3BVkpPKbhCAueBZ0JGelX2XH0EzAn/Au6UEhq1BdGE4gKmArR80r5NSei/UH8hG8R5DkesC9oVE9ymZXBg7gUy6p8MaSnLazKfRUnMELzbuSuFLRKpipbaVdXaBVWlevjrvJeh8vNeBkreHitXZx5sia8XQ25V/zD7ztNDilpap9AAAAAElFTkSuQmCC" alt="\tau(n) = t" title="\tau(n) = t" class="math inline" />. This
+corresponds to the count of <img role="img" aria-label="t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMBAMAAACzedEdAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAELt2Mu9Eic1mIqtU3XZzvlQAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA4SURBVAgdY2BgFGBgYDJgYOBzYGBwZWBI76hkYNBkYGB4xcDAFsDAwL6BgYFjggwDr4MBA4/NAgB9KgZ4TDfkbAAAAABJRU5ErkJggg==" alt="t" title="t" class="math inline" />-smooth numbers that are not <img role="img" aria-label="(t-1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAATBAMAAAAg4UMRAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA0klEQVQYGW2Pvw7BUBSHv6K0mtDJIpEOYvYGLBKTWKzSzdpHYGIUYpTUI3iDLhYLnsJqtTm3Gr0XZ7m/8/vOvwtWwG8UlFX89cG6ituW1zfoIIGZOGNwAp1sLkJsKEdQF6mFSmshzhrOmi1SkVKXKowmdwOlI2I8MZcGeA9/sBP3+YccOMnMWJHhSiLtTqcdacod3T89sbrAjhoGyi6wfbwkMEkf3DmFkHJH/pRHqzdNqES4X0uyCseHRV6tqa3ovZbn8iayFOb5R1USJY31GXPhBcNIJZMPcWRHAAAAAElFTkSuQmCC" alt="(t-1)" title="(t-1)" class="math inline" />-smooth.</p>
+<p>The “Population Curve” decays roughly as <img role="img" aria-label="1/t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAATBAMAAACJlYuFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARM0yInYQiauZu2ZU791U1k6tAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNggABOKA2m3CEcIQMQXcLAkMbA4GoP5ixgYFgKFOMHcZgDGBg+wzicDgzMF2AcLgbGIvUNUGXSDAxcQDZETxuQdoBxGhgYZIFssAzPAQaGChiHA8jQZgOK8AswMGQAOY9ZGRjS+9UNGDYCOUePAAkQWAAmIQTLBCQOqwEShwuJzcAC5QAAMK0UBWWjongAAAAASUVORK5CYII=" alt="1/t" title="1/t" class="math inline" />. This implies that the
+“Early Universe of Causal Natural Numbers” (Eras 1–10) generates the
+vast majority of small integers, while the “Late Universe” (Eras &gt;
+1000) generates numbers sparsely.</p>
+<p>This pictures a <strong>Cooling Universe of Natural Numbers</strong>
+in a combinatorial sense: entropy (new prime injection) becomes rarer as
+magnitude increases.</p>
+<h2 data-number="2.3" id="spectral-analysis"><span class="header-section-number">2.3</span> Spectral Analysis</h2>
+<p>The Fourier Transform of the signal <img role="img" aria-label="S(n) = \tau(n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAATBAMAAADrOqfvAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIl2ZiJU75ndu6vNMhBVgMKNAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABS0lEQVQoFW2QvUvDQBiHn0uTtBRbOrmIED/o7CAuInRwFMngIg4W1EUcIjhLdkG6C9LF3Y9RhPwF2tmp4D/g4ibU90zukit5IXl/9z5PLpdAUV95b5i10x2o1tYP4DEXuqkjFgsH9lGXNHoFOq3xHahSGLFgNBvMQLqd6dAaQITd1hvKbK4c2JbDxTwYRRVnNWvdHRj+7sgogZP93bc8aSev4GM2S+bg5+xef0GwfMW5WN9y3bxKPUtoxWdydyHqjiAj9EdsC7yWy9aElDkYwwWdTPaKeBFRXlatMS7s9GCJ7giaPX7ETKo2KsKFjSE8/VvHhJk8rH17flqC9chC+Z3+BrzDnpxoQDAWoaxmLLkKPW91RUZbsEmnP8UflLKkQ72qgUfGak9NKnsNtJplpU4NDNKC31Y8E+vgYg79iZGqvQYGOS9aVZZcwj+eiVCPqk/RaQAAAABJRU5ErkJggg==" alt="S(n) = \tau(n)" title="S(n) = \tau(n)" class="math inline" />
+reveals that the number line is a superposition of periodic waves.</p>
+<ul>
+<li>Dominant frequency <img role="img" aria-label="f = 1/2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdmZU3TIiRM0Qibvvq5mze/DLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA/klEQVQoFWNgwAX44BKMynAmEiMLzlY0gTPBjIoAELWMgXHdZjDfNR1MwYjEeLD8BqCK+QpAQbYPMBkozQ+SZxVgcGXgcwCymBuABDIAy/MlMBxi4AJq5VzSVYAsy8AAlucGiXE3gAgFIMHAdxcEFoCYYPkiECsfZBMPiEAGYPmbIJEmEDEfRCADsPwFoAiXAki4BEQgA5A8swFQRAksKgsm0eznBQqyGzAoAKmLYHkkgr+AgWEukB9XXvwASB1FkgIxZ93vCmBQBzLO////AOj/DyBBdLABJsA++QKMiUSzPYBx+OsCYEwkmhEuyATxBJIciAkOXTQxZC4bjAMAi+MxZK6mnC0AAAAASUVORK5CYII=" alt="f = 1/2" title="f = 1/2" class="math inline" /> (Period 2),
+corresponding to evenness.</li>
+<li>Harmonics at <img role="img" aria-label="f_k = 1/p_k" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAATBAMAAAAqve1DAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdmZU3TIiRM0Qibvvq5mze/DLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABSElEQVQoFX2RsUvDQBTGvxiTeKRNC0I3RVvEtYKLS8nS/WYdagcRnEoR6SRuQqeCnRS1g7gJrf4DBXGPkzio1UEdg4ODk++uTfsSwQfv7vt978vjIMA/5cVmRiGGE9iZSFKLqzFU0JDqvFTHuMrbYzkS1YqOdblvh5yGOqNiVpYPzANOQ61j3iYbiItmjSGLucBKLj8YDd0FnOj13pOqjrL1tjrE2hfeRE8HUxLp5D4de4Tj9HGFBx07B1JasEPHAsAI8Iy+HuwCbWeJZUiqmFkE3CJuhV8nwhxQ2pslkXhbWsVbjm9+VOkD3AOfNbp5Zcg4JaPSmpHeoZ7cAeUbngGOX5oSy+TNF3KY3lDLRAjhl7biOUVd6mvqtvku4RwFsDpnWeJ42QPib+p18UqP3JfxcUQG+VYY0VQ+UombfhUaPwnzL9rc+gVioUJ6BCSVrgAAAABJRU5ErkJggg==" alt="f_k = 1/p_k" title="f_k = 1/p_k" class="math inline" />, the prime
+frequencies.</li>
+<li>Magnitude emerges as interference between these causal waves.</li>
+</ul>
+<h1 data-number="3" id="practical-applications"><span class="header-section-number">3</span> Practical Applications</h1>
+<h2 data-number="3.1" id="feature-extraction-artificiality-detection"><span class="header-section-number">3.1</span> Feature Extraction:
+Artificiality Detection</h2>
+<p>We propose <img role="img" aria-label="\tau(n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAATBAMAAAAHT8L5AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAw0lEQVQYGWWMrQ7CMBRGT9nGT0YWNAlhHsE8CZnHgMIQwiOMN5gBjcHPY/YAWCRkCoUgWBICTwAX2s7QpPnOPd9tQZ+9jqYZJQqNfmxVMzU0t6byB2XVGJtuaXfqBar/fkdEMLs/zuIj3NZEMkOth0yFniyIQYV4QcZRzEBuAtUQ3A0XmXZQ34CfgZPyEiM/umOdXbww/RmnJaYHN3l3RSXQFsEBTlS3OcH1O8rp6IBabqiEslKxqUZ2mZWmYFEapUniA3HQIUwfI6DCAAAAAElFTkSuQmCC" alt="\tau(n)" title="\tau(n)" class="math inline" /> as a metric for
+detecting artificial or engineered data within large numerical
+datasets.</p>
+<p><strong>Hypothesis:</strong> Human systems preferentially reuse
+low-depth numbers. Natural stochastic processes generate high-depth
+numbers.</p>
+<p><strong>Observed separation (simulation, <img role="img" aria-label="N \sim 10^6" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAAQBAMAAAC7Cw8kAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid0iEJm7RHbvq2YyVM2JF0xrAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGElEQVQoFX2QsUrDUBSGPzRpgkmsuBS3PkLdxKVx1cVJcGrAoZMQcFEEzeKgm4LgI7iZPoCQBxCSioNORvICgg6CDp5zM9RKySHkfvf8X869BBrLve815tDxkmbD6pp8+QNrMJypBvtj7bvXsPBPOMngcBR77+6SJN4KbE0ba3mGX1IFpdOV5KFfcDBt0M5oFZz5pVNKki5GJLL+LTHkOaI0pyTB5ywj75GHqyP9LuGL1Ax4vJTlSVEGnIpR/675mF3HoF+tR6CXV0NikbQ8yI8N2SE7ECmL0c94DZVxYe7WkA323mahLEY75sW01XC/Dco0zm8MitFKuagNOcH6qXHylgFORGUa9pWM3Z5khjbu3jKex7FufgEuYEK1sHjjiwAAAABJRU5ErkJggg==" alt="N \sim 10^6" title="N \sim 10^6" class="math inline" />):</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Mean <img role="img" aria-label="\tau" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAIs3vmVQyu0SJ3VClVcQAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAsSURBVAgdY2DU3r3bgIFFIJCBgSGBwQFIMjAUgAiOCSCSJQBEMguASCkgBgCUXQRh8kdgbgAAAABJRU5ErkJggg==" alt="\tau" title="\tau" class="math inline" /></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Structured (machine)</td>
+<td><img role="img" aria-label="\approx 5.7" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAMBAMAAAANL4lAAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdu+ZEFSrIolEMmbdu82lYPkqAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAtklEQVQYGWNggAH2FxuvA9kcojNnLoCJMTCwn1crAPLY/v//vwFJNADM5mBgYAQiJRMGBlYHoFqIKCcDQwMDg1h5UwADG1AZu/SOCWDV3AUMDAkMnMpLmoFcFgGGU2BRDyC5AWjtIQMwl8EWTFlBOHBSCMz6ACSZldIhtvEEMMiDRFkVgIS1y+RUl1ggg68AYgLzAyBHgIHB+VAKkMHtwKLOUObAwHsByEGAjc0FDIsKGJgbGBgAJ1EgiiydjasAAAAASUVORK5CYII=" alt="\approx 5.7" title="\approx 5.7" class="math inline" /></td>
+</tr>
+<tr class="even">
+<td>Random noise</td>
+<td><img role="img" aria-label="\approx 5{,}700" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAAQBAMAAABaYBp1AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdu+ZEFSrIolEMmbdu82lYPkqAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABI0lEQVQYGX2QLUzDYBCGn6brum7sJ5DNTLCMBOwECkLShAlkQWEIExDsp0CyMIUroCYIDUGzzqEnMcwQBGYOJGLJwkw5WpasFZz47t7vub8czMz87L9JnCl3u55VvYSrJ3fGxJsvq0pcOggC/5GCyo74mMdOKDKg8YrWyDssSVxfB8OW6ghb0GaKVSt6XEPl7MIhLYVm9W9WTmUnZMc9Rc+mhbXy0BGcKvEctt/BEjy5E6zwZdlBI/xnK3QbwiRDmGTM22IovjCnGONzj0MbvX4SrbbgsPyLjRp8y1t02YPN5s1x80C+Cypqro/gHa2V96lACbYHR4JzdmqNU5v8EG4l2RrGzkK/o7j30dsyoCxH3d13pSpuTlwm1f/YSKbHdRL/AJMHQ8mkbOKMAAAAAElFTkSuQmCC" alt="\approx 5{,}700" title="\approx 5{,}700" class="math inline" /></td>
+</tr>
+<tr class="odd">
+<td>Separation</td>
+<td><img role="img" aria-label="\sim 10^3\times" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAQBAMAAABAXPr7AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVN3viRAyzSKru5lmdkTPg+srAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA7klEQVQYGWWQvUoDQRSFv8EkTn52+1gJvkDAF0ghARvxCWx9A2ubgI2gbSBgeostkiaVpE2KCGKjRWwFy6ypQk5mMsnC3GLOmfPN5V4GojI/oyjbB0f09z4ylrsoOwSP84MPLlVD+n0FN/FM+5nDLcf3MA7vCyo4IMlOmBTCYAVz0tYfQ2wGySKAreZUVlSWjVkbmvAB5kzWXHuYCq62lkaWtLXCQw9KLnCd4q6mX5IR9RdqO2hzzNLD6qlUk8fd5x1kjWl5ONVI3rTW+TzAV5In5/1MZ/2xhl/3Cbpq24sCKl/+dzDv+j6VVX9psQEhvDmjlw/VYgAAAABJRU5ErkJggg==" alt="\sim 10^3\times" title="\sim 10^3\times" class="math inline" /></td>
+</tr>
+</tbody>
+</table>
+<p>This enables <img role="img" aria-label="O(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAATBAMAAAAKUbK+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHZmmasi3Ym7RO8yVM0Ml5alAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA2UlEQVQYGT2Qvw7BUBjFT/2pS0sbk42wWIRE7PUGHW0aiVh5AIlHMJntQooX6BuQeAE2Yy0mg3Nve/sN9/y+30l7kwvoqSvIqdNoD8cEP1k8GSMXCxe5PXCKgAeNYC22qAGzGxUTBxeoxKp1qMQdxpXa/mHHkKriQ3zI1S/CVBFKW3IhxlKrGM6GbPnmU6szmi1yP7AztYK1obrAyD4MUWBd5P9CNvJGgrEGJqSXVHvAZC063YBrD2hM3xHyAy7JzNMsu9pAo65YmF7SynfSc1SQj/TONBXz/ANbYC20KwjrIQAAAABJRU5ErkJggg==" alt="O(1)" title="O(1)" class="math inline" /> discrimination without
+semantics.</p>
+<h2 data-number="3.2" id="semantic-data-compression"><span class="header-section-number">3.2</span> Semantic Data Compression</h2>
+<p>Represent integer <img role="img" aria-label="n" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAP0lEQVQIHWNgVHY2TWBgqMg0YFzAwCBgzcAUwMDAcJaBVQFIzWDgL2BgYP/AIMfBwMD8gOEsMwMDkwFDrggDAP0FCNipklNgAAAAAElFTkSuQmCC" alt="n" title="n" class="math inline" /> as:</p>
+<p><img role="img" aria-label="n \mapsto (\tau(n), \text{residue})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJUAAAATCAMAAACulb+4AAAANlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABHL6OuAAAAEXRSTlMAVHZmEKsyIkTvu92Zic37wZJGFs4AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJrSURBVEgNpVXrmusgCMSQRHPd4/u/7GFQXDVNm37rjwbHAUdAS/R8jEPH7YB+uWM/m34dZOrjdsC494R383DGV8vfBSEaQhflAjjuGC+mvBnoX6qiJ0EshHzPylbzAlwpvQtRKAm+UfUxyDhWUS9nuABEh6scPpl3qj4FmetGWX23zQWoE9FxX03vVGk23cAj8zSbY8mwAKuB8l3U9mfEwCQBrXvClBnOxfMpR2HmXZLOzvFK8xpxunAwO+krnYY1oiiZp4F9mBdpUlcEFAPOlcTUpbsnl5OmQOdeN7CPTPtMxyGbbzTLhxAOqhgGgzxi6qEq88AQOaS3Yij716rITdZaXnsbGc1lTUDnvhhdNwRbt6VtdkgbAJExRhipgpo6UWU8WdAgu56ivF4//9ZqRLtosxlWVgMa961RhYmLTsbmaIrLhCyLjKAVa1UVHpEGWfAOqWT5tr1EexE72jsTcAgZBjTuVV/J6UHTOsEg7yaoUVU613VsPAr+y9OGVcnuJHsj6wpyEWXNLQW0258UtO5XVdozsjEjT/AVGalav7kCx3jCQhBGaaQM9i5XQqxYQpBHNBdnQXiMBDTuHkfyuReRARlaYecZ7XhIPyE52sWDrm+SDUafZZ74I8gAOfPh8qYyKSPUCoeUI2+VpAQ07qyxcKdxf+OkBg/MM8mvY0fzHvEI8SDNFlexwi6rcYU25clXvYqI94YvtzTzLoD0ZDqa1fh9wLvVHORuucMv7AtgOv+kyoJ0u99Nff3/A9IFwBMu40+iKAfRSE9+Qr9dB0j36OhpT2IXjgUpwEfDbl8htkA7K6TvDA3yH5qHEHY2Yip0AAAAAElFTkSuQmCC" alt="n \mapsto (\tau(n), \text{residue})" title="n \mapsto (\tau(n), \text{residue})" class="math display" /></p>
+<p>For datasets dominated by low-depth integers, entropy collapses in
+the <img role="img" aria-label="\tau" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAIs3vmVQyu0SJ3VClVcQAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAsSURBVAgdY2DU3r3bgIFFIJCBgSGBwQFIMjAUgAiOCSCSJQBEMguASCkgBgCUXQRh8kdgbgAAAABJRU5ErkJggg==" alt="\tau" title="\tau" class="math inline" /> stream, enabling
+<strong>semantic compression</strong> beyond syntactic methods (LZ,
+Huffman).</p>
+<p>Random data remains incompressible.</p>
+<h2 data-number="3.3" id="cryptographic-steganography"><span class="header-section-number">3.3</span> Cryptographic
+Steganography</h2>
+<p>Messages can be embedded exclusively in integers of a specific causal
+era (e.g., <img role="img" aria-label="\tau(n)=137" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFUAAAATBAMAAAAT2lwYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3RB2q2bjQLF8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABXUlEQVQoFX2PPUvDUBSGn9iEpjZpgwiKUyZXOzo6CR2E6OpSdHLr7h/oInRRBz9+Q0EXHTQIipN0URAUMoiCqBRBERziycdtU2g8cM9573uee+69EEfZT2pakk1OtlP/OKefta/TjRFkXTBnofL2QOmy1WqkLVchfREb2tU3HFL17TAMg4QZjNtOjH4WdpdCtwRW6hUd1dxSIq3CwnlgQhu0uTCsFcC4OXtvgKihiNkLsSoyTneWYRym1wOjCdWIXHqUuI/PROzTgqQTWQ1ETYD3itWVuR3xMhHPfRFzMTZl2pqIOrYvN4xiiy70ItZsw6nUearOyPfeof9i1CJW92JC67Eiv43/NvRe7Qu7h+5GbEGmjXWouNQrMBVZmfiBPY58is3InJFleVgBG6vwkeGgfPC5g7V/K7e3VUPrKrWpRH5VyOBQPjuZtvROPqM6ppeoZ2X8V52kmZbR5B+A4FIJBW1ULQAAAABJRU5ErkJggg==" alt="\tau(n)=137" title="\tau(n)=137" class="math inline" />). Such
+channels evade magnitude statistics and Benford’s law, remaining visible
+only under causal ordering.</p>
+<h1 data-number="4" id="conclusion"><span class="header-section-number">4</span> Conclusion</h1>
+<p>The causal ordering of integers exposes a hidden temporal structure
+beneath the number line.</p>
+<p>All numbers are equal arithmetically. They are <strong>not equal in
+origin</strong>.</p>
+<p>Some are ancient structural pillars. Others are late, high-entropy
+fluctuations.</p>
+<p>Causal depth separates <strong>structure from noise</strong> using
+number theory alone.</p>
+</body>
+</html>
