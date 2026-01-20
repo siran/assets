@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Fred Nedrock" />
+  <meta name="author" content="Leera Vale" />
+  <meta name="author" content="Max Freet" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="dcterms.date" content="2026-01-20" />
+  <meta name="keywords" content="PNP Framework, Topological
+Persistence, Causal Geometry, Scalar Field Theory, Z2
+Invariant, Emergent Time" />
+  <title>The PNP Theory of Cause and Effect</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">The PNP Theory of Cause and Effect</h1>
+<p class="subtitle">Causality from Topological Persistence in Scalar
+Fields</p>
+<p class="author">Fred Nedrock</p>
+<p class="author">Leera Vale</p>
+<p class="author">Max Freet</p>
+<p class="author">An M. Rodriguez</p>
+<p class="date">2026-01-20</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> Causality emerges in the PNP
+framework because a topologically non-trivial scalar field configuration
+cannot remain static without violating stress–energy conservation,
+forcing ordered evolution.</p>
+<p><strong>Abstract.</strong> We derive causality from first principles
+within the Point–Not–Point (PNP) framework. At its core lies the
+topological irreducibility of the fundamental <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode: the simplest closed
+oscillation of a scalar field <img role="img" aria-label="U" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAIonvMrurEJlEZnbN3Vm6+/0AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABdSURBVAgdYxAyVmFwfebAwGDEwMDewMDA+JKBgRPI5XrAwMDNwMDAdoCBgQlIMyswMFQBabkJDAxTgPQ6IN4AxDlArADEEQwMLEAphg6IcgZZBnZ1IJeBJUkLRAEAxWgLmICVD1cAAAAASUVORK5CYII=" alt="U" title="U" class="math inline" /> exhibiting a <img role="img" aria-label="\pi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAIs3vmXZUEDKJu0Tdgx+OJwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADdJREFUCB1jYNS9e/cyAwOLQEA6AwNDA2PCBCDFwFngAKK4GBaAqEyGCyBKm+EGkGQ/wLCagQEAOGQKCV9OKNUAAAAASUVORK5CYII=" alt="\pi" title="\pi" class="math inline" /> phase inversion, or
+“bounce.” This <img role="img" aria-label="\mathbb{Z}_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAPBAMAAAAbqIIhAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAibvdq0RUZs0QMiKZdhL04yYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAB/SURBVAgdY2DUM3JWMWAAAhZVBha2AhCLYwKDFBOIwcDOwH1ACswCys8+AGWls0yAshRiGRjYCoHivAEKDAx7GRwZGObwBjCwrmAoYmDwnMLAAJQXZGC9cJqBoY2B05KBiUuAYYoXA8sChozDPh4vOhlucUNNYg3ghbL2vXsIAHfoFzKnZC0UAAAAAElFTkSuQmCC" alt="\mathbb{Z}_2" title="\mathbb{Z}_2" class="math inline" /> invariant
+enforces loop persistence and forbids extinction without a phase slip.
+We explicitly ground this mode in the discrete solution space of
+source-free Maxwell dynamics (the toroidal hydrogenic spectrum). From
+this physically motivated topology, we prove that such a mode cannot
+remain static, formalizing cause–effect not as a postulate, but as the
+inevitable action of the field propagator on a persistent topological
+sector.</p>
+<p><strong>Keywords.</strong> PNP Framework, Topological Persistence,
+Causal Geometry, Scalar Field Theory, Z2 Invariant, Emergent Time</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#introduction">Introduction</a>
+</li>
+<li><a href="#the-pnp-framework-and-the-fundamental-mode">The PNP Framework and the Fundamental Mode</a>
+</li>
+<li><a href="#field-dynamics-and-stressenergy">Field Dynamics and Stress–Energy</a>
+</li>
+<li><a href="#derivation-of-causality">Derivation of Causality</a>
+</li>
+<li><a href="#force-from-stressflow">Force from Stress–Flow</a>
+</li>
+<li><a href="#conclusion">Conclusion</a>
+</li>
+<li><a href="#references">References</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<p>In standard formulations of physics, causality is assumed as a
+primitive ordering of events—time exists, and things move through it. In
+the Point–Not–Point (PNP) framework, we invert this relationship. We
+propose that causality emerges from <strong>Topology</strong>:
+specifically, from the requirement that a non-trivial field
+configuration must evolve to maintain its structural integrity.</p>
+<p>We show that a minimally nontrivial loop of the scalar field <img role="img" aria-label="U" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAIonvMrurEJlEZnbN3Vm6+/0AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABdSURBVAgdYxAyVmFwfebAwGDEwMDewMDA+JKBgRPI5XrAwMDNwMDAdoCBgQlIMyswMFQBabkJDAxTgPQ6IN4AxDlArADEEQwMLEAphg6IcgZZBnZ1IJeBJUkLRAEAxWgLmICVD1cAAAAASUVORK5CYII=" alt="U" title="U" class="math inline" /> (the fundamental “Entity”) persists
+under evolution. We prove that such a mode cannot remain static without
+violating local momentum conservation. Time here is not assumed as a
+background ordering, but emerges as the parameter labeling successive
+configurations required to preserve topology. Thus, cause–effect is the
+temporal manifestation of topological persistence.</p>
+<h1 data-number="2" id="the-pnp-framework-and-the-fundamental-mode"><span class="header-section-number">2</span> The PNP Framework and the
+Fundamental Mode</h1>
+<p>Let <img role="img" aria-label="U: \mathcal{M} \to \mathbb{R}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFsAAAAOBAMAAACyW33uAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIonvMrurEJlEZnbN3VR9UU46AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABb0lEQVQoFVVRPUsDQRScu3zsXZQQBEtxhYBiIVHByuJAbAQlIAYbwylIGourBeEghVqIEYKFjVgr5Gy0k1QqiKCNlX9AFBJB/IqI7+0la/Jg583MDrdv99Aznsb0uwNdGx7TREobipxcPi7lmY0BwldWCJUS98M2h6mQrjHiA8YXYDvsNGs3IGJMtmSzUxzuKZ1aB7ra93ZcUt2f2hIeUxWfAeJVwCStayhDNN/QOuozVfEnICKBdTaio4ywD14B6/xXCQVZRp592wX6S0CZDaPACNP4Bs7sNyUU7DMKmZu/oV6hFbDRLAsTSFYTHy0NJPk7Qi5vutTXaElarZpDEbOeWWe9uqDqhygNk76gvkhT0zy6JGp797Ay2oDFh1M8HvOArc6HERKRWwfxu//4MVOKJ49coA9iUG2pqwozBZOuGWuLZ8O4j8IzTbIyrNLhQ9ZyJBz6Gw06OCw74P5y/eD0FmVoaZy6Cml0QFsd5A+nBklEcNmZhAAAAABJRU5ErkJggg==" alt="U: \mathcal{M} \to \mathbb{R}" title="U: \mathcal{M} \to \mathbb{R}" class="math inline" /> be a real
+scalar energy field. We define the complex envelope <img role="img" aria-label="A(\mathbf{x},t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAATBAMAAADPIygvAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmTJUdmYQ74nNq927RCLjefjKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABHUlEQVQoFU2OvUoDQRSFv002Cclmo4+QTqzcQlvZXsRFESxHBEVsbK0UbOIPJI1gJXkEsfAJxDalkCZrabAISbUg6p3Z2Z+BufOdc+7dvWBPPczIvJlyutAyTl4OLa0FsJ27AsdUo1TvhDAoR2+Zrp1c5V1pwxyuDR01h7Tj0lTlHMZGh60BDdj6CycXShz/5jHSBlS6zjOewCg6VdqgLTssaajhzvgS8BZPWosdQ0MJHPTuZ6wK1C8DqXI+5HpKjAD/lzNtjV51hVu5+l8udOaGnL1EB/Ag7TrakMEFTQU9+stMBV6k/RumiWKcRG7A3Q/9JFqR7dY3YV+m0tMZZmRXec805JhGRSt82q5q+jqqmPLth2y0WyQQl4VW/3KIObizFsUvAAAAAElFTkSuQmCC" alt="A(\mathbf{x},t)" title="A(\mathbf{x},t)" class="math inline" /> as
+a local phase–amplitude decomposition of the oscillatory solutions of
+<img role="img" aria-label="U" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAIonvMrurEJlEZnbN3Vm6+/0AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABdSURBVAgdYxAyVmFwfebAwGDEwMDewMDA+JKBgRPI5XrAwMDNwMDAdoCBgQlIMyswMFQBabkJDAxTgPQ6IN4AxDlArADEEQwMLEAphg6IcgZZBnZ1IJeBJUkLRAEAxWgLmICVD1cAAAAASUVORK5CYII=" alt="U" title="U" class="math inline" />:</p>
+<p><img role="img" aria-label="A(\mathbf{x},t) = \rho(\mathbf{x},t)\,e^{i\phi(\mathbf{x},t)}, \qquad \rho \ge 0, \ \phi \in \mathbb{R} \pmod{2\pi}" style="vertical-align:middle" src="data:image/png;base64,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" alt="A(\mathbf{x},t) = \rho(\mathbf{x},t)\,e^{i\phi(\mathbf{x},t)}, \qquad \rho \ge 0, \ \phi \in \mathbb{R} \pmod{2\pi}" title="A(\mathbf{x},t) = \rho(\mathbf{x},t)\,e^{i\phi(\mathbf{x},t)}, \qquad \rho \ge 0, \ \phi \in \mathbb{R} \pmod{2\pi}" class="math display" /></p>
+<p><em>Note: The complex envelope <img role="img" aria-label="A" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmTJUdmYQ74nNq927RCLjefjKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAUUlEQVQIHWNgAAJGBSABBPoGENrfAUyzpjeA6WTOBWDagWsCiGZSYNwAolkZWD6A6IiOHhDNZsDA+w9IszAw8H0C0qZAoc8MDK9+JjDc+hkAABHmD+MmX1aKAAAAAElFTkSuQmCC" alt="A" title="A" class="math inline" /> is a bookkeeping device for local
+oscillatory structure in a real scalar field; no additional <img role="img" aria-label="U(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAATBAMAAADojanHAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIonvMrurEJlEZnbN3VR9UU46AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA3ElEQVQYGVWOv07CUBTGf7VCLVhoSEwcNHQgmjg4wAt0YWOHkTAzdDQmJo6ODsaZgYkFBxe3DjxIH8HBkJg48N3be0k8w/n+nXPuBVfRhyWm90YDxvucZh09GBhC9AxfEO+gs4LgVzyHkuDzRxMltL6hXacY6x6ask+gkUoa6x3CDB4FUtYS6b/CGyTe6sJWXJ+58lZYsBTPYOKtpGAGp9p98pZuvdgH/52/JrrVxHmhpl9zoa3FndlpV0Q3fwPYGGUrmDsydShw9BjJuqzTM3PTVVxZsvbaYGqF+gG/JiZMWxS1/QAAAABJRU5ErkJggg==" alt="U(1)" title="U(1)" class="math inline" /> degrees of freedom are
+introduced.</em></p>
+<h2 data-number="2.1" id="the-physical-origin-of-the-1-mode"><span class="header-section-number">2.1</span> The Physical Origin of the <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> Mode</h2>
+<p>The topological object central to this theory—the <strong><img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode</strong>—is not an
+arbitrary mathematical postulate. It is the abstraction of the
+fundamental standing-wave solution to Maxwell’s equations on a toroidal
+manifold.</p>
+<p>As demonstrated in the derivation of the Schrödinger equation from
+source-free electromagnetism [1], the imposition of single-valuedness on
+a toroidal field configuration yields a discrete spectrum of modes
+labeled by integer winding numbers <img role="img" aria-label="(m, n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8UlEQVQYGW2PsU7CUBSGP0ptBSR0YzAmTSBx1d3BhBfo5AwDxPEmDpDooDwBAyQuxoXE1UfAwcWBR2Ds7Ormfw8WE8pJb/Kf7zs3PRcqKaUyVC1hOPOse0BETjA7IDw0WXI5HM9KVKAHdYjP23cfoysbiJRXRhsw/3LRDbcmfH6EFiygf0/8TseEcnChGwmf6jdUU6YmtplGwqn6JfVV5WcrlrS0jv6sr/bNK3F27Y3yMDR6lIgxoZm62qU2zNjE8AxBn8CRE+acvKl1rAcw1l3tUFRUBJ6U/PmrnbDplwLrQUVsJkrhrv0XDzahtfdL6BecJii7EZchWQAAAABJRU5ErkJggg==" alt="(m, n)" title="(m, n)" class="math inline" />. For the symmetric
+case (<img role="img" aria-label="m = n" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAIBAMAAACmMtp3AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnYQqzJUIkTvzbvdmYlSEOKuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiElEQVQIHWNgVDQUCU5zZUAGbECxAAaGikgBtmUM2SCZKy5A4AdkgMQ2MDAkyDAwHmBQQdYEEmNyAIrcY2BRYNgEZCABsBgDwwwGzgDm70jiQOYMBv4CBgb2Dwz1DIwLGoACcLuAYlkcDEBRBmkGXgUBZG1AsXuMDAxMAgzPGDieIcuAxOKSGQCSvBseDBOv+wAAAABJRU5ErkJggg==" alt="m = n" title="m = n" class="math inline" />), the energy of these
+modes scales as <img role="img" aria-label="E \propto 1/n^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAAVBAMAAAATJmVgAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid3vmau7RHYyVGYizRAHtTi9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABUElEQVQoFY2SLU/DUBSGX7J2H7cNbZdgCIJfgFoQYDaPgCkwUIWBhArMshCKIIEgqEMRpghymCEIMATJXLcfQBgCD5KEAOfce7ciKOOY85znvO1tcguMLHFZHpkBOlj6K2Wo5SlaBMWSN1H6LX0/kB5B1ge2B0L1nYj7lJbjMwROCOS1UK1zJlO+liZPrIQWujnsC6GeDm2CY1h6HDaZMtpqzgV80joe5Ciqm8hV+swylQUubq9XEH+9kZr1erxBHXfBgSSVqsOuzeNcGfsdJ5JC5OfcH6lVCGsa+8pYr4jQIG4CW0qpdy0ChotlpcwuYOvULiW5+LtEA8gE+JACGZeeYaTEhnacMknFEN1AxmJqfAWowYyKbekcci9EN3Rmk83YU8WrfjKJvQWIxz7R81ovwhXBEQqTLNLLT18lG7uccDrlo/RdsqH7+UfxfzCsb594RBM9INgMAAAAAElFTkSuQmCC" alt="E \propto 1/n^2" title="E \propto 1/n^2" class="math inline" />,
+reproducing the Rydberg series characteristic of bound atomic states
+(Hydrogen) without invoking point charges.</p>
+<p>The <strong><img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode</strong> corresponds
+to the ground state (<img role="img" aria-label="n=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAMBAMAAAAJ2ll9AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAa0lEQVQYGWNgwAR9CZhiDAxF+ViFGfhxCzMqO5uiyYJUV2QaMC5gYGDgCQWBC0AW2BABawamABAHAcBmn2VgVUAIgVhg4RkM/AWYwuwfGOQ4gMJoZjM/YDjLjKa6gYGByYAhVwRF2Df+bQIAYpYWEVDUbY4AAAAASUVORK5CYII=" alt="n=1" title="n=1" class="math inline" />) of this physical
+hierarchy. It represents the “simplest knot” compatible with the wave
+equation—a closed loop of energy with a <img role="img" aria-label="\pi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAIs3vmXZUEDKJu0Tdgx+OJwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADdJREFUCB1jYNS9e/cyAwOLQEA6AwNDA2PCBCDFwFngAKK4GBaAqEyGCyBKm+EGkGQ/wLCagQEAOGQKCV9OKNUAAAAASUVORK5CYII=" alt="\pi" title="\pi" class="math inline" /> phase twist. While higher
+<img role="img" aria-label="n" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAP0lEQVQIHWNgVHY2TWBgqMg0YFzAwCBgzcAUwMDAcJaBVQFIzWDgL2BgYP/AIMfBwMD8gOEsMwMDkwFDrggDAP0FCNipklNgAAAAAElFTkSuQmCC" alt="n" title="n" class="math inline" /> modes describe excited states, the <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode represents the
+irreducible topological obstruction that defines the entity’s existence.
+By focusing on the <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode, we are not inventing
+a shape; we are analyzing the topological properties of the most
+fundamental stable structure allowed by classical field dynamics.</p>
+<h2 data-number="2.2" id="topological-sectors-and-the-n-notation"><span class="header-section-number">2.2</span> Topological Sectors and the
+<img role="img" aria-label="(n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAATBAMAAACJlYuFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAApUlEQVQIHTWNIQ7CQBBFH22hQEO6DkFIKkiw3IEL9AhF4JsgECDgBghIMDgOgsEgOEIlmiPwd7b87Oa/P7MzC50Ck1kcmKn3WRt6taBsgwcrWP5A//TvLGGo5ny8eRhlcH7VvQPkcIFqR7RQx/HUSENcQOaYKNzJtUbTOoMv68So60hLmhSuEFVENe8VbPVGe4KOMn+9rHoLzMgJkiqkvZm+8JL9ACvJFticLM48AAAAAElFTkSuQmCC" alt="(n)" title="(n)" class="math inline" /> Notation</h2>
+<p>We denote topological sectors by <img role="img" aria-label="(n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAATBAMAAACJlYuFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAApUlEQVQIHTWNIQ7CQBBFH22hQEO6DkFIKkiw3IEL9AhF4JsgECDgBghIMDgOgsEgOEIlmiPwd7b87Oa/P7MzC50Ck1kcmKn3WRt6taBsgwcrWP5A//TvLGGo5ny8eRhlcH7VvQPkcIFqR7RQx/HUSENcQOaYKNzJtUbTOoMv68So60hLmhSuEFVENe8VbPVGe4KOMn+9rHoLzMgJkiqkvZm+8JL9ACvJFticLM48AAAAAElFTkSuQmCC" alt="(n)" title="(n)" class="math inline" /> with <img role="img" aria-label="n \in \mathbb{N}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAOBAMAAACiOzMyAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAyElEQVQYGWNgQAMsu6MaGE5OQhMFcjkLljAwGWCKcy8oZWAWQBJ3PrUKxOXrZVZAFmde4QBWxMfUEAYUZ1R2Nk0ACdiCRYHqGUL8gOIVmQaMC4BCLCACBPgYfDiCBRgErBmYAoBcDpgT+IDMe0CLzjKwKgDFmV6tWgWxl4FBnRsoPoOBvwCkHiQJAnwMDDwcAgzsHxjkOED8BSACCIDiLDcEGJgfMJxlBvFlQAQQcAJxjwDIy7kiID7U/RzvlwEtA5oPB1D/QvgAgHMg/2pZm8gAAAAASUVORK5CYII=" alt="n \in \mathbb{N}" title="n \in \mathbb{N}" class="math inline" />,
+representing the winding number of the phase around the core.</p>
+<p>The <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode is defined
+geometrically as a closed loop <img role="img" aria-label="C" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAEHariSJm3UTNu1SZJkczIAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFtJREFUCB1jYGBgVHZSCGJgYEhvYGCpYGBgKWRg4LjAwJAbABSbwMB4CUgxODCwXATRDAzsC8AUA68DlE4A0txAcRA/lYGBaQIDA+sGIHsKA0MbkGJgOqIENAkAnwkMb2vd5yMAAAAASUVORK5CYII=" alt="C" title="C" class="math inline" /> encircling a core such that one
+traversal advances the phase <img role="img" aria-label="\phi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAARBAMAAAD5z0voAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAVGYiRJkyiasQzbvddoKiWg4AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABZSURBVAgdY2BgYGAEYiBgglAmEEoATDGHgSjGErVgINXE6WAFVLaBkYFvAgOPAxPDvAlAxMQgxcDAxzCF4RgDA6uAJAdI46WmmyB9DApgkgFiFosBmAe2BgBZyQrsbqmTVQAAAABJRU5ErkJggg==" alt="\phi" title="\phi" class="math inline" /> by <img role="img" aria-label="\pi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAIs3vmXZUEDKJu0Tdgx+OJwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADdJREFUCB1jYNS9e/cyAwOLQEA6AwNDA2PCBCDFwFngAKK4GBaAqEyGCyBKm+EGkGQ/wLCagQEAOGQKCV9OKNUAAAAASUVORK5CYII=" alt="\pi" title="\pi" class="math inline" /> (a Möbius-like twist). This
+requires two traversals to return to the initial state.</p>
+<p>The holonomy along <img role="img" aria-label="C" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAEHariSJm3UTNu1SZJkczIAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFtJREFUCB1jYGBgVHZSCGJgYEhvYGCpYGBgKWRg4LjAwJAbABSbwMB4CUgxODCwXATRDAzsC8AUA68DlE4A0txAcRA/lYGBaQIDA+sGIHsKA0MbkGJgOqIENAkAnwkMb2vd5yMAAAAASUVORK5CYII=" alt="C" title="C" class="math inline" /> is:</p>
+<p><img role="img" aria-label="H(C) = \exp\!\left(i\oint_C \nabla\phi \cdot d\mathbf{l}\right) \in \{+1, -1\}" style="vertical-align:middle" src="data:image/png;base64,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" alt="H(C) = \exp\!\left(i\oint_C \nabla\phi \cdot d\mathbf{l}\right) \in \{+1, -1\}" title="H(C) = \exp\!\left(i\oint_C \nabla\phi \cdot d\mathbf{l}\right) \in \{+1, -1\}" class="math display" /></p>
+<p>This defines the discrete <img role="img" aria-label="\mathbb{Z}_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAPBAMAAAAbqIIhAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAibvdq0RUZs0QMiKZdhL04yYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAB/SURBVAgdY2DUM3JWMWAAAhZVBha2AhCLYwKDFBOIwcDOwH1ACswCys8+AGWls0yAshRiGRjYCoHivAEKDAx7GRwZGObwBjCwrmAoYmDwnMLAAJQXZGC9cJqBoY2B05KBiUuAYYoXA8sChozDPh4vOhlucUNNYg3ghbL2vXsIAHfoFzKnZC0UAAAAAElFTkSuQmCC" alt="\mathbb{Z}_2" title="\mathbb{Z}_2" class="math inline" /> index
+<img role="img" aria-label="\nu" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVM3vqzJ2IhC7ZomZ3UTZb8aUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAN0lEQVQIHWNgVGZgcGVgSGFg/8HAMIuB+wADw3eG2gYGVgMGPQYGNgceAQYGzuXHGRgYmDcCCQDG7AgWCjnuiAAAAABJRU5ErkJggg==" alt="\nu" title="\nu" class="math inline" /> (Parity):</p>
+<p><img role="img" aria-label="\nu = \frac{1 - H(C)}{2} = n \pmod 2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOUAAAAnBAMAAAACx5KaAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVM3vqzJ2IhC7ZomZ3UTZb8aUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADM0lEQVRYCb2WTWgTQRTH/2ma7GaTbqMnEaEBFTxpToIXyUEPUijBehEFV/EDWrFRvAhq99RDVVIE0fbiClWhIFZRD5baCoJI8QM8iSAp6EEEG6SaoKX1zWymm043TdJu9kEyb957837ZmZ0/AeqwPlFrCKdx4/hc/MrHF0CKEH3tJxXjqucsfavUMjIAbAHCOUD7AoznApZUsdapcuK31KLVAP4CTRQeN4EZIEGutyYzj6ShF4CN9Jg0MPYjb4HUTWb2ANEkcBPIGpSOAl8bztwHRFIAYSdMGxZsOHPX2NiEBXwAPpVYrY1mKrTXdKRKAvhXYgVNr6H8PL8Pkg2x1loeoCMNJfjbC8SBFpMlvDTpHWpOAIOASnv7mTBaBmj4eQZHgZ0ESwLHaDhLH++Z89S1zHpzYEeKbXQ1R6Fb5F4oS7u4quEStEPuGfXJr6flS6K3O9THczngKEVPPzvFciPsq7I1Syl9x2KgTqk+v7gQtxzXzTsjB3t5oPtNHHVKdcQUrZSU8NzHhBzmzGhGJdVelpNrl8yVSTGNmcJzHZc/C2e2pPG2bqmeFoS7wnEfI3SblhpnBi1McKkObAb2Li2oOFNERu4Z6OofToskv0kHC3de9g/nEOiis/0x0lZKXrev2XEoRYrE9jAbdRbW4L1iS9qp8HKnFRhwFrSQgPxBp6Un0Y2YpaXw0E6yK8ekegjRSad8dV78AcIpZ+k5cueRzalFtQgln02D7y1db4ue0wQKuETfZbZQk5UtIHcKzYYT2U9uAa0ZtRjIE33GFMznlCCpDiWx3alerbebCM7aa+QS0xRMlJiaRQmSzXAqFmfVazpPJY/1OutiG1Njm0mvSqiYzZSY09A4M3L/tShd/aglMEXthDWZjJmlvcUYYgYddQ9FEHr3cxOX6qAXf6fCFg5tEETauzgOz35733FgNq11Uf9769puUDa4sDBXVaqdLvV5K0pjFakWJKbNddkKfVf8PQ7E1mZnXt27WLmkilSLhbY2i1kto155X6pItehua7OY1TSWXVapvnJGKgRps9/G/w75DGXa7LcxbfbZuDb7zOTa7C/T1mZ/mbY2e8f8Dzd259HdrALXAAAAAElFTkSuQmCC" alt="\nu = \frac{1 - H(C)}{2} = n \pmod 2" title="\nu = \frac{1 - H(C)}{2} = n \pmod 2" class="math display" /></p>
+<ul>
+<li><img role="img" aria-label="\nu=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAMBAMAAAAJ2ll9AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVM3vqzJ2IhC7ZomZ3UTZb8aUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAj0lEQVQYGWNgwADPVj/AEGNgYFVgUMcizCnAkINFmD+A4TEDA6MyA4Mrsmx8AUN8AwNDCgP7D6DwERcg8AYy3gOFCxgYZjFwHwDy4AAoBpRh+M5Q2wAXAzLqAxjkGxhYDRj0kEUZ+B8wCDMwsDnwCICE4WZzLgBax8C5/DiKYga+CSDvMG9EFWVgEJN+wAAAcOAcNTeuuREAAAAASUVORK5CYII=" alt="\nu=0" title="\nu=0" class="math inline" />: Trivial topology (Even
+<img role="img" aria-label="n" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAP0lEQVQIHWNgVHY2TWBgqMg0YFzAwCBgzcAUwMDAcJaBVQFIzWDgL2BgYP/AIMfBwMD8gOEsMwMDkwFDrggDAP0FCNipklNgAAAAAElFTkSuQmCC" alt="n" title="n" class="math inline" />).</li>
+<li><img role="img" aria-label="\nu=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAMBAMAAADmGDJDAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVM3vqzJ2IhC7ZomZ3UTZb8aUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAZ0lEQVQYGWNgwAB8qhhCDAzsqV+xiDIw4BRlVGZgcEXVAlKbwsD+A0gdcQECb7A0SHQWA/cBMAdOgES/M9Q2wAXADKAoqwGDHqogyA1sDjwCIFFUczmXH0dTyvCPgYF5I5ogx5ZPWwHxSxjxTYXOVAAAAABJRU5ErkJggg==" alt="\nu=1" title="\nu=1" class="math inline" />: Non-trivial topology
+(Odd <img role="img" aria-label="n" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAP0lEQVQIHWNgVHY2TWBgqMg0YFzAwCBgzcAUwMDAcJaBVQFIzWDgL2BgYP/AIMfBwMD8gOEsMwMDkwFDrggDAP0FCNipklNgAAAAAElFTkSuQmCC" alt="n" title="n" class="math inline" />, including the fundamental <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode).</li>
+</ul>
+<p><strong>Physically, the <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode traps the essence of a
+“continuous bounce.”</strong> The field flows through the core, inverts
+phase, and re-emerges, effectively reflecting off its own nodal
+structure without ever encountering a hard boundary; a self-referential
+flow.</p>
+<p>Crucially, <img role="img" aria-label="\nu" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVM3vqzJ2IhC7ZomZ3UTZb8aUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAN0lEQVQIHWNgVGZgcGVgSGFg/8HAMIuB+wADw3eG2gYGVgMGPQYGNgceAQYGzuXHGRgYmDcCCQDG7AgWCjnuiAAAAABJRU5ErkJggg==" alt="\nu" title="\nu" class="math inline" /> is a topological invariant.
+It cannot change continuously; it can only change via a <strong>Phase
+Slip</strong> (where <img role="img" aria-label="\rho \to 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAQBAMAAAB0JTvnAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMnZmmRBEq+/dzVS7Iom1s88xAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAvElEQVQYGWNgwAKS7BKwiDIwMC5gWIsmEQrm82xgUEGTEAHz+QUYMkAMIZMAmDwPmCF/gUEeKMRWwFwAk2ADs/KBEhcYGCIC2BpgEgzbgSpBokA5BnUGpgkMDOxnwOD8AqDEfQGG/UAFqxl4HIA8CHACUfwJDDuA1FeGCKA+CGBWANE8BkBjGNj+MhyGiIKEwCy2AyAP8nlvSgBzQUQShLVpXwIDA9cGCAeD5IdbgCYF9jyaGJi7D5sgUAwAP54lqFhk5RYAAAAASUVORK5CYII=" alt="\rho \to 0" title="\rho \to 0" class="math inline" /> at a point on
+<img role="img" aria-label="C" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAEHariSJm3UTNu1SZJkczIAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFtJREFUCB1jYGBgVHZSCGJgYEhvYGCpYGBgKWRg4LjAwJAbABSbwMB4CUgxODCwXATRDAzsC8AUA68DlE4A0txAcRA/lYGBaQIDA+sGIHsKA0MbkGJgOqIENAkAnwkMb2vd5yMAAAAASUVORK5CYII=" alt="C" title="C" class="math inline" />), effectively breaking the loop.</p>
+<h1 data-number="3" id="field-dynamics-and-stressenergy"><span class="header-section-number">3</span> Field Dynamics and
+Stress–Energy</h1>
+<p>The source-free PNP equation of motion is given by the vanishing of
+the exterior derivative of the dual:</p>
+<p><img role="img" aria-label="d(\star dU) = 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAATBAMAAADmJNeoAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsiRO92q2ZUEM2Jmd0gkiEXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABnklEQVQoFWVRPUsDQRB995nLxY8ggkUQU6pNAhYWIomCpXB2IimC+JVCOBtT2Bw2giCehWC69H6QH2BxhXYWKdUqWFolXGxSObNJ9rhk4Gbee/N2d/YWEGGX+zXKZgRjaCZEYigouZX3UlrJndnNoRSvuoMDqWzBCIBn4EFKAugnb6KaLhqyc4xCEdgAUlISIINUnoHqJT0hcFrELeUyMOEzlbEEUww2nVd5Ub8Z4oJwAOiuNDLogKaFWbmHwZSbRzUHJcD2CFMvCiWE0uNzq5hitcUDJVytS7umibfpm6xyBKSQOYSVxTnWgJtK99S/RKJskUn85D0yyyAn+Q0PO8jQyYd/HnZhpBMNuhybfqWTgNZBsodCXmnjhWjqB1qIBahNYJZ9DicZXSQd6prZIl/wSvVp2b4+SeaAPWyWM9PV6DkMPAZeqg406Xc49qultfBEFFqWUhSb/Cj6191n3fRh09jYrs1fY+7DY48lMiMRyUr/uWkXd6hFVa1HOI6W45TZ6rg0UNbHO9/j0kDR/dGWlR5VIp6PYB9powLxf6TTVQslKXGQAAAAAElFTkSuQmCC" alt="d(\star dU) = 0" title="d(\star dU) = 0" class="math display" /></p>
+<p>With a Lagrangian density <img role="img" aria-label="\mathcal{L}(U, \nabla U)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAATBAMAAAAqve1DAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVM2rZjLdmYkQRLsidu9ADm2TAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABkElEQVQoFWWPv0sccRDFP/dj727N3p2HRcpclyJFRAxolSu0scmRYApt8gcI2S6lJyhoY7YIUasciLWlWIQsBjSQ4mxsUge0CoIRYwjRN9/bdRUH5s28efPdeQtJ+Idpd68mSu7pMBQIVk/a3pdn2qpfuYi//Vpi9qy91n84+vocfkCtA25U+dNQDMEJ+CG5lu0VwsolNKHXhS2b+GeGRwR/YaDtNNiOvMi9eCGt7+N9rDakeApVdQtKnhg8iGFEtaOETzJbbFNoQkV0Uxn8FlBTmpOWEcr/7J+c2Q+iJlZlDEraT5yI+RcwlZmta5RvCtjTlcSJ0fkY3U3N1iL5OLT5S11p9p0Y7YW5bma2pLVHSviovwhhxnpF4VLW2AGvq2reHmttyLqy1joaWAQXDeG75PMSi1f/P0/PkY8I3rAuHHd7z4dV9vFXjH2HrxsP3x5HVAfh1XJLV36aQE8cb2zRkQmHBoG9dpFz6CXMld2M3LT9tUy4/Qk4SAW7djfKUcYHUjmtmTSZtRDfJnd6KdcMTVkdOgUXnQAAAABJRU5ErkJggg==" alt="\mathcal{L}(U, \nabla U)" title="\mathcal{L}(U, \nabla U)" class="math inline" />, the stress–energy tensor is:</p>
+<p><img role="img" aria-label="T_{\mu\nu} = \nabla_\mu U\,\nabla_\nu U - g_{\mu\nu}\,\mathcal{L}, \qquad \nabla_\mu T^{\mu\nu} = 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAATBAMAAAAT08l0AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVO+rid2ZInYQZkTNuzI6UKoYAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADVElEQVRIDc1VTWgTQRh926TZbH62KQFBPFi0ePAU0IMU0VgrYoUaDyqeTA72JgaqIHho9CTiIYdWqJdG6MmDDXiuDQiKiFgvIgVrUPRiFWuhpQqt38zs7szsT6g3Bzbzfe+9eftIvt0A/8nK4gau4GswjbF36NzQ5WKQwBZf64wxB/vb9scjUDFc2zOC76vtkJMuZLwpuKVvV7ydAJO4gxkM+HTUxqo4D6MWJHDmWC8tcYuuInCfNCqGfsAqExi5Br5sRnCKjxMgjyVUrJKmT989DTyAtQKzqRGimWbZkm3ejJPgKVUqZv4B0oLmmsBHrBzfCIACUHycAMPow8VsW9MvI1PFThgbSFc1QjRx9usmRD1LW40uFUv9pPyCDv+cr9v1cEb1cQK8sl80SyO6/C2SZdSRKMHSCdFZq7Q/FvVh2op0qVisRYEJi1yvIxnVxwmw1nsoveg7sIl0H0GZsg9326v0vRZEw8atwUoF6yqyAdHWxKMp2Zu/ZR2oFB8eIO3cSBXa67DZjPTkVDRxgK0ig6bLSDU5J8dNYnDnkiuE7KW1X3bJqAFkEsWHB4g3vINegjQFZGM2X/U4vUisIyYQOW4SgzuX8lAmB/5WEkimJZlApfjwAGFDRukoIzAYOO0A5hp2iVKOm8TgziXmPtBi8zMvZsY5Pl1zirBN8YkMYG6yBxh4RteCWUss2GWf1dE6mwzissR8EyTHuPYdYIsJcI/dQ7wgrXbXXTxs97xFgDAJ/sDoI4Jm2Sola6lirEGdNwFUj1dygkuUxUPsYlw7GniIR5FpSKvnFDBPJ8KX580DqBqZYBHJAr1r6Wc2Ctl2IjepylgdYy8axpklTDjfB8e49jqsU/qJPGarnlVq69f7Hxcw5pzTlYq3mDM/zfs59qJOnlg9iXijC931Jb/KXCGEcfg81HBIjnGtfXDYdyD+8La0GpvacWlfHZ/cgz6t580D+EinNW7RXx1fmebyze542+nkxhDGSQRgWJiWa45zuUbn1MNK3aba763QetlTydfmGjrmdoxza3eP0uIsAlZRAZlXmLd7D21/onV604nTlcmW0YJfbugavfOLdVbp/MOkUOjEqTp6nCozCMg7Bty2d8STxu/fidMD/rt8G95/AY1F/zi5fHirAAAAAElFTkSuQmCC" alt="T_{\mu\nu} = \nabla_\mu U\,\nabla_\nu U - g_{\mu\nu}\,\mathcal{L}, \qquad \nabla_\mu T^{\mu\nu} = 0" title="T_{\mu\nu} = \nabla_\mu U\,\nabla_\nu U - g_{\mu\nu}\,\mathcal{L}, \qquad \nabla_\mu T^{\mu\nu} = 0" class="math display" /></p>
+<p><em>Note: No specific form of <img role="img" aria-label="\mathcal{L}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANBAMAAABvB5JxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVM2rZjLdmYkQRLsidu9ADm2TAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAATklEQVQIHWNgYGBg1DcAkgwmYV+BJHMBx08gtX4C6wQgpQ3EDAw8X8AUL0iCgYFJAUzNvwCm5EHKGBjUgZQwA8v/f3tDcxgOzxTPfz4BAGf4ETtz3OQKAAAAAElFTkSuQmCC" alt="\mathcal{L}" title="\mathcal{L}" class="math inline" /> is required
+for this argument beyond locality, positivity of energy density, and the
+existence of a conserved stress–energy tensor.</em></p>
+<p>We define the Energy Density (<img role="img" aria-label="u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO+rdkSJIt1muyIVtOIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA3SURBVAgdY2BUZmAyYHBiFWArYGiQY2AVYGCYxrCOgYFhB8NZIPmEIZ2JgeEBS8QKBobDGpoHALCxCaVmVwkTAAAAAElFTkSuQmCC" alt="u" title="u" class="math inline" />) and Flux (<img role="img" aria-label="J^\mu" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAANBAMAAAC5okgUAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARInd7xCru3YiMmZUmc3Kw6vNAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAZklEQVQIHWNgYGBUdgpgZ5jBAAJsBQzBDB1gJksDwzGGKjBz/gIGbQYHMHM/A8NDrpcCIHY6A8PfMxlgUScGxgQwg4H1IwPTBgiT5wMDK4TFwPsAyhCZwNIAZbYxbA6AMqNPqEJZAM0sE4LLaGg+AAAAAElFTkSuQmCC" alt="J^\mu" title="J^\mu" class="math inline" />) relative to a local
+time vector <img role="img" aria-label="t^\nu" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAELt2Mu9Eic1mIqtU3Zk3oSI+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAU0lEQVQIHWNgYGDgU2B5wMDAKMBZwD2BgYHJgO+ALFCU34FXQAVIuzLwsjswMKR3VCYBZRkYNEEEEPyCUGwBEJp9A4TmmCADZvA6GIBpHpsFIBoAgicLIf8itM8AAAAASUVORK5CYII=" alt="t^\nu" title="t^\nu" class="math inline" />:</p>
+<p><img role="img" aria-label="u = T^{00}, \qquad J^\mu = T^\mu{}_\nu\,t^\nu" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAAVBAMAAAAJNkerAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACCElEQVRIDbVUP0hbQRz+3stLfK9pkgclY21oUetkcBXh4WpBR7NlMlgqhAgt3bI0oCAqiosOWdq6mcFBpx44FZWmu0OhS+lQpO1QnHrv3V3u3vMuWeLxI/f9vj939473AhiG1ajTMojDoXO4pDWctQyrtPCYlkEcDr2GIq2+a+XwUad3H8j7TXWtssYztnJwtnu2i/e0NDKj3INKMI83MZ0Fnc6I3OLhdobEPKx5iWwZE4OeItPFOL7G4ixoV3M+p50gVZqPWVjjECyUcNTCJi2Nzql0HYdYVHUe9EhasLl6Noifgil2gKkAG3lc0hLmu/Oxjx/Wz6Yi2DzYHD3ibMHPeuKJFCMcYAYIrMY2LVWI4y/An6c1lePBwvR4ndNFbBIKrWewy6qT4u+JXteuwq3e4cNgq8eu/zqM8Fzaz4S7ppbDwY79u+cygwo8EqnJIFs2kq5ZvPkEaZ9B8eveCmSenX/hjSZGFAwkKdbZx7EkI+QtJghNa99oyETQFeuc4irhzlcThKZNfdOQMjiLR4BX5Z6/qNkUKldaIFwyTu/a9LPgQxv8jFdAnswxz42zJN5jHtpqc0CnD4HEEr3GhY6XwWmnA2R9fo7z55NEhil6+2ml3SOKpAcV8GJiT+kEVIIn4Z+I3WgLqe9c6quaxM6OSdHwJQ03kHL5FzHQGBrCN+GexxC2+A8U33Ka3L0aXwAAAABJRU5ErkJggg==" alt="u = T^{00}, \qquad J^\mu = T^\mu{}_\nu\,t^\nu" title="u = T^{00}, \qquad J^\mu = T^\mu{}_\nu\,t^\nu" class="math display" /></p>
+<h1 data-number="4" id="derivation-of-causality"><span class="header-section-number">4</span> Derivation of Causality</h1>
+<p>We now prove that “Time” is the byproduct of the <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode’s necessary
+self-perpetuation.</p>
+<h2 data-number="4.1" id="sector-decomposition"><span class="header-section-number">4.1</span> Sector Decomposition</h2>
+<p>The configuration space decomposes into disjoint sectors labeled by
+<img role="img" aria-label="\nu" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVM3vqzJ2IhC7ZomZ3UTZb8aUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAN0lEQVQIHWNgVGZgcGVgSGFg/8HAMIuB+wADw3eG2gYGVgMGPQYGNgceAQYGzuXHGRgYmDcCCQDG7AgWCjnuiAAAAABJRU5ErkJggg==" alt="\nu" title="\nu" class="math inline" />. The evolution generated by
+<img role="img" aria-label="d(\star dU)=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAATBAMAAADmJNeoAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsiRO92q2ZUEM2Jmd0gkiEXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABnklEQVQoFWVRPUsDQRB995nLxY8ggkUQU6pNAhYWIomCpXB2IimC+JVCOBtT2Bw2giCehWC69H6QH2BxhXYWKdUqWFolXGxSObNJ9rhk4Gbee/N2d/YWEGGX+zXKZgRjaCZEYigouZX3UlrJndnNoRSvuoMDqWzBCIBn4EFKAugnb6KaLhqyc4xCEdgAUlISIINUnoHqJT0hcFrELeUyMOEzlbEEUww2nVd5Ub8Z4oJwAOiuNDLogKaFWbmHwZSbRzUHJcD2CFMvCiWE0uNzq5hitcUDJVytS7umibfpm6xyBKSQOYSVxTnWgJtK99S/RKJskUn85D0yyyAn+Q0PO8jQyYd/HnZhpBMNuhybfqWTgNZBsodCXmnjhWjqB1qIBahNYJZ9DicZXSQd6prZIl/wSvVp2b4+SeaAPWyWM9PV6DkMPAZeqg406Xc49qultfBEFFqWUhSb/Cj6191n3fRh09jYrs1fY+7DY48lMiMRyUr/uWkXd6hFVa1HOI6W45TZ6rg0UNbHO9/j0kDR/dGWlR5VIp6PYB9powLxf6TTVQslKXGQAAAAAElFTkSuQmCC" alt="d(\star dU)=0" title="d(\star dU)=0" class="math inline" />
+preserves sector labels except at singularities (Phase Slips).
+Therefore, a persistent entity satisfies:</p>
+<p><img role="img" aria-label="\nu(t+\Delta t) = \nu(t) = 1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAATBAMAAADlvxvFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVM3vqzJ2IhC7ZomZ3UTZb8aUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACHUlEQVQ4EXWUMWgUURCG/ztzu2/vksthoZDqMAqiIFcKaRZJKpvDYJ0NRLDSRSwjrk2wEQRB5art0hqJTbA4IaDlNULKE0sbESQhRXRm3r636+04sO/N+7+Zebvz3h1gbaeY61NQl0gxCQ06svGxnSqj6duFGVdE786xpyOJCabAc/H80Dll12RY8lLFeaCi7hUX0iTntSyMk3ZesRclYFazvobCe79dIL+FXbSnhZZs5OQtDtHpFUplahDTkC/4BmgNJMEVNEnEwjrQjQX8M0SpjqhgYxlYwwDd99dzznEFA7SoiT8uHYBg1c4PMDc8pyL7lVsITzChluSS5grSPeImjuj5Sc/8Kts78oIYT7OFCsIho9uk2IIjdMZhn1qSiuQK3ge4icck3hTgBtr4Ix7Rqo5swWM8yVp94DtnHK7euiyb8cVtUiMGJB4x8baYhke4Q62tIylIZ3EDZgLs25TiDYOMUk7RiUnlzNLW0ZziBTQkBYN4vic51wzN/lCohcAymvkzW7Ds4RY+AXQoHtFnkfkeRrufKfUq8NX+Mos33LtL9jBfGCYIX3Jxb6PtlKplUBBwRnvtcegmcOGi5BQF/4hNGpsp2rkAN6zwhwQ9KMjs//pQhD124f4eegFRVvrOC2PxNGRDSkL/BjNWblYBb8VXkZBwXAmecb/MrGW5LaOKbPg3LUu09lBDXe6kjmx4qGWJ9h9CRw0N/QVAA3rCJgRwHQAAAABJRU5ErkJggg==" alt="\nu(t+\Delta t) = \nu(t) = 1" title="\nu(t+\Delta t) = \nu(t) = 1" class="math display" /></p>
+<h2 data-number="4.2" id="persistence-forbids-stasis-the-proof"><span class="header-section-number">4.2</span> Persistence Forbids Stasis (The
+Proof)</h2>
+<p>Assume, for the sake of contradiction, that the field is static: <img role="img" aria-label="\Phi(t+\Delta t) = \Phi(t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAAATBAMAAABMy9NRAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMonNuyJUEGarRO/ddpkt2doxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACNklEQVQ4EW2TO2gUURSG/9nd2bvO7iTroxGLCMGgVQZTqCgogg8QYUALbWQbH41ksNDGyFip3aAobBcsBEmRbUTs1sp2qwg2phM7A8aslf7n3Jm5s0ku7L3/+e45/97XAHkzo0LtGMMdxIIlGbTMm/19hHqP5dXeRDYy61VKve/s+ZhDJviJdGhuSv8NMIkI12pj0aT3HLNqUSzCZeARmqmgB2OpjYDGSEIY7dktXRFFWi9IPpr5Z1RCr2ohDtzZfBGr3XRXc1rLOnCrMykVaa2XEzt4FxdvvIaubgOYA7yNYCv4gEYMHLIphYcZNQYkpEE24THTXU1WYlxgMRPec0VRsIVPaANvF45qauERwuOBKBUv1xawmrQzDBDMHk+lcjqjxxl0mHLZphUevDo5EKG/+JvqSztM9Zce9SGGPKuUBuU6rgHQ+wEKj6+AHIjQj/y5ZtfhR6yPgXZSnMd+7lpX/LP/6lT/JQvk0dW5XqFfnAGVPQ8vAlYYdRLgoN7LY6CW2cx8HSHngrGlgwkP743cixkCx8h5Hnwff5hNVU8fSljsRV/yaUvFw50HzPxdAsKTpmc99J3WE3S6I7EoPOb2sn1PhfrndMJ1+k5PAJ9D4Dqx/V7CHpprsWble/mnbSi0lbpyUfZ7WQPu3wael3N+VsriXkqARuK0UzetvOSIk9s/PSDPdsmqrHPlz3FrW0Y1/FENSu2vi5yqrDHoCdm1tbq7YrwT/LQ6F1eDCe1PRC5QzrL/EH2ITc9xgaUAAAAASUVORK5CYII=" alt="\Phi(t+\Delta t) = \Phi(t)" title="\Phi(t+\Delta t) = \Phi(t)" class="math inline" /> for all <img role="img" aria-label="t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMBAMAAACzedEdAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAELt2Mu9Eic1mIqtU3XZzvlQAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA4SURBVAgdY2BgFGBgYDJgYOBzYGBwZWBI76hkYNBkYGB4xcDAFsDAwL6BgYFjggwDr4MBA4/NAgB9KgZ4TDfkbAAAAABJRU5ErkJggg==" alt="t" title="t" class="math inline" />. This implies <img role="img" aria-label="\partial_t U = 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAAQBAMAAAC8SdExAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABD0lEQVQYGX2QvU4CQRSFv1l3QATiRh/ALewsJMbYuq3RRH0CqYyFhQkxUq4/D0CpHYXGaOzUhopHoLSSxgcAgjaGxDMYF1aDp5h77v3uzcxcYG6V/+Tt2rL4y9UFmx/R387ZiKqrXoKpp7BXOVNuYUOh2AMvkhlpi0JrmG3rnOpAdsSceyZbB7+ysqck04RpxTH18WqwhnenYi6G+TGowQF+F18tnwbaISw6PrPvFOs14gMKMeY932Jd6MjxRIJqWQixnRwcqh4nzJliH9tlOSBz/VCioQvDFKeHrdHW94MTuP95fnI/j2TL5HfMG0/wijlNj7M03M9tNUB/8A/Of2HssduvZJqlbzPpvIkmkS8TzTgGdfqhkwAAAABJRU5ErkJggg==" alt="\partial_t U = 0" title="\partial_t U = 0" class="math inline" />
+everywhere on the loop, which means the momentum flux density (energy
+flow) <img role="img" aria-label="T^{0i}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAQBAMAAAAPAfkrAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVO+rid2ZInYQZkTNMrtEdbKeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAh0lEQVQIHWNggIAbEgyMC6BshgdccCYDtwHvA6A4o7JLqEuqRwKvwmIGBuYChjAGxpYEdi3WCQyzGDg/MrDvAMrUMDBIMjD+ZOCuNuB+4MXAMIGBLYCBk+EA14JIkHk8CUDihghDVgGQ5hcAEjCwHyQCA04wBog+jMz5hcTh/o7gcLh+dofxALXvG0oSwuOrAAAAAElFTkSuQmCC" alt="T^{0i}" title="T^{0i}" class="math inline" /> must vanish.</p>
+<p>However, for a loop with <img role="img" aria-label="\pi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAIs3vmXZUEDKJu0Tdgx+OJwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADdJREFUCB1jYNS9e/cyAwOLQEA6AwNDA2PCBCDFwFngAKK4GBaAqEyGCyBKm+EGkGQ/wLCagQEAOGQKCV9OKNUAAAAASUVORK5CYII=" alt="\pi" title="\pi" class="math inline" />-twist topology (the <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode), the phase gradient
+<img role="img" aria-label="\nabla \phi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAARBAMAAAAxo6E+AAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAIolUqxB2MplmRM273boxIgAAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACoSURBVAgdPY6xCsJAEETnvJyaQklplU+QYPyAA3tJbWFra2kZsJcrxEIsztLO77FSMZDKb3B2IS7Mu5ll9+4w/mplAAqg9y5ZcwYEwH3EbCgTiakM1ZSlsPZAuqWZCIYvIOE5u+045VrgzEZYmTubhwweuPCBhimvbQQeCE5S0nCNLliZNG1JPl0cyaVYemJvq4UE5AXRP54qTQNlquygH+sCrn8nJlA/MPUjM67kqqQAAAAASUVORK5CYII=" alt="\nabla \phi" title="\nabla \phi" class="math inline" /> is non-zero
+and twisted. This implies nonzero spatial stress components (<img role="img" aria-label="T^{ij} \neq 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAUCAMAAAAA9GVfAAAAPFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMAVO+rid2ZInYQZkTNuzLD2cfTYXBxjAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAARtJREFUOBHNU11zxCAIxBO/E6+t//+/lsWYxEtuOnNP5cERAuyyGKLZTIa/zsF/5JmHZXaO2TumbIVZ5nrhF+IlRDZIzHk5TMzkEuVk+JJm0x4qMXMRL0GS1IycoVBYxCEPb7KKzt2qpNAicAbNTMNZArFKi/hs6wG5om2UThryDolydUrhMZdJzxP9BhHKSFkGGZ8Frl7WeYKsDYSqkpSLjrkDxUNHb2HPLzk22LJV9oG6t1VGHX9vg8sJUtBQMyp4sNa0+KpsOTjIAnTOLqlojP2/t3nshl2aDavpLu5KMef3D2Ydc9KK5NixBum7UonNkFTg68Yju2a5S3VX2/+70xcTjb6+U+j+isf2keW3GvzV7mPI8rrcHekXhAAGzaqozbkAAAAASUVORK5CYII=" alt="T^{ij} \neq 0" title="T^{ij} \neq 0" class="math inline" />). A
+static configuration with non-zero internal stress requires external
+support to maintain force balance (<img role="img" aria-label="\partial_j T^{ij} \neq 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAVCAMAAAA94TNiAAAAPFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMAEERmMlSrdonvmbvNIt3D2cfTpwXlAgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAYhJREFUOBG1VNlixCAIVDzXJPbw//+1DGjWHN32ofVBEUcYBxJjXo/gcL68Bv3HqSXn/yQuBWtCHKHCI+Zca86lZuPgdvmaZ0sDP68NwJS7K25s1MJTSM5Ua5wN46xDeIl2tym5TLoLWPxDNxYS2wbfRmZbeWOKIPRcZ49M3WSIWZG+D9/U4Jcym4aZNpOldDNOUcuT0oI0SSP75ByFHkkgpeICm1UodroaBDNNzxVtSCCiKpUZvg7yxTFtf2mniZJveJjHI7pADfBxRWRCchnpWacSMd7eeeq0qEfieKu4VON+VU9HnIOc4pwoMRtwwg3bpIJDJkHm+aVLOleOnhy5wKITSkRSJhNZmb0D171NO6/jMjRQrzAJnHuTmvnH3IFNan+8rjvo9PEJrYZOZgE4ITf6wVZu870DDzJd4x0pGcJeO66klLXRZJ9ybTFDxvuh/5npLKQwvpbdOwu9O88GPo6fxrUDb264bzWcwFMHTt6T+QtK6dqBpyDY0rm5bjDXDrwBvXB9AXByCSm58uUxAAAAAElFTkSuQmCC" alt="\partial_j T^{ij} \neq 0" title="\partial_j T^{ij} \neq 0" class="math inline" /> without flow).</p>
+<p>In a source-free vacuum, no such external force exists. Therefore, a
+static <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode violates local
+momentum balance. <strong>Topology alone does not generate motion;
+rather, the incompatibility between nontrivial topology and static force
+balance in a source-free field enforces evolution.</strong></p>
+<p><strong>Conclusion:</strong> To maintain the <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode (Persistence), the
+field <strong>cannot be static</strong>.</p>
+<p><img role="img" aria-label="\Phi(t+\Delta t) \neq \Phi(t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAAATCAMAAACJOz5QAAAAPFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMAMonNuyJUEGarRO/ddpnD2cfTgSlfrQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAghJREFUSA2VVQuWgyAMDKCiWLsf73/XJYSEhFbs+l6tYCYzGQgC9Fc8+plPxv8ENRIBOh/Oyc+VbPuEFGKwYfFpx2U0CwXAFYkCLidrgCOVBDG+yaqm/LnKqMQubSwvNpPkgkSAMedkQK1xUmUA8EvJH49plwHFdubkt874c0lCQDctWea6FTtY2emEJD+sZFCbOsA1MyjWL+01PU1K/ICkAF1Oks4IaUcZEy2Na5Vixl4Fbi4xo8amfkMlT2LwPiIpwJAdQRWwY5rCnnwIXq9zrwKXq5rRYq3wLFNZMSRB4JnJi4rwyCP85WvSGl68oD5jMzj2JCjAc8Pr6zvf2I4hCQKNzLnusdYzJXXnxVGq5J3BsbuqHQvRwyEJAs2SOVKRmrulsBCwOi6Mj5xAy8exD00LyTTZkKQA3dZ6JNKK+G6nWS/IClxHXDeJZTXFPZjoj+8jkgrMrbzUQmgmrBB14xkVbEVeTIyWWFGB9v38ontiX467JmFgO9ZCUfNwYAw1Kvzi6nWgGRw7m+rNgAy5IqlAfcQfxYLlWORIxxRGxamuvIAcu+q24sOP+PF+TWKABJi7HUGzRgVNvdxtT7y81hOWxABr2Ls5uPu2ZazJ/KY8rcJ0sQFy1Gw+QTx7///UfVpPnUuUJjFAQSTdHDJ797Dqr999ihZhgIrF7Es1P3z8L0jiy8MfkvERudv5VfwAAAAASUVORK5CYII=" alt="\Phi(t+\Delta t) \neq \Phi(t)" title="\Phi(t+\Delta t) \neq \Phi(t)" class="math display" /></p>
+<p>Unlike conventional instabilities which depend on parameters, the
+instability of a static <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode is topologically
+protected.</p>
+<h2 data-number="4.3" id="propagator-form-of-causeeffect"><span class="header-section-number">4.3</span> Propagator Form of
+Cause–Effect</h2>
+<p>Let <img role="img" aria-label="\mathcal{P}_{\Delta t}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAPBAMAAADqo9msAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZrvvzXZEqxAiVDKZ3Ykka7MrAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAqElEQVQIHWNgYFT+/9mVAQ7YyvoFZvk7wPmTGeYnMDD9hvNXM+Q3MLB9g/MZGOQZGLg+IPGPMDAwCSDx7zEwhDIwcDoAhRqAmOMbx5oFDAysVkC2JhBz/XIHqZ4mCyQMgJhdAUgwMATwCjDscQQy+ANAXM4ELgMGVhATaD0QsDIwXGRg2gBkHQJxGaYxMCxmYAaxPEEEA1Alr0ALI5gNJDj/A4EBz2oGAI0pICzYiLG8AAAAAElFTkSuQmCC" alt="\mathcal{P}_{\Delta t}" title="\mathcal{P}_{\Delta t}" class="math inline" /> be the evolution operator. On the persistent
+sector:</p>
+<p><img role="img" aria-label="\Phi(t+\Delta t) = \mathcal{P}_{\Delta t}\,\Phi(t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAATBAMAAAADltCBAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMonNuyJUEGarRO/ddpkt2doxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACvklEQVQ4EX1US2hTQRQ9afryYpqXxs9GXLRQLLpqsAsVBavgB0QM6EJdaKCoBZE8uqgbq08Q1F3wh90FF2rpogERcWVc2eVbVVDEglBxZ9HaqEg998770QQvZObcc++cuXPnTYDAbD9EbbPTxnQmJoVWmdTAj63E69rz7JLh7IU1sZuvV58nS9iw70CZKTVJu6a5mWWZ3gO2q340dLUEkh2LKAXTT1vW6PckVxVJpw5cQcaTwHhLtEpAty8ubB05TB4VRDYdMjpbDes3cLwYk/bQLTqSdUyFsOnC8p2yyveatGw9yPb7PCKyXZWA0SlTzK0As/WISx2qnnoAPc0SMAiklnIruRfoLgNbTFaoafvdDTJkc7VovYLsN6AaU33FWXemjIMU44JpVlzirq/QAzwe3mZW1E26gxQbqqxoJ6xQAo7E/jBm3Z4aGsgN7PBEqbdGzb3IMyVIC+vkpyENFZZ1oTAl1k+EfD8cHzhBKM3/Rc10E0323qNgVKfE9f6BUPMdIA0V9iV/Cbten1ik+6FClTJg6rRYfC+9Hjfs50Z2rSHLvk7d2z11l0AeQZrnEfatRGKrjj6iYz1rUoHA9DNVAmbo5V1gs977VaCrRoYW1OkwlmsZtmEi4XhfgYM5pD57vJmHcu92E9jOgOyC8Z9cTZT2JsQNNfWl7TGsaCb6+VfzzuAS8FGgPXSRI5N22RWjqe8o7SJf9DU3qHNwPe2TJ6w1ooFwkM+T5iPvYb9CfUc7gTcOcJKMee9OBZn5siYEmqtqTWGzngbCoTAiyKoj05DiAPPe54HL54HbwqhZtRCFZ498Xq6bcNgk3ZslYc4ueVHotEGHIwIxXPtXAgTZcbKgczzHHywWI9bsnCgOZ6NYO/jSTnVgrAUhC4kz5SrCdLRsXEvHeEg+EXAj9GTWJiWJCFsR+j/QPMr8A2Hmr/lD0RvLAAAAAElFTkSuQmCC" alt="\Phi(t+\Delta t) = \mathcal{P}_{\Delta t}\,\Phi(t)" title="\Phi(t+\Delta t) = \mathcal{P}_{\Delta t}\,\Phi(t)" class="math display" /></p>
+<p>“Cause” is the state <img role="img" aria-label="\Phi(t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAATBAMAAAADuhLEAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMonNuyJUEGarRO/ddpkt2doxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA3klEQVQYGUWPIW8CQRCFPzjugC2ES8AQJGlSSVJbUVfkJSgMOUWQFwQKcRZ3v6G/AENIfwH2FKKqrrZNSkHyduFyk+zMey/zZmbhHvVcoG1JZfj3qNK0uP6lRHCy+VM0YWHh8pIoj6CW4wn15qdNRJBCJ6QaU/k1Z7OjFsEATIY3Mmc+eID35yfY0skkvNCSeaz3U3RMROy2fTGjK/9WwgH6bssaqpkEKy7/E+xQL13dBHepl9AKc/zX4i/tmOAY0UhlceHbAbpe7nu8uTotKMwc/C4FEws3wlIgEvbhChVZMAGnnOcOAAAAAElFTkSuQmCC" alt="\Phi(t)" title="\Phi(t)" class="math inline" />. “Effect” is the
+state <img role="img" aria-label="\Phi(t+\Delta t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAATBAMAAAAqve1DAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMonNuyJUEGarRO/ddpkt2doxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABaElEQVQoFW1RMUvDQBh9aWKDadO06CIiCkXRyWIXQXcFEQI6Sx10E0IFu1iJmzp1zeomDnZxcPQfZBAF/0XB2g6CvrvcpdH6QfLevffu47s7QJUdazaG0jGqH4t0JsdcnCrpQmK+L+AdsAOlK1gNBWkhL7E5FHYNsGR36LD90hWxXelh+rh/7csdXlnIuJF/wDWGgvWAJcDoOQPnEZYPzCa+jrWxQ8FgyzvArDkDPKEA3NaXZU7HYsyHcKproTC9DmObKDKx/asbb8hiJytkJu22x4g8cTqbG0AM53GaAmky2xTgcC9KUVSPogWyNr8N4J5QDIAZedJzINehwlKzvZE+hFghcDag+ckwmRmeiaWKycczu1i3G0lMvoIZoFiOM7HcYaVSmRvi2QX2qSdv6jaQf/UzMe9b1BdOjoArqYvfhBqMVN9b6mHrP9oaiQnLtMDBX3O0LvGIupyGZmN4mVWS+bOK5nR+ABLMUroIvPYIAAAAAElFTkSuQmCC" alt="\Phi(t+\Delta t)" title="\Phi(t+\Delta t)" class="math inline" />.
+The link between them is not an axiom, but the <strong>Propagator of
+Topological Persistence</strong>. The effect is simply the next
+necessary configuration to prevent the loop from breaking.</p>
+<h1 data-number="5" id="force-from-stressflow"><span class="header-section-number">5</span> Force from Stress–Flow</h1>
+<p>We can extend this to interactions. From <img role="img" aria-label="\nabla_\mu T^{\mu\nu}=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAASBAMAAAAzsTS+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRLvd783YE3wBAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABUElEQVQoFY2RMUsDQRCFv+RyufMCyVW2xjSiKAqJfQoRrLQVBAVBsbO0koClgmJpld7CwkLSXSNYWKTwDwhWdtGERBud2WNjzkTMK2Z233u7O8uj8GUQInCeSo+ls2KOSU45UiaJ9FtZUDFkJuQBZ2eLPS5ZS/iCgzlw28rtG2ET951UvcIdJ25kKFuOycvTi/p8zXDLOB2CcJYm97lDazP9lqx4tqswEQsb+BEur95zPZpJWOkSNMFvQcYKeTlMr7waNCwTd6+F15GBe3BllcISBFW7w19RFIUTr9zJeUhfvQkhfdH39hdiFDtM1Zy6JRdk4drNQE919dsybEfH1QDgZUBPLD9x5G+kemWpGgB8JAw/89IgW1VtXasGEM+k1BCuTRYysHweDSA7354ecsWEsysZCzwtGoD2cSABjGNTz0AA/x4ZFcBfh0YF8Nv7DQDESVje98gyAAAAAElFTkSuQmCC" alt="\nabla_\mu T^{\mu\nu}=0" title="\nabla_\mu T^{\mu\nu}=0" class="math inline" /> in a stationary, spherically symmetric flow:</p>
+<p><img role="img" aria-label="\partial_r T^{rr} + \frac{2}{r}\big(T^{rr} - T^{\theta}{}_{\theta}\big) = 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMsAAAAlBAMAAAAemwDyAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADTklEQVRIDbVVTWgTURD+dpNNk+ZvqyAehC5CqT2UhvrTopdcPFQPTRFaq4dWwdiLEBAlCEJoUWrBWop4Dh4UFUrw4kEPvehBFBa9CEXbg4ciqC21HhSp897bze7bNGTLNsNmZ76Z75vJ27c/QEMrPss15AQnRE1lI3iXhh1SWSw0JAUnxDK4F7yLnw6v/JACc5K/Arfw0yCR8cMKzJkK3MFPg5BYjJZtQFamTcYoNaDVK3cgxEqH6tXtfKRtnIWnbOzxe454EjIMPzx4jmUW5XQt6lc4JWrUliijDmnj5LQH0z+mF0rFMwYdhKsW29r6QyBawOjE7OrMasutXsgUS/o9XGEiMawqt4N0FkWKIya+QbsWO0lHwa65fAy4glQZI7n7I5pMEdKbG8fLnH/JpWJhZ79BZw0YILcXyiaS3UtILhFipgtnnU9AyaA9hw+fKw5F1IS0YzxucDxsKSwXXsR7EQ6SG4K2DtXsA+jg1mt54S5D0zGmoztEa7UpoiSkHwspAZclHeI53KBM+GrvGDkdrStQcBHs4CaPmacie4fqEcOhCKKQqoVJAWkX3Eawi/AxqE94OlEmR7tIBzd5zD+We0u/OP1sCssx49KpnACpjPDWedDEoI7wHPCXZ9IWzSZJY5LrLL1p1zxekiYKrPooTzZBQQ+NMZEosb1nRlgyaUx4jWoqX5JEEqAq3X+XlluSGDSDyu0GNNYCuOOutubz7/L5EqW2yNbAx0Tn3BT1JbMMS1WlF/bVjFnOsjunR0ekzNVv+Nk5SavhFy0x7lSlyJaGSgdoowpSLW1gFKDbb0DnT7X3iy+NUdj1SvO/LjURwJamzNNAirOqexPP4DotMad85U91zYWXxmCeGla3wDOpKl0+/JT+TFYqqxX+eD4u6uzBb5n9TdvnNnnMC6D4c8J0E+zYkQ7jOb8+doX7kbOGheWn2krKYzyvEIvjcX1YAc57kg60H3wnQ1GbhGISqgM6owbgfXU63IoT1oui9bbfLYgepQ/Bijuz49jHX+E92YICWKdPbb2PdAO5OvmJ3wxatgHRKpf80bws7UvptjfXBDzUpXc3oa23pT7jzTQHv25OW09XhX/QPMndh9ri7vfcpmNLYZvkTlP/AfeNrrRjAIoDAAAAAElFTkSuQmCC" alt="\partial_r T^{rr} + \frac{2}{r}\big(T^{rr} - T^{\theta}{}_{\theta}\big) = 0" title="\partial_r T^{rr} + \frac{2}{r}\big(T^{rr} - T^{\theta}{}_{\theta}\big) = 0" class="math display" /></p>
+<p>For tangentially dominated energy transport (a spinning torus), <img role="img" aria-label="T^{rr} \approx -u(r)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAATCAMAAABY8PhlAAAANlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABHL6OuAAAAEXRSTlMAVO+rid2ZInYQZkTNpTJeuz2MwHIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAGeSURBVDgRrVTblsMgCARFDTGbTf7/Z5eLbV2Ttuk55QHRTgZksABfNZ46uhZjiEQpEeVEE+FcAdrSYa+GsQdytl0ssiSN8QfCihOgLz32YjxJdZ3hLBs2t6OE5bds+nPxRcMPbRnwukdWt6uvZfa2tWVAv99axT2MpG5lhpzUM0S/Ylv0TAQJIRvIa/HDc79pt3urN00WlwOsQ3BbDDrFUihoB+GG7ikAVjT91AX7pVItpLNyPwEwCezk4Iy1hrwytSr+Q1hHQpJrc60PgCURkFezO7ju490eJDoDYpTCKT9UWJVFkxTTGLkGFj3tM4nUyO9m8QVXt7tpei22aJLVEjB0V02eYDnvrufKIdhTaQN3LCBJu2dVj71FsJhiBmyV760Px49lwGbmmiMyYxuBEaUjLhIIq9OxzbyjmuwvJAB/GZxTiH7dkR+kOxxqkXsshsDHc7MXO1HaIz1X+UA4HswZK5I2YbLeTO1PTg7mF60Zaa7sy6jl9uTSV8hOMQPhIeHpR58clv9vpf3FfMLwDlsfEyoKyOP7uvXDYvEfNl0Iy4QObCkAAAAASUVORK5CYII=" alt="T^{rr} \approx -u(r)" title="T^{rr} \approx -u(r)" class="math inline" />. The induced radial acceleration on test
+configurations is:</p>
+<p><img role="img" aria-label="a_r(r) \propto -\partial_r T^{rr}(r) \approx \partial_r u(r)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANcAAAATBAMAAADxKoUkAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdlQyIrtmq82J70QQmd0a05NiAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADM0lEQVRIDY1UP2gTURz+LrlcmtylSYuLdbmitBUqxuIgLt5g0Q5qEO3kkKJ0UTCigyJCcBHBoRSpVNsS7NDBFkKoioXi6SBqsYYKCiKlgw6CSlDRoR38vb+5NNX4uHvv933v+753995xgG5OipWGxrWF8yAdIDZ3FOkCnnCuzlMjFrng6ToiyiunrImaouR3MhyaGv02ujwc72mN95A9xzV1HikWASIXrwSS/RYxdtSQGvyAMUQg6uErQpt6YfYSMopifr1HisWkzA1lBRR9XgxNQa5auwgXCD2D8x1mcQCgC0qrRiWXYgHzklUjg2rlmMvQBi1cIbIboTXY3mWALqg3qvdwMQ9RuRgOZEY8AWxxDoEZXu4aLLHFfCRW4CADduGYVAlP24zPnoaaFPNZlYuHBI3W3ZyMA/advtNAgcHOTx7mx/gE76wc5gu8aipXWWIezY4Uhce40HdXfDJK3FPGDuhcKtCPi9zdTDt5eOgWUCFoZ61VI8V50e0FkhleJt0qvQJs+xzLCQ99dXNvXpRpVooddxLnoHOTgJXBJe4+SFsw588C0wQNoG07p2V3HXjt8vqxJynAzCO0MG0TwTwW3RMz1EGKbTq4SejcuI94FveYAHvoQMZZ8YVuMkYqDOD+cWr9ziqwk2PcFgPrw3k4MfYq3MNG3rQ4ljMr1dxmH0c8Wp/9DRZJeJWJC3TTYvYvBmSz14ArxjCdKK4pDnBW6Ot3GS6w7v2Uxz8QLW4u0r7pXDqzfTAyJfY3oNqhSL1Y5CxZVaMnDE+7k+2Eg89QoM31mYYKJM4svOt+mqHdVeKkH025OpeKOJ4PneolbZOPUJ5Gk+Sw0zgf+0iFakexmN7PZ34qisYbQBeD3EPn7CxP+QSVOImXs0WVC1rEXtr61h8gheGCf39WlgDaxz10UZZqiZYxWClSTfy+qTigFWhhSHg0r8TWUmkEhszFoJxnfwMzJ0DEl2TdEC2upw5IYgOPFqtcnJBitj8KqAA5FRgigVqUapENPFWxXEQvyq2HRMCHusi/E2b5PzwyN+EHc2yXISsd5BrVJS74t0fk4mRtlsegWcs1QELdwOPxEOr/ANtKwAGIpFvpAAAAAElFTkSuQmCC" alt="a_r(r) \propto -\partial_r T^{rr}(r) \approx \partial_r u(r)" title="a_r(r) \propto -\partial_r T^{rr}(r) \approx \partial_r u(r)" class="math display" /></p>
+<p>For configurations whose energy density exhibits vortex-like decay
+(<img role="img" aria-label="u(r) \sim 1/r" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAATBAMAAAAexCxfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABXklEQVQoFV2RvUvDUBTFTz7aNCG1+Q9a0MEvJIOrUByqTnYoqFsGwdEiiGtwU0ScHMShU9XJDg66FVxchMydOrjo1ME/wHvfR3zJg3fv/Z1z8vJIALm2RPMUlZpT4ESQGxdEDU964O6lklZly+t1xONdzjTMKdBd4UNTRDMzqk/zW6YKNDhq9U1xoqCWmKqKOgMpWvOwY3SBi8v7FDyYS5xaV+ZmJar2MQKW3/wEmHFw5YDKAk8ieqXMtIlKFExhb/dqA6BHvvUzzICbPHqozVs8w5rC9WP2Xmg7bWwAlFanJtp8xSfcEX2vFntd2vRznElHIF/ApkmavziyObHbppSIhtRP95jEXavUpTlz9x/xBayxFWRc/1cjBTqEwsT74tIYJ8AZB8Ix13ztHH9H+CAUppSHyq231WC00ot0RD9iJIPYABo1rxdlJi8qaeeCw7JMar2URCAEWYterv0BCd45MN/+n4gAAAAASUVORK5CYII=" alt="u(r) \sim 1/r" title="u(r) \sim 1/r" class="math inline" />), this
+yields <img role="img" aria-label="a_r \sim -1/r^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFcAAAAVBAMAAADBdm84AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdlQyIrtmq82J70QQmd0a05NiAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABP0lEQVQoFWNgIBaozSVWJQMDiwD7BGJU84IUMTewBRCj2BOiiJOAyTsMQOqmQBSfOwChcZCO9mDFUOuLcaiCCfODFDMLgLmMBg4wYew0WDEvRNFuBqAmRiET7CqBomDFrAwMO7dM2/L//wQGhjCGCqhipldALtMBJK1gxdsYGFRechaAhIGhVwmVtnApZWDgRFILMbmGgen0Gm4HkDhXAsNqqPwdBt4ABqClDAxbQ4EgDOqMAgYezgsQJf4OzB8YJNU2AHlAkas+RRBhCAlyBpMCAwMHEIOAPQNjwCYuIwEgMwHo21UgBhyAFLMDeecPQIS4GE5MSHGFS6My+DcwMBwHCmlAhbkvKV87kIiqBsY7Wd9pwJAN5AnCREB0NTIHjR2AxmfAEEAoYLmAYBNkMRoQVIJQAA53BBc/iwVJGgA0CTTk9kwkDAAAAABJRU5ErkJggg==" alt="a_r \sim -1/r^2" title="a_r \sim -1/r^2" class="math inline" />.
+Thus, this framework suggests a gravitation-like interaction arising
+from the <strong>Organization of Energy Flow</strong>, without the need
+to postulate intrinsic mass.</p>
+<h1 data-number="6" id="conclusion"><span class="header-section-number">6</span> Conclusion</h1>
+<p>In the PNP framework, we do not need to postulate that “Time Flows”
+or “Gravity Attracts.”</p>
+<ol type="1">
+<li><strong>Causality</strong> is the result of <strong>Topological
+Persistence</strong> (the <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode implies <img role="img" aria-label="\partial_t \Phi \neq 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAASCAMAAADfRiY4AAAAPFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMAEERmMlSrdonvmbvNIt3D2cfTpwXlAgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATxJREFUOBGdU9l2xCAIRYRo1EwX//9fC2iMTc1pT3mYINvlAgMg4tCTfv8lyA54G6kUS83xGO+hHGGok1IVOMTLwnWRC7C5EYLBR2wv1g/tw+Vi9VfgMFO61CJqmSCodh9lFmy/Tb7myVfFrIChVaPgPXLPJuGB1QHut3ScqBlXtG69DgxT77xIU5oN+zVHw56gyeZCGtUJ1wzWWZUkyy6v1jCkTeXtXX46PPZs6a6YyVWGrL0+YU/Q0LC1hqs2eaVtvT/wxnnXh/FmnY52L7tMlIpXjbbVzLO6hhgiC9phs6bdQTjLy77l+oYo749P5X7yhqw4Qcequ3MvObc8bv3nrX2HBtR3u5YUQlSovjJY3DkbJ4k5hQOfl9pMrsA95owFPcxfJPFo/RbpH8veApfPP0Av88yI9idc+b8AFCkI28XolRUAAAAASUVORK5CYII=" alt="\partial_t \Phi \neq 0" title="\partial_t \Phi \neq 0" class="math inline" />).</li>
+<li><strong>Force</strong> is the result of <strong>Stress-Energy
+Conservation</strong> (<img role="img" aria-label="\nabla_\mu T^{\mu\nu} = 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAASBAMAAAAzsTS+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRLvd783YE3wBAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABUElEQVQoFY2RMUsDQRCFv+RyufMCyVW2xjSiKAqJfQoRrLQVBAVBsbO0koClgmJpld7CwkLSXSNYWKTwDwhWdtGERBud2WNjzkTMK2Z233u7O8uj8GUQInCeSo+ls2KOSU45UiaJ9FtZUDFkJuQBZ2eLPS5ZS/iCgzlw28rtG2ET951UvcIdJ25kKFuOycvTi/p8zXDLOB2CcJYm97lDazP9lqx4tqswEQsb+BEur95zPZpJWOkSNMFvQcYKeTlMr7waNCwTd6+F15GBe3BllcISBFW7w19RFIUTr9zJeUhfvQkhfdH39hdiFDtM1Zy6JRdk4drNQE919dsybEfH1QDgZUBPLD9x5G+kemWpGgB8JAw/89IgW1VtXasGEM+k1BCuTRYysHweDSA7354ecsWEsysZCzwtGoD2cSABjGNTz0AA/x4ZFcBfh0YF8Nv7DQDESVje98gyAAAAAElFTkSuQmCC" alt="\nabla_\mu T^{\mu\nu} = 0" title="\nabla_\mu T^{\mu\nu} = 0" class="math inline" />).</li>
+</ol>
+<p>Reality is a self-driving machine: it moves because it is
+topologically forbidden from standing still.</p>
+<h1 data-number="7" id="references"><span class="header-section-number">7</span> References</h1>
+<ol type="1">
+<li><strong>Palma, A., Rodriguez, A. M., Thorne, E.</strong> (2025).
+<em>Deriving the Schrödinger Equation from Source-Free Maxwell
+Dynamics</em>. Preferred Frame Lab. <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18316984" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18316984</a></li>
+</ol>
+</body>
+</html>
