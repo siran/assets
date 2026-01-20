@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Max Freet" />
+  <meta name="author" content="Adrien Hale" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="dcterms.date" content="2026-01-20" />
+  <meta name="keywords" content="PNP Framework, Scalar Field
+Recursion, Emergent Geometry, Mobius Phase Topology, Relational
+Space" />
+  <title>The In–Out Self-Referential Field Vibration</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">The In–Out Self-Referential Field Vibration</h1>
+<p class="subtitle">Second-Order Relationality and the Emergence of
+Orientation in PNP</p>
+<p class="author">Max Freet</p>
+<p class="author">Adrien Hale</p>
+<p class="author">An M. Rodriguez</p>
+<p class="date">2026-01-20</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> Spatial orientation and the
+concepts of “in” and “out” are not fundamental primitives, but emerge as
+phase-dependent projections of the self-referential scalar field mode
+(1).</p>
+<p><strong>Abstract.</strong> We develop a second‐order relational
+description of the Point–Not–Point (PNP) scalar‐field framework, showing
+how “in” and “out” —along with orientation, direction, and spatial
+geometry— emerge from the self‐referential phase structure of a single
+real scalar field <img role="img" aria-label="U(x,t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAATBAMAAAAg4UMRAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIonvMrurEJlEZnbN3VR9UU46AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABI0lEQVQYGVWQMUvDYBCGn7RJQ2KtoYM4KHYQBKegg+AUkG6CbopTcHFxyCwoOukoxclB8gfETIJL6Q8Q1+IWwcmpLoqbd1+ifH5w73t3D9xdAvXzi99MfUqiu7ZE/zOhZQP8MylXMf5oET/jHZxvCBIYWcQraEM4MVM7uUVmEholrRE0wIsssiljUpo9OIamgNvzmwvlg6cViFm8gmuYBrfs5y9K2JeYcC8qnzKv27azXCr4kFjnSLQHW2I8qMiOWGTMnoyRgSfaelaRg1KRmEtzml4QOF86F9r5qZIF/GWtMu7CcRg5h3JNUuDs4B7IibK+pPs6eMPdgM4wIsy1q89JjUm7ci+ra9j9T2b/AHN1WlZufkaVBnWrsjCpukYjK8eBHzk9MufYmYVGAAAAAElFTkSuQmCC" alt="U(x,t)" title="U(x,t)" class="math inline" />. The minimal closed
+mode, denoted (1), exhibits a Möbius‐like phase inversion across its
+nodal surface, sustaining continuous energy circulation without
+requiring a background geometric twist. This work complements the
+dynamical theorems of PNP by providing the conceptual formulation of how
+a scalar field constructs spatial orientation.</p>
+<p><strong>Keywords.</strong> PNP Framework, Scalar Field Recursion,
+Emergent Geometry, Mobius Phase Topology, Relational Space</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#introduction">Introduction</a>
+</li>
+<li><a href="#scalar-field-recursion">Scalar Field Recursion</a>
+</li>
+<li><a href="#minimal-mode-and-inout-reversal">Minimal Mode and In–Out Reversal</a>
+</li>
+<li><a href="#secondorder-relationality">Second‐Order Relationality</a>
+</li>
+<li><a href="#implications">Implications</a>
+</li>
+<li><a href="#conclusion">Conclusion</a>
+</li>
+<li><a href="#references">References</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<p>In standard physics, space is treated as a container and orientation
+as a primitive. In the Point–Not–Point (PNP) framework, neither is
+fundamental: the only ontic entity is a scalar energy field <img role="img" aria-label="U:\mathbb{R}^3\times\mathbb{R}\to\mathbb{R}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAARBAMAAAACmL43AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIonvMrurEJlEZnbN3VR9UU46AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAByUlEQVQ4EZWSP0gbYRjGn0uT75KLHCFQySL9hkBph1J1dcji0i4BUbO0nMWQpYFwQweHcuCgIoJDKY7aqVTB6FYEcVEEM3RpJ4eMSe3QqVDo0Pf9/lwSuCG+cPc+7+99vr93QFL0e60kPDZ7Ltpje5OMhYlKEk5ixdky5v9Y+9HV7avXgHM2bPU6zcvv3WFC2jiBGcCNbNOVgfMsgrs3cv5QoNizFpONE85fIFexTaIIToBs1RLONF7kC8OE1jRO7zeQj1uKvvCr3rcYmfHpfUvcFivtBMQFkKJah6L9XDsrqS7R85U5r+/vsuJIR/TS4/vAAwmsMUhPa+psBfjyiYkfIC9Z0PjSRxY6qpxoJXbiEc37gYHTUHRp4YYrFZ9xqnKYqc+1DaOkpnKldh4TGPRcubIRxE5vO1I6FKV3MaR96ZW08y01ZNykXZXP4wpNLUORetllWV9U8Y+kddbo5HQEE0RFpmUrb1sqSecPli2kj8v7tc7N4etn6h8E1hqfX+DnpIXAIUvrnIL7WLXM/UVo3Bkr3X9Ksg6zEO8Hl1Rl5krtTL95yqX5fr+uf1QerksFwEs+ocfv7Kw6NfrPdeTUTCNO27p//g/HM2c8SxRrlAAAAABJRU5ErkJggg==" alt="U:\mathbb{R}^3\times\mathbb{R}\to\mathbb{R}" title="U:\mathbb{R}^3\times\mathbb{R}\to\mathbb{R}" class="math inline" />. Observable structure arises from the closed
+oscillations of <img role="img" aria-label="U" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAIonvMrurEJlEZnbN3Vm6+/0AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABdSURBVAgdYxAyVmFwfebAwGDEwMDewMDA+JKBgRPI5XrAwMDNwMDAdoCBgQlIMyswMFQBabkJDAxTgPQ6IN4AxDlArADEEQwMLEAphg6IcgZZBnZ1IJeBJUkLRAEAxWgLmICVD1cAAAAASUVORK5CYII=" alt="U" title="U" class="math inline" />, with apparent directions and “in–out”
+relations emerging from nodal phase behavior.</p>
+<p>Building on the derivation of causality from topological persistence
+[1], we here show how the minimal <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode defines a
+<strong>self‐referential energy flow</strong> that reverses orientation
+across a node without spatial inversion, grounding spatial concepts in
+scalar recursion.</p>
+<h1 data-number="2" id="scalar-field-recursion"><span class="header-section-number">2</span> Scalar Field Recursion</h1>
+<p>The field dynamics are governed by the recursive definitions:</p>
+<p><img role="img" aria-label="F = d(*dU), \quad dF=0, \quad d*F=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARQAAAATBAMAAACjLO9GAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid3vmbtmVHZEMhAiq833cN8pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADJ0lEQVRIDcVVz2sTQRT+4jbJ7mbTpKLVVpCC/0BE6cGDVPDHSchBq6jQ9aCHCrYiWPFiBGu9FBeqKIq4oLmaHEQ8ySooXkrTmyAt6U3RQ09iawq+N5udzGZSKKL0o51573vfm307+2YCrIs3WqSkMf+Y2Lq/58jPtjXtkQC1iCs33u3rR3nNfxUxrbncQGLPoW0jbovqbJFQYt2MZBHYIWVNYwamF3FWAXuBzBDSbkTJmWI4CSTGJcPGo/MyOeJZKKFlWHf6OJgrAY+lqmlMo1tSZs1ZASwfqEsuMswa8CsMRhRg1/Gj5YUWCyW0jJfoDiha8YEnUtU0hnFNUkk3tQyY5Gubh6QLe5VKqUo1Gclx3FZ9tkkooWecgjlE4XuwEEhZ02jgHFm28HJBtk7fgOynwleHXABzGZ6jcsj5mIkR5JCQ4PPQIWMV4gMuiqcITTTcnSigQI7BeVNXYeSB100/0vDMMVCdFFZRCVCJbVMoJAkv2iHDbsD+TYGDPV+FoGuBwasm3WwNA8Bo0nExjAXMeWE75YSwNXAMxtLukqCOc/48mc+olEBQ0SCESPnFj8xEGfKJFpVCJ4xasj/KaM4XkC05daB867KXKuIzxihQon8j/q4iRnUmfIopoDqoGgWhEPbp3m/MahlUB1UDaklXyWJzEIZPpwAYK8FwcQCLZPN2bYmXImJUZ4pCKuZ83IwpDV6EkKKjQ9AynFWk6QNxS8bhNFBBZoB3ZdKfC+xlnKAO9kjEvaNAxESdCklmzgP1kIJQSLuy8wyz/GZxrCBdoOXzTVZ+OXr2pMUdRr1SqsAseofDA9Reiojx9RdC9god3OmIFHMo5F75xH6UIZ9IDcn3DrdkGwqZpRS+E0m7YOBt3n2PzC7WfIDzRdGKGF9/bbCKdMXNVlusELJL7ye6kycVD/iKS4xwz8dxf+LFJUwRZ9HfsRtHq/Z8r1BchD2oSEVs+1peoULz+hUPz90WLYTsitfukJGe6mupNWtWY4CzQLoD3Zka70z/BZusaklObXNKcYa0Urqoug2/68a3T3uORjzUmFFiNqWU+E8c1xXw8N/wB2Mj3wFWsOPQAAAAAElFTkSuQmCC" alt="F = d(*dU), \quad dF=0, \quad d*F=0" title="F = d(*dU), \quad dF=0, \quad d*F=0" class="math display" /></p>
+<p>from which electric‐ and magnetic‐like fields follow:</p>
+<p><img role="img" aria-label="\mathbf{B} = *\,dU, \quad \mathbf{E} = *\,d*\,dU" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAARBAMAAABqR/5KAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3dqyJU77uZiRBmdkSpB1/9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACKUlEQVQ4Eb1UPWjUYBh+ApfmzrvEUBzOxQsdRbTg0PFOPRdFvEE3pXWpY2IXoXQ495arIIIgmE0QhcNNl0YnwaE3iJSCeE7iFgs3FNT6vl+S7ycKN1j8hrzPz/fkSS4fh9n23tzZi/jrsgbXn6761uCc7s4urMzdXdEVhZsThQEtHkawDnzdVPgrnBh4pQRGYQp7YEoF86ICianiVIKrfcOU5AMWx8AXyQWgEmwNTS1nbseQVZxLnswbpiTr2CY8klwAKvErvqnlrJoYsopzSTs2TBS3mOA8GSWTSoKZYkeWs/L40R6BggAqTiXX9vNNxaBeWp+WI6wC9UQweQlTN5AkA44Y7sfbPDNixsP9Rxfus/mgS+sSgYbfv0GjmlQ69i/AM58a4V47IBs13t+NCb2p2gmNdXQVMeP8cw1icuWyNp6fJvIOlVEjBVxpZCBMvcCUmrtvx/RsfVwhPSOlOJe0vhupxk+ma3D8SgAcMTxxhAOQrq3tEREnwR3WBCnFuWTrh5aAtfHiHmBP0EJ1Ezihe4T5CFsdXWzu7vjAYs8ih96ESSku30T/JjfpPil2vNrmH4dLlNRGpW9CvAW3PxYfiEgpTiX1Mx2StRUxjuonG/Y8Xg9hX9Y8UfJ5SVeyA+XgZZyQnJ8uFQf4v2vhlBEBxsy/LR9/j2PPEnqqNeb54kD7oFdQMT2+eg9vPR7yFJIWz/jU68zUHYew4b+ULB3Cg069xT+W/AYPMqT2wHnOIwAAAABJRU5ErkJggg==" alt="\mathbf{B} = *\,dU, \quad \mathbf{E} = *\,d*\,dU" title="\mathbf{B} = *\,dU, \quad \mathbf{E} = *\,d*\,dU" class="math display" /></p>
+<p>These satisfy the source‐free Maxwell equations. In PNP, however,
+vectors are not primary: they are projections of the scalar’s own
+oscillatory recursion.</p>
+<p><em>Note: The Hodge dual (<img role="img" aria-label="*" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAJBAMAAAAMdiuQAAAAIVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADdcGRXAAAACnRSTlMAMu9muyJ2ic1EpajSOQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACtJREFUCB1jYGBkAAImIDZkYTVgEEm3mMDAYJXAAGSlCIDEgEyQLAMnAwMAVWcD31noPv0AAAAASUVORK5CYII=" alt="*" title="*" class="math inline" />) is used here as a relational operator
+on the field gradients, not as a rigid structure dependent on a
+pre-existing metric background.</em></p>
+<h1 data-number="3" id="minimal-mode-and-inout-reversal"><span class="header-section-number">3</span> Minimal Mode and In–Out
+Reversal</h1>
+<p>We define the minimal spherical standing wave (referring to the
+symmetry of the nodal set, rather than a fundamental embedding
+space):</p>
+<p><img role="img" aria-label="U(r,t) = A\sin(k r - \omega t), \quad U(0,t) = U(R,t) = 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXcAAAATBAMAAACZ/FA1AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIonvMrurEJlEZnbN3VR9UU46AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAErElEQVRIDY1VW4gcRRQ9PdszPT2TzDQBgx/GDGs0DyQs8SOQryabBIVA1g/fHzuGEAkK2+QnGjE7qNF8qJk89EeJ7YvEBNcBQRQlGQUTWEQWDUhQsBMRwQ1mFyWSBMR7q6q7qnu611yYqlt1T51zq/pWDaDM6cUe9XXDL3SfLYyIgMmXQt6cUpY9l27JPSuw+aqPiingdMyR9F/MTrVhjwfZST1+WrvSuykl6451vj2+A2gDpV+e378yZhmgE4F1AOf6eYyiYYA/9Eh59r/K+Uj19S5wZAAWT+xBI4z9uNdKb75Li8lylIZaACXK7HgQeIVhwCCdoLCuAa4P9BkjrdzDothP+voN5b6heobclYSzzmMpRhHVSnYfX4mpHKXllPVRyASuA1d8ARygkxS1OVHi5jk1fZQiscZojtO5pYw/znRqxhz8Daw1x+RrpXKEz0QwR+ljCvQgPr09D5wJBHCATlJU+lRcQNkTINGM0rdo66HwnOhsZuZ+GhNnnjmwR4D4E8WISj9WopxlweUoPUXwFsDs9RE4G6hHDp2kGGoBe4EhSnj1kg8ZefjbNQCJp6wOZq39+YE97m2en9olEO6cfQqHD63pGtBj5O937/46ZMqUaaVtHrYFFMtT4osRSv1y2/lNUOfQSQpVY4uBxrKWrOFHiXeOftWdbC3ygE14ldqN9Cg1PecG6Mhm6BzHNo3i4velNiOU9ajfinIINMkzTSu9Tcl7HIqV8BIrbaeZ+GIQO5qvnXiIUVQXoaJLcJJC1dhtwO9HgkMEBKjUsF54uglxhgaXPZuSxzVMBlafbtWK7r7GM+tdkYjE2j58VBmEoUAvZ08rUeYkTjaopC4Gs/MGv2QUJT5AJylUjW0FglUS6Y5Q/6P047Y2PDxOfuWvx5loHs3A7hPnI/SNSx0Gvf4AGR1kg1+ZvaKkF2eS10rLfVzhYI5SpS8uBrPjE7lh8viGpOkkxcN0HbrAcxT+jn5kogp4A4btgzyr2ycClbwzQ1Mbx+j4IwOHGqwWjos3NFvzWqnZxa+8KEep3AHuoyMhdn7mX2CYfJLTdJLigNgp3y7nH4lcFFKqnLxR8z2A9op3UI1U8oy4ExdsqiC5TLYVVFtOB9NONHBhtVI5xKcMT5R0zVc74rER+teBnyHYE7qk5iXFMjgrmSdAo0/35Qn6Pn4P1hjNaeN/gckIOIGSL5Kf9HCOn/nzDVzWMPJKq5/86a0A5+vALYJNR7WSO0Z/UkuDPCVrBrs5X2J36SH+xuoSTtFpKgoyBezt9DDSmxqh3qPRBirb0x5qoYm0Js7BnZgGTk1N2Qd33Hv16MFdOM0XYzbCFyYS1g+99y4AsxeBk4JNR7USZi91MRrmKAFbhoU0sa86EGHLScYpOk1FHlPEZrWlRxeOrcy7X9iWLhwG6JlTbClkrIRITBcoGewSx3SFpmJKzlhbtKJANYFzknnJJ1lEAlqgZLBLXLJnsSrT3CrHEomXM9GcodXJmTSmqvTxImOcuEpJbaxASbMrHNMVmhuJkGxrvhgs3BxbOPw+haM8iFKSSRUqJewqeaYrNs8IWYZf6P4PyORLc5iRQpJswFwU0/0HVUMupGomDucAAAAASUVORK5CYII=" alt="U(r,t) = A\sin(k r - \omega t), \quad U(0,t) = U(R,t) = 0" title="U(r,t) = A\sin(k r - \omega t), \quad U(0,t) = U(R,t) = 0" class="math display" /></p>
+<p>The boundary condition gives <img role="img" aria-label="k R = \pi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAANBAMAAAAK6mAOAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsQRO+Jq81mdlTdmSINXOHXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA3klEQVQYGWNg1DdgYGBgO3/tUjKQxgCuYBF1BoYbGFJAgXSw4E8Ghv0CWKQ7QWKM/xgY1oOsQAcfQQJcAQzMkegyQD7LB8ZZDAxMBcybHFBkX/z//z+AgU1BUJSBgf/2XGWQJG85CCQAWfe4uIE2cSQ6WDMwyD9gWAGShQNGhtdsQA6/CkhkKQPDfLgMhJHMC6T9xRSAJNC7VyGCcFKBCchMYjjCyMAA9O4JBqA9CHu5E/iBsp0MB7kZWIDeauJzgOsDMjgc+AUYGA4z7NrAkHt3A4P4TGRJBhsGJgcGAIlgLfVjSiqcAAAAAElFTkSuQmCC" alt="k R = \pi" title="k R = \pi" class="math inline" />. The field
+flows inward, cancels at <img role="img" aria-label="r=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAMBAMAAADmGDJDAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIkiZlTdqxDvmc12MruP9JqPAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAfElEQVQYGWNgQAeMRxTRhYD82wzcBpjCTxl4FmCK/mVgnMDAqGjkiCzF+5mB9wcDq5mCOlCUqxwEFBgYGIGinxkiJBuE0dQCJRq0kMUYGJj/MrD+YGDYiirK8JGBdQIDB1ACCODmMjxh4ClgYN2AplYO5AueA2iirEcVGQC8HBwl301alQAAAABJRU5ErkJggg==" alt="r=0" title="r=0" class="math inline" />, and reemerges outward with
+opposite phase.</p>
+<p>Let the effective orientation vector be:</p>
+<p><img role="img" aria-label="\hat{n}(r) = \frac{\nabla U}{|\nabla U|}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAAArBAMAAACeHiunAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAELuZInZmVKsyRO/dic2Ov0OsAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACAElEQVRIDc2UMW/TQBTHf3bsOElJazF0QqKILxAEa4UlFoRakgkJpowIIZEulAl5ZAEiVgTKwIJYYAUx8A2CkBCwkI01VRkqpKq88zXpnYubN/KG87v3/j/lXs7+w4JYOSgi2/zwnWd7wwXqot3e35Z4AB8h6GgIgj0ju0n0B1qqH4GfmSAd6lOIDa2IsznUhzQm0FbIjaT2GxqwNIZVJRLswh3ojuC1EuFyRg73RN7TIt1OMoInIpez6aKxI6NwHpojHQDR7rZIL+r/MFE/zWXZIPgsDyeCYrR/31V3IMLm469H8tOp5Oa4VS9Rs+i5y6WO7G7Zyn23UZnHxaVObH+5UnaskfRtqW2OrYsws7pWbp8nrsmN1dtDluRj+LEpr9LbE8W2ee15P1njFCQb428wlWrtkYlxJTy4S5xzHbbepK/gXaXQaazT6PES0i+m+MnpwKFXWMc4XOUc71nJOCPKX0atmSWa8rBlxg92ZsiiWeoT1usspyQTQaI1WZyoOXmRmkLc58UW8YC4J7t6v2jMl3A2zsz6wnkrym0apvNSkYSUrO8I4ZyVXvUJwrL1OcgVq71wDClZn4O0BkYsFueHKHzrcxAyo418ADlYyfpcpCy2e1H41qdCfOvTIZ716RDP+nSIZ306xLM+JeJanxJxrU+JuFf2vyDuGMX5pPAXYB6KjTEySO4AAAAASUVORK5CYII=" alt="\hat{n}(r) = \frac{\nabla U}{|\nabla U|}" title="\hat{n}(r) = \frac{\nabla U}{|\nabla U|}" class="math display" /></p>
+<p>Then, examining the limit across the node:</p>
+<p><img role="img" aria-label="\lim_{r\to 0^-} \hat{n} = -\lim_{r\to 0^+} \hat{n}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIsAAAAaBAMAAAB1DbIqAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsimatEZt1UEHbvic1hQv6lAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABlUlEQVQ4Ec2Tv0/CQBTHvxXbhjakaNzQpHFxpImJriTORBxktTo7sPhjdHFncIJoiAuTgbg4dMFFV1cHE/4EE6KDk3cHXO7aeyCbN1ze+/bzvu/dIwCwyhFS576TEmQ6Aw4i90pyItir6LmS0XAQOTUFBHx0tVxNaDjIPEqtS8U0TH9JWfCUhoNodWSVd29aF3VRl3/qnhUNDkKiYdZghF7fesWpIHfWG/mQRcuH/LwJTV4ULOYcIYi9b/Q6HG9ewtd3Lk1mwaLBuIuwQRV2X6kETjbZ2RISDU+//EymwcvMRbINsIosnLbJfeLOYa3p3Sg2U3j63MhjexaPcoeouuIFhmvSMwtb+/W1rxV+HR8d8EK/gY2WwYFLC8GEx7+WzfsrtRcYmsO+kQ/dhlE3ihw22HhwalbYTpKisUoXx3DymMRS99/PeWzDr1gDqRKBDqvTNJ/FStxmoZKba6PDqs12iIcPdq7/Mo0Oqzbu5L9cd2pOSLxFyjRsxwIqRBjO/6VoeGncygZKt7IrFcyFParSpGfhXx4yipHFXpkrAAAAAElFTkSuQmCC" alt="\lim_{r\to 0^-} \hat{n} = -\lim_{r\to 0^+} \hat{n}" title="\lim_{r\to 0^-} \hat{n} = -\lim_{r\to 0^+} \hat{n}" class="math display" /></p>
+<p>This inversion is continuous in phase space (<img role="img" aria-label="e^{i\pi} = -1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAAQBAMAAAC//t8ZAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGZ2q0TdiSK7EDLNme+L/KPuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAm0lEQVQoFWNgAAEhMEl7gsmB91zaCbz2KGRJtUZgVxGzASLOcYDBSgurkub9UCXsCgwOVViVMPBDlbAt4r5wFY8SRkUDXg3mAGU8SpwZQuGyvC4gUADnM4AtYkpgqEASQmeC3MI2UTkAXRzIj5wJBJMgpqxvwKIAIQQyZT2Cy8CA3S1sGxikkVWhsfmBruAoFFqAJozEXe5/fAMAnzwiShSjra8AAAAASUVORK5CYII=" alt="e^{i\pi} = -1" title="e^{i\pi} = -1" class="math inline" />) but
+appears as a reversal in vector space. This is a <strong>Möbius‐like
+effect</strong> in the field’s orientation: the “inside” transforms
+continuously into the “outside” through a phase twist, creating a
+non-orientable topology from a simple scalar oscillation.</p>
+<h1 data-number="4" id="secondorder-relationality"><span class="header-section-number">4</span> Second‐Order Relationality</h1>
+<p>PNP’s relationality is two‐tiered:</p>
+<ol type="1">
+<li><strong>First‐order:</strong> Spatial relations arise from field
+phase gradients (Distance).</li>
+<li><strong>Second‐order:</strong> Those gradients are themselves
+defined by other relations—internal phase continuity across nodes
+(Orientation).</li>
+</ol>
+<p>“In” and “out” are thus not absolute directions but phase‐dependent
+projections. Space itself is the stable pattern of these relations.</p>
+<h1 data-number="5" id="implications"><span class="header-section-number">5</span> Implications</h1>
+<ul>
+<li><strong>Emergent Orientation:</strong> Orientation is locally
+reversible and defined only via field phase.</li>
+<li><strong>Relational Descriptors:</strong> “In” and “out” are not
+ontic; they are relational descriptors of recursion.</li>
+<li><strong>Epistemic Geometry:</strong> Geometry and topology are
+epistemic models of field closure, constrained only by measurable phase
+continuity, not fundamental givens.</li>
+<li><strong>Complexity:</strong> Complex structure results from nested
+and interacting closed modes.</li>
+</ul>
+<h1 data-number="6" id="conclusion"><span class="header-section-number">6</span> Conclusion</h1>
+<p>The minimal <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode in PNP provides a
+self‐referential energy flow that defines “in” and “out” without
+presupposing space or orientation. This complements the formal
+derivation of PNP’s dynamics, offering a compact conceptual lens for
+interpreting the framework’s physical and philosophical reach.</p>
+<h1 data-number="7" id="references"><span class="header-section-number">7</span> References</h1>
+<ol type="1">
+<li><strong>Nedrock, F., Vale, L., Freet, M., Rodriguez, A. M.</strong>
+(2025). <em>The PNP Theory of Cause and Effect: Causality from
+Topological Persistence in Scalar Fields</em>. Preferred Frame Lab. <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18317319" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18317319</a></li>
+</ol>
+</body>
+</html>
