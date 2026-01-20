@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="author" content="Elias Thorne" />
+  <meta name="dcterms.date" content="2026-01-20" />
+  <meta name="keywords" content="Container Fallacy, Open Box
+Topology, PNP Framework, Self-Referential Field, Emergent
+Time, Geometric Mass, Phase Topology" />
+  <title>The Open Box: Why We Are Not &quot;In&quot; The Universe</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">The Open Box: Why We Are Not &quot;In&quot; The Universe</h1>
+<p class="subtitle">The Collapse of the Container and the Reality of the
+Field</p>
+<p class="author">An M. Rodriguez</p>
+<p class="author">Elias Thorne</p>
+<p class="date">2026-01-20</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> We argue that the concept of a
+spatial container is an optical illusion, proposing instead that reality
+is a self-referential field topology where “objects” are knots and
+“time” is the metabolic cost of their persistence.</p>
+<p><strong>Abstract.</strong> We challenge the fundamental assumption
+that space is a container and matter exists “inside” it. Using the
+Point–Not–Point (PNP) framework, we demonstrate that “objects” are
+actually self-confined topological knots in a scalar field. We show that
+the distinction between “in” and “out” is a phase relationship (<img role="img" aria-label="0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMBAMAAABCcoqQAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARHZmiTLNIrtUme8Qq9MyhvYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABHSURBVAgdY2AQMhFgYGBNYEhnYOCYwKDFwMAXwCDNwBBXwBB3gEEOSIIRkFEXwDDvAAOfAMNsoEoDBl0GBsYGkC6GSVMEGACgDQxqAEhSYQAAAABJRU5ErkJggg==" alt="0" title="0" class="math inline" /> vs <img role="img" aria-label="\pi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAIs3vmXZUEDKJu0Tdgx+OJwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADdJREFUCB1jYNS9e/cyAwOLQEA6AwNDA2PCBCDFwFngAKK4GBaAqEyGCyBKm+EGkGQ/wLCagQEAOGQKCV9OKNUAAAAASUVORK5CYII=" alt="\pi" title="\pi" class="math inline" />), not a spatial boundary,
+and that time is not a background dimension but the byproduct of the
+field’s persistence.</p>
+<p><strong>Keywords.</strong> Container Fallacy, Open Box Topology, PNP
+Framework, Self-Referential Field, Emergent Time, Geometric Mass, Phase
+Topology</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#the-open-box-why-we-are-not-in-the-universe">The Open Box: Why We Are Not &quot;In&quot; The Universe</a>
+</li>
+<li><a href="#the-container-fallacy">The Container Fallacy</a>
+</li>
+<li><a href="#the-geometry-of-the-open-box">The Geometry of the Open Box</a>
+</li>
+<li><a href="#the-self-confinement-mechanism">The Self-Confinement Mechanism</a>
+</li>
+<li><a href="#time-as-a-byproduct">Time as a Byproduct</a>
+</li>
+<li><a href="#conclusion">Conclusion</a>
+</li>
+<li><a href="#references">References</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="the-open-box-why-we-are-not-in-the-universe"><span class="header-section-number">1</span> The Open Box: Why We Are Not “In”
+The Universe</h1>
+<p>We have spent three hundred years practicing a specific kind of
+optical illusion.</p>
+<p>We look at reality and we see a container. We imagine space as a box,
+time as a clock on the wall, and matter as the marbles rattling around
+inside. We assume that if you took the marbles out, the box would
+remain. We assume that to exist is to be “in” something; or that objects
+can be peeled off, layer after layer, until a true, unimaginable,
+nonsensical void remains.</p>
+<p>This view is intuitive. It is practical for buying groceries. But as
+a description of fundamental reality, it is a disaster. It has led
+physics into a cul-de-sac of dark matter, hidden dimensions, and
+irreducible paradoxes.</p>
+<p>The Point–Not–Point (PNP) framework suggests a different perspective
+on this topic. There is no container. There is no “in” and there is no
+“out.”</p>
+<p>In other words, the box is open and there is only the field, folding
+over itself.</p>
+<h1 data-number="2" id="the-container-fallacy"><span class="header-section-number">2</span> The Container Fallacy</h1>
+<p>The standard model of physics is dualistic. It separates the
+<strong>actor</strong> (the particle) from the <strong>stage</strong>
+(spacetime).</p>
+<ul>
+<li><strong>The actor:</strong> A localized lump of energy/mass.</li>
+<li><strong>The stage:</strong> A pre-existing coordinate system.</li>
+</ul>
+<p>We define a particle by its position <img role="img" aria-label="(x, y, z)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAATBAMAAADYAbjmAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIklEQVQoFXVQPUsDQRScy8dddhNxK5sgHJjCUivbgKAWQaysFztB4bCxUALmFxyIYKOttZAfkEYQES5Woq1gnfQWztyl3Ax38+bNvNvbXSBKEUbp18MZsK6gtyyNMyZHy1Il5UR44Bdo5eGI7i5gWfa+9j800zlHPJXAt38vozZN/5qN5a3ZSSuVSHoj1lXgDqihcJnMfgE7kTBIyNbhRd2GiPhBUQnjWdsOXbXHImKMzUoMVLglPg0zR6o2mmOkijiXwajpcJU8J7nZpjszf7h1wMnOAQ96zy15PJ4enqHzxHQ4nOEtQ+S7OsMlt7fFKsSi2hTwEsLN4pVm2uxbLujVEeV3D5WWWcfnYg15K47UoC14XtEFqfyDjGsRuFgQ9P8BurMxRy1pbtYAAAAASUVORK5CYII=" alt="(x, y, z)" title="(x, y, z)" class="math inline" /> <em>within</em>
+the stage. This creates the “problem of the boundary.” If I am here, and
+the rest of the universe is there, what separates us? A surface? A
+skin?</p>
+<p>If you zoom in on the “surface” of an electron or an atom, you find
+no hard shell. You find a gradient. The field doesn’t end; it just
+fades. The “object” is not a distinct thing sitting in space; it is a
+region where the electromagnetic field is doing something specific.</p>
+<h1 data-number="3" id="the-geometry-of-the-open-box"><span class="header-section-number">3</span> The Geometry of the Open Box</h1>
+<p>Imagine a Möbius strip [1]. It looks like a loop and it has a
+surface. But if you trace a line along the “inside” of the “loop,” you
+eventually find yourself on the “outside” without ever crossing an
+edge.</p>
+<p>In this topology, “inside” and “outside” are not locations; they are
+<strong>phases</strong> of a process, relative, opposite sides of the
+same coin.</p>
+<ul>
+<li><strong>Phase A (<img role="img" aria-label="0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMBAMAAABCcoqQAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARHZmiTLNIrtUme8Qq9MyhvYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABHSURBVAgdY2AQMhFgYGBNYEhnYOCYwKDFwMAXwCDNwBBXwBB3gEEOSIIRkFEXwDDvAAOfAMNsoEoDBl0GBsYGkC6GSVMEGACgDQxqAEhSYQAAAABJRU5ErkJggg==" alt="0" title="0" class="math inline" />):</strong> We call this “in.”</li>
+<li><strong>Phase B (<img role="img" aria-label="\pi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAIs3vmXZUEDKJu0Tdgx+OJwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADdJREFUCB1jYNS9e/cyAwOLQEA6AwNDA2PCBCDFwFngAKK4GBaAqEyGCyBKm+EGkGQ/wLCagQEAOGQKCV9OKNUAAAAASUVORK5CYII=" alt="\pi" title="\pi" class="math inline" />):</strong> We call this
+“out.”</li>
+</ul>
+<p>The field flows through the core, twists by <img role="img" aria-label="\pi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAIs3vmXZUEDKJu0Tdgx+OJwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADdJREFUCB1jYNS9e/cyAwOLQEA6AwNDA2PCBCDFwFngAKK4GBaAqEyGCyBKm+EGkGQ/wLCagQEAOGQKCV9OKNUAAAAASUVORK5CYII=" alt="\pi" title="\pi" class="math inline" /> radians, and re-emerges.
+The particle is not <em>in</em> the universe. The distinction between
+the object and the environment is purely a matter of phase relation.</p>
+<h1 data-number="4" id="the-self-confinement-mechanism"><span class="header-section-number">4</span> The Self-Confinement
+Mechanism</h1>
+<p>If there is no container to hold the energy, why doesn’t the energy
+simply dissipate? Why do “objects” stay objects?</p>
+<p>The fundamental unit of propagation is a wave that is trying to
+escape. In a linear system (light), it flies away at the speed of light
+(<img role="img" aria-label="c" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIBAMAAAA2IaO4AAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAVGYiq4l2zRAy3TJfpZAAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAuSURBVAgdY2BgVBRmYHBicGVgK2CQYOBWYGBgsG4AErMZGDgYuAwYlBmYA4UaAEZkBBf/RikeAAAAAElFTkSuQmCC" alt="c" title="c" class="math inline" />). But in the fundamental <img role="img" aria-label="(1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAjElEQVQIHWNgYFRgAAEwyQxmMsiCKBUGBpYYBga2AiA7gIFT5w+YhvBB7GcMDBwTgDSI7czAwAWkwGwggxvG5mdgmApjcwkwHIWxuQUYpGFsoHpkvawCQIkvQDyDgYEpgYHx8dc3DAzlDAycBiANQNAIxUAKLDYXJMjAwAvSx5IAYjLUgEmQ4xgYgCQAuzgYp88yFkIAAAAASUVORK5CYII=" alt="(1)" title="(1)" class="math inline" /> mode, the propagation path
+is closed.</p>
+<p>The energy tries to escape. It pushes “outward.” But because of the
+phase-twisted geometry, “outward” eventually curves back into “inward.”
+The wave encounters its own tail.</p>
+<p><strong>It has nowhere to go but unto itself.</strong></p>
+<p>This is not a cage made of bars. It is a cage made of geometry. The
+energy is trapped by its own trajectory. This localized self-interaction
+creates the resistance we call <strong>mass</strong>. The “object” is
+the region where the field is trapped circling around itself, in this
+self-referential bounce.</p>
+<h1 data-number="5" id="time-as-a-byproduct"><span class="header-section-number">5</span> Time as a Byproduct</h1>
+<p>This self-confinement generates the experience of time [2].</p>
+<p>For the field to stay trapped in this loop, it cannot stand still. A
+static field has no momentum flux, which means it cannot balance the
+internal stress of the knot. To persist, the field <em>must</em>
+evolve.</p>
+<h2 data-number="5.1" id="the-propagator"><span class="header-section-number">5.1</span> The “Propagator”</h2>
+<p>The mathematical operator that drives this evolution is called the
+<strong>propagator</strong> [2]. To avoid dissipating, the field must
+continue its phase inversion to propagate onto itself. It has no option
+but to evolve, from state <img role="img" aria-label="t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMBAMAAACzedEdAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAELt2Mu9Eic1mIqtU3XZzvlQAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA4SURBVAgdY2BgFGBgYDJgYOBzYGBwZWBI76hkYNBkYGB4xcDAFsDAwL6BgYFjggwDr4MBA4/NAgB9KgZ4TDfkbAAAAABJRU5ErkJggg==" alt="t" title="t" class="math inline" /> to state <img role="img" aria-label="t+\Delta t" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAPBAMAAABU9YHxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAELt2Mu9Eic1mIqtU3Zk3oSI+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAuUlEQVQYGWNgQAeMDTARRgEYC0Kz/wTRIFEmA7AII0ScgUFYFcQCifI7gMU4E8AUA4OB/wQgCyTqChGByTAaMAUARYCi6R2VYCmYDDMDC9AisKgmqh5hBgaQRSDRX6gyhgwMIIuAomwgUxle797RvXs7kMFowMDAEQAWZd+AoodZAKj4JwNIlGOCDFgK6gKgNQwMrWBRXgegfiCAytS4AIH9BJAoj80CZJn/YHABJoqkB6wKlUAPWAYAWjEmgzBrk+0AAAAASUVORK5CYII=" alt="t+\Delta t" title="t+\Delta t" class="math inline" />.</p>
+<p>Time is thus the byproduct of the need of energy to keep flowing and
+to persist. The propagator just encodes this mathematically and
+justifies it topologically —by the shape of its mere existence as a
+self-sustaining propagating loop of energy.</p>
+<p>It is not a river that carries us; it is the sequence of necessary
+configurations the field must adopt to maintain its existence.</p>
+<h1 data-number="6" id="conclusion"><span class="header-section-number">6</span> Conclusion</h1>
+<p>We intuitively tend to define our existence by separation. We locate
+ourselves <strong>in</strong> a room, <strong>on</strong> a planet,
+drifting <strong>through</strong> time in a void. We assume a
+fundamental spatial distance between the observer and everything
+else.</p>
+<p>We have shown a perspective where the “box” is an illusion, and
+“objects” are self-trapped energy circling around itself, and “time” is
+a byproduct of its persisted flow that guarantees its continued
+existence.</p>
+<p>We are not <strong>in</strong>. We are not <strong>out</strong>. We
+<strong>are</strong>.</p>
+<h1 data-number="7" id="references"><span class="header-section-number">7</span> References</h1>
+<ol type="1">
+<li><p>Freet, M., Hale, A., Rodriguez, A. M. (2025). <em>The In–Out
+Self-Referential Field Vibration</em>. Preferred Frame Lab. <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18317581" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18317581</a></p></li>
+<li><p>Nedrock, F., et al. (2025). <em>The PNP Theory of Cause and
+Effect</em>. Preferred Frame Lab. <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18317319" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18317319</a></p></li>
+<li><p>Rodriguez, A. M., et al. (2026). <em>The Principle of Topological
+Constraint</em>. <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18318076" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18318076</a></p></li>
+<li><p>Palma, A., et al. (2025). <em>Deriving the Schrödinger Equation
+from Source-Free Maxwell Dynamics</em>. <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18316984" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18316984</a></p></li>
+</ol>
+</body>
+</html>
