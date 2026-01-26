@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="author" content="Alex Mercer" />
+  <meta name="author" content="Anes Palma" />
+  <meta name="author" content="Elias Thorne" />
+  <meta name="dcterms.date" content="2026-01-26" />
+  <meta name="keywords" content="Maxwell theory, source-free
+electromagnetism, continuity equation, Poynting theorem, Maxwell stress
+tensor, momentum conservation, angular momentum conservation,
+electromagnetic knots, toroidal standing modes, analytic signal,
+narrow-band limit, emergent inertia, emergent Planck constant, emergent
+quantum mechanics" />
+  <title>Deriving Newton&#39;s Laws And Schroedinger&#39;s Equation In A Source-Free Maxwell Universe</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Deriving Newton&#39;s Laws And Schroedinger&#39;s Equation In
+A Source-Free Maxwell Universe</h1>
+<p class="subtitle">Newton laws and Schroedinger&#39;s equation from
+continuous energy flow</p>
+<p class="author">An M. Rodriguez</p>
+<p class="author">Alex Mercer</p>
+<p class="author">Anes Palma</p>
+<p class="author">Elias Thorne</p>
+<p class="date">2026-01-26</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> In source-free Maxwell theory,
+the same local continuity structure yields (i) global conservation laws
+and Newton-like motion for localized energy knots, and (ii) the
+Schrödinger equation as the narrow-band envelope limit of a toroidal
+standing mode, with <img role="img" aria-label="m" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAIBAMAAAACWGKkAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnYQqzJUIkTvzbvdmYlSEOKuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAATklEQVQIHWNgVDQUCU5zZWCoiBRgW8aQzcCQIMPAeIBBhYGB4R4DiwLDJiBjBgNnAPN3Bgb2Dwz1DIwLGoCYQZqBV0GAgUmA4RkDxzMGAOaYDdTVr3cAAAAAAElFTkSuQmCC" alt="m" title="m" class="math inline" /> and <img role="img" aria-label="\hbar" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAANBAMAAACJLlk1AAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARLsiVO923c1mEJkyiZnA+J4AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABMSURBVAgdY2DUM2AAAlcQwVaRlgikKkFsrscmQAmWZ1KNDAzcUQy7GRjYExjaGBjWHWB4w8Dgx8ASwMBwiYHpAkiQXWoCQzEDZyYDAOgLDmKKg/TJAAAAAElFTkSuQmCC" alt="\hbar" title="\hbar" class="math inline" /> emerging from the
+fundamental mode.</p>
+<p><strong>Abstract.</strong> We start from source-free Maxwell
+equations and derive the wave equation, then derive exact local
+continuity laws for energy, momentum, and angular momentum using the
+Poynting theorem and the Maxwell stress tensor. Integrating these
+identities yields global conservation statements. When electromagnetic
+energy is localized into a persistent circulating knot, its
+center-of-energy motion obeys Newton-like inertia and momentum-balance
+relations as flux bookkeeping, not as postulates. We then study a
+self-confined toroidal standing mode and isolate its forward-time
+narrow-band envelope via an analytic-signal projection. Keeping
+derivative terms exactly gives an envelope equation with a controlled
+remainder of order <img role="img" aria-label="(\Delta\omega/\omega_{11})^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAVBAMAAAAjqnRBAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABkElEQVQoFY2RPUsDQRCGn83X5WIuOQS1EOEEC0EL8QdIIGipsbVKZWVxVoqIxNbqEARB1GBjYaNiZRUCdgFTaiMpxFJLC0GdvS8v2jjM3ryz89wwuwv/sdxO9z8Y7DMHyvkD9/8u9Ts2Ia25oSRs9pIZYzp7hQkd31z9Da3kRcqPOampK6hJpiabiVo+obUUIt1C86SK74liO6G1fIFpk7wncpC9sKgkPgbaDreokqmkKOjU4V4aL4h6kNUgUwerIdK3AqdfnwyIVg75psb1RZBxSYkq1oYbiENZFhzIStnIkMUWLSwZ3KZDEbqrNcSh4A8hLWREWCGnzzfiX2ydLMo1a4jDgA+OihqXteQayE2vwyq4nGDYEegfQx9GOQJmm2msnurCjPYneZB+MGtTWut0Ou330vPs9byNEvC1OjWxHIOH0kcOUqf8pe3DvHW2bsCowNGZcVGJwQ0fNKVBn/08oHmJOOwG9TDE8HGsFs89caJWP4WAmI7BUFh2IPRzJa2RTLTejja8SATxVwrBxjdx1VA33D+zLgAAAABJRU5ErkJggg==" alt="(\Delta\omega/\omega_{11})^2" title="(\Delta\omega/\omega_{11})^2" class="math inline" />; discarding only that bounded term yields the
+Schrödinger equation. In this construction, <img role="img" aria-label="m=E_{11}/c^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAAAVBAMAAAA0iOSIAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnYQqzJUIkTvzbvdmYlSEOKuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABZ0lEQVQoFY2RP0vDUBTFf2lC0lL7ZxAdFKlgZ+viXEE3kaKLurQi1MEliIOLNF9AwU0QIZOjFleXgl/AQXArHaSThIKIm/pekr4mAUsvl+Tccw4nN+/BxGUuvEzshRO2JnP7ofvM/eP+uPXeb5Vm9QLoKSYOsm24UFTe9qH+rJg4KJQgpahsgIyaYuKgLgRTUdsBKluKiYNltAjx5uO0k0JbXJneaW5ENAmfOI0w4ifMmaPW7w9ne0XzjmOpva6LCs70xruH1bZsSBdhLTjsxjxah6VIkoDWF7vQdGWDUSHlcuhbuhglHn2oHtqAGg3LRbRwQ0HE+3VNpqZ/h0P4MlyRr9xNaFUCxRrQQnMdMY32zvQgJ4P97CrUQRcOYRTXnysNvyQpEeWAN3TrVZiymZVCqkifdF9CVfmHrrf5OXRrjlirfxDuokxJYHUQTXjvSTU5X17ZojlP8mPn8lg1KbaTxNjZHql/yXJKBESaWSoAAAAASUVORK5CYII=" alt="m=E_{11}/c^2" title="m=E_{11}/c^2" class="math inline" /> and <img role="img" aria-label="\hbar=E_{11}/\omega_{11}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAAATBAMAAADvz3fSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARLsiVO923c1mEJkyiauEKOtWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABWUlEQVQoFZWSP0jDQBTGv/wxpUksDg7aKbiLDgVdxCIIbjoLQlwER5GKTurSWREXF11dNLgWIaPjqQhdKl0UcRBF6KKD79L7kysV8fHCfd/vfQl34YC/KjAC1sSk4YHB2nXrKVFwRqlMzJuW3Bhg6fi9Mfe211YNAHTIx4pFSmVix7RA+E2kKmkYS5Wt/melZ/PeOw50JOhOfUHcTnlfD7myI6etiQ0Mk7sSJFhGg2TwxotxODDeZPDneFONds9xI0AhRp1jXbNpOAR3gTfVK8IUKQIBLlPwo+XqFCFcTIM30CaNPZwLsAh3KZcl+UJPRcbdKopwGE4EuIPNYmPvKxRPZLwElBAwX4I6CuXcfwOcD7oHTMYvyNw+b42cCbCJ4jp9Tlfzq/W4K6c4pPdr8fFGdpLsMDqZV1MANSLFBFDeENbDETWcRFIBpO2/eml//gulK/CfcnrCP0b/UGrVaYW0AAAAAElFTkSuQmCC" alt="\hbar=E_{11}/\omega_{11}" title="\hbar=E_{11}/\omega_{11}" class="math inline" /> are geometric properties of the fundamental
+toroidal mode.</p>
+<p><strong>Keywords.</strong> Maxwell theory, source-free
+electromagnetism, continuity equation, Poynting theorem, Maxwell stress
+tensor, momentum conservation, angular momentum conservation,
+electromagnetic knots, toroidal standing modes, analytic signal,
+narrow-band limit, emergent inertia, emergent Planck constant, emergent
+quantum mechanics</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#motivation">Motivation</a>
+</li>
+<li><a href="#assumptions-and-definitions">Assumptions and definitions</a>
+</li>
+<li><a href="#part-i-energy-continuity-is-exact">Part I — Energy continuity is exact</a>
+</li>
+<li><a href="#part-ii-momentum-continuity-is-exact">Part II — Momentum continuity is exact</a>
+</li>
+<li><a href="#part-iii-angular-momentum-continuity-is-exact">Part III — Angular momentum continuity is exact</a>
+</li>
+<li><a href="#part-iv-newton-like-laws-for-a-localized-electromagnetic-knot">Part IV — Newton-like laws for a localized electromagnetic knot</a>
+</li>
+<li><a href="#part-v-schrdinger-dynamics-as-a-narrow-band-maxwell-envelope">Part V — Schrödinger dynamics as a narrow-band Maxwell envelope</a>
+</li>
+<li><a href="#scope">Scope</a>
+</li>
+<li><a href="#closing-statement">Closing statement</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="motivation"><span class="header-section-number">1</span> Motivation</h1>
+<p>We want a document that does not assume:</p>
+<ul>
+<li>particles,</li>
+<li>mechanical “forces” as primitives,</li>
+<li>Newton’s laws as axioms,</li>
+<li>quantum postulates as axioms.</li>
+</ul>
+<p>We assume only:</p>
+<ul>
+<li>source-free Maxwell dynamics</li>
+</ul>
+<p>We show that: - Newton-like mechanics for a localized object is
+integrated continuity bookkeeping, - Schrödinger dynamics is the
+narrow-band envelope limit of Maxwell waves on a toroidal mode.</p>
+<h1 data-number="2" id="assumptions-and-definitions"><span class="header-section-number">2</span> Assumptions and definitions</h1>
+<h2 data-number="2.1" id="source-free-maxwell-equations"><span class="header-section-number">2.1</span> Source-free Maxwell
+equations</h2>
+<p>In a source-free region:</p>
+<p><img role="img" aria-label="\nabla \cdot \mathbf{E} = 0,
+\qquad
+\nabla \cdot \mathbf{B} = 0," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMcAAAARBAMAAACbTKXHAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3vzbv/ZXcJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB/UlEQVQ4EY1UPUsDYQzOea3XKrYOznbwB1RUFETwEMGx/QPiIugidHAUWlDETXERnG5yUlwE/Q1SQecq+BP8xIIfZ5Jr3rxXr3iBvsmT5OmTN9crFEO2YWDzWs2H++ZtBP49I+qzUMOH1kXne7qofS+TaFOSdUOA0SdB7E8OgxhWUB4jrt9JuF8A9Q+tUtThZt8IrNFBRiLZ9yiOTu8W7mxsxSs+gv5aJ0MimR+rDGC4ZbphQ2oo4sGSIPKFcVi3sRX30aZykiCR3Kcg9oZL4+RlGrrJEMzYncUanNrYinkLR5IgkcEXQewNN4fjZEwJRTYM4KA+DPVqPGXQPm7BF4QiTqUhiL3hZtsAx6bkhq1vBjuLaAsYnqMIbTTJVhqQD6Tghns7V7ySBC6O41Ojc4kH3uSMgBoqoE6y4RZ4CREV11WIr0u5pYYb0Hd413jwMxkiKFaqwXxVQJd32jBLqYiKIl7IV5E25Wbe9ZHwTxg2pYl8MYA5G8fiStU3mB58NjwwGAPlOu1JLeBNAHbxY/ZaOIBVrXdFpe1xkyGR6CZJ3IpvGvkm/a+KAQYe8WUc6bGwDL/KUTuJLFsYsxa3pNN4LfwDCukdU5ueCGArtgWtOToPU2+6+pTrKalnpHPEW2pxmIh6cf80p278wwRIy3UTuGlTqbmpGxOUXfgFCcKTsBsLKLgAAAAASUVORK5CYII=" alt="\nabla \cdot \mathbf{E} = 0,
+\qquad
+\nabla \cdot \mathbf{B} = 0," title="\nabla \cdot \mathbf{E} = 0,
+\qquad
+\nabla \cdot \mathbf{B} = 0," class="math display" /></p>
+<p><img role="img" aria-label="\nabla \times \mathbf{E} = -\partial_t \mathbf{B},
+\qquad
+\nabla \times \mathbf{B} = \mu_0\epsilon_0\,\partial_t \mathbf{E}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATMAAAASBAMAAADF8SRKAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3N77tjHqOnAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADTElEQVRIDbVVTWgTQRT+8rPZpNY2hx68SBdFEBFaqCLoISsqiD0kdwspFVS8mIviodWARdtTAyJaT4X2oJcq6EGQkqAnacG9eBAqVDx5sWltadRqfG9msjMbkoYUfIF93/uZ772deTsB2hLrWa6t/LaS68m7q0KSBsnowvLS52XDoeFs5hgZ9mJ1afGVuURnAJJwzXCNFreX3pw2HI2hJNfVw+sDJFxQS6qM0Ko2DbSFmENm5A9wZ8vwm7DvIDO6pivlwa623G9F7le3NpjjikkECiKbCbiU0Q/bI8itRf82SiBf1qVHLNAItYb0Crl3FEWuq/clKT8fWEPBXDTArcN2mTC3Fv+tnQEU5rOMB1zc2tSLgKuhIch1dX7JhOhjH6Vf4yUULEWEiy1Tbk7Plsnm1vasmwEDi3N4xA5N6AFFx8hpCBW5rh6nl4yK1IgrJ4lai5UaLk64eEpVuLVQOt8whZxTScDloCb00FNhjyEX0JUT5sgR6a2R6+oWrXkig48xIkBqu1hiED/L4jCUMgZ0r2SoZnVi/LUkroUMnc0jMSNsn7AyMXifPQbjGo2zfWkYnTRipIAaea06ueglXVIkiXt5oVPljpIA9Y+3NOT9X+SBdjU7UNA5yGPQhB6w6gTYOjycQhemMQ6hgBq5Ub03H5lRqwal5tOmnyHz30m+Wb9oDkFleNaa3wahCk6qtTVCWlN32YRdTGAOt7FxoMAKPrlRPbqp3pFe0hGUFITtChh4dGwC52+9l61Z1UIgaBjpjCstn5Bay/40MsDn+BJXMWbRqJMCfHKjeqgyoBb5o0GtxYcDkyEyQmXYH2MU2HnX0Hu3XzL6hNSa2DU9a91Ja/PGYewHtcYKPjm3xtVZ0q5Q/EGFHYYcvK7YZUg9v+Jijr8rbm1oA6FzgahvRMU1Tmk+oQfrg+vHGTzPhb0Cb9ek2jXUyGX1ngxn9aouegjzh8x/ecVqkkN1Er98CHvVf+hyAfanurgyQz8kMAkXaA5MOXrm+OTMHOYRfvCQFe2UJFfVx0R921zSEg8ldEpEwwDKBayGxjv2dtIXqhUhk5wj7Un8hM5v1prOaIr434wuNMdQBE1yjuxe1CTsgoCutf8ru28t4rTs7B8e5hcwjnzGNQAAAABJRU5ErkJggg==" alt="\nabla \times \mathbf{E} = -\partial_t \mathbf{B},
+\qquad
+\nabla \times \mathbf{B} = \mu_0\epsilon_0\,\partial_t \mathbf{E}." title="\nabla \times \mathbf{E} = -\partial_t \mathbf{B},
+\qquad
+\nabla \times \mathbf{B} = \mu_0\epsilon_0\,\partial_t \mathbf{E}." class="math display" /></p>
+<p>From this system we derive wave propagation. Taking the curl of
+Faraday’s law and substituting the curl equation for <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" /> yields</p>
+<p><img role="img" aria-label="\nabla^2\mathbf{E}-\mu_0\epsilon_0\,\partial_t^2\mathbf{E}=0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKIAAAAVBAMAAAA3EyjlAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRM273e/iDSFGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACjUlEQVQ4EY1TP2gTYRT/XS657+6i5iYnIaEo2A4ajCidchRFN4OLopQEBIs4eIMUISA3uVrcLA6BLv6jBOsiIRLpIIKgi6s5B6dCSKolpRnO9767xDRJe/lBvvfe7/u933153x0QYv50P4uO6jM3WqSU4ploVag4joVoragajWhVqCjjxTTaWGYaFRKvHNLNHKJN+RIWFgvln1u11tYhWt5aK5wHEj9EvVX72KpOEse2cwRSXQHybSjfJomGuC60DOIOVB840R7aAMx7c1wn/vK6BM2x2BHFAtcHIwvhYUmRjomdfboykhYTZ3l18RoldnTo8REQbbOisaPg/zWETWgul0UbMBzF9zPsWFUjHJefr7XT/jY7JnGRDQbowvS40DtAPGDzba0aZP01XsFnmWszFRkNGy89zsjxvmQGi+hAyDEkdoHVgM73miOOKYtmtXwB2IAMeAykGqxW/XpPdumXGBm6GHKk0xGeWrBlQv/aHHFch/odDWNFJwUF4B2NKctqOuOboKu/kh2ZMtKuWpGJnCPI0/zKoH6chO6atmikFmY5ILFH7xgKtCPnmAz6glXpQg0uP74TjpEdIexh1QaOZjVXeEWL7lF4MKnlKj6RhByBh/T7jz2onqyU3VzIsqNeCgsZOijeuO4qXspCjAKUNsRveLQnHZ9QMpgjvkCziSBcs2WQ3wweZMOCg9nFGYMPp68EZ8QmFp1HH2iLHbU/LBrgLb3hymUu06FJudmrNX1roABi73M3V03bbGB2/hYH6HdPQSvRcOp+re4HF9FvUO/MQfziSvSpsZiUz6ryJQNhAI44Y8KpCRofYfmcbAgDcGzq/nHh+jhFzG1jIj0VGRxuVKrv/5xHtv8B4h6zWkb3BDYAAAAASUVORK5CYII=" alt="\nabla^2\mathbf{E}-\mu_0\epsilon_0\,\partial_t^2\mathbf{E}=0." title="\nabla^2\mathbf{E}-\mu_0\epsilon_0\,\partial_t^2\mathbf{E}=0." class="math display" /></p>
+<p>An identical equation follows for <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" />.</p>
+<p>From the coefficient of the time-derivative term, the wave speed
+is</p>
+<p><img role="img" aria-label="c=\frac{1}{\sqrt{\mu_0\epsilon_0}}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFcAAAArBAMAAAD/BgnlAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3ZlEu+82HLKAAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABaElEQVQ4Ee2Rr0/DUBDHv2OUtWNNFzALqgODo4IgYfxUJIAgCBBMoDBDEGwNklBBAoZ1/AdkmSGYiiUoMiRy4V8YCQgSuKsYpet7exMEw1f07t3303vXKyDRgycxY9acPwAM6x+O7O8XtxFErumTnm4cD/JX+nT7MztVHFe/ewmrBDdWSJxINVJBQQpETcuOnij/FIixBZefivIBnVC1mbMOptT6zrpIb425anDVEXJ+/DuFJBnPMjPmGbexguxoigfsfe2itySuLAPrML0QONgTc+ykS0AH565R3kcmDw5ijXrItTEBE5NoIAxi+AzQSrhHE9d43bY5JOuSynfg229wiKreAYdkNjdjQ38CLEd/v9rFPM0ODskarkELgJantW1uWZd0hvEBGhk7i4V60MQjtOI0B4FOUCbniN0MbeM7cBpXy6tQiUYFLXgzEjiNK7uWB69ZSUNvhKXClgr8iwLTRbxu9jP5An3wbwaV5EqJAAAAAElFTkSuQmCC" alt="c=\frac{1}{\sqrt{\mu_0\epsilon_0}}." title="c=\frac{1}{\sqrt{\mu_0\epsilon_0}}." class="math display" /></p>
+<h2 data-number="2.2" id="electromagnetic-energy-density-and-energy-flux"><span class="header-section-number">2.2</span> Electromagnetic energy density
+and energy flux</h2>
+<p><img role="img" aria-label="u = \frac{\epsilon_0}{2}\mathbf{E}^2 + \frac{1}{2\mu_0}\mathbf{B}^2,
+\qquad
+\mathbf{S} = \frac{1}{\mu_0}\mathbf{E}\times\mathbf{B}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAAApBAMAAACW3rJCAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEWElEQVRYCd1XUYgbRRj+NkmT3U3uEqi1T/aiVvSw0EjBexGM+mLx4eJD0YdCo8jZWrDX+qIvGoSW+mA9OTysFA2KV1/kTlFQfGigLwoK0Wdrz4MW5OS82qK1yq3/zGQ3s7szs9e9CydOyM4/3/fP9387mU0yQKpm/5xqWjDpVCUINzRwj15Zl97ZkQEZA9ZnDOX/l7HC6VbiB7UpK7YIbL87wdpmGMs2gW6pY3a2GcbKh87YTav73zM23kahZjV8Y5lvan4o9dEV2zUtkclhqqey3IZTcwNjZ3FIUShizJ3MTymytFAqY9lOaMV24DuF/vUwZi2UumHEPCq3zLyaPbPr0abdhbW0b/nSvgXgdCwtN7P6pgB3nFtd/uo5ih3dis1e+HFrVGDvkV8qhAUVAj6QC5BIsMCeyowHfLyC3GcRMjTc3YDlUZXH6iE4GLjX4fwRjCJBr4KE+nISFAq3j9KQTctdQ57dHEX8GruQEo50gadijADy88CEhvMrSLQvJ0HxkIxZVPCoy6lSK55BCFN6cB6FSltJo0j8CTXFb51VkFpPTkIUIRkbxu12q8A5g7FzUziJSYUCQfnVnXR7miYqEPkBvV9kScwYyVGz7kSmxoJ4o2kvA3PeX5zSG5u9CtfzuFpcxPa8L+txWCCiAsWZJgpcgIyRHGsPb6nkJ6nPTrAWUs94S6s8h190xq7uOXxfPyse3eV5jxOq0GcfpV/hPF7iU3cHcq0RbKnE5RhC93Oqz+iMNYCLofvpTxHRaxf/jkL+uF+hNFbjIPsoe3IzmPPzRO+JtsKMDdOLt/snnr88wX4Cyj1adGJTjER+B8QUcaX95R5oy0igEKpwWKQwYz25L5Tf7CyNjAG3igmAYcXG//GT4n2xDrzXjuMc6VcojYlVZ8Z6ctfwbIayFHuATxvzNQ3GTCtW7ACvqPV7t84rBHusv2IruSc/8ouHe2as8LuP6Y3lfmuyJPcZP1Xui3/CfUIG5DioQE+lw5eMVozJzdaB8/eMduTkILaWvOUl74Y/VhtjP26f/8pzrP1+qtwPvf/TclUGpLhfYZbQt+nty21rS2kJodqYPIntiMG2wvQP8QK5usCUJKcGb+wdjHeEC8VVT1YV2RsLfYLsvFZRTw7e2H44K1pjRlI7a6OIoQWDEpH5Fr43ZCRQBzFUSUjR0XOmiUSW2/QPMvFUrFO/gfG6dWxSR5tw8c2kySDyODLzyadizXy7gXsxhG81tAl2OgaWkTPI1pJPxRoRp4k99K/2Ng1tgo03w8hFFKvyqdgkFuOGq/gUL2BbjEgE7Co62iRO0i55aK90KtZmqwi2QW+ZxocqzoxtPflqTZvBSPsK3iqlXrE3Kk6jk2rFDnie3hgjnct3PPK1zU7Fadq7T+98oHUCr6eZmzCHdgk1fipOyFTRiwwcTvVUquRkrNxmI34qluE1xvyflHVsao3pN5N2/GaSo7n0NTawNroe5cyalupfecNFKXz6c7UAAAAASUVORK5CYII=" alt="u = \frac{\epsilon_0}{2}\mathbf{E}^2 + \frac{1}{2\mu_0}\mathbf{B}^2,
+\qquad
+\mathbf{S} = \frac{1}{\mu_0}\mathbf{E}\times\mathbf{B}." title="u = \frac{\epsilon_0}{2}\mathbf{E}^2 + \frac{1}{2\mu_0}\mathbf{B}^2,
+\qquad
+\mathbf{S} = \frac{1}{\mu_0}\mathbf{E}\times\mathbf{B}." class="math display" /></p>
+<h2 data-number="2.3" id="electromagnetic-momentum-density"><span class="header-section-number">2.3</span> Electromagnetic momentum
+density</h2>
+<p><img role="img" aria-label="\mathbf{g} = \frac{\mathbf{S}}{c^2} = \epsilon_0\,\mathbf{E}\times\mathbf{B}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAlBAMAAABScQ0KAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEFR2ZjKJRO8iq92Zu82MdAVXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACbklEQVRIDa2UT2gTQRTGv2wy0d38MQiCIkgtFTyWIvWg1K14FMxRRHFPeinoSaGgCFJpQWxQESmK9dBLPOhJUDwU0lNpwYNXa49CIMS/bSN2fG82NLO7Y1PHDmTzzW/e92Xm7WYBw5j6+OG8AdsgdwXZlo3R4PFeAVUDt0G5W8CojdHg8dYPQhi4Ddoh5euSjdHkOSzlmIlbsWuffln5kibqlTtZSXIbkqNmXdmuLB84YbMJgyf3De5tA7dBhftLjZ6/GEV9vPF5fFlbFXXZqL+1aokjgadNLQvOKnDxh062qjkr9UWv5izvt062qilLYEav5qx8+DzuPrLnsr7URVNWEYeo6Al9jnIxZ+V+shJ3HrSOsegyBts/SFlDqtSZRjpgRVnuy1lWuSZWU/Sdr/IIGHVGBxZ72tSR9fVQnsagEo5cmH9XZrmziclwbdPrPJ1goJ9KaF83w8pMbVYJPmNBnTG/loq9j3fJcISO9rV1yS/gFE1Uv4qKvgjXOEtI3phYWgxCttk1tcav2gtUQlnAOa7N1AL+Ur1PSZ9U/irPu/aLso7jLNWprBo7Nvq1sa9sqzpX4qXo6BuJzueAETwmxlnpryymkQ24iM94oAX3OZ1UyglGkeH2e0EEZE8Oq32pf5+kXWKKPvycKHLPh5jAMx8P1U2IWMVy5n0E0GQUN+IoNj9DB7wbYzwN968vFNV91Elc7w3grMQhzfcnmigGAkOdjtzFhWpZB209Y2A2qK+3ki5XbJwJj+d7wXX0J7gNGIKzT8rAxprwfE8Qa+BG3sDWMcoomkDp/yI67jfIbM9NpMhHvcOd4H9QfwBP26q6u7JEWwAAAABJRU5ErkJggg==" alt="\mathbf{g} = \frac{\mathbf{S}}{c^2} = \epsilon_0\,\mathbf{E}\times\mathbf{B}." title="\mathbf{g} = \frac{\mathbf{S}}{c^2} = \epsilon_0\,\mathbf{E}\times\mathbf{B}." class="math display" /></p>
+<h2 data-number="2.4" id="maxwell-stress-tensor"><span class="header-section-number">2.4</span> Maxwell stress tensor</h2>
+<p><img role="img" aria-label="T_{ij}
+=
+\epsilon_0\left(E_iE_j - \frac{1}{2}\delta_{ij}\mathbf{E}^2\right)
++
+\frac{1}{\mu_0}\left(B_iB_j - \frac{1}{2}\delta_{ij}\mathbf{B}^2\right)." style="vertical-align:middle" src="data:image/png;base64,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" alt="T_{ij}
+=
+\epsilon_0\left(E_iE_j - \frac{1}{2}\delta_{ij}\mathbf{E}^2\right)
++
+\frac{1}{\mu_0}\left(B_iB_j - \frac{1}{2}\delta_{ij}\mathbf{B}^2\right)." title="T_{ij}
+=
+\epsilon_0\left(E_iE_j - \frac{1}{2}\delta_{ij}\mathbf{E}^2\right)
++
+\frac{1}{\mu_0}\left(B_iB_j - \frac{1}{2}\delta_{ij}\mathbf{B}^2\right)." class="math display" /></p>
+<p><img role="img" aria-label="T_{ij}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASBAMAAACp/uMjAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVO+rid2ZInYQZkTNuzI6UKoYAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAkklEQVQIHWNgVHYJdUl1YAAC5gKGMAbGBhBzFgPnRwb2DSCmJAPjTwbuAhBzAgNbAAMniAUEPAlgCkTwCzAwSDEwXAAy94MVgmWcwCSYOMzAwGXAsOQBkPOLgWFBJNdEBwYG7u8MDOwHONkEGDhcP7szsCxg4IFqZp3FwATWx8DAtpzhLZQJpDrgzIbjcOYNAQYACxIZbxu3/UsAAAAASUVORK5CYII=" alt="T_{ij}" title="T_{ij}" class="math inline" /> is the local
+momentum-flux bookkeeping of the field.</p>
+<h1 data-number="3" id="part-i-energy-continuity-is-exact"><span class="header-section-number">3</span> Part I — Energy continuity is
+exact</h1>
+<h2 data-number="3.1" id="poynting-theorem"><span class="header-section-number">3.1</span> Poynting theorem</h2>
+<p>Start from:</p>
+<p><img role="img" aria-label="\nabla \times \mathbf{E} = -\partial_t \mathbf{B},
+\qquad
+\nabla \times \mathbf{B} = \mu_0\epsilon_0\,\partial_t \mathbf{E}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATMAAAASBAMAAADF8SRKAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3N77tjHqOnAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADTElEQVRIDbVVTWgTQRT+8rPZpNY2hx68SBdFEBFaqCLoISsqiD0kdwspFVS8mIviodWARdtTAyJaT4X2oJcq6EGQkqAnacG9eBAqVDx5sWltadRqfG9msjMbkoYUfIF93/uZ772deTsB2hLrWa6t/LaS68m7q0KSBsnowvLS52XDoeFs5hgZ9mJ1afGVuURnAJJwzXCNFreX3pw2HI2hJNfVw+sDJFxQS6qM0Ko2DbSFmENm5A9wZ8vwm7DvIDO6pivlwa623G9F7le3NpjjikkECiKbCbiU0Q/bI8itRf82SiBf1qVHLNAItYb0Crl3FEWuq/clKT8fWEPBXDTArcN2mTC3Fv+tnQEU5rOMB1zc2tSLgKuhIch1dX7JhOhjH6Vf4yUULEWEiy1Tbk7Plsnm1vasmwEDi3N4xA5N6AFFx8hpCBW5rh6nl4yK1IgrJ4lai5UaLk64eEpVuLVQOt8whZxTScDloCb00FNhjyEX0JUT5sgR6a2R6+oWrXkig48xIkBqu1hiED/L4jCUMgZ0r2SoZnVi/LUkroUMnc0jMSNsn7AyMXifPQbjGo2zfWkYnTRipIAaea06ueglXVIkiXt5oVPljpIA9Y+3NOT9X+SBdjU7UNA5yGPQhB6w6gTYOjycQhemMQ6hgBq5Ub03H5lRqwal5tOmnyHz30m+Wb9oDkFleNaa3wahCk6qtTVCWlN32YRdTGAOt7FxoMAKPrlRPbqp3pFe0hGUFITtChh4dGwC52+9l61Z1UIgaBjpjCstn5Bay/40MsDn+BJXMWbRqJMCfHKjeqgyoBb5o0GtxYcDkyEyQmXYH2MU2HnX0Hu3XzL6hNSa2DU9a91Ja/PGYewHtcYKPjm3xtVZ0q5Q/EGFHYYcvK7YZUg9v+Jijr8rbm1oA6FzgahvRMU1Tmk+oQfrg+vHGTzPhb0Cb9ek2jXUyGX1ngxn9aouegjzh8x/ecVqkkN1Er98CHvVf+hyAfanurgyQz8kMAkXaA5MOXrm+OTMHOYRfvCQFe2UJFfVx0R921zSEg8ldEpEwwDKBayGxjv2dtIXqhUhk5wj7Un8hM5v1prOaIr434wuNMdQBE1yjuxe1CTsgoCutf8ru28t4rTs7B8e5hcwjnzGNQAAAABJRU5ErkJggg==" alt="\nabla \times \mathbf{E} = -\partial_t \mathbf{B},
+\qquad
+\nabla \times \mathbf{B} = \mu_0\epsilon_0\,\partial_t \mathbf{E}." title="\nabla \times \mathbf{E} = -\partial_t \mathbf{B},
+\qquad
+\nabla \times \mathbf{B} = \mu_0\epsilon_0\,\partial_t \mathbf{E}." class="math display" /></p>
+<p>Use:</p>
+<p><img role="img" aria-label="\nabla\cdot(\mathbf{E}\times\mathbf{B})
+=
+\mathbf{B}\cdot(\nabla\times\mathbf{E})
+-
+\mathbf{E}\cdot(\nabla\times\mathbf{B})." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUkAAAATBAMAAADvxuK+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3vzbv/ZXcJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADjUlEQVRIDZWWv2tTURTHT5qfTW2boYOLNugfYKCCOCWC4ODQjIJIi4tSEDs4Wszgj252szp1cBU6KAoWksVFWsgqNdjF1aa1xYrW5/mee8/NfS/vPfHAu/ecc8/ne0/euy8JUcTy85GEF6YscVUKWfBEht0UkCw5GYhVFM7R0sZWb3NLY8xL7ePe+0tE1/wkFbeD3vZrB1KOolrENZu9z5vdfCtERnaIB424JUf2Z9jOO5UFonqfMrsuAafeoWKwSNmVUDb7m+jBD5daoKgWL2UDotN9uuiqxAnvEA9acUPmD8Ddcipd6ZLmmi7DDndJsztEvOgZusz9cYkuRbV4CV3mD2ncVYnDXXo7xINW3JLnKgy2VAW3izUWc4uawYwun64TnfWThC5LvzQFMqyFFe6ySFdopKZlMod2SACtuCXnGkSjrqeJinTZzXIm0yIqrEEWXbarRC8ROEOXY/sagnRaDuUux+kClRtaJjN3KTtIkABacUuW9vi5OY0T7NX7ha4k+LTeFIe7nDpiD6sD4y4zsy2NsTbQUpS7vIOKDgZnbgdkEkAV7wiV5+1fiIdhjK/6cdt0OdoqVJGk+tHy1Sc8T/JVugyrspcNlh++43tuDORAS9FssH2M9b4psqPbAXESaMUt+bRCDVRn3vJwiq96v2y6pNXbWOBMh2i3yh+7iUgNT3wCT9yRpFqkKN/LV6j/oJDMukMaqOKWnG5l18AWP/KwxBdOjXmdc+tYMF3iO2dsqEt8QQ1IUi0+RAaVc8nv6RtWKX+DrUDP7uC2jAG5SxEHyZY7HBxLus4J1qBiA0ur5ljKvZz7GXMuKR9gVxhIT8ui3CXRveFzqTskg9yliHe4hC1zNGMcjObt4dM3z4EeLukS91IO+uBc6scFaN4sp6WodPk4rkvZIQVU8Q5q2GYbMskw3jT38m6NQ35Rz0iWz2X+S4N/RSTSAefyxoFGIAdaiqLLwnfK7GiZzHhasgOiBNCKMzklytPoyFqhJr/a7aDCN7lBNLLGC/gd3/jEznO+nMnv+NaKxkyyWS1FpSbYo1FXhiLoyQ4IKBmEOJP3KygrYrAG+WT7mrwknyms5RVPNL0g4pot/Sb8gnjy3434Gr6fRk75hVE/DaR48mRUw4tLKXeEKI185KkMuWkgxZPl2pCKSzxzXpyTQg7+J/wn6P3DCJNyVMMpjVKWUJK8nFGF+DkZJEP+BXQ7Sa4fe+XkAAAAAElFTkSuQmCC" alt="\nabla\cdot(\mathbf{E}\times\mathbf{B})
+=
+\mathbf{B}\cdot(\nabla\times\mathbf{E})
+-
+\mathbf{E}\cdot(\nabla\times\mathbf{B})." title="\nabla\cdot(\mathbf{E}\times\mathbf{B})
+=
+\mathbf{B}\cdot(\nabla\times\mathbf{E})
+-
+\mathbf{E}\cdot(\nabla\times\mathbf{B})." class="math display" /></p>
+<p>Substitute Maxwell and rewrite as derivatives:</p>
+<p><img role="img" aria-label="\nabla\cdot\mathbf{S}=-\partial_t u,
+\qquad\Rightarrow\qquad
+\partial_t u + \nabla\cdot\mathbf{S} = 0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAASBAMAAADPrYoYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3vu80/Zn1wAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADIUlEQVRIDdVWT0gUYRT/zc6Mo7OpC3lLWCE6JMQumBBRNMTWJcw5R6AYFJ5aqEMHswWlLv3ZQyB42v5cQwlCgqjtktBFo0MIbgV2ljUzRavpfTPzfTPfzChbQtA7fO+933u/973vz3y7QKNybqLRzOS8XfHbHVcyfumO2sK1xFnMXtVKDDQIbsP3Zl/xiyh9tYlSUsHU1x6SwzxtE6lvSWloL2IoMdAguA0/t59Nb/lFshXkuO1B5nA3M3S3qUseBm0aKPi2rFRgREb+zIvydY8+YJFuKvq1zgAaAwIZRZt7zDk2lnw8XQUe+3ZM3YghMUDh88UiBEj8loqbkmKH3eyaNLwATIs7rn6PphIz2GpaeHHtVy8MhsbEGJ48EQPjwHwc8pAo3+/SPUrxXfYv2eCteLR1mFVmNdNqNA+ilTjOU5s7kr4P8zYBV0o4IuERJ/nTo6Qo3+8S9zKAxYtMOVsHuO1qYwXGGrP0DWBShI45zixzxgskJwUMowr81KHnZ3E6QCXrTo1k0ZIw4cT4vMuBErgJqHPOD7aXzWz2QhftGnXpPQC0GotV2+fu9cNPW8yJSlsX9NXWjGnU4a4iGhf+9bwww0aMz1ujo3RPUplh6eYhZzpMoxapUSbZklpheoRGupPKXIZ5XEy2Q7XyQAVqfQ+QspQ6DyVq/aWdhEf444WzX7yjUjZwlBGMtzQUgU6vKb+Gsg7VPXFoa+JaIk1TuB+9nyXUlA3t1t0y0pWWeQEmGaP5JBQxPt9L9NuWYDyjbZC6xCbUqhtWNnpEWroMXGbeOLsYoXuZpb22LwLttjaY3Af62KYvnhK1JCPGF11mx4J6z+ntrBNP3EssoMnyCvX7mrz0dyhvPFQeW/P6DD5Qlzj/oNJhy8GQdzVkh02JzwKiSy30W/dqEJ2DYRqe0KuuuCvPBotp3ftxOfDC+TeHbFSp+NijgxgphyOSPS95ISfMZ7DoUlkNst4dX14KPGapF7phvGZW8jPOIrLon3l3yQuh7B1/ewI+ZYouI8+4POXfeGNFn7VtlztXFXxK0+2dc3cfpX8O/4H88y5/A7zm0ZW4h3E9AAAAAElFTkSuQmCC" alt="\nabla\cdot\mathbf{S}=-\partial_t u,
+\qquad\Rightarrow\qquad
+\partial_t u + \nabla\cdot\mathbf{S} = 0." title="\nabla\cdot\mathbf{S}=-\partial_t u,
+\qquad\Rightarrow\qquad
+\partial_t u + \nabla\cdot\mathbf{S} = 0." class="math display" /></p>
+<h2 data-number="3.2" id="global-energy-conservation"><span class="header-section-number">3.2</span> Global energy conservation</h2>
+<p>Integrate over a fixed volume <img role="img" aria-label="V" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAU0lEQVQIHWNg1DdhYJBXZWBIZ2BgYAbieCCOAOL5Cxi4NgDp9RMY2IAUA38Awy4QzX6AQwBE815gBFEMPAqeYJrxA1iYgftbA5jP8hVMMXA8ANEAiGMMtlL4GTcAAAAASUVORK5CYII=" alt="V" title="V" class="math inline" /> with boundary <img role="img" aria-label="\partial V" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAOBAMAAADH1sFNAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAmklEQVQIHWNgYBAyYYADpkDWBPb3KQwM9Y8ZGPgdGCoYOoFybEDMysDgyWAPZBhCFPsz6F9g4A0AcliKjeIZ7iswcIAkzBiYVjLwGzDEgiQmMDD8ZuBcwFgA5PA0MDB+ZeDewA5SJa/AwPqBgeuBE4ijL8DAtoCB/QNIFcN9oDUCDKw/BEAc7gDGJ0BjPoPYDAzLK4CCjAdATADT3xsL31gPygAAAABJRU5ErkJggg==" alt="\partial V" title="\partial V" class="math inline" />:</p>
+<p><img role="img" aria-label="\frac{d}{dt}\int_V u\,d^3x + \int_{\partial V}\mathbf{S}\cdot d\mathbf{A}=0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAAArCAMAAAC5Hh+aAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAMrsiRO92q2ZUEM2Jmd0un35eHt8Ojz6vv05uz/K/jykAAAAJcEhZcwAADsQAAA7EAZUrDhsAAATlSURBVGgFtVnrYrMgDAVFBS9d165r9228/2t+CUIFjGCt+mNVICcJ5nJwjGWvj/PnJbvo5QXHoCbN4IUuqQXXr9t3RU28NXYMasYkQftx/maX74zo69PHoGbsqBtqwU3fqeE3x45BzRlVSGrFRVOj744dg5qzik7Dx09Obsv8MagpS+paKToNq8+U3Na5Y1AT1mCANmQafuh/CbmtU8egJqyRBUw2NbXiV1+p4TfHjkFNGFVhjak4teJBx264VAk1tOFQ+mkVahripdkSawyna+bXmkIDu0BHwJIZq1CXhDeMG+fqgom57FWvafawQR0ZAXNAM7IOdUF40zC8g7brGdEPL3oVJS1rMomXjFmJuiS+YVwMSvFBEqn0nWU0hs624qU8XEQtm6IoJB8oHybefFLU/MaxPzo7fbSRzg5YjtdeS6ilxkTpNdm3mOPNQndZRaKWPZF0hJz+IgbDobpR4J08haPuiYgLxpZQmxGE7szM8eZC0+zLqYRfjnvQkUclbxXe3nW+lBZSQBIOfSRqHyWxk4uop7E1CfodWt7cdidNhrFnQIFxXOdWocCvznM22FAp5YKDjPJwEbXRncKXTtdl++ZqVetck9aI4KIaHVm8zjFn4wo3xvxBoZjOQucvhfSrDuXhDNXpFxquU09EtqeoY63W6VrDzWZwTQA5Ve73L+JsrTLUx7X3mM5yxTiMnbzIpDyMUZ022LoKfZyzK0+RgGiBdz3JsKF5XjaShPVwRSLG4SBG6mNNmNFZyEfcOL+vUh7GqJ61TPRQSGzVKk82XH1FDbwYnqk14zsc/YS6Fl2+OqIk9FAFSttCKDrrCh7AmL3tOtzgIEsJVKt0dKisbMbxygaDp6jVHVw6XWtKk4dqRZQSJQEj0GwpOkrQ2S7KEOIdEqjWw9OYOL310G22r6g2+DIVBiBm+urCgdehml+iJOC+QBqinjmdFeA1zPsMjvCQQLVaT2N81xHN8BWNARzUmnkeMtNYvHAKvPIffqJCA3OgvK1EacInprPQ9SW8BuknOOEhgeo81Lg5ZeVvEU5NioTtcUVQa6z49COQYWHHLzFtExcRC3KAw2A/7nVMZ8telaJXQTcjPCRQrQ1FqQrIsijQobNZ3sy7ylShEpq+7lINXdXKsDZeue2eaK3n8FU/vKdtt3MP90DdYoshAG34Su8rGE1OVwQJy/dAzWml5k1aFmECfGaPThRSbuwY1JxWNlYf00amtY+opk0z79wdg5q3yPS2iND+5Q8WeeDZimNQZ2qCgZHWir7rbJG0s6u+0QRIax6OQU1qftJa0yenpff4YDFNvXF3DGrSoInWRmTpV9+Sgtsmj0FN2vKktfGJ8fyHckOFDVjs9vVnRGVcqRqa8d7olKcTrcVjg399mU+l40FCBETFX/Xq/YjKkF8CtdobnbJmorWdZHDCfV5X/WHuTez6R77nii03DhVlkTjui05b9KS1cN58dvzrjV3sZzZzXqJFXx31UKUSHA/SO6IvWuNoLQO26mgqqx7sx37thgo7HiUWEVZPTKgDBIVEQrEj+mozzMKf+/1sJfoh+CzxGk64+onKMQ1NEd8RPdSVe7r9/rolsjBf+NzjO79PVMOCGzxk7oi+2TJu2sVmcVIQD7LclO4j0EmVicH2lf9IJHCCqVrKsaodgh6o+g9GfjBaO1r1jgAAAABJRU5ErkJggg==" alt="\frac{d}{dt}\int_V u\,d^3x + \int_{\partial V}\mathbf{S}\cdot d\mathbf{A}=0." title="\frac{d}{dt}\int_V u\,d^3x + \int_{\partial V}\mathbf{S}\cdot d\mathbf{A}=0." class="math display" /></p>
+<p>Define:</p>
+<p><img role="img" aria-label="U_V=\int_V u\,d^3x,
+\qquad
+\Phi_V=\int_{\partial V}\mathbf{S}\cdot d\mathbf{A}," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAAqCAMAAAAksXZgAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAIonvMrurEJlEZnbN3VQun35eHt8Ojz6vv05uzzWyEgIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAATISURBVGgFzZnZgqsgDEBRcQGV6XSZdm6H///NG7aKiDbWauWhKpLkEEIAS8iC8nX4Pi4QX1V0D2yn8+UnW7WXryvfBdvhhxx/Xu/DqpJ7YLvI66p9XKJ8F2xHuaQL68rugu32u24nl2jfBVv2vaQL68ruge1L/lu3kwu074LtLk8LurCu6C7YbpgtkGCiKtd1Rkw7ii0m+M66MyZHgxOL+p1WcbpQbDhVL7c6ScweMSGkoS/beFUQx/aqdqTcUaKOYUn9gQBCsuF6mqRZlsIg01wWc8b65+k+GjQmpGSLchBNG5mnEIezyihbUuR5zmkV06Zx9YtW9N9nqX4uo2L9pt7T3/N9NNNpvMo9qfm3Arw8t4yxJZKBqlQWUYUGlxAmm957IwX1c+KHEHnuaYk91IUA5/A29g5bV6aSz14Gx9gKg1LEHVTb6lz2x4TbUJiXK67y+SKWcwZKKxOgWI/02tFcQATxYl4QjbK1ZmfC4g7KubZdNq3sTabCBtS8ftzl84MGDATnfJ7evn8khYAvCctmeWiUrZCNUOEYnys2bmpRy94Wz6Ug478e4MTDITxoUKHcrn+UWF0L4ZuBDWPC+MyE3cDYKQeRLD7mI3wDNteOSShtGpmyHm5DSim9ND2ZgqriUYJA+AsOGqUgGQyM2xWqcPWnOhWwTHLSqiSJLyqbagc1kTyGZ+sMiky5SIH2i4fLoKMQad17PwVVmfIcC5e5rnF3149CECJU5TJrm6uVyzlLCUEuohAK86KU9CIIDxeyKQBXWAo52Lo7aa2nfNwC4ov6adpPQYnO15jlLJIHUxhuowD8pDwRDJRbJBwq4kr9HISGi7BZW8YfSWazDc1sQHu4pWygSC9N5yZjU91WS2KGOZIH1fTRQ6H8BElVR5Tnhcab11715C0tvFUMCxdhs0Zak31S6yBn2setNSX3grAyDjIpRnfSycF1dJ5H8qBKpjCrlAHtmzqHeecKA6fB+3lbCSUM+yC98MBtADeHzWK0ZuzrYI/r45rZ56fpRFWVNrNDskq6Xlm1sctvkKOhDVgtM2bEYf0qm7RLObBZ5DB8HAIrUZN8Rul20li4CJu110o1QkkWjlOHy+wOKDdpWsPSIk3drEqrrlOTnfBC0LXjFXz8sZpYJQStui1wkoqEpULlAKonvBN6dvXPYli4CJs1kycihwwzmOsOlzaZTuAJ7BVlA74awPLcxfM0+UnephtMvR3wTTX23iHhFrF55sxtAEv1Oj9oNai4IvbRAyFXEdh01U+vSLhFbAOIALZEnry/n37rGFh6VAQmH/VPb5BwS9gGDK/C3oJ1YKB4ouJVmxMqe6+WsPUUqYdXYf+eH+UHtraq2AUb6nv0Vh4J7OyB7Roe5QPGTz7ugu0uL+AD/OlxS4cZNkKFqGFb+iHGw5/qMvr0uKV/iGEj6nwAS/KHGM/mLzHs6XFTB1k2ZbOBEPoI40l+6T4Hp8dN/TBmzLFxwaj63rI94+lCjvYPDezpcawzb6/v2Co4XepPgdszZjfya/9TxZ4e3+6IMYUPNqpSkP44tT3j7/V6sIDI0+NYd95f/2DTXy8L9eFme8bL/e56hjw9uubrXx9s6rMO1f+EfJQReXpc3zFDCzXn5qvYYsb/2nowyQn6ELwAAAAASUVORK5CYII=" alt="U_V=\int_V u\,d^3x,
+\qquad
+\Phi_V=\int_{\partial V}\mathbf{S}\cdot d\mathbf{A}," title="U_V=\int_V u\,d^3x,
+\qquad
+\Phi_V=\int_{\partial V}\mathbf{S}\cdot d\mathbf{A}," class="math display" /></p>
+<p>so:</p>
+<p><img role="img" aria-label="\frac{d}{dt}U_V=-\Phi_V." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGsAAAAmBAMAAAAxV3iNAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsiRO92q2ZUEM2Jmd0gkiEXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABxUlEQVRIDZ2VP0jDQBjFX5o/LdFiEYuL0uIgFYR2061V6Citm0KH4qC4VQSLuISOLiqiUJcWR/+Ao2DBLOKgUkfdKri4VSo46uWaxOBdAslb7st73y/3pTlSgEhIZ4zFt/K+CQqsBcNSwbBeEGy1XgyAhbRwJQBWQ7gcAFuCHPOPiT0k/FMQuliRAnBFtRUJgC3Ux3cJJt6VYkJ6w/UGY7fT3JMr68ClKwU0uBSyOWDOHVPbxkys9ohVZm3TEaYas5u8dIeYOi+gXiJWaOZ5Y5YAVXPFblBoyhU2Fr8AKWb50aoh3boEvgk20Pm7tqpIF1AQXYb0YVnOtb+bHf+YQvgKGITYdWxJsfkJohT6z8bGoWdgBOiBf2SEbfpLMnGUYDrwDs3YhHk2qO0T4pux0dKX2MFFE0iJOdP4v9BTQuMZ0mdr9FEj9RN/RqB/JmkczxjQsPMLVDNGcZcjloo4sxvj+3bJKxyxUsGk3XJqV9zCEYc0fHJ7vM2hjFD07uCkyvqR9NDSOImnlUIVZEyfiiSxhSH6IvyQsoZF+P9/y2bIh/Lez0a0NwElmbtWvV8ye1cZ57r2prCBtyO9Hrw0jw+9m5j0FzW/ZdAOB+lFAAAAAElFTkSuQmCC" alt="\frac{d}{dt}U_V=-\Phi_V." title="\frac{d}{dt}U_V=-\Phi_V." class="math display" /></p>
+<p>If <img role="img" aria-label="\Phi_V=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAPBAMAAACsFXoGAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMonNuyJUEGarRO/dmXbEisr7AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAxklEQVQYGWNgYFT+osqAG7B9xSq3rmkBSLzoRwEWaUYDBlOgsEja184ATGmWBIa3DAyMH7m+c23FlOUXYFjNwMBswPWdYSemrHwAg3wBA/8EoKwNw+0EhjUJQDU3ZwLBJCBjPVA2AKY3noFhIYoBQCmgAqi9/AEMDSiy8QIM+UC/SILdzLOAA0WSgX8BQzZIpOgbUA1LQxRYFm4vSwPDS5AIOKyYLjSA2AjA5QAODUg4c7ihB1he0gK4WsZtcCYWBrsDFkEGAKu9NiX0tHYsAAAAAElFTkSuQmCC" alt="\Phi_V=0" title="\Phi_V=0" class="math inline" />, then <img role="img" aria-label="U_V" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAPBAMAAAD5dJlYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIonvMrurEJlEZnbN3VR9UU46AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAh0lEQVQIHWMQMlZhcP3mwAAGRgwM7A0QJuNPBgZOBwib6wMDAzeEycB2gIGBCcpmVmBgqIKy5ScwMExhaH7AMPcBw3qg2AYGeZAAQw6QrcDAL8CwgIEhgoGBZQID7wQuoFgH2BjWBZJAtiwDuzqQ2wBUwsCSpAUkueIKgCQEsNjBWEDXBQDZAJmKFBT7skyXAAAAAElFTkSuQmCC" alt="U_V" title="U_V" class="math inline" /> is constant.</p>
+<h1 data-number="4" id="part-ii-momentum-continuity-is-exact"><span class="header-section-number">4</span> Part II — Momentum continuity is
+exact</h1>
+<h2 data-number="4.1" id="local-momentum-continuity"><span class="header-section-number">4.1</span> Local momentum continuity</h2>
+<p>Start from:</p>
+<p><img role="img" aria-label="\mathbf{g}=\epsilon_0\,\mathbf{E}\times\mathbf{B}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGsAAAARBAMAAAAoKE+YAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEFR2ZjKJRO8iq92Zu82MdAVXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABlklEQVQoFY2Sv0sCYRjHv6eeFNkhQdBWS7MhYUMRFo1BjhJU71RLQ7NQOIVBUFBDSJFLQzrUGDQYaEso9RdUQ0NwYBb98hCv53m1800MfODu+Tzf73193/c84N/SzUTpOfGo+IvZWunyVBHaossGjsqqFYhDtyOq0oY5pr2qBsVwdqcqbZhiOk5Ug2O351LpG+1fUa0mU8zAMM2HdI2xzrGsYNI396xxhmaFGj9DsUmpulJwCyaKJasM6CnjW6PuS3MJImMIenCEwGWbNWpUswjJHqgWMteSusrYkeDcboBezNBIq23UVU/uSgJv8kEw+iqaxb1Z1nI4hgWa5dkMaWTqNseWPpj1+6Lg7pRWASYQpZliwDwbnpzgJl/J4DuTb43v6tkotooDkmQsx6Zztvjval4rnfez5VReXc39Rjq9Sa9gnzapvaSQ9NPHYttbLDnlnZ6KYZ22b9ol06a1kaSL/xT+Ji+egOgujsPY/3QiDTDkm2xV1XmOdritCsx6ULRKLfOAgOurRetg7C4W0pEOnvv7yA9VCnRz4BATaQAAAABJRU5ErkJggg==" alt="\mathbf{g}=\epsilon_0\,\mathbf{E}\times\mathbf{B}." title="\mathbf{g}=\epsilon_0\,\mathbf{E}\times\mathbf{B}." class="math display" /></p>
+<p>Differentiate and substitute Maxwell:</p>
+<p><img role="img" aria-label="\partial_t\mathbf{g}
+=
+\frac{1}{\mu_0}(\nabla\times\mathbf{B})\times\mathbf{B}
+-
+\epsilon_0\,\mathbf{E}\times(\nabla\times\mathbf{E})." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT8AAAApBAMAAACxcDOqAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEoElEQVRYCe2XTWgcZRjH/zO7s7vd7GQXKSg9uHsxUCq4iR8HL87JGhro+hHrbedQqgg2obYYROhSbFFBGm8GCo4fTVCERPQginTFD1BC3FOgVcgWeunFbGxTNCasz/O+7+zO1068dQ55Qt73eX7/Z2f/8847MwkQF/qPcerd18zTt+++iXgHewbj12d3dW8Fd1+j+I69FYxfn93VvRXcfY2Aex4Z3PWXlLTpwS2I02I+JqV7B3dklaQ/bdgDurQL228KKYNiV0TL0zmxvr385yvAAQ8DXOqDspi4eWl57pJfsCEPvOPB6ZW55V/mmpojWdHCjEeNTE8h9/ckxfM+tT6LdNeCUY2iPqaKegfmFZ+QreDieT6y7cVGF/i9g2clM4BxrxqVN6HdYX7aJ5JBTC0BzUjqg7IggyiXvEKBgE0ga3kpG9Q2QKKKo24yYOY1utgi0fE1sMHFNnA+kvqgLMiglbG8Ai1Sjq9u3gtBBtM4jlxN0PSrY3VKtGOjT1V8bf1iiMzxiaYsZtfo9xQnbHC9AYxwEaIMA0EGm4ZFsNf8HX0xXxtxn/YoGSzgOeg2KcBj0D+lafzdsy+2aY6KfQTzdKIZIRo2sg3OyODqFs0sI0QZqpg5J5N6J9sUWa+ZThGLdPo24x4lg28wYBVpGv+leR3F2RLN8ycoXmKlH8OUamRlTKLH1V1V3/rs5CeEigIHqezlsVBTeX17vSlTt7lNZdlBqiKwS43uyjaDDg+FBrRNDfgA+0TNLBh/MKATtaWQWnBEwpf4SoNWsMRlkIoWMczTMpyZprTe0ZsSq2aTS7o2GR/lPfggk/d4KFdgdGiTLbbKNtf9kA8oGjHBcM0xKko8KWc2eJRehsPCIAIUh76l+JJa77xVHcLDlPAepB8O2ZzmwtzCM4wo1CHEHqR7+Dqzh0rIOLSLjvz6NZeRcT/TzIY6T1qrhmhjg+Vbag+GqGjhQaPdO4IjlPFjJm0zU4fQ2lxMlWyeepRXEHhS7cE1uj/2f17FR6Ileg+Ku8DcmlQt7lZxV1DICFLVTBMZfF08a9lgfpoFt5lOka7N5RpPfSoMLiiDQzXtBl6j59yJl0dlW3gslJhN2VIxbOQanJJB7TebHvpchChDGR8D7+Aq5WzwLJvpNX/PHRnxEvBQNpjdhLmEVfrmhZkSvqLN1O3+0+L2iMjyQbEmRmCV8nP0y2/dmz9QwtsrTBnKyD06KlaQP7De5S9xD4Ez3GFuyj6Xple6yyvdHaSqGFeWZmHegvlEQzaGRtNmlA5xBb4YJPT5CA71C0/GngBLjKFhqOQirVlNbdBmd1wQnGMtSPvBj/jrglxmP6Sq7yEkyXVW+LKlvU9bpBLRJRC/hAZGvneiA1voOdiIFE0nEkv4oU+79s38cR/wFnrNWwVy8R4NsP9dPjC4M2UN1kKK2qshziBOi/yAF5rewp/HSKoxU+HbO8FRbNFfjYePJdfhQRhtLNHTKKlxAXlHt9NLSfWHnzBcyzr8B2NCYwfl/fc5ZmIN6rfxdirJK5j7efLAmG7rid2D8l+JZnLv4mKL743DLyT0DgEOJtaZMpaMpfsPbzVhO8lvNj8AAAAASUVORK5CYII=" alt="\partial_t\mathbf{g}
+=
+\frac{1}{\mu_0}(\nabla\times\mathbf{B})\times\mathbf{B}
+-
+\epsilon_0\,\mathbf{E}\times(\nabla\times\mathbf{E})." title="\partial_t\mathbf{g}
+=
+\frac{1}{\mu_0}(\nabla\times\mathbf{B})\times\mathbf{B}
+-
+\epsilon_0\,\mathbf{E}\times(\nabla\times\mathbf{E})." class="math display" /></p>
+<p>Use:</p>
+<p><img role="img" aria-label="(\nabla\times\mathbf{A})\times\mathbf{A}
+=
+(\mathbf{A}\cdot\nabla)\mathbf{A}
+-
+\frac{1}{2}\nabla(\mathbf{A}^2)
++
+\mathbf{A}(\nabla\cdot\mathbf{A})," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYQAAAAlBAMAAACwpIMfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEx0lEQVRYCe1XQYgcRRT9PTO7s707OxkET0F2DmFPMU4InhS3wZCbOiJ7MYqDSnIS5iDkkiXxIOgpAxIISNgRBI+uF09C5pKLF0cjInhwQIkXdSM6ipq1fb9+VXV1TdceZKfXwxZ01a/3/3/vV1VXzy5R6a32QumSBywYn7x/wIyHQHe0hEPY9BnJo1OY2ZJDAI5O4RA2fUYycAoXf5qJ/N8CxUuI29XJfyw5au+TWNnHZ1wPGMMb297cTn+zFgyb3ejWr4bkorabktkartKxVLVB5mJrpYcuGrPpto/dibI73DuwoXtIeRWNsnQXfTf9kUgk/yRyspuTkFxBjUpQJOgENf+5gPaKqwP7mS4DFz20NvUAqiRAXNjQLfbh0DRs5druXdbsUCUBrLOPt0JyszVKikhQl6JfQUMnuXPaNWwR0YKDsLmUDjxERbiwpVN7IDReDtFaB1BlJPw6+3ErF5l47Zmt0ToQyQvZ5bLGJk3G6PweG82eTE3/4C0vTjYuBxu6u0jSNCbdjk3eoFV9ypJdGQ2MXD3RgeIpqFELsgQtoXzekvqIZzfxnGCDKi//xUMNLopRdiWBQbT+yFCNWfc2mznY0D0Jh6bJwrWljuoykZN9ltoih2ISHSa8+RqVSwuyBC3jWcWWVJVnEW/nRFkLUdpjY8gd7skpHom6a7+LYfshWznY0DG1oeGgXPsWW4ftGTKosuM0neg52SUIb75GzjCC7KEVPBHemdd5QrRlan2aNroM3OOuPtYLq02qcp/vnEF7gn07eCzMgKU7BtvQKIfbrY1VoX62krNL0LxejaAxgixB17nDlnR4RLFfjMU4TZ+p+/yemm49LGi11fDuc9yFx8LvjjhO0y23iAwNw7mGo8LB57MRIHLmFDSvW2P8CdMYQZag24xsjxcTHtEekyGabr6k7vNHal7dEXhtczMdi6n7RheGhT9NGNZ0Ky2yNLW3uPXh5F+Eeyh+j14lymfDy3J3zjz6nJyw5nVrbLyPCCsICaLjjFR/kavApzBhgCo9qqv7PFTTLX0V1omuCKJgdNEOOg/WdHhRLY0Jz8aNVqcge6gCzCloXq9GhBhBdRdUF+9d0NzmLuD1k/usOO1dQL1yn7O7wAEWFhZNB2pLIw633/6qh+kQj5vNc2xkogbj8WqEz6Qoz0KLozc6koMvUnPC5lN4rnVx3ld5hi/SzzzWxvgKT9nK2rMFsNDdyGiycGtV1Q+qly1yZglGLl8jGIyDblB8mo8abVv1RO/A/h7P7Q936PqtKb4afcxiLLCZ4M19/m+Kz6cvAsraegEsdJcymizcWrH6OnvZSs6cgpXL1+jWcYkaH6jyAFpmz1hqecDMlFftN6F7w4fz8xFPvWwtZ14kncBbWFwjJBaJ9hfyJDSnOwQXKcJuqNinvu5loJet5SJv40I1sgSWcDPjK7A+L8DyEP/1UdhWvTp0UHMQ/ZHFe9kBuVCNLNHD1cATbPVR0GUd56yVNy7np2a2MqJvjI0xlx2SC9XIEj08AzyhFoccDh6KCfAu92k3lB2iCtUYkHDo52W+OS/i0njj+6VJzUtooT8v5tJ4fyhNaV5C+hd4XvRl8J6jehkyc9RofHn2tTnSl0G9nKbqf6kD0/oX7Il6qtovSIwAAAAASUVORK5CYII=" alt="(\nabla\times\mathbf{A})\times\mathbf{A}
+=
+(\mathbf{A}\cdot\nabla)\mathbf{A}
+-
+\frac{1}{2}\nabla(\mathbf{A}^2)
++
+\mathbf{A}(\nabla\cdot\mathbf{A})," title="(\nabla\times\mathbf{A})\times\mathbf{A}
+=
+(\mathbf{A}\cdot\nabla)\mathbf{A}
+-
+\frac{1}{2}\nabla(\mathbf{A}^2)
++
+\mathbf{A}(\nabla\cdot\mathbf{A})," class="math display" /></p>
+<p>and <img role="img" aria-label="\nabla\cdot\mathbf{E}=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAAOBAMAAACV9fwGAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3vzbv/ZXcJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABFUlEQVQoFW2QP0oDQRjFX8zqxhTZ6VPkCAYjVsIsYu/eICkE7ZwDGJLCXrG02spK8ALCXsDAeoCAN3AVhTQhvu8b9k/At+y8eW9+7H4Moo3KQDV9XSzfFn6/te58j6ijsrMFWp9l8P70kAK7PxIufQMQwzgpk3iY4512IP+b81URc4Erk3hviCvaOAb2qwNiebtKgkUOz7TOFxBIVtliLy/33mcGs4TDrYDH6sSuM4/dnlGn7F+IGfqdQSxY33GxRddj0qjIkAQG83YqxY2sMhufhgYONmEOfuvR9ELCuEEhSnEiubUa1TW/hs6EuZqtd48LPT+P1XQR7HpYZ6D7odfL4ep6mq2X2cY0MRwfpprDrfbf8AfVTUfZO1xUoQAAAABJRU5ErkJggg==" alt="\nabla\cdot\mathbf{E}=0" title="\nabla\cdot\mathbf{E}=0" class="math inline" />, <img role="img" aria-label="\nabla\cdot\mathbf{B}=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAAAOBAMAAAB3Ked/AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3vzbv/ZXcJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABDklEQVQoFXVRMU4CURB96wc+rhHpKbSm0QQPsIU9JyAWFMbOA2jYwsJOaipOYGVhyQU4AbGysoRIlgjx82aWP4TCKWbmvXk7b/IXZ0GjCQ0/C5+z9x0oqTIfLTqM60i5DTAoItKa3reB6o/0d3EgsspfRFqfcMr1l2KRx4HI6uuItH6hxvFtBhw/xIHIThYRaS2QTvjtnDbGU5Z0c4Ns/Bx+yeNWwMh4F16eP2R3/UbiAkgp4ya8NpGxoCVTMW0cmFJDJXCeuzELHiWLzAc7lUxSwNEUleX+NJVVw5C0xS/chCBZdYzab7Pb8I1aJoKuZulK056+eImZ3/R5edyVUfpPpweecH3+LIY31b/NFhbTSrFkV68uAAAAAElFTkSuQmCC" alt="\nabla\cdot\mathbf{B}=0" title="\nabla\cdot\mathbf{B}=0" class="math inline" />, giving</p>
+<p><img role="img" aria-label="(\nabla\times\mathbf{A})\times\mathbf{A}
+=
+(\mathbf{A}\cdot\nabla)\mathbf{A}
+-
+\frac{1}{2}\nabla(\mathbf{A}^2)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASQAAAAlBAMAAAAZ/InOAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAD40lEQVRYCe1WPWhTURQ+L0nz+pI0LYKTSDtIp1ojjoINKMVFjUMXqxgU6iRkEOrg7yDq1KAUClIaRyfTxbVZurj4rA6CgwFFF2krGkVt+zzn3HvfvS95aZMhcemBd+853/nOd27vO0kK0HWLne96yx0aOiMbOzD+Q3r3SK1c+u4t7d5SKzfQCid8luK33FaKO8MJP9IjOKbaWUPKC9kjIVg9tKcekPFQExx+GAnLZy3DdZBBFPo9tqLBRDeZx8Wqv0xGg8QMhS80puT2M9RQYH2sfdUto0SSnFUQJXAA0ltTaJe1KHtncrRdCUVNMJLFKFbTkJKLFwgTMjorPMXB7j7HWgRRAjmwvhM+QothM78p6DEQcgVqgszo9Yo+5svx39RYQMQwTrQCeBg0Otga6bkUabMmNylI5zWEnkRNjO9x75JRruQ+hxdwseTwtUjREQeASqAXjzOYAbArGDgoHMmig9ulP7TFMAXz+PANK5Qyyh6SM3yopGItdxwhKaOT0pMtqbvkxLL4WaISSODTh++I5wxwoEYJxTdmeXnaS/jEMxCp4q5RDsRSoi03+FNEtCo5klYyOis8ySGK5Cx4W+I0kETMwnd0jam2K3vDaRjLEbROy011UIXCmyNo/EVSxnysGjXmW8n1Y8YvIBnDJIe6mxwqgVlaPhQhQzs2Pyh2OAyveL6fUmyvuAJWqCTh5uRwiQ6kxHw/qVBGyiUGwJchOGCCw90NUSqBZSIuuPEs7SheFrtVm7jI873I8dE6VIS0puhIgxMTnkvRyyytUi45AL7MyQdo9ylJ34HrikPdfQ76WAKwDx+IfhOjhLckRymSB5vnu0R5e6VKG/goR7xYZdyGAW6XNCblcFBCCiRNcKi7yeHZ4sXZnBJMf5bwJYv5LlFCzZKPGrNEBDyWOd9SDqV1AcmYJjjU3eTwaXroqmAsI+j4iVtl7xSuMzkclTvo4CcuXcUdFEq+srM43S5+mRjzLeXmwgtkIbek7qboHDiH6drQFngFB0+WzmK8/LwMs0s1F+wCRo/x+WSi6Ps2DKlzf8GZ9C74kJSb1jI65XvcErv7rSgzDalnfAocUp9Z5/Tin7G90XnrTcjdrYcDMXPoDkwTJdsXhjU0NfCNNTt0fTtVNvour1yAYHdZMq/zId7rECwI0Y9QqPWFnzVdtH5pfrC7LInlNaHBsysNUAMw3oAI4EY4nqzAe50JdlclRU1o8PDHeUdrxmmimyjAmqEZYAUCg9R5917nW7TZwdlos6Dz9J5C53u02eFLm/zO0/kHofNt2ukwDnY79C5wU29PXO1Cm3ZaJDyP/zdsWvMPBogfa6npGYwAAAAASUVORK5CYII=" alt="(\nabla\times\mathbf{A})\times\mathbf{A}
+=
+(\mathbf{A}\cdot\nabla)\mathbf{A}
+-
+\frac{1}{2}\nabla(\mathbf{A}^2)." title="(\nabla\times\mathbf{A})\times\mathbf{A}
+=
+(\mathbf{A}\cdot\nabla)\mathbf{A}
+-
+\frac{1}{2}\nabla(\mathbf{A}^2)." class="math display" /></p>
+<p>So:</p>
+<p><img role="img" aria-label="\partial_t\mathbf{g}
+=
+\frac{1}{\mu_0}\left((\mathbf{B}\cdot\nabla)\mathbf{B}-\frac{1}{2}\nabla(\mathbf{B}^2)\right)
+-
+\epsilon_0\left((\mathbf{E}\cdot\nabla)\mathbf{E}-\frac{1}{2}\nabla(\mathbf{E}^2)\right)." style="vertical-align:middle" src="data:image/png;base64,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" alt="\partial_t\mathbf{g}
+=
+\frac{1}{\mu_0}\left((\mathbf{B}\cdot\nabla)\mathbf{B}-\frac{1}{2}\nabla(\mathbf{B}^2)\right)
+-
+\epsilon_0\left((\mathbf{E}\cdot\nabla)\mathbf{E}-\frac{1}{2}\nabla(\mathbf{E}^2)\right)." title="\partial_t\mathbf{g}
+=
+\frac{1}{\mu_0}\left((\mathbf{B}\cdot\nabla)\mathbf{B}-\frac{1}{2}\nabla(\mathbf{B}^2)\right)
+-
+\epsilon_0\left((\mathbf{E}\cdot\nabla)\mathbf{E}-\frac{1}{2}\nabla(\mathbf{E}^2)\right)." class="math display" /></p>
+<p>In components, using <img role="img" aria-label="\partial_j(B_iB_j)=(\mathbf{B}\cdot\nabla)B_i" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAAATBAMAAAD2aFsxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC30lEQVQ4EW1TO2hUURA9b//Z7yMigoW7jTYWWWMISSG8NhjISojY5VUpBM3iB1MuqBCDaKKd1YpGo0GyWphCxIitIa9KoeImIIiNUeInrEo8c+/77IsO3Jkz587MnTv3PQCdPVCyR5uwToZdwKjuZLQfpiPH4rbiqVMbc1NPlHOtNTlfIjLqyg1UAoMbv19/PuUxhW0lzl4hvCwULEwIkSxRPQW6LFpkbES+CRgW1SZngNFpxLYtl0ttjVCOI14m4WfFgQEJyIq6CRRqAjoYsyVA0QJcWVJFMd5wfeOHgHMAN4Is4iEu1VLuD9CsiNd0kPsuIKVcQUqkIXaKhTWXwHWHqA5cpvGzYme7RyXgOVeU4c/EQT/v0hAQsUX7kmEJKbpR86iizTwLOEDCz+pF5IEEMBIJ2zhYFQdj6FxUQPEaie7gYtHVlk+lebuEu+NlxVjsFzLAmmzMDk85aua3RvoekWgAX2jSYyI1ojzXaOvh6bu0WgzW7yYscOmsYWRrMGR4uSUqziTCg+lRdzmCMKO0p94RyPVf1AjeW1RYcGDTdJhBVrGEuDQTW6LiTPCTSw23UBWEdaU9NUggRYfkexsoCd2sx8XmzSCry0SiHr0EY40b8+xxE728b4PBZfRZetbccmUfrRQtbnoMEl9lpDJtnRW10eSB5qETOvkjP6GZKM/Ms8srZnR3TfPBTN2H0p1KLbbRGhHDHZ1VXkemYnyAOQu85D/JO/WXwLkVLURvwEhXkGPPbZI1VafGih2Q4wq/9bLkde5PMG4ZOA9cbU3euw1cRGplbuok6ayDaDnIJkpW1L//6VUbq3+Xw15WysuYBlb9sHWPlStlTJ8XkLNDrnJiSj/2NvK7NIo12rPvON7+0fazNOnnejGuDU5LH9FUssoe6jvC6F4AOI6QvAl5gZMO34iD4uyA/UGEi6rL6q8O8ZFKyPWdHh+5IMNHYqs7aSzy8f8h5fz/SDv9FxuDw6a6rHneAAAAAElFTkSuQmCC" alt="\partial_j(B_iB_j)=(\mathbf{B}\cdot\nabla)B_i" title="\partial_j(B_iB_j)=(\mathbf{B}\cdot\nabla)B_i" class="math inline" /> and <img role="img" aria-label="\partial_j(E_iE_j)=(\mathbf{E}\cdot\nabla)E_i" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAATBAMAAAADltCBAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACyklEQVQ4EW1UPWgUURD+Nrv3k/tJDkUEm1yjhQieUYKNuFgIwSInGrFzCxEF0YAGUwgeqOGKoClNbBZEEyvPSiEIZ6cQz2u0UbwEbKy8SPwhGs5v3nu7e5tk4M18M/O9ee/mzR6AbYegZKc2cT0Wd4EtWUCc13My4amN1Olv89VLPr0Q7FKpLuU5jZnFtzN1E+rvKGkq3r3Z6uSsJPpdTIhNFakWgB6fNgSJkniRkJXoAJ/aJpT+M0o5A8XL1oC9kkgAw2Jzon5zqZ8RgrqEIyFLalorJmT9EnAdqNP0c2tKfMqIqFNczipVuRvgLr0uIYs1HZwPYvebRD4Ub8RVV2Sda4PnhPCKK9VGSXAEsEf5oSKLNXM4HUQGPMB2oXi3YOvwEHqeCprmytbynuAIoFf5oSKLNW+GPjLrQJKu8BbwUSUcsv4iCyxJ4uVURXVBA9TYI2E9uUC5KGhJajb+CdRirQGDhMJ7WH3DdAm5Cqyf9PN1qpbrFGm6AHoLKmCUsHjPfcr94op51oRHQ15+FcckgoEiEm1ap051lN3nHHQB9MVqCkv1U6ZkuEiFlp8QS57dhqteeH8BSd++A2uJictcH2zPABx2dZ8YNSIs1gSOBxEkV6Sd0s9knT+3PMRjeF7hwFn9Rg+Y9EvLgAL2joqpGfVz2tScI1NLfm1UAGv2VoCMzQtny9ZXFB4Dr3nID36VFfZMAytT5hejdwaaLLlnSp7AyFVPAHmtIlDFZzpzE+zYO2AcmFqrTn4vpEsGINcEDsqGSMbhNDqLjQ4nKJAWTxZe+v189coKbgfxaZjRYqBvexCVmXseONrqAYzFHOWFvOWSzjo1jnnBMDNHgi0n2A4vcLQNWfFwF+9RU6dSY9ztb6ABN9jz4CST3IKlMht5SEnjsHtjzTF22fxfR6lNLJ3axMvyfXjRaKNGL8qAHBaTTSyd7eb9B8fstSPiyQn1AAAAAElFTkSuQmCC" alt="\partial_j(E_iE_j)=(\mathbf{E}\cdot\nabla)E_i" title="\partial_j(E_iE_j)=(\mathbf{E}\cdot\nabla)E_i" class="math inline" />, this becomes:</p>
+<p><img role="img" aria-label="\partial_t g_i
+=
+-\partial_j\left[
+\epsilon_0\left(E_iE_j-\frac{1}{2}\delta_{ij}\mathbf{E}^2\right)
++
+\frac{1}{\mu_0}\left(B_iB_j-\frac{1}{2}\delta_{ij}\mathbf{B}^2\right)
+\right]." style="vertical-align:middle" src="data:image/png;base64,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" alt="\partial_t g_i
+=
+-\partial_j\left[
+\epsilon_0\left(E_iE_j-\frac{1}{2}\delta_{ij}\mathbf{E}^2\right)
++
+\frac{1}{\mu_0}\left(B_iB_j-\frac{1}{2}\delta_{ij}\mathbf{B}^2\right)
+\right]." title="\partial_t g_i
+=
+-\partial_j\left[
+\epsilon_0\left(E_iE_j-\frac{1}{2}\delta_{ij}\mathbf{E}^2\right)
++
+\frac{1}{\mu_0}\left(B_iB_j-\frac{1}{2}\delta_{ij}\mathbf{B}^2\right)
+\right]." class="math display" /></p>
+<p>With the definition of <img role="img" aria-label="T_{ij}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASBAMAAACp/uMjAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVO+rid2ZInYQZkTNuzI6UKoYAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAkklEQVQIHWNgVHYJdUl1YAAC5gKGMAbGBhBzFgPnRwb2DSCmJAPjTwbuAhBzAgNbAAMniAUEPAlgCkTwCzAwSDEwXAAy94MVgmWcwCSYOMzAwGXAsOQBkPOLgWFBJNdEBwYG7u8MDOwHONkEGDhcP7szsCxg4IFqZp3FwATWx8DAtpzhLZQJpDrgzIbjcOYNAQYACxIZbxu3/UsAAAAASUVORK5CYII=" alt="T_{ij}" title="T_{ij}" class="math inline" />:</p>
+<p><img role="img" aria-label="\partial_t g_i + \partial_j T_{ij} = 0,
+\qquad\text{equivalently}\qquad
+\partial_t\mathbf{g}+\nabla\cdot\mathbf{T}=0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaUAAAATBAMAAADCGA9BAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFB0lEQVRIDc1WXWgcVRT+Zmcnu8lmMhNLQV+cBa1ioXSSbWsQJeODaBo0q5KmfdAsVddQFANRG6viiD8URbsigm9GY+oP2gRRFF+avoiUiEPEPoi4qbTQB7Wb2ESNhHjunXtnZndmJUUFT2DuOd85997vu38bAJfsQLIpVzjJif8cbUppgzOnbtdKyaVbzD0ssW/k5XMvnEsuuSg0fdyL1vevRaOo34SSsc5NDNL+yxz9/RztF/iGg/EgqHMuIOMS8CA6JjBUl2HB1T35GJYAqAshaISadEKbampCKfv7IBlfZ+ptfKisFzddCEcnT3LSgL66BBQRFpGuAIoNq4j5+hIgPYuvGrGkOFUK0YimDKFNNcUomXwMZYU1D3MfuAykCfeJiDdRTgPRBKDmZZyuAZqJYRPbJCTbXBGHpL/RNqIpR32aaqJcPaVuf4YjbJ8nfB+nuKaCiHgTcEqPdQ9HE6GmmwtbSBPt2jHAX6lIHZ2PayLhhtyIJjZlU02CkjLUdUueDyw0WSUi53AE+JZruklEvAk47ULqPYZcWugUebFPaglbKxw6KRLRZsDDQEyoX6AW3kRq8km3fy113Oxf076eyK6gQJeWNBWuI2Tn/tT04SJEJjqq7wtKfS89df8CR4SmNlqFFr+EfdnZqzPJiV2ZP2kv9BPKq7iTlwhNdMuMGcwQtEwn0AY7LjhaJhshZztp8hgSt8O4DddDrShrqJq0G1UPbqaYmSFNWTe9oPxGF9iibn4m3l9SOg+jYvK00KSsAsJlsNQU49TuQlnOeWindRPDC01fgj0OZCmZEHnekCCSlWQkpePGJdBdXIPBNOXclJctUWx4loczWIJl+ppyLt3WmElKb6C15ielkGkPJYb84LCv1MR8bpKTlYdWa6V1R6rCE0fLD3zBdkJZAvyLlvUToqNoqg57OpJMWx68+45F6IEmrcJeuW+YpuHBwbNcqq8pVVETRpCUpj12gdBWLs+Vyy4rrE5oedb28W9Mk+S03UTL2x/YeALZkloCM3+fUovAAfQ4QHsJ2AX1WZYLzMhjXxDUOSotLnXmmiy2T3htM/SRW5mmXlbJts+CxzPzdV39QFLqP/mZyMp9almMXKf4PklOVVJtHgTeR7ttn+Zj+JqIU/oVdbNLt8qG2mF27WXJ4OzmbDzKq2MfnRajc8nXxO8TXrTRaus1x/AoVnxNps00USZuktJbQUpq0lcHAyw8ezFOuaJyBh8De9Dr6bO8h68Jn+ByR2kr8ucA38OcigxHOzFDv7mnEk/fu9C8x5Gt4Uf0Ooy5NQrL0RZtw2tzcRchlmd4XJOVpElSOlI+0OXPKTXhoVKEROzsBZzeGTdRAbI7H0PWn0Foajv4NJ07D+PnRzw8g8Z/G4b25tGXRAnq2A6oz3XXsLUw8NHuFQctHtTJbYeunN6PawvO7hVytHuozSNnRjgGrqA0sL7+h8fBQFO1GBShZW79pxNhyDzOye+izNoEPI+OTbxEaOI+vR7cTttMeMwiUzTm9FojkhAnPRG8jCjpv0LvdXkUaEonjNEEmnIocRZtN/C8YoZl/cKd9NIzIRp4/0yT7s0HIzU6U45K97J1guOdjdkNxZlZbTapkF4PYZlR6YWtFroxbwP7lHXtWLcQUF6nH5N8GF+0p031JPUZDf73ztDNitnfabpq1YnVNwD6WMKYYc13nx+9N4z+Ne/Tohwq94j0/vftXxnpaT0jYcDuAAAAAElFTkSuQmCC" alt="\partial_t g_i + \partial_j T_{ij} = 0,
+\qquad\text{equivalently}\qquad
+\partial_t\mathbf{g}+\nabla\cdot\mathbf{T}=0." title="\partial_t g_i + \partial_j T_{ij} = 0,
+\qquad\text{equivalently}\qquad
+\partial_t\mathbf{g}+\nabla\cdot\mathbf{T}=0." class="math display" /></p>
+<h2 data-number="4.2" id="global-momentum-conservation"><span class="header-section-number">4.2</span> Global momentum
+conservation</h2>
+<p>Integrate over <img role="img" aria-label="V" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAU0lEQVQIHWNg1DdhYJBXZWBIZ2BgYAbieCCOAOL5Cxi4NgDp9RMY2IAUA38Awy4QzX6AQwBE815gBFEMPAqeYJrxA1iYgftbA5jP8hVMMXA8ANEAiGMMtlL4GTcAAAAASUVORK5CYII=" alt="V" title="V" class="math inline" />:</p>
+<p><img role="img" aria-label="\frac{d}{dt}\int_V g_i\,d^3x + \int_{\partial V}T_{ij}n_j\,dA=0." style="vertical-align:middle" src="data:image/png;base64,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" alt="\frac{d}{dt}\int_V g_i\,d^3x + \int_{\partial V}T_{ij}n_j\,dA=0." title="\frac{d}{dt}\int_V g_i\,d^3x + \int_{\partial V}T_{ij}n_j\,dA=0." class="math display" /></p>
+<p>Define:</p>
+<p><img role="img" aria-label="P_i(V)=\int_V g_i\,d^3x,
+\qquad
+F_i^{(\text{boundary})}(V)=\int_{\partial V}T_{ij}n_j\,dA," style="vertical-align:middle" src="data:image/png;base64,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" alt="P_i(V)=\int_V g_i\,d^3x,
+\qquad
+F_i^{(\text{boundary})}(V)=\int_{\partial V}T_{ij}n_j\,dA," title="P_i(V)=\int_V g_i\,d^3x,
+\qquad
+F_i^{(\text{boundary})}(V)=\int_{\partial V}T_{ij}n_j\,dA," class="math display" /></p>
+<p>so:</p>
+<p><img role="img" aria-label="\frac{d}{dt}P_i(V)=-F_i^{(\text{boundary})}(V)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAAAmBAMAAABOqqg5AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsiRO92q2ZUEM2Jmd0gkiEXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAD2ElEQVRIDb1WXYhTRxT+bu5fNiabIL6ItEkV2sUXb30RETELFWmpNtKXogihLdWF1r2+KP48jAq6SsVbxGAKxeuL/VlsA4Wi4kPa0p+1UhZL6Qoi8a0uihEFVxD1zCRzk3vv7C4IyQcz55xvzs+dmZPZBQjaCoeLvmB9X6qIItv7V2qof6Ue9qvUJ9VSn0olmO32qdQh2OWXKlXelAvFZWods95Ru7QPYIZDutbmUi3fDselukqdV0XqD5FX8fNyFzBHqYyviNea+NBQ8PNSx2BP7MCZinYp3dh0bArvVmrWV0Xjzu+ny68WB5gqvpS6kgzxwebLITpq/Arbywy72uQNlDL1cb2m1wZRwu5zafYt9EkgFcRLZWP1leM8Tfr+zeuvccXFzsc5WM/YBW4p8Pe2a9dnsBx2MXmgjCYv5ZlWne7q3DT2Qq8xoADYsO7vAkb/RyzRG8BZB7CKSJeogAv1KQAJyjOhKmUfnwYl/5Eh5QIfA79RHhvxRDPADwxYACSbNHygRp4KZMvAMP6hA7SHXcMdMfiu9JrWOIEtHpU6lINWF9EnKZofWSSR9gDIe8AZwKCXajV5TNBQIJ8D3kEV6eoOVD731741s2TfqFepPPm6+tmb9xx8Tx/qia2850CnlNFEfCv/+sAyQH8E1MljAw0FRmHA4QczC6jLaDHhAOvoMrhTJJFdgLGZ6BKNGQyQI0waCuwX8QM5xRKnPvoSWNwKzjKc4lQkkTl05FOf6AaNbRAdnyUV/+0hHOCaxNZrP3FV9K3kuuRYESkGDBJlTrY6XiTquNBmea/oNRJLUaYZpk9TDHS8P8fIOLGGqETBEgumT+J5GwDvFoLGS93Silwf9PksYSzlYLw/meTmkEtoLdNYJDzCibC/FZZqkBxtf0yLisw2/xjeqHOD+hBWsyycInd1l5NHW21x9mrHI3ZXZl0szjfx9ANPfeEWLqU/ITJJO71MMs+Ex0oxRydxqVEybi/w6TboWeBYCX1fS+PzL489mukuR0iMcwYYa4nwnF7B2zHphtm4ZVE+ehYFxqC9z5WF9DZI/AmskjromZsVbHrWpfaC3vUxMpFRwncybpoh4Uuj21lyUorfhDTUUuan10dWtVy8Lp2n6NGalEbGl1pcplmcizBrAztIlGCgl7aDt6V6UCoKOfiNggxThiftIFHW0UqS5FKXhiMVhcwcVpARKohvK9bIaeOvKyzi1RNzCHtAR9gHJAvYjWyw1V5WNBk2Y30vKwS51zlaE38EZi+VPKxC8WLK62WNdm4T43V2u/U3o8fljBtfTPkV8Q9Ajyu9AAby38g/xQF3AAAAAElFTkSuQmCC" alt="\frac{d}{dt}P_i(V)=-F_i^{(\text{boundary})}(V)." title="\frac{d}{dt}P_i(V)=-F_i^{(\text{boundary})}(V)." class="math display" /></p>
+<h1 data-number="5" id="part-iii-angular-momentum-continuity-is-exact"><span class="header-section-number">5</span> Part III — Angular momentum
+continuity is exact</h1>
+<h2 data-number="5.1" id="angular-momentum-density-and-flux"><span class="header-section-number">5.1</span> Angular momentum density and
+flux</h2>
+<p><img role="img" aria-label="\boldsymbol{\ell}=\mathbf{x}\times\mathbf{g},
+\qquad
+\mathbf{L}(V)=\int_V \mathbf{x}\times\mathbf{g}\,d^3x." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAR8AAAAqCAMAAAC9Sa/VAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAibuZ3RBEVM0iq3Zm7zIun35eHt8Ojz6vv05uz3funfMAAAAJcEhZcwAADsQAAA7EAZUrDhsAAARoSURBVGgF7VntlqsqDEVQEUGm0++5nbz/a96AYkHwqD265iw7/GglYkh2yCYoIbtoH4fP4y4c2caJ0/lybbZRvQuthys5XnfhySZOXOC2id69KD3CXjzZxo/71zZ696K1+dyLJ5v48QH/baJ3L0ofcNqLK5v4cV+n9OElZ8UmBv6w0vM69Iwo1/KHXdli+hOsUxoKQiq9hYHr6Cyi2EWC9ERHWOnoJeTYjBll6bk3lOoqB6gq7qao8ULmUNsQSsgVKeYZdV2hetYUBCnKEf5hOaE/wEwcvLpXlgaozFGtQYtwZX6n2renZWrs6P3STsxoakAJnFSpGxvLAnxaA1Tnq2rDNcsqOK9gp6w5YqPylKociEgClxq8oszHp1sqJS5zbKLLuqzPvvFpb7DG9kVVieTDssQ8Aiip7epO3EyIREcLbUaYAQWXqtDZAh1WrY8PtbgQAW2addOWNs26zsjfA6ZOF3MMxrgopVLwkAwk/4MdyJkgSQlN5SiqHS17ZbrJhIRaJhfniFdG7OPjeAcM5fAWLLxyYjN8pB2Gp4vFBkvJuT8R1omiVD1X56Ceec7qvvX+UzS66NFBMxWuoCc8BPOTEGiIw2/EkUjs4+OwbVC1t9P31Juyq1X4HZ8ulhlMMSS1t0A0JxpluUsHgLyPV+SDFeTAq2CIYtLbexvjhf1JPz4m9fARLkIUidCrQpppzDEwUVtisDLU6xfOOL2Ggri9s4Am8D2aDAPa4A4XtNrF20iZqR3Ai0AwdLzj8FGKaIcPlhraBQ6fzCfxSdLzEoMbA0QTFs7Sc4aDtxRGnKEQGorrp88+RJtWjHr9ESWR2OHDSlI4vCX4y2cG/6Tpeb7BwuyYus/j1shn1UpUBb5ryTxnioMLsFEw4B/076XW4VOY4Lkk4ZD5S8aJSdIuM2tEz0a4wGALjaTk6UOJuyja0GU5loa4mGwSGs2pliGAmbfK2v3LSNuWAXI6syWdqH3v3ICR/xafojLWOPrXdgNzD8woy75ieiYLDLaRKaqspxtTIyrMFoXLqvVGUGoofKxlOdZHiA9U3SDRJWdf72iwzdCYttk8piqQd+cvrB7M4pYdwRX+OsWSJHgk1YnpeZHBhJSMc91G1+oXGRdlxg0h6UlmTlk0lAkbcqHaPB0Q+XDwWN+BHt6fPhWe4B4+MqMXGjzjgb8bokx+YDOlC9Z25ueFloIiDVqg/DZZPQfDbSc0OL6/sqRoLBNxezR4FR7iDgG+cX0J6wvD688XXm4EBofqNukJRhnuL7aEeBkfUkaPqrAoSdp+H+zMyUFDoW/w8N6/24+q1EiQsP17jcN7Qu9eRCu9e94LHEM/bsPD+3DAm/cfcEEEWGO4q8wjBntzdPB08W0gEJakyxl0/m6AndtPX/at7HSt/W7okBN8WJ/Nu6xfeAbhP13Isft0gedH8TyAD8a9a7e5k6/uy2nGfpdPtAy+brdDJ1SUL3ivEmnap+DyeDjHtN3gXe/3f4hAsdnnzf8BfjArakJXFSMAAAAASUVORK5CYII=" alt="\boldsymbol{\ell}=\mathbf{x}\times\mathbf{g},
+\qquad
+\mathbf{L}(V)=\int_V \mathbf{x}\times\mathbf{g}\,d^3x." title="\boldsymbol{\ell}=\mathbf{x}\times\mathbf{g},
+\qquad
+\mathbf{L}(V)=\int_V \mathbf{x}\times\mathbf{g}\,d^3x." class="math display" /></p>
+<p>Using momentum continuity, angular momentum changes only by torque
+flux:</p>
+<p><img role="img" aria-label="\frac{d}{dt}\mathbf{L}(V)
+=
+-\int_{\partial V}(\mathbf{x}\times(\mathbf{T}\cdot\mathbf{n}))\,dA." style="vertical-align:middle" src="data:image/png;base64,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" alt="\frac{d}{dt}\mathbf{L}(V)
+=
+-\int_{\partial V}(\mathbf{x}\times(\mathbf{T}\cdot\mathbf{n}))\,dA." title="\frac{d}{dt}\mathbf{L}(V)
+=
+-\int_{\partial V}(\mathbf{x}\times(\mathbf{T}\cdot\mathbf{n}))\,dA." class="math display" /></p>
+<h1 data-number="6" id="part-iv-newton-like-laws-for-a-localized-electromagnetic-knot"><span class="header-section-number">6</span> Part IV — Newton-like laws for a
+localized electromagnetic knot</h1>
+<h2 data-number="6.1" id="localized-persistent-energy-region"><span class="header-section-number">6.1</span> Localized, persistent energy
+region</h2>
+<p>Let <img role="img" aria-label="K(t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAATBAMAAADojanHAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZVHa7MmYQq+9EIs18fhEmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8klEQVQYGT2Pr09CURTHP+DjPeH5lDGTASjO6p9AcbM4CXYpBgOT/4DX1MbG2LSRTAY256wEkxheIlB4NG1uBKN+z4XH2e75/ji733MvbGpgrOlkZdng/BCGpvrO8ltwAoUxPOLFqPaaeB3YFb2C1Kxuh3vBqc4v7Jt1yYNBG4IRfBh/Ct4MRuxUFzGh8dfPF4M6+LGSRaNlUjNIJRMIe7D9w1zTQNYEyMsqpfiSxTocyLKssIyn5Yrnq9hw1nwMlv8NRwWYQu7mmdzfMVzoW2dwp2lWsxW5zrTQ1yq9ZWh9XZEuw5YbZN67kdtMOYysJ/APsZ4wTqa/I4IAAAAASUVORK5CYII=" alt="K(t)" title="K(t)" class="math inline" /> be a moving region such
+that energy is concentrated inside it and boundary flux is small.</p>
+<p><img role="img" aria-label="E_K = \int_{K(t)} u\,d^3x,
+\qquad
+\mathbf{P}_K = \int_{K(t)} \mathbf{g}\,d^3x." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATUAAAAtCAMAAAD4Mwx0AAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAid3vmau7RHYyVGYizRAun35eHt8Ojz6vv05uz54DxpkAAAAJcEhZcwAADsQAAA7EAZUrDhsAAARwSURBVGgF1Zlrg6ogEIZB8cJFt+3eafn/f/PMAGaethAk4/DByhCfeYW5ICHL2tfme7tshFWvzgN3tz8cy1XtXnSzTHA3R7I9LjJk1YvzwD3o06pWL7xZJrhbvdCOdS/PBPd8WdfshXfLBLf8XmjHupfngful/6xr9rK7ZYJ71btldqx7dSa456hUTTSC9evqZe+WCe4+KhiA1FX7CdXywN3pqARXEdLxD6iWCe5Wx5Wgqv3IVEuNS4uSUUqrkgVNgWN4ZcBrrUjfRPs13hVad11RdjTYNSbHrWsjVxOm2k9EZdCYAMLs/YKekesstBkBPkJlS46r3ZIJWzl6H252WwlQTBbhV05VI52uAsdIjcu1884iBOSkI0JoLRt4NIyG3GjS1801UutA5ZPjtrjU5ARuxo+rjqinwK1JKeNFI4NqwXPNj9uLVvacNne2v8JFt6ZCJzzZ+OopLtBPmoMBaVsh7vJiSHZVI0MDg1Ot0SVkMCHNj1tS1eqqHeawD7esKe2ePH9W3do/PX489VQvSAkr/5bR1jCbq/HZcEE4nCruH+0MFYTWVVV3z2JoPC4pcMVBrHFRxoer0K1xS9+zAozryxmB3Qaz54Y2hCMHKodNYty8SUgIuDeu+2DHAKqZ4ewhIS4pDe0wuhdXYk+0DYMBxVUlZ8z+Gd6VwsxSA0aJjnOQEL5Ca8eZZ0/MOE5VS4nLMJW8RWYvbtVZWoWq1YL0swKD37ua1WeeGYyrgMlOvlGaLihm2+v+US0hLq87Vg9eyI9buq4mx9WKD1cazKeOwutdwUmAi4A1abQxq7Wtyc2NNSAk/B+WIsJ6mKxQkhCX3dDAcC+u0rY7RbV42dAhiNiH++x48QQDuA4WZ182yg4P0bOHkDPMY0h0ZQFuDWagqgLS/KlqKXEphJmKScfiwaWdNkVogU8eLFGkmLVwfMEAB2Owl0adTg0Tgt+giKJCNVSgO+XGh8AXf7N16FiPpcTl2jSX0bzCffD6FdgonZ97acROn1/+H/TnrMf024gJcZXGx6uknjio3276eM4EuWmke+yEZ04xlcHvQ9ng/ey/l+cT4kqz1iDMh21hAF7fouCq6B7m4AP7d/g20cMYw4nYqZYUF3JU5BHOyw9saT/PQx6WYNhY1QJuPQNXsZpBxuCS8oCxA7r+RGx4BAyfumsmuHHvDFKLMXu8PHBPvg2P2fas0jET3Ks+oLmT6hnTfMz5IkI3jvXOlgnu5scaeVfst6hYDdG3D62S3qmXHTsT3L17FTpWz73Jc8yuY+hO4/tVywN3p7+sqWP1LCF/4KzDBFvgIaeWA+7uQLbu9dRd9UwxM7bvh1Vwev1OiTPBLc/k4t6631XPtXFrNkccy+t3yjFz7ExwL6fTxhHfVc9GNfsypY/Yo50pQUS3THAP1+sAf1c9M4yendk/m+5rDn0/9Zkb7qR6FlhNMrNhhoEhw5Yl7rgsx28ZajcgjZDjt+G/FT/NNMP7wZvO/6Dlguu23Oe94vq8rgtw/wIlnDXwnjBC/wAAAABJRU5ErkJggg==" alt="E_K = \int_{K(t)} u\,d^3x,
+\qquad
+\mathbf{P}_K = \int_{K(t)} \mathbf{g}\,d^3x." title="E_K = \int_{K(t)} u\,d^3x,
+\qquad
+\mathbf{P}_K = \int_{K(t)} \mathbf{g}\,d^3x." class="math display" /></p>
+<h2 data-number="6.2" id="center-of-energy-and-emergent-inertial-mass"><span class="header-section-number">6.2</span> Center of energy and emergent
+inertial mass</h2>
+<p><img role="img" aria-label="\mathbf{X}_K = \frac{1}{E_K}\int_{K(t)} \mathbf{x}\,u\,d^3x." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALcAAAAtCAMAAADbTQqIAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAIs3dq++ZdkSJVLsyEGYun35eHt8Ojz6vv05uzzjiCTgAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAP0SURBVGgF1VjbmqMgDAYVBRSm006n7bZ5/9fcBMXDVKCr9XMnF8UCIX8gJ2Bsc/o4fB43F7JAgMyaGNfp6/wtYhP2GeNVA1Hch292/N4HW0JqFPcZLgn23YajuI+wG66U4Cju6y3Fvtt4FLf43A1XSnAM9wf8SbHvNh7DfYfTbrhSgmO4r+tDt5a6NCkMS8ZjuL/WuyVqXlRLcKV4QAZnnGB9yuGMxTNyUHpswKgCMhXKmEd4Q2nCq5nt5lkOkBeok4A8iyFcMva9Mls2NXBm5Lx9C3B4yxmtlmAd8zzWZkvp/Lqsx4v6bwmgGNOzY37Owha+FjJ6tqogXDb3/ydtCdCYfINYc4G14aS2Es2gxH2doxxNOxwU5jhe67vD2iyP5m2tDcBmDbQm/hqa12cdElm+wphQMQkic4fd6BLXdj8ko6q0HqctzD9c2omPoqUE97ssegrpHdLkkczyNVhmWtTMaCYwoPokU1v8xkDnqdGswb58DDTPQXj7NmWOHEYo3+EZ/72F8XbNs+egM8wsRBLPHRvCjmQpTngdqAPtvAHDEFtPheUAvWqKTst2i/VzJh8QpPG0V9zSCNA9j0IMvAudggB2OvgJVY/R9VCoqaDnrzUzY6081z+3L7llDUMkIxtw+0zwcePc/o/EZoOK2MsdY91bCvBmbMjL7TvlloSotHqICWgGZBqEzkGuajQeTxJ1wfEhO7Yh0AC0macRUs3Heb/Cq+0t6ZZM4Q4pIMMkQhMxQnKHFV3DZGowZ8w9FjeY7JcXhmmqS0gHbCEj5DbnLJ8cCC35TCoXpVKqEF7q05SkW6qc9kqh4NYubYnFtmq/Zal1U9o+OHCluVSanLYRc85XIJ99pcKq2/ORIdwnuD6psmGH8+EfjjwrDlOGo8HiptMuq7PldL3oP1NhJkBX9UE1PLl/pwrZ1OfKIjYsetVIRYG2tcX5da5dJJ4f3a2XzJtPE8EUy2NtMThd7l3/RK0UBqowveFuGV588Qina3zTpoXZkuaSKAYXS17HaMl6KZqSW86VNHc4k4SJThR6KCLHjomYNqSiC/GccM+VNIdHK32kU0WYa0waJhQ7NwTcLS26PXNZ50dJ46Z8dU8ng07GzW1vun0e3B7pRALvLhpUYGDifS5pTvDRMgw6WTyapnQ5XccC6ETQe/+oDFxxklOJ9lzSnM7s2F3lRzopKivaRxweKg7eCzOx2lNJI67s1r1Ujcq02pl3e51pa5vEulsPP5U0t8vl0Akd6eRwt1c3E0tYW8Pt1p8pac73uxc+0qmkSJK52mByM/FT/6N2opOmkFm6Eppc9PfQYBzD129A77aagOJbyK+i7tq1/rngL6QyJpN2LYY9AAAAAElFTkSuQmCC" alt="\mathbf{X}_K = \frac{1}{E_K}\int_{K(t)} \mathbf{x}\,u\,d^3x." title="\mathbf{X}_K = \frac{1}{E_K}\int_{K(t)} \mathbf{x}\,u\,d^3x." class="math display" /></p>
+<p>When boundary terms are negligible:</p>
+<p><img role="img" aria-label="E_K\,\dot{\mathbf{X}}_K \approx \int_K \mathbf{S}\,d^3x,
+\qquad
+\mathbf{P}_K \approx \frac{E_K}{c^2}\dot{\mathbf{X}}_K." style="vertical-align:middle" src="data:image/png;base64,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" alt="E_K\,\dot{\mathbf{X}}_K \approx \int_K \mathbf{S}\,d^3x,
+\qquad
+\mathbf{P}_K \approx \frac{E_K}{c^2}\dot{\mathbf{X}}_K." title="E_K\,\dot{\mathbf{X}}_K \approx \int_K \mathbf{S}\,d^3x,
+\qquad
+\mathbf{P}_K \approx \frac{E_K}{c^2}\dot{\mathbf{X}}_K." class="math display" /></p>
+<p>Define:</p>
+<p><img role="img" aria-label="m_K:=\frac{E_K}{c^2}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFsAAAAmBAMAAABZpPq1AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnYQqzJUIkTvzbvdmYlSEOKuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABiklEQVQ4EZ2UMUjDQBiFX2rStBTbgIKgBSM4ObUuIigo6qCDFJyytUsXlw4qDmI7OrmJTtKprsVVkLooTmZwLgGlQ8GSKqKLxDNK70rL5a//EN7d++4u9+cRQF7x+3pr3ZYzonsFRAbAX9laU1wv1do7s7NSRDRDLgxxHKBjVX0pABHt6HXTEccBupjRSsDiDeafAkjfnoSGMOI2xig0Nhi1h1g2TaJxzjAbiV2HhOufQNyBdVwj4c2v1vNDCsnCLQn/g5YxPgh+gmiGzs+2cXBBx/9PKlPp0a38Gt9AO+W6V+1bRriCbW7oK3hcZbXJpwSVTUKpYZocozpUE5fs4/WJUcITyvUPOWM9HfoAMUa6iyKUckmMkeTdlTImMGwanRixq/ZU7sWf2kkhZKCBSAOdGPVppG6qzg9vFfxV/kMSI62sVDn4q6QxYpnvLnmMFlLddMBICEkAiVy+EMoIl5TzqqE6R/S/6gzCc57nyPfkbptLgtLfCBBHNBcYpIt3UMhtYacc5kf4Wd+BG2GedYsVSwAAAABJRU5ErkJggg==" alt="m_K:=\frac{E_K}{c^2}." title="m_K:=\frac{E_K}{c^2}." class="math display" /></p>
+<h2 data-number="6.3" id="momentum-balance-as-the-net-force-law"><span class="header-section-number">6.3</span> Momentum balance as the
+net-force law</h2>
+<p><img role="img" aria-label="\frac{d}{dt}\mathbf{P}_K
+=
+-\int_{\partial K}\mathbf{T}\cdot\mathbf{n}\,dA
+=:\mathbf{F}_K." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPIAAAArCAMAAAB1hyVxAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAMrsiRO92q2ZUEM2Jmd0un35eHt8Ojz6vv05uz/K/jykAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAQ3SURBVGgF1VmJkqsgEAQVL9TN5s5L5v9/8w0oggqKVzahaiuKzNEKTQ9LyO7t5/B73D3IogA0gHCR4YTR6Xy5sokxf/U42iexw5Ucr3+FaSJunEwMWPT4ArdFdm8xCtI9whxhD68b+dxnKd8fG6W3tZs4zrJ9ljL73TrXbfyJOZ3sspR/4N82KW7sJQ3QYRJv7FW6e8JpD7erfTJBXIyu9mNxcN9nuVgizeoKBXHRfZj1/JnsJdHGAYlmvSivwSf4UBWCky/nBdlhXz7Ch8rrqMwyWqa5/HCUVwCcV4wXdYfX53QMurq0F68qjCH/Kg9pbxYA5STpIATGOOeMscKRWK87A8k5+LMa88vFEFCGJAfISJ7CJATMTxcAFI0mWwYycMQ8d94GMuHgaeDOAM72Z7l4qRIy7o4eEIguAGLw2E0byCTi9vj9XgU5gKr/aOb9DRyEHYqX2UBOfTikLQDS3GeyKsjEE4GCvP4rP8EhN0PxZRvI1OcrqwIgzwj3mHsScogKy2NGiM/YQI6AeRCLMHC2w6jcbCD3rcOKVXlR6GVoFgAIIXFNVqrzlZClqOx7t9/j+CQJuIuxy6RtU3z4GpWbDsiEQFUSkqo1axYAFKmu1JO1m0qYtHSLEHDjETrar8lX1A7NywoXG66g1l/7aPKipn7XsB7ksFLUDYLEo4Y8OwWAWPaxaxcw4ggIedlA7iOAXkO7LmRS4Csn6egcj4K2mVzkZK86uR5kypT8kzuMgmwWAGmBLfCETKj6ytMIepADsXkab9D/0sleVsjarwnZLACQu7BFisq0weCqhqA+0zSCHmQIaWfNdhfQIJrRMc5eirENg+bShGwWADX9hlq7OFPpQugjGEbsjsf5VmjCGI4e6XmMspcfZKILgKyea7lLfnXpS+dlIjDGGAOkxlbLAFcxauDKZ+vULtTVKHslnAOgyB6wYoj9nKYVMJmEKgDCBOTYCH/t66zdpJoyQSVtImjH4Ep3LpAE/aeurVCBs/6e4G7tf3enA4GU7fngjWN28rRk0ZHJzaW93ozZgUDK9mAoz/IY8CuHFVfsNyPdX1flOMPH+qFOBFK2aypcHwk93D020E0CLXMij79kmbzM3mb1cpRRtrFv7qtle1SgqrZT4cJ8PvXci5BWtrc16UKIPbPbaBnVG/zWWy3bnfvUsnyecFlmuLtVK9v18dI2MQ8v6YdmWSzovl/PbBNkiRct2wuP04Y5Ec71EbYQq1JGTdczc7yvGKtlO8q4ulRZ4c0wPcFPeyd39el6ph2/80Ur27FCH0qRhcFPF3JsDjfTLKJS/0zXMwuDzTZTsp1kcbZAYtnjsTt51P+nKIVEF5rErGfsRt/d+7jdDhIBFUtZbgpmPfPd4OzZX57P+oHU7ok44XHUM3b7b+6N8OCMyq3AUc98MzhH7nGaClJ01jMOsx27/wN0aC1XRGyV8gAAAABJRU5ErkJggg==" alt="\frac{d}{dt}\mathbf{P}_K
+=
+-\int_{\partial K}\mathbf{T}\cdot\mathbf{n}\,dA
+=:\mathbf{F}_K." title="\frac{d}{dt}\mathbf{P}_K
+=
+-\int_{\partial K}\mathbf{T}\cdot\mathbf{n}\,dA
+=:\mathbf{F}_K." class="math display" /></p>
+<p>If <img role="img" aria-label="E_K" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAPBAMAAADjSHnWAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid3vmau7RHYyVGYizRAHtTi9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAlUlEQVQIHU3LMQ4BQRjF8T9rBbMZZsMtKCQbouQITqBSbKVwADfYUSnNEeYI26hxAo6glYj4SGbjNd/75eUD0swMMkKaK9gG0N1Bq9LRQqdSgao6rDn9aWKuoBdej++QPDnI1keVctQDiyPXXkB8kd3x2n9B1IMG7Wn603kDBjWsO2HtNjfLN7FX8hESWWahowufjEo+FqIa2fZVzeAAAAAASUVORK5CYII=" alt="E_K" title="E_K" class="math inline" /> is roughly constant:</p>
+<p><img role="img" aria-label="m_K\,\ddot{\mathbf{X}}_K \approx \mathbf{F}_K." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHEAAAATBAMAAABVbP+yAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnYQqzJUIkTvzbvdmYlSEOKuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABwUlEQVQ4EcWSPSwDYRjH/9ertqKtS0gkdKjEwqIMwlAfg1glphq4pInFcAYSQ0NXBgatlASdUAyNwapCCEs7MEgakUg6VXISiaTEed6r+0pvsHmTu+f5/3/P837ce0DN8IpdNd7fDP/42t8K/7/KfaJcIfOVttnJ5O320dauDdCsvTR8QU1YoiTDk7A4VrH+jVmroynqxKombKJPmbi0sclinV57VHXzd3Ez7twJAVHmSLI76zAQ197TPDEzahiYrpgEHGNLm8AwsySZy5rQYkRw7bOThS8w8MKAT4nTmy8K/C6t5gRWHgYLDEiVPHVqAGIAXA4dgL+AFsbhzW+w8ApujgJHT3mHGbRmmDo1ADzBGcQp0CD2qBwjy+8sOeOFqtbfklzHOnWQQv04/wE0LjyrNa6sQxEp+5hSJR4TtPTvFwKlOnDLWAaXjiOyllNLYyGc03brUmVV+pr676N9bC31VgxATWijn0ZAYO5aLT0Ehj7pfDdekWm6Br6YCLGU3acG5kNwCCjBUwJG0Eq+K/MVREY5hlOgOS1jMl/ZJ6MKImzfvyNJ59VyiiSSJmmkNaD3DbEDg/PdgvvONK9OdPADczZ4C5amVHgAAAAASUVORK5CYII=" alt="m_K\,\ddot{\mathbf{X}}_K \approx \mathbf{F}_K." title="m_K\,\ddot{\mathbf{X}}_K \approx \mathbf{F}_K." class="math display" /></p>
+<h1 data-number="7" id="part-v-schrödinger-dynamics-as-a-narrow-band-maxwell-envelope"><span class="header-section-number">7</span> Part V — Schrödinger dynamics as
+a narrow-band Maxwell envelope</h1>
+<h2 data-number="7.1" id="maxwell-wave-equation-for-a-field-component"><span class="header-section-number">7.1</span> Maxwell wave equation for a
+field component</h2>
+<p>For any Cartesian component <img role="img" aria-label="F(\mathbf{r},t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid3vmbtmVHZEMhAiq833cN8pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABG0lEQVQYGU2OMUvDUBSFvxpjGhutdREEJbOLHZyLi7iKU0HBTA5OmcTBoZujAQdBEQR/QB0cBAezdCytf0DiIoKDnQSdvPcmsT3Duee873Hfg1KPZdDZsbK40dj6hqGVwh5sujuwRDUZkye8SFu9A1fMayzUhkxj9xauOdZY6FeXiM7xSdkvj2G2CTdaX6mIN/HXt3djSf7qW4SjpNX4EA9h0O7KZ8CN5HGZwQ/L4hk8j7xUDqiLO/cwMyKS3ZmQENOF+JSQuUxrLRRiCVak6zvOgpj+4J+812Ijg8TIZ076smWtCj2oHLwYOcP/aiXcRXByCod2aNYvYpzPvTFxZY0qJ8Ewb+rBpmXPnOninrXLSXKUX8g9mCwp/AENQDm8SFicUAAAAABJRU5ErkJggg==" alt="F(\mathbf{r},t)" title="F(\mathbf{r},t)" class="math inline" /> of
+<img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> or <img role="img" aria-label="\mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3dqyJU77uZiRBmnwrJrAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUCB1jELK9pGTsysDAkFvAwHhXAEwz+DZA6LkGENp2AZgOuQlSd3Om80SIeoZeiDiD7EWIur13IDSUz63rwAAy31yHAQDp0BhjxHdcGQAAAABJRU5ErkJggg==" alt="\mathbf{B}" title="\mathbf{B}" class="math inline" />:</p>
+<p><img role="img" aria-label="\left(\nabla^{2}-\frac{1}{c^{2}}\partial_t^{2}\right)F(\mathbf{r},t)=0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMQAAAAsBAMAAADInwq3AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnZUmUTNEN27iSLvqzJdou9kAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAESUlEQVRYCbVYTYgcRRT+Znp6OzO93TMIIgobJi6IBom7LBJvNi4oQsABUYmEOHgwN20UQfAwKwQ8CGaiF39AW2IgLCQOHoVl5hDiIZc9JRBQ+5RTYMefVXRxx1c/nfrZ7t7egA+26n3f+6pe9VTV65kFyO5jTSXbqKTaK3KivVwB4w4LAvvQL5fE3TfN4IIJKyLvw2Khf2zXDAYdE1dDzdJRVgrverVJTdVTJrSQlQKXrXgl+EGpyk4xSEvluUFnmktnpJ2itZlFqvdzSanWTuH9VSrPDY5HuXRG2inwehap3l/SpM5DkYa4q6VY/pYxj9qK/fFZTfI9bmmIuyqF3w0SosYp5w/QeL9r4tt4UEPc3RbEu4cR9mtDAvMdXfK2Duo6UL7Dt2/GbQdYVxHmeZf/vMJ697hDJ6mVkNskh+zS1fXnfwUE4AypI+mYXWvC8HcXVsg2UVRM2imOAu/FJG2sUUOZhsAF1Hsc8MaLsawQ89wjF1nX7LN2wFZTTxGkDO01B7gD/MwCtSkPt7vAacxxXzTNrgGJvI25EXWH2ORo0WeEBnDMZyjXtmgJbEAoDsBWCrxiLJuetLVkDP0U9YiI+YQaeP9Scxhur2DHwiP3P42X0CWVL87HE3AxwpdEZEaP6fL1ZgR24U4ItDuceYEWuInx7J+7ccNZgHvCn80SIj3aZLIbaFE7gXtu9TO+9lff+IZhzcIdhOwwyRSDCLWeFjbdcAL8nVG/cefaOrvma3RPPtkacuY8tVP6a/zELKFnohRsAwZ8CWjsICBUYFTH1P3hD+pvg06z36cJps6ID2Oz/ahPQPNTFlqESOH/gSez8MnPydia2uK6zDDoQRXkq0xH56pDW9+nFGsM05on1BgvUH8X/NZtiRT4Jd5kwnx7LUYQeTLGUwR9hrw1SsE9OpRs/IT+lG3DmRCST4HxqsylFMob07WImyNB8A9KHEQ2ZZZirvOOSHF3L3AedZZ30BEDA3Zsi6y55H2MeRnl2z3ucXRGpNiI6YKlXfhDY4aTdPX8m2C3lJk87gLoLS/hzxyNw2flYti9aH19i2sW4b51rYc7FHIWR6hJiRzvLF5EeB3tROJU9lYnSzixD4sInSVlG9JdEn0zViHlHYqUn+fJEk6hr0TYVW8QqnByTpkiy2hOJI6GyZmIl3CiJoKu6S9vP+KkI0J4TvZmV5+aeC/iJZwOaL/DY6L6Z7IXuSNT1NKMNnpXX5QRyQAv4QRWU86wF4UyozIbQGmg755GC3d5ZSRKuIpkR1Ax+3pnSxRBJ0hECVci9qI4oD1eon8EzvuihCtRmV6pDK/sS6p4NRhyfGHCKihIClV+zlHwWXk+oPEinD8mpAMdW6FG3yKqwJIv/x+hNrKmKPtcLamCp5Rrez+sPGBTj9lEFdzsVlFJzb39ECv6Bpib+N5+TqLsR7GdZ8EmquFaVE1HqtAoUJWH/d//oPgPpeL65EN+ZIcAAAAASUVORK5CYII=" alt="\left(\nabla^{2}-\frac{1}{c^{2}}\partial_t^{2}\right)F(\mathbf{r},t)=0." title="\left(\nabla^{2}-\frac{1}{c^{2}}\partial_t^{2}\right)F(\mathbf{r},t)=0." class="math display" /></p>
+<h2 data-number="7.2" id="toroidal-standing-modes"><span class="header-section-number">7.2</span> Toroidal standing modes</h2>
+<p>Take a toroidal topology with radii <img role="img" aria-label="R" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuxCrzWZUMiJ270Sf5u5eAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAYUlEQVQIHWNgYBD6LOwYwMDAwJLAwFwApPkbGDh/Aen1Gxh4vgLpswwMsQ1A2o0h0g9IMXyeYQJSzvWbgQeknOcCA8cHIA3SfgFIA7UzFbAyMLxfwMDusI+B0diSgSujAQAQlxSebHL1qwAAAABJRU5ErkJggg==" alt="R" title="R" class="math inline" /> and <img role="img" aria-label="r" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIBAMAAAA2IaO4AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMARIkiZlTdqxDvmc12Bf+SEwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACpJREFUCB1jYFQ0cmRgNVNQZ4iQbBBmaNBiAIKtQMxxA0iwbgASPAcYGAByEwXc4G6iEwAAAABJRU5ErkJggg==" alt="r" title="r" class="math inline" />. Integer windings <img role="img" aria-label="(n_1,n_2)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAATBAMAAAA3w9PYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAElEQVQoFXWPO27CQBBAH2vDsgkCqlDQuIiU1ukpqSMfwSmA1lLKNOYGKyUpIxEpEm1yAzc0KVByAcQFInEDMusPshQ8hXfevJn1LLQCzoZyVe+sgta3iOsGyUJE1CTb0EmaZD+ma5ukH3Ihwzejh6xqqcGKS3j+SjopV2nuC1j8Chx4gfgRFTIvNsvBBN4e3thIyw4vwJRrO+hFOoVPxiLfGdiTzIG+TK7cQubAzK9kAYyHTraH6IiddtLcUgITmUlRMSphe+9kb00JKrPoBBPKT12YD3lxkcKUgK7cvCwLd2t7kuZ43PMk4rXqljOu5fwI+LVKLUVnIrHu8z8M/AFQ+jY3XaWG8QAAAABJRU5ErkJggg==" alt="(n_1,n_2)" title="(n_1,n_2)" class="math inline" /> give</p>
+<p><img role="img" aria-label="k_1=\frac{n_1}{R},
+\qquad
+k_2=\frac{n_2}{r},
+\qquad
+k^{2}=k_1^{2}+k_2^{2},
+\qquad
+\omega_{n_1n_2}=ck." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbYAAAAhBAMAAABHM5MMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsQRO+Jq81mdlTdIplW3vygAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEfElEQVRYCc1YTYgcRRT+Oj2ZmZ7e3ukNbjAn+xD0aIOo6Iq0YsxBdOfgJaIwWWI8RMIsgmsEoUFQgh4aI/6hMIJ/UQ+DAclmQVbiVZjDuoosJChsDoLMJiB4SNaq6uqZ6arqmq3B7KQO01Xvfd/33puqnn49gGq4Zx9431c5dLYLZz5c1PlvEd/abOIGhrl4jxzBd4acScA7H6PWwpxRea6zii/hvnd5EgmbxNxEpY2V2ISC6SZexe942Yg0AfDTqHfhmdW2N8J13I53tOkun5Tdqr1W4WTmOBavh/Ml09ouwY0j4LguoNeuNCW/Yq+VOIk4lsGJsemY1vYBOZUJ7Iu6iFbsBJJfsddKnEQcy1BLsP+caW1nYZ0IURnx7Cg3FRkp9lqJU1B1JuvusMhdfL9pSJ96RXIp6aF8uH3XCDy/10pckajanuV3SO0mVm+10FVIKkU1PUl4vJcaBC7sNRMXcIWiagfP7wW1l1gfP9It8hWSLm3/U8QBJdX8vGa5RYx8r23OVOEKRdUOnt9ptVdvHZv0GNo55WoCZHvtRKmLiou4HGn0gue3NRopI8YledvbzZxa3Qeyvc5qI+ISLkdCmF/KqzS/Us/6SPaNsPx/pHkcaGfBeG168VIHmA4yiuq6vNLlEuVgZtZOe9wrS2TsqGWiJN5NmJF4LgPSgjXTyBLktVHxzCRf6U+VFUv2aZr7UpPYK0mlySWqR6M597yA3c6GYM+WlCR2E/WM08tQwpWSBBPwxm022Yh08NqUuAyDGVjA5f5SnnwFN+QS9YPE/ZsM0VooSdFNaDlgkUTI1Qj8fePK0itvslNDcaoWM6V2UIWdiDJD63/JnIea3x+Y18ZI+s5xKBqfpqS8vbS1gP77Bt83ihMPxYCVYB3OPV888Sc1PXjsh3DgYjOPNgM81AJ+svi+De4CAS8tGSntJgxJqVSfVA6mIt+LUyuvjYoXH4oWNvGwU/dP4D4fyVa5434fEXr/frN6QMjyA07jR1dzJn8VvxeWBiMJ3USaH/vUkIZQdFpNpvyOUBsTp4dCKXP88LefvY59WMRTEayg4h+wV6lSf/wMp0slvJdwERc6qtpevHHyTlLXbNInDU0Yqbhz1JCGROh0KnS/6ffkfN+YOD0USpmNZ5xnI3yNBsoRau295FczIEKDsb5yhhVlPZfaNgaubLanhemYLDqZQbxm3YRop+tCkgos1sYw7FAUyyyWXotIbRX/8BoqXaUqN5ae/0Ry1xO49OleqJ91ExJTR1KB+7XZ4cDNDkVhbAT2Kbpve3B/gncHrB3O7uiiRn5y3B3CczBDkreaY9MFOxQjZEhtKbT4K2AA+eNz4N5kd2pTvG+wQzGitkePsqx/ebslZ6+33IW5g3qE7C0dWzc/ILLMTbfcWP4jNA3ibjT5i5Mpc1fx1nXUYtOI5w6FT5pyJoCvNeD0TOOGij8fTTV2AU8fbw3jOG8ZMyZBII+3qTj7A2OnCdi0T731x7yParBmmKcbGxImAi///ResU4lh7FrbkHBz4f8BwF8j7MT4hmUAAAAASUVORK5CYII=" alt="k_1=\frac{n_1}{R},
+\qquad
+k_2=\frac{n_2}{r},
+\qquad
+k^{2}=k_1^{2}+k_2^{2},
+\qquad
+\omega_{n_1n_2}=ck." title="k_1=\frac{n_1}{R},
+\qquad
+k_2=\frac{n_2}{r},
+\qquad
+k^{2}=k_1^{2}+k_2^{2},
+\qquad
+\omega_{n_1n_2}=ck." class="math display" /></p>
+<p>Define the fundamental mode <img role="img" aria-label="(1,1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAATBAMAAAAOpGKDAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAuklEQVQYGW3OPRLBQBjG8X/IJzOiN2MUSkVuQKN3AGO20+YI3CAjozQTR3CDNBoNzqBVKOgU3iSbmRBb7L7Pb9/9AGNAdTSy0KwKGBfJQzDn2qcpLKWe4Y3ehW3OYhbYoWRt+GIdhRv9mBnQEvrqI6Fdswfbmu051uxAr2bJ3zesrjQ+Ic5WfwLeiobCuL3unOTv/fEixQnxguxCGSqfwZUDa12XFkveFWbrLa5SmCpPpTlpFqPcysmDD+DCKod4Ig+FAAAAAElFTkSuQmCC" alt="(1,1)" title="(1,1)" class="math inline" /> with <img role="img" aria-label="(E_{11},\omega_{11})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAAATBAMAAADBilZAAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABRUlEQVQoFX1QLU8DQRSc61173cKVUyAwJ/A0WAwGHOR+AZzhQxYJ6nDIJg2KEA4FpgkQFOpEazCAQ5FLQEFyKR7BvKVbKLSdzL63O2/27QdgBRiLglRtjvdW/tIaYbUeWJjjKMfA6ggTtlkIOaYCQLcdZiwCpToL9yknwwyiVSOUG8zzcP9ZLKM4NVRkfoimkXReYXzqKwkmZH6RrwPTsVAjYOxYOyCJLo4Y1SfawFYoFEymSOGVNkESZ+gwul2KkQpBCviGEDOyX1rgCrOMNmvql8mFyrDbNyX64pUM8KRNr5MNL+NHm04Jij5wugTkxtT0UX1duF72jUnFKESobjznix/GdFeHug32b/SF5E4uhRqzhroECUTfS+BYE2WedWC0tfMG+WNy3vZI6H8+MaZe5vsH8cilEw1qf01uKnWeMA4K+AInfkgkwhjbuAAAAABJRU5ErkJggg==" alt="(E_{11},\omega_{11})" title="(E_{11},\omega_{11})" class="math inline" /> and</p>
+<p><img role="img" aria-label="\hbar=\frac{E_{11}}{\omega_{11}},
+\qquad
+m=\frac{E_{11}}{c^{2}}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALYAAAApBAMAAABq7s6hAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARLsiVO923c1mEJkyiauEKOtWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACTklEQVRIDbWWT2jTYBjGnyxZZtqs1utAKR68iRUG8zIWpII7qQjKBCG7qLvIQAQ9GWHs4CnoQfCgBQURD/YuhV68iIcgEwZS2UUQEakMBv6B+n21I8n65vtXfHmhX57n/T0JH+FrgNGavtnufm6N6lJFBTwMWCbZUAB32BOG0qckBuSg/4dhAYHKJAXQ7SGWxZC+AjhRs7dIViYqgJNHNxNZDOkrgAsdv4rSSd56pQA+gQ/HOQ3WeqUAfmGJszgB3lqlAF5mgS2TbDlo/wCmE4NsBXDzd/fTnaZB9ghoHavTe2qw3/+CMuApOhpz4G1QKejeurJMBVgfHrCmHImWBW9LZsewS9uzBRs+RugQdXZm7uqneCsvHr9tfJOA5Ut4zUbK33kpH1HH38TOGvh5IwKnQqxLbk/YwUN4q7hOOFnpVQf8byat/f1spXp+1UYlxJGcNgqegXM2N6J2cQ6TndK2ZPY9JpJQvG1Egt3DAryoKgbXMTUTE/SuZH/dXWV/vQj3UQ5JcPHjYJKBN+CtZKm9a39pr8Kv3RgbsDYoyw4rCdf985Sb15z8pfTKj7yadGg4oJs9OPwVwwPFuXTseTNdU6vUDihbqAmOAoullWtCuthcbNTdTr3Qd5njR4W20KjEleSA4Dv1Hfs8QetZDax16xqcp/3+4B0k0QD7UIobEVjr1k8JEGMeXtOOwFqz7F8SYAttvOTB+tl+D2iK4ruHri7fM8vmJ0jxS8JuOnfBu1g1zJ5vPBI99tAz2hOFXD5ir/L+P3Vwqc56rOy/jVi0qP4u3vAAAAAASUVORK5CYII=" alt="\hbar=\frac{E_{11}}{\omega_{11}},
+\qquad
+m=\frac{E_{11}}{c^{2}}." title="\hbar=\frac{E_{11}}{\omega_{11}},
+\qquad
+m=\frac{E_{11}}{c^{2}}." class="math display" /></p>
+<h2 data-number="7.3" id="forward-time-spectral-projection-and-envelope"><span class="header-section-number">7.3</span> Forward-time spectral
+projection and envelope</h2>
+<p>Define the analytic (positive-frequency) signal:</p>
+<p><img role="img" aria-label="F^{(+)}(\mathbf{r},t)=\int_{0}^{\infty}\tilde F(\mathbf{r},\omega)\,e^{-i\omega t}\,d\omega." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAAArCAMAAACAea7BAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAid3vmbtmVHZEMhAiq80un35eHt8Ojz6vv05uz/BAq3EAAAAJcEhZcwAADsQAAA7EAZUrDhsAAATxSURBVGgF5Vlrl6MgDAUfiKBOp50+Zmf4/39zkwAKKOqe3U67p3ywyiP3JiQxUsZ+sr0d3o+A14oOrp1ofxL7CbBOH+dLyZhsmoIzKXQnnoDUD1I4XNjxwjrFmC7qBoBb/YPoD4c6mytyUKi0Mqi/wjh4mXY0VlXUvG9LiH75MrqjordPq66SkmvW1XUFkfBCrXx/IWXnqr6ZX/POF+r5MqcX0nau6g1e/f9Bi3Iy/4eEP1z6y4jkA++oLsyM7+5uoqrqTysMGS3QkTV2U1iaeDKXpW7fB1VBe4/3Qf1nJYauLKHW1eaVM8eKIXaa6Giw9N/XVtBIwE5InLsn6HhRVpxXtRFMYHECzevvnam33UtXb7KlsaDvYqu/oCe8DShA9woaLVqDFLCY7NPCjaqGIBpUbZa9oa5JLG8YdxO8/p31B5n5VNPoHt5GJCN7+XbVX2bCRAHoZ9CmpXlIwQqtqK7SqJSMXKXNeIOxs1rFalBIc877Hi6onLXMMEFHdzUtzI1GU81H9Jg+TBQY2yEvnSKBLjSg0w24/Q2YEHe+jkpMuexYythZ8DmG+mPz+69pRdbcdiH4zWa7mtX0H1DY5U95SC5Qfyyw0YviDa+DYAgYS3RNmA2+XyX+r+gNmEuiyorHSNtqX2a1+g0osByag6AdykMWWlRalS3tnB7ICzy5MPzdRuNQj95kX/VNkv9sPiQ128JUTV1Me93yYQBrQ4utjD2zdlivfgMKVtoczQFXNiJHyEY0FIQesRJdU/ZdMZBPV40PAAnHLrCojcXQqnLgfHBC3FZ6/7ePBU3rTC2VsfAWzfvTmNqqfmxJ6fS9Xv2GFJbRvJLKhr6H7KHfk/UmWPpFqj1ok4jBqZ0B3+fOTqO9SIgia0FKwaYNgDbhG8T7Uxk4E02dX8y4YfOxmMIyGuV0u6UkwEEKNJZ/aS1Jdn0Ctw1slYrBYYG2HDODCHTRtteZXBu7M7iG2vg6KYI1fjD+3Uh/IYVlNNoI3AfHyUHCOZrYfl1ChKImpWKpGGRJsYc3uaat3tpYPxincZ/3VveWpm+kv5DCMhry7zCm3P5YSO09cOS0fNPhPAX7nIrB6WUSqnMRHizRH2orTQYd9c/G/0b6iygsoqGpKyDqSz8/aU52qQdVZ7Jm9NoIxUA3hf/SoqlvIP/2+9/1zt0LZdNJF+bEaVV497ma/mIKi2ict70sZGsH4fTMSgcKkJN8jg8R43swlx44E5EYUoTXpt9yAIm73A6mHLCmUBRMcNNImw2FTRMxYvy0mv4SCotoXVFKJsoCCUDzkB1vmjBj2dH5ta2aRlXwl0MoRpVhMp8vGns6H+iuh5x+HB2LxqknvTuZW9qVf95Ao4W+Ts1L+acjCVysf8p3Afm6Xv0lK1bRaO4OyETm3z26z0AnJFaf+TOCFYj31Y/fdOEqGk3eAZkK/btnXzaSlFh/sZ192A3z7/62gkZC9kDuR9s1M58p8iOT4O/Vj79pnr/bkLkx7KU8z+/62d/z8LwTk+v6x9+dUJ9H7Jc5Pw+ZBzA5fCOokvGX+gOIPAjyg47+oWT1ZduDeDwI9mTeAJnOo7e/FB7E8W6wpzM70tGvhKN0d2B4N7AnFFze2Cf988NB/278Un5Cpveh9Hm9Hkjyi+7/+evLGhbjv329+J+8Ck6PXjP/OxPA+3/roGUy1g/d/Qak7CbR4FOyHgAAAABJRU5ErkJggg==" alt="F^{(+)}(\mathbf{r},t)=\int_{0}^{\infty}\tilde F(\mathbf{r},\omega)\,e^{-i\omega t}\,d\omega." title="F^{(+)}(\mathbf{r},t)=\int_{0}^{\infty}\tilde F(\mathbf{r},\omega)\,e^{-i\omega t}\,d\omega." class="math display" /></p>
+<p>Extract the carrier at <img role="img" aria-label="\omega_{11}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAALBAMAAABmEAtzAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERUmbt2Ms1mIomr3e8aeFU1AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAZUlEQVQIHWNgAAEBMMnAwGTAwMASAOWwAWn2BuEABiBiKGdgZ2BwMG5gACIGAwYOBsYJXA0MQMQwgWE1A6cAlHOAwZtBBCQMktmtk5vUCOOsfcb5VgHGAZoMBFwXQAgKtF8uACIAus0WqhVHQM4AAAAASUVORK5CYII=" alt="\omega_{11}" title="\omega_{11}" class="math inline" />:</p>
+<p><img role="img" aria-label="\psi(\mathbf{r},t)=e^{i\omega_{11}t}\,F^{(+)}(\mathbf{r},t)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL0AAAAXBAMAAACsflOLAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVBBmMpnvIt1Edomru8322y8xAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADB0lEQVRIDc1VS2gTURQ9mUk7maRpolHEgjCVFkQFBz/owsW46dK2ulaCIiKIjAtBsLa1dNOFOIo/8MO0uFEEo3UhpEhwW5H4AaUbg7pRQQN+qouq9743k/nYUks3XqbvnnPefefdefNCgf8lEmbQiRJApCUuhaRFw6wdWIxJuDZQFo+aAwulB9AdoMkItNlQZH93lortcKFXxERyr9koUPPSn49PcRsy/HNjhUpQYeBHpw+CrKY6LCjVdRbouSX0BwfKe75kbOmv9QAtQTltRoIMhfzTjs+A1eBm4tGfxkqYFxzQ80JMZqvA3ayhlCcmywaI3AzWKAYKPksYQKtPKE8BtRD14Hga9zQn44CeotByLnA+a8j+lUpkVdYNLFWqbmxG+Cu1RSkWQ1s6Dq1n84yj1MT7dVvAuSZb+idLkbfOWcjkPQf2fxm4JYvA1YD6aPfRw8ffSX/0WqzegQ47QS58f+g7h29tF6kVLkouR7tykN5YP9P7infUH340EbqAXIRCm0jw/CV5ggyBivSnb0uLLn9bdYonr3wahzzF9pS1FCMYBAamuqs8lzWBHIOmxxwlQi0ut8hx7T4/Mo6UPxBYJskOIAVoMzdmBH9OY52RMwATY1oN2FBP2KzkaGw2GDViG/gaxkL7Cd5JNVhXTKCf0m+sYIpp+tsn0AT5u8ka+Q8KjouUUobE3ni6ELp6/oxap5Xh2En+P6SgFykPCTxC199UBsm/JjgmKEXPX+Fu/oqWWkxaQ/6/pJapUC4KPK0bqsC+/1vaUPg3zl+pi8rY0FyKC4F/q9nu+z9VsRV4I/vvM4DhNHAyunQYCSuqEBtwYlKrIfrXHtH5Wi60Ktiu83aBxlHon4846KITbaMvtCm69MSSjVGBWOb1ZExL53H9+3sk9wOJURuqiS6bShJc1ufV5mV+5tEFJa0iy4Uh3XND0kucfCL9/UpZ8M+j15Xn77dMR0I/jB7h4k3N989ijh2PSd07g11elaRnw/6b5zCYR9allRxVK1KthZkdJgvA4XXS8A9ZXp8RcZynTwAAAABJRU5ErkJggg==" alt="\psi(\mathbf{r},t)=e^{i\omega_{11}t}\,F^{(+)}(\mathbf{r},t)." title="\psi(\mathbf{r},t)=e^{i\omega_{11}t}\,F^{(+)}(\mathbf{r},t)." class="math display" /></p>
+<h2 data-number="7.4" id="exact-envelope-equation-and-controlled-remainder"><span class="header-section-number">7.4</span> Exact envelope equation and
+controlled remainder</h2>
+<p>Substitution into the wave equation yields:</p>
+<p><img role="img" aria-label="\nabla^{2}\psi-\frac{1}{c^{2}}\partial_t^{2}\psi
++\frac{2i\omega_{11}}{c^{2}}\partial_t\psi
++\frac{\omega_{11}^{2}}{c^{2}}\psi=0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASoAAAAoBAMAAAC7q6qjAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRM273e/iDSFGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE7klEQVRYCcVXTYgcRRT+enp6emaymx1y8CYzJhGXXBxZF92Tw7qi4sGWQQhIzII/i4owIGggoIOIV1vFQ8TD6Cpo8DCIIsHLyp4ED+tBAjmtB5UcxNmQsHE9jO/VT09Xd/XP4mEfna6q97763pfq3n5vgKMw94PhUaQtyHkHVgsQRxG+iE/+X9rm9wX7a4vbQHOnAJUMn0w6DrV2NvYL8HfhfAhnVIBKhL1fE47DLotUXUX9sAcFVAeHlZHAF6m6jspEbwn0JH8MsOHkIwqjRaqAubH/IJpdoL5VyCZhzVGtEJkPKFbVHvSPDziNP86noqiEtac3CpH5gGJVVzBq4w34wLC/BbpyTMJyACVDhaoqIbCILo7BC5fGoCvHJCwHYIZWFs11tJqpyqgTlwj6J0KcQCNwxqArxySs8EgVg7Ne7djJZqrsdYLe39DdGfXwNs6ypHxVElZ4pEqKP25s2VUdRG57nbhweXNY6YQnP3/15e+KVZWERTkrnWgam3in/72Hl95XA7rb6sTf0+nQPxXc+Ufjr9FMlcTHiNQ0AUsDpGdhKqyFcwE7uhm4zeB+kibqhJsBYXf0BAVeAG2MESwrYeXGEhmlfJQ5PBsHB/ZR66g60ed1hjk7oItM4HliZZypSoabL50Ru27yfQO1QYtGN+CVxbrwd1WdWJZhz4LCZ9dbdFFE4BmhGQ3imSod1mQXcYy3416+D3EZ6zQ26F+G+RNVJ0IJaIwygMrtT8REM34cR0dHmkq4jdqQked7JGbgTKcdWmgOmpr2+qXNiaoTpVQxXjBoRkNVdKSphPto7vK++h41FoKAamzf+01Mk7dGD1/usvO1odd9tsWz3LNS+BijoYr3k8XC0gF/D/4tnnu3AbmlPz9YxjUVN4c3gYUtBnevusH8iIO5qhQ+xmhTFYXra2wd6mlJFZ0S2Xst9MSEamyIF8Q0efuGnnSXnE1n0kAt4HCuKoEPuGprRpuqWFglJEkkjK09dEdigtPEsU6pf2YLyac+ZlPvAHgILKbSI1U0vrP2xLdrqzGI/OzJ+0Tif4RmpLP4QZwFDJgOE40yZx+ueIKo3pKvFXDNo5qmAfGxScjHQFkwP+qrNzTvrCR+N85oOytLwgO4tI3Mub0kRmCvGeg/GeVRgzOB/zt2abXQ+kIJz1Ml8BeuxBmtqnTC6L3CT6j1ZNIn1YjtBt6Xrvide5xtnBtwFsx1w0ZLRNOqYp0O42vrtC9iNFWpvmkW1gm/pq+o8wiv2l3lO/v8Cr87pokep/7i3eAs8N59+CMZT6uKdTqMnxsAM0ZDle6bZmGd033uDHzxdfK1C7bCG/U4nIVM/xfSqhKdznFGR4yGqogzCjM2yz61Biod4RZZ0GwpjBekwUan8wy/oxHj0yZacUZhM2quQnOpVrLHgciSKhHxHeYv4voDFLMzQvVNmeE4a/R0DKfscag0cZbZIzExYlUdpJzdlEc6RN80ex0yUFnulaWW7HGyANrvfnhf2V/EpTk1d3KshtWO7HGSkeT6cayW/EVcnjOZQ69fgfuU7HG0J2OsjbFc8hdxac6MVMA/mZFEYCHrtU7gaFmaM71VehxZKbPCMX87iC1yp+U5s2i4yy2X7i367GexmP7ynOa+2OoXqKoX81mn8y1bCbVCS3Nad7PzxJKqepkIFXBOWUqofVMJzv8AqChgGWUCZMQAAAAASUVORK5CYII=" alt="\nabla^{2}\psi-\frac{1}{c^{2}}\partial_t^{2}\psi
++\frac{2i\omega_{11}}{c^{2}}\partial_t\psi
++\frac{\omega_{11}^{2}}{c^{2}}\psi=0." title="\nabla^{2}\psi-\frac{1}{c^{2}}\partial_t^{2}\psi
++\frac{2i\omega_{11}}{c^{2}}\partial_t\psi
++\frac{\omega_{11}^{2}}{c^{2}}\psi=0." class="math display" /></p>
+<p>Rearrange:</p>
+<p><img role="img" aria-label="i\partial_t\psi=-\frac{c^{2}}{2\omega_{11}}\nabla^{2}\psi
++\frac{1}{2\omega_{11}c^{2}}\partial_t^{2}\psi." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPwAAAArBAMAAACuvvjDAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARN0iMlSZEO+JZqt2u81N188bAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADx0lEQVRYCa1WTWgTQRT+0t10m5+a9CAiohYseA3eCoXsQcWTjUgVejGXgmLR9aeipxb1VAQD0oInV1RERchBkVqwVbxURHrQiyDkJuolUKqoSHyzs5vN7mxndjWPYTPz3ve9b2Z25m2AJJZ+UE0C7zZ2BAvdTpkk30E8TgLvPvZmwpQ7zIQEKdzYLQ0LwZFRU/D9hyOXNFshKUE6udeaNCwGuyefvnc4VcyLClJP9+SfY6Hc+ikVE4Ndk883cFRMr/J0Tb5gq6Si4l2TL1sR6ZVVOEJeyYnQAUYBQwgoq3CEvJIjqDBHTwl3hICyCheKMThn7gogwaHNjUdtv7wKX1r6YgYyOUohTupous5B6QBWMmg5tgZehWPTHKUAJzUIekErXGpKohgI3ZobI6uDV+HYNEcpwNGKoMkf4Mlj3+xptl15E7wKuzTxaAamTANHKcDhCDrXzGznGeORWSNQL9wq7NKy4jkTU40GOQTQ39w+xnFuHpEU9hi/yXMXbhV2aWp5phTg6EeAR0gdp2z7qkblYikstMH4NAHZC+ikqeVdJV9qqs/UZ4A/VFQqQ2mrh/avd5FZjTJLbLoKrtamwXVISPqMo+RLoVjGphqMdQMprZlF3pKwO0O9a8g54w6acvWOErE6OPOYprPf7C8hUyf5Tgls/0T2EQV+y/1nE9C+4xDHerSTiy++LS6QT4B7RK7E7ofHAa5ip4VctY/KanEK2YC8bLBk1XnYpylX7yjRQn2p9CBtPw6cP2WjUNri3LxY7x7liQqX92gx3j1TsmihbSlkanZ/xRjCW6C/YmdpZjEtx64eM58mXf34PIMaQzot1OVoz6DPWZhcsfCejv7k0/tOwlgPbd2F+TSZvLacq8FRooW6UvqVttIM67nb2XZ6nfz8B6/r/5rtrkfz5KPgeiO7ygm0UDKPw31Gw6b7UOID4XkD0xTeyNo0w+KQaHimxqMz7KfN4T5MmHR03L7wM4TeQcHZdgi0aPhZPjlnoZFS9D2Ktllkmk7EXV4QJdCi4U9cFlso+/Qlsf5GqkLleDUmJwwfHyvlzVJMcgSsbLJ6qDciQlGuEDxn52oDWI5CxvN9xV7oQHVqFdSUFoK/Q/pcq1VT0jYCZGy6KZtg2GMNUFNZGP5LRVDEH7I/QsPIWloD1FQWgms/VAR5nI6dXccJXGDaavkwXG8CllxBGt0/sLl6c9url5/jyQvwXUjwMRFncr3Vqu65lr1cjCcvwIfHEnxMRHnfE2vz/xnuEzfoaYOgFtsSwpV5t86WqClhHkAF/wuJ0i9lXPTIjAAAAABJRU5ErkJggg==" alt="i\partial_t\psi=-\frac{c^{2}}{2\omega_{11}}\nabla^{2}\psi
++\frac{1}{2\omega_{11}c^{2}}\partial_t^{2}\psi." title="i\partial_t\psi=-\frac{c^{2}}{2\omega_{11}}\nabla^{2}\psi
++\frac{1}{2\omega_{11}c^{2}}\partial_t^{2}\psi." class="math display" /></p>
+<p>If the envelope has RMS bandwidth <img role="img" aria-label="\Delta\omega" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAANBAMAAABFt2PeAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEM2JZna77zJEVN2ZIquTq/UzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiUlEQVQIHWNgYGAQAmIEsHdAsBkYwwqQeKwcX5B4ogzpUB4jkA5g6HdgYJgFZB1jYGAMYGADagwA8poYGFgFGIAaORoYGhh4GBhEgYLqDFwMDAoMIgwMgUDefAcWBl4DBkeQNgYGpgI+Bh4DxgMMzCs6OjpavzBbPt06SYCB/z8I/ObdHuC+kwEAOWIbW363MyEAAAAASUVORK5CYII=" alt="\Delta\omega" title="\Delta\omega" class="math inline" /> with <img role="img" aria-label="\epsilon=\Delta\omega/\omega_{11}\ll1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAATBAMAAACq4hgVAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdolEzVSZq2YQIrvvMt1HLXPzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABy0lEQVQ4EaWTv0scQRTHP+u5m5uVxYVUKWIOg0QSBQtDUh6EgEKEK1IIaRZbG5MiklQLVorFamFCmhwSSCdn0gUL/Qdki7Rigq2dKWyCvhl3dge54wS/PPZ9v+/XDm9noQ+CPvkuadV0g9uuuBkfOHfrHrviOq/NXY9ovbHnRjuusPwL5MLD+/9txPXxcVrJKK54yepzfE+M6jZAxUP7RWkGQdtwVUSM82fY/HUV0AO80Sk3i0ckS6i1pLkDQ/BU0otOSfQD70Wh9YCXmgfLGg1NN0CW4AmLmvAcYqG/1RvENNRyJkcoIAOCJSsKfw9kCUdEkMAHolwWFvivEdN4kssRLGTA8Ltxq4xX8sLBfVoMolJYwocmn/mGNsklHOemUj9kwNd2qQzxMlnAOSnb1DP8FnXCBqvlALXYru2WLfoEZkC1A1kBvJI3L7AFd7QFDZWUAwjfZ77Zmy7UO0g1qTB2JHiQjj4buTsLn2Dg4du/01k1gGgX72fRcCZ+fF4OXeHC4M/OQf1wClbkup3G6ydmAWYHUikfYeuj7lCP/k1WnV1Zp4zugNgVvPIm2kgvHyY2U5tYE7Oq+Bes7O29vHfuRhm5yLdD2L/9EhyfZj1nLfIMAAAAAElFTkSuQmCC" alt="\epsilon=\Delta\omega/\omega_{11}\ll1" title="\epsilon=\Delta\omega/\omega_{11}\ll1" class="math inline" />,
+then the last term is bounded by <img role="img" aria-label="O(\epsilon^2)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAVBAMAAAAp9toTAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHZmmasi3Ym7RO8yVM0Ml5alAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABC0lEQVQYGVWQsUoDQRCGvw2Xy5nLJYvYG7RJoRgJgkICEbG/0vIQRKyMDyCkDIIQG+s0ViIEfYE8gQi+wPkGsTBYCDqZc403xc73fzu7xUCuot1uLmfhmKO8XZ7HZ/aoqzdrrX2BWAMDVhR2LKeWwkiDuSBqCgUyFAypqqQ4gVTw3kJ5ymtmN3y4BvMksfLFrdryqAB38vhdYjRjLK1xdf79CSGUhhK9KT2ovug8Naj1BcPYT+Ewk4SW1brwVlIR+zFoqi9Zwr7QI6aHmanTf70UivL3GP5Zc4lu5A0OfmfPpAfrjUTaplBnW31LTz1OFnizwCXr2I8dgd917P3di3lwtu1g3mVZWSXwA+HIKs9cCJkAAAAAAElFTkSuQmCC" alt="O(\epsilon^2)" title="O(\epsilon^2)" class="math inline" /> in
+norm.</p>
+<p>Dropping only this controlled term gives:</p>
+<p><img role="img" aria-label="i\partial_t\psi=-\frac{c^{2}}{2\omega_{11}}\nabla^{2}\psi+O(\epsilon^{2})." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAAArBAMAAADyNLvnAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARN0iMlSZEO+JZqt2u81N188bAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADqklEQVRYCbVWS2gTURQ9yWQyTTJt4kJERMyi4EoILgRBzSxUXNWIVMGN2RQUi47FSBdCRAXxAwakhVbFEX9YFbJQSi1qK25aXHShCIKQjQi6KRQFUYn3feaTJk0yibkM79137zn3vu9NAD+iPsr6gbeD3Yapduh+uH146gfeHnasPboPtrbRB7g9aMxoj++D/VbxAW4dqt7fH0jorfN9MF9gKl3+5YPQMlQv4WDLZH/EuOUP3wY6bdYgN1GpDo3W4NU37QW0KkTjSqXMxApVtAaGYAp3qyCNK1WoFF3w0k7e845q68rIoVpbWKdSaTM8UqQAobBR4KBa5FaoomvclrksQVSq5bQz8w9oWjERZsjEaaEFkogbmBODnOgat7dH+kmKEJVqGS06CYWK5awI8wxQLa4qCbaWPVxv/uXk2TboBkSlkg/OvjY3yHcLKPGYupGyVT4G3S8mFm+baCJLBApDVipJiyY4M3CRug1QLeqAVeykRrhKTWj+zmGhW7apUa/9JsQ9yEolaTLVMBvuNbppNYBSLheAdUwNHQAeI3CE1F1ZLTPM/czRQE4QsMgxLk2mum2S/XCqi1p9LMExTEeuywidBf7SA830qmaQXOFpJgVy1pF8FiKyQ4M0YBOjnUCQ2i8yQpz1iTR6CtB+aAgoi1HobEbNSHhJXmYPTa6KV/8r2EGTLspQXTzsKPJ0BxdpZyNFSlWRZv1nkk+Ii1fktot0Bj+xT2Bt2rHpV9+np2h3/pBdX0IfEJ8aF5ggT3UBG0zEsrSbwUQO0YpU9QavTTlllyZXdYloXTMYAvIpGYGflZqkLcSeU8ctxFNr+G1v6qyQHsiIODbNOavjZH9J2WhVFakiBas7o/XiHdCdsaK2T86mThdj152JS5OrGsqAVfMeE2GLI4DtUCYRGjExOGfiPW3y4POH0tVEp/yQIJcmU+Hmk+vk02nV47JETyB03ol5lmnkrCn66Idqu+GYbJqdSjiUogPAR1eFVrKowqc8Fq96HXlyryQOTTMrIG58b1ZgwKBjrUB6Br0IJz3DZepKtC0OLlw5B7Krjm+ZchmRRW6qojDrSrRAxg7TxC+vDaVrVmLE8IJraUJL2RhHsQ31+rTB6kioVA/zn3zfsBMhIJtbAH2dlIhFD6EHmtVfAn2dlAn2A70VUVMpgb4OCl0Jq4ij9M+n46l2r1qdHVv3ZvZr51NdK5ezm69GzyU6n8o9m45voCdVEkrSHXZSW3s5RV9LGf4B0JbgkrmFS28AAAAASUVORK5CYII=" alt="i\partial_t\psi=-\frac{c^{2}}{2\omega_{11}}\nabla^{2}\psi+O(\epsilon^{2})." title="i\partial_t\psi=-\frac{c^{2}}{2\omega_{11}}\nabla^{2}\psi+O(\epsilon^{2})." class="math display" /></p>
+<p>Using <img role="img" aria-label="\hbar=E_{11}/\omega_{11}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAAATBAMAAADvz3fSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARLsiVO923c1mEJkyiauEKOtWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABWUlEQVQoFZWSP0jDQBTGv/wxpUksDg7aKbiLDgVdxCIIbjoLQlwER5GKTurSWREXF11dNLgWIaPjqQhdKl0UcRBF6KKD79L7kysV8fHCfd/vfQl34YC/KjAC1sSk4YHB2nXrKVFwRqlMzJuW3Bhg6fi9Mfe211YNAHTIx4pFSmVix7RA+E2kKmkYS5Wt/melZ/PeOw50JOhOfUHcTnlfD7myI6etiQ0Mk7sSJFhGg2TwxotxODDeZPDneFONds9xI0AhRp1jXbNpOAR3gTfVK8IUKQIBLlPwo+XqFCFcTIM30CaNPZwLsAh3KZcl+UJPRcbdKopwGE4EuIPNYmPvKxRPZLwElBAwX4I6CuXcfwOcD7oHTMYvyNw+b42cCbCJ4jp9Tlfzq/W4K6c4pPdr8fFGdpLsMDqZV1MANSLFBFDeENbDETWcRFIBpO2/eml//gulK/CfcnrCP0b/UGrVaYW0AAAAAElFTkSuQmCC" alt="\hbar=E_{11}/\omega_{11}" title="\hbar=E_{11}/\omega_{11}" class="math inline" /> and <img role="img" aria-label="m=E_{11}/c^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAAAVBAMAAAA0iOSIAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnYQqzJUIkTvzbvdmYlSEOKuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABZ0lEQVQoFY2RP0vDUBTFf2lC0lL7ZxAdFKlgZ+viXEE3kaKLurQi1MEliIOLNF9AwU0QIZOjFleXgl/AQXArHaSThIKIm/pekr4mAUsvl+Tccw4nN+/BxGUuvEzshRO2JnP7ofvM/eP+uPXeb5Vm9QLoKSYOsm24UFTe9qH+rJg4KJQgpahsgIyaYuKgLgRTUdsBKluKiYNltAjx5uO0k0JbXJneaW5ENAmfOI0w4ifMmaPW7w9ne0XzjmOpva6LCs70xruH1bZsSBdhLTjsxjxah6VIkoDWF7vQdGWDUSHlcuhbuhglHn2oHtqAGg3LRbRwQ0HE+3VNpqZ/h0P4MlyRr9xNaFUCxRrQQnMdMY32zvQgJ4P97CrUQRcOYRTXnysNvyQpEeWAN3TrVZiymZVCqkifdF9CVfmHrrf5OXRrjlirfxDuokxJYHUQTXjvSTU5X17ZojlP8mPn8lg1KbaTxNjZHql/yXJKBESaWSoAAAAASUVORK5CYII=" alt="m=E_{11}/c^2" title="m=E_{11}/c^2" class="math inline" /> turns the
+coefficient into <img role="img" aria-label="\hbar/(2m)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAATBAMAAAA3w9PYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARLsiVO923c1mEJkyiauEKOtWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABVElEQVQoFU2QMUvDUBSFvzQ1NakpFTp1KiiuRnATbJE6OFlHu1hBhIJIwUXFIYIUdAou4iKdBKcW3BQhiw66FO3m0h/gUCg4CfW+JI1eSM757jm8hAfRdOB27AM15K3NO8rrXegrE48ldVYDtB2MLMbnbByyBsbh7rYsEjAJH7S9OBXmKKAXVPOEdCMO7RLWcNERvocZ2MQexKHWJ/mdPxUuQEWtE65Zv7t5LX+Jr5Cu8ij/7EFDhUV/4dlLnrEifkCqRhMyLXRXheeUrjAb7Iuv0vb5kRCmVGjLCU9kaswJHLNOUj5WBksdey3PBhO+NRRT4Z1EtxZcjnS0Ep4+oIjpZlXYJJX3rL4UL+BtOtcxXS5J1zz0AgeYdUzpsQNbo1HH8Oih9cD0ZCkjlwfL6vVvEq0QlpSMIVz9lffUQu+M16E+RFgINBdRKKYfoROoHlEoQr+5uUUa/bIKsAAAAABJRU5ErkJggg==" alt="\hbar/(2m)" title="\hbar/(2m)" class="math inline" />,
+yielding:</p>
+<p><img role="img" aria-label="i\hbar\,\partial_t\psi=-\frac{\hbar^{2}}{2m}\nabla^{2}\psi+O(\epsilon^{2})." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAAAoBAMAAABunCnHAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARN0iMlSZEO+JZrt2zavAeoKZAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEEklEQVRYCaVWXagUZRh+ZmdmZ3fOnN2RPIoFdg4EXtTFQNBNyc6N4kXSQPmDkG5dBZoOB1YkEg8kiF3Igqio4flMUTod4UBIRARrCJFIeNNFEbEXlkhlG+dwxJC29/uZs7O77u7M+F583/vzPO8739+7C6QW87Nqak5mwmu4n5mbivjcIrAVn6fiZAabM5x6NjM/FfHbX267sDak4mQG5xhRS35mfirikZffBG7qqTiZwXtuHHY118nMT0V8L8xXK+1HqTiZwS9hvJGZnJJoLaHsp+Rkhpst7Owh7zrd4+g3E0D6SUBxAV913w69Uao/CRnzJYDE0B2VDmzqg45JmnHHXuhy9BtPhljP+v3QLk/Owzzr8tBqh6zMaggwQaTCLd5eSSbC3WIGAjUPmcptIR6mQ44ye6Af3rpC/pL0EuSg1LRJyPaKJTjyK60ExYqPtpHQ190VaWoyWTTa96BTB70hbYKYTKi6C9Fe+XqMGeEyxccKdeBg/cdDN+H4Hld28AGw5IQLNJ8H7ghTQKRKtmiv3G+0RNQW44hhlhepYpU8DibRtitm7RhNz8NkNEFCTgmVBtFegdfnJlIUO9IEbF9vt+s8DeMDOWSxQ4z0N/wxj/skZD1Xje0Ab68EbGLNjHDUrI94aLjk6VapC7CpagWHRGJVbDYk7h6vQKNzllKTcB21gg/eXoEtQHmBHDl/B6Yosv8ByeC/G9YycJFngBW8YIY5kVMVe5G7DyBH449cJSnzwa0Asr3+RPsZhNzB8B0PjZADHpoCouktGw5fTLSN4mfhBDYCeQmhlYn4acj2av1DK8cXoJvEYm+QMmhfc2GQL0uOLaBSNcVq6F03qRgB9z/461e+F9ZjMpxF+muE8v1zpJPkRLGjkO1Vewj8jhlgip4Z4/ERUnqojgw5twZ5g9U2HidqoYFp2itPZRFnZk66sr3qLRjHNv8MLGqhYI44M+jL21SisrdWfZ4q9j4F/hCXotxVrFhnqr1ex7TvNIDrNi6pLMOnv5sqPhYwWyZVxaYDlOrAeIg8U5hXod+DcSpU7TV/+wzGfODgD7tChRg+VQIVt/b9dlWqqhg+mT9JDocA51SyORi970nu7KAa3++N0guE0cFF/qiYjOjNDuLLjhpph/lpPRNZPXPRs/7tcSlT85RihV2AToV43QiSf4s0Flk9c87Huz0uZcqr2B97ZcWV7/6KFf/AX7MCw2wHFdfMuBHTtWh7cTnmTap+g/mrc3dru/2EhGh7saIkJBJMX9JXf4y3A3MhOSczcpyZ9iQ+hdPMnCI5kfpcvo4/MdZIzsmKtBm1IBdHOx0va6YEvAlqtxVQE72mJUA/HcR4Z9V2XAP9K9036GE9XYE4u9BuL+MWigHWrbyfeHyk/j+l1fRXTvBAWAAAAABJRU5ErkJggg==" alt="i\hbar\,\partial_t\psi=-\frac{\hbar^{2}}{2m}\nabla^{2}\psi+O(\epsilon^{2})." title="i\hbar\,\partial_t\psi=-\frac{\hbar^{2}}{2m}\nabla^{2}\psi+O(\epsilon^{2})." class="math display" /></p>
+<h1 data-number="8" id="scope"><span class="header-section-number">8</span> Scope</h1>
+<h2 data-number="8.1" id="derived-from-source-free-maxwell-structure"><span class="header-section-number">8.1</span> Derived from source-free
+Maxwell structure</h2>
+<ul>
+<li>energy continuity: <img role="img" aria-label="\partial_t u + \nabla\cdot\mathbf{S}=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAAQBAMAAAAv7abWAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABt0lEQVQoFZ1SOywEURQ9M2Zm164ZE51qpyESERsR9TYKIrEkChpTDYWERITOhqhtIVHawhKJhAQVCZVKoaG0CoVyV3wSrHHfm3nPK0ThFu/cc885L3c+AFp68e/SR0z/l3DIqy6U29OjQdEr2JzDkkJFu742RuXH1H5C8lVIHPX5FUITGFDHWkQyPmEiFxFY90AQ9xEMoemad8PquMHjLMk2TgnBKQLtgnA8QaIEGPM9k+o4DmtsS/kqrc8RGKoLz9Dpwj7oezTuL2GCq3EYB7SVzyd06GH46ArC0KjDqMGg/IcGLb+BKa6KcKYE0dJ8PAw3CFIBqwLdRuE6mgrQXtLXulEFUyETqTosPrjLMeg4/+IsPihJ+YwHs9oIJH27SsJOMHMZTDOH/Y5R7hzwaEviW/QcsuxnmDV0u7C297NwvIZDLsldZ11feh0XWFfDeIJZRIU+s7sINLvWXJ6ZZbhS5pxf4GSBZerkM+MICR/pvPaAYwqjtctjRhm2lF/KeYO9yVRZnfwn2V1yUaRMuW2VKzJsv0gn0jdnVz97sLm5sBLJ2gVtJUqGkROjv7Gs+DT3b6+ifgO4GWbJK4gfRQAAAABJRU5ErkJggg==" alt="\partial_t u + \nabla\cdot\mathbf{S}=0" title="\partial_t u + \nabla\cdot\mathbf{S}=0" class="math display" /></li>
+<li>momentum continuity: <img role="img" aria-label="\partial_t \mathbf{g} + \nabla\cdot\mathbf{T}=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAASBAMAAACJErzeAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABx0lEQVQ4EaWSO0jDUBSG/1vTqq3RIDo4JZs4GUTEzaxOrYKok5mKQ8GhoOIgRXC2OIkgCr7wATo4Ojg5+Qg4OHbpKFKEFq1UPbk3N6YaVPAEzr3nP+c79xUA7f34h0VGonYI/s6t5mVuHuh7dELq2izMh8gry2NktpepOnqZDVl1dd2DBsVRYDgoMxHoNo2NlghYHnoZsZSIhFcucC1myaDcYPCoyd133Euotos3mF7Ih0QKCzRRsn1TNHRmO5a47OGsQpG8VDXl4krd6nToHioZQOSAmqzdVxaDOE7oomyucEd4vSUdJDUoeeCVobWEF3Fqb3XoW5BTl5P4XppsmoRewh205MDKCae5hE3RXTLxGmKuoha5LnFRRJ5Y6qAbiJaaEa/xw2IvnbnkzaFWMerWKquc+IYXLExp6NUQ2zk2lfOjHC/73PGMZguF+294m4FJoEDPrs0hbshSuXkUdoM3LXH/7AkTs0AixYo4Q1Mlva3xDj4ec5/ON4n7QuSU/zb78xryUOgX3+ApH1eDT5W5fbsS7X1+fMIQc3ZhFkzcPdfjsET2d79rDVHrdV7IvizyO00VXTlEn/5UGVqkHh2mrdDMj+IHaLh08Fh56c0AAAAASUVORK5CYII=" alt="\partial_t \mathbf{g} + \nabla\cdot\mathbf{T}=0" title="\partial_t \mathbf{g} + \nabla\cdot\mathbf{T}=0" class="math display" /></li>
+<li>angular momentum flux balance</li>
+<li>Newton-like motion of localized energy knots as integrated flux
+bookkeeping</li>
+<li>Schrödinger dynamics as a narrow-band envelope limit with controlled
+<img role="img" aria-label="O(\epsilon^2)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAVBAMAAAAp9toTAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHZmmasi3Ym7RO8yVM0Ml5alAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABC0lEQVQYGVWQsUoDQRCGvw2Xy5nLJYvYG7RJoRgJgkICEbG/0vIQRKyMDyCkDIIQG+s0ViIEfYE8gQi+wPkGsTBYCDqZc403xc73fzu7xUCuot1uLmfhmKO8XZ7HZ/aoqzdrrX2BWAMDVhR2LKeWwkiDuSBqCgUyFAypqqQ4gVTw3kJ5ymtmN3y4BvMksfLFrdryqAB38vhdYjRjLK1xdf79CSGUhhK9KT2ovug8Naj1BcPYT+Ewk4SW1brwVlIR+zFoqi9Zwr7QI6aHmanTf70UivL3GP5Zc4lu5A0OfmfPpAfrjUTaplBnW31LTz1OFnizwCXr2I8dgd917P3di3lwtu1g3mVZWSXwA+HIKs9cCJkAAAAAAElFTkSuQmCC" alt="O(\epsilon^2)" title="O(\epsilon^2)" class="math inline" />
+remainder</li>
+<li>emergent <img role="img" aria-label="m" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAIBAMAAAACWGKkAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnYQqzJUIkTvzbvdmYlSEOKuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAATklEQVQIHWNgVDQUCU5zZWCoiBRgW8aQzcCQIMPAeIBBhYGB4R4DiwLDJiBjBgNnAPN3Bgb2Dwz1DIwLGoCYQZqBV0GAgUmA4RkDxzMGAOaYDdTVr3cAAAAAAElFTkSuQmCC" alt="m" title="m" class="math inline" /> and <img role="img" aria-label="\hbar" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAANBAMAAACJLlk1AAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARLsiVO923c1mEJkyiZnA+J4AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABMSURBVAgdY2DUM2AAAlcQwVaRlgikKkFsrscmQAmWZ1KNDAzcUQy7GRjYExjaGBjWHWB4w8Dgx8ASwMBwiYHpAkiQXWoCQzEDZyYDAOgLDmKKg/TJAAAAAElFTkSuQmCC" alt="\hbar" title="\hbar" class="math inline" /> from <img role="img" aria-label="(E_{11},\omega_{11})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAAATBAMAAADBilZAAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABRUlEQVQoFX1QLU8DQRSc61173cKVUyAwJ/A0WAwGHOR+AZzhQxYJ6nDIJg2KEA4FpgkQFOpEazCAQ5FLQEFyKR7BvKVbKLSdzL63O2/27QdgBRiLglRtjvdW/tIaYbUeWJjjKMfA6ggTtlkIOaYCQLcdZiwCpToL9yknwwyiVSOUG8zzcP9ZLKM4NVRkfoimkXReYXzqKwkmZH6RrwPTsVAjYOxYOyCJLo4Y1SfawFYoFEymSOGVNkESZ+gwul2KkQpBCviGEDOyX1rgCrOMNmvql8mFyrDbNyX64pUM8KRNr5MNL+NHm04Jij5wugTkxtT0UX1duF72jUnFKESobjznix/GdFeHug32b/SF5E4uhRqzhroECUTfS+BYE2WedWC0tfMG+WNy3vZI6H8+MaZe5vsH8cilEw1qf01uKnWeMA4K+AInfkgkwhjbuAAAAABJRU5ErkJggg==" alt="(E_{11},\omega_{11})" title="(E_{11},\omega_{11})" class="math inline" /></li>
+</ul>
+<h2 data-number="8.2" id="not-claimed-here"><span class="header-section-number">8.2</span> Not claimed here</h2>
+<ul>
+<li>existence and stability of knots for arbitrary initial data,</li>
+<li>uniqueness of the toroidal mode or its formation mechanism,</li>
+<li>full quantum measurement theory.</li>
+</ul>
+<p>These are separate questions.</p>
+<h1 data-number="9" id="closing-statement"><span class="header-section-number">9</span> Closing statement</h1>
+<p>In a source-free Maxwell universe, continuity laws are identities,
+not postulates. When energy localizes into a persistent knot, its coarse
+motion follows from flux balance and looks Newtonian. When a toroidal
+mode is narrow-band, its envelope obeys Schrödinger dynamics up to a
+controlled <img role="img" aria-label="O(\epsilon^2)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAVBAMAAAAp9toTAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHZmmasi3Ym7RO8yVM0Ml5alAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABC0lEQVQYGVWQsUoDQRCGvw2Xy5nLJYvYG7RJoRgJgkICEbG/0vIQRKyMDyCkDIIQG+s0ViIEfYE8gQi+wPkGsTBYCDqZc403xc73fzu7xUCuot1uLmfhmKO8XZ7HZ/aoqzdrrX2BWAMDVhR2LKeWwkiDuSBqCgUyFAypqqQ4gVTw3kJ5ymtmN3y4BvMksfLFrdryqAB38vhdYjRjLK1xdf79CSGUhhK9KT2ovug8Naj1BcPYT+Ewk4SW1brwVlIR+zFoqi9Zwr7QI6aHmanTf70UivL3GP5Zc4lu5A0OfmfPpAfrjUTaplBnW31LTz1OFnizwCXr2I8dgd917P3di3lwtu1g3mVZWSXwA+HIKs9cCJkAAAAAAElFTkSuQmCC" alt="O(\epsilon^2)" title="O(\epsilon^2)" class="math inline" />
+correction.</p>
+</body>
+</html>
