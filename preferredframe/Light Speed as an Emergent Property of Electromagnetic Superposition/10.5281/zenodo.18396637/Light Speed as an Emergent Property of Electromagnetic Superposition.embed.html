@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="dcterms.date" content="2026-01-27" />
+  <meta name="keywords" content="Maxwell theory, electromagnetic
+superposition, polarization, linear response, refraction, phase delay,
+energy density, effective refractive index, variable light speed, field
+ontology" />
+  <title>Light Speed as an Emergent Property of Electromagnetic Superposition</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Light Speed as an Emergent Property of Electromagnetic
+Superposition</h1>
+<p class="subtitle">Polarization Without Matter: A Field-Only
+Interpretation of Refraction</p>
+<p class="author">An M. Rodriguez</p>
+<p class="date">2026-01-27</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> Light slows because
+electromagnetic waves interfere with phase-delayed secondary
+electromagnetic fields, making the effective speed of light an emergent,
+local property of electromagnetic superposition rather than a universal
+constant.</p>
+<p><strong>Abstract.</strong> Polarization is treated as a secondary
+electromagnetic field rather than a property of matter. Within linear
+Maxwell theory and linear response, overlapping electromagnetic waves
+generate phase-delayed secondary fields whose superposition alters phase
+evolution and yields an effective refractive index. Electromagnetic
+waves therefore interact through the total field configuration they
+jointly create, and the effective local speed of light depends on the
+electromagnetic energy density of the environment. Refraction emerges as
+a consequence of field superposition and delayed response, without
+invoking particles, atoms, or nonlinear modifications of Maxwell’s
+equations.</p>
+<p><strong>Keywords.</strong> Maxwell theory, electromagnetic
+superposition, polarization, linear response, refraction, phase delay,
+energy density, effective refractive index, variable light speed, field
+ontology</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#summary">Summary</a>
+</li>
+<li><a href="#conceptual-clarification-linearity-superposition-and-interaction">Conceptual clarification: linearity, superposition, and interaction</a>
+</li>
+<li><a href="#goal">Goal</a>
+</li>
+<li><a href="#corollary">Corollary</a>
+</li>
+<li><a href="#derivation">Derivation</a>
+</li>
+<li><a href="#references">References</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="summary"><span class="header-section-number">1</span> Summary</h1>
+<p>Electromagnetic waves interact through the total field they jointly
+create. Polarization is an ordinary secondary electromagnetic field, not
+a special field generated by matter. Phase-delayed secondary fields
+modify phase evolution. An effective, local light speed emerges from the
+electromagnetic energy density itself, as fields interfere
+pointwise.</p>
+<h1 data-number="2" id="conceptual-clarification-linearity-superposition-and-interaction"><span class="header-section-number">2</span> Conceptual clarification:
+linearity, superposition, and interaction</h1>
+<p>It is commonly stated in classical electrodynamics that
+electromagnetic waves do not interact in vacuum because Maxwell’s
+equations are linear and admit superposition. This statement, however,
+is not a theorem of Maxwell theory.</p>
+<p>Linearity guarantees that if <img role="img" aria-label="(\mathbf{E}_1,\mathbf{B}_1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABOUlEQVQoFXXQPUvDQBgH8H9emvZsKll0cbCDu/kGfgPJkqlLFl+2ZnWrn8BAcRIhDkFwUtwESZYsLlac/QJOASmISuPzPGngOvSG5+5/v7vLXQBjiHXNZLBQPmXhXdYuckd1OHpMOBozKnvAuIK6aB3OD/D6J/GEaiCOXa9dwG59S+oATixeWIXug19JmxF6iXjgrHh/IW772KDBuDIDyVLofHUwa3KKPvs8J9+eNHNO/fH+XMA4pVjhkr2yyY+XZ/D9egs4RyQ3KMXpFYHS3K0L2fmAncbh+robdSyeLu8HDIa6t/tTdDx5H/Yj9ikl/v7WF3i/msCMUObzMK8T9pcY8v+zWLwbQ/l0AWnqnrqoGXO9omd4wHk7c3ib6G5/nmFKdt06944egDeKdqTNrXq3YKJT1zQF/AOOSV1faO0bkgAAAABJRU5ErkJggg==" alt="(\mathbf{E}_1,\mathbf{B}_1)" title="(\mathbf{E}_1,\mathbf{B}_1)" class="math inline" /> and <img role="img" aria-label="(\mathbf{E}_2,\mathbf{B}_2)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABTklEQVQoFXXQv07CUBTH8W//UKiAYXFikMHRRB7AqIMP0IUJh26MdHQy+AQ2EkcjDixuxM3E0IXFRYyzCS+gaWJIjBrquRfalMEOJ/d3PufetheMBv89pgKLycOwdTdMhyrtpNW+D1U0plJ2oBvjXqSO8w3Pvzp2pHra2a6lA8qtL50K4ATaIyvKe/VHp02fUqjdc9a8vNBuN9mQRTc2PZ11kfPdw+kyDygrn4/FO+/LnpO8vT5GOGcyE3OlPLY93IY10wPq+0oLLjmAWyba5S9OvGIv80oSTTiFEfWlU2myOcvcSAL4gMHq+6DaoF7LXPZjjJQXpCn3x57PPvQlqfdvfcodRbg9TJ/JeN4aJ6EZhTwF6PsfBrDrUgxwm/pQKcc0wE8T9pFJSY47X3XcJJnl/SZZ0Be7znbIwskHeJFo+7neuhcjRWHO15cu/AFh3mRp6qAAbQAAAABJRU5ErkJggg==" alt="(\mathbf{E}_2,\mathbf{B}_2)" title="(\mathbf{E}_2,\mathbf{B}_2)" class="math inline" /> are solutions of Maxwell’s equations, then their
+sum is also a solution. It does not, by itself, imply that one field
+configuration cannot influence the propagation of another through the
+total field they jointly create.</p>
+<p>The identification of “interaction” exclusively with forces on
+charges or with explicit nonlinear field equations is a conventional
+interpretive choice, widely adopted in standard treatments of classical
+electrodynamics [1]. This convention is not derived from Maxwell’s
+equations themselves.</p>
+<p>In the present work, interaction is defined operationally as
+modification of phase evolution or effective propagation parameters due
+to the total electromagnetic field configuration. This notion of
+interaction is fully compatible with linear field dynamics and does not
+require nonlinear modifications of Maxwell’s equations.</p>
+<h1 data-number="3" id="goal"><span class="header-section-number">3</span> Goal</h1>
+<p>Explain, mathematically and with an explicit ontological
+justification, how linear Maxwell theory allows electromagnetic waves to
+superpose and interact through the total field, and how an effective
+local propagation speed can arise from that total-field interaction.</p>
+<h1 data-number="4" id="corollary"><span class="header-section-number">4</span> Corollary</h1>
+<p>The maximum propagation speed of electromagnetic disturbances is <img role="img" aria-label="c_0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAKBAMAAAB293L0AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAATklEQVQIHWNgYFQUZgABJwZXzsQEBrYCBgluBiUGfgUGhiMMsxnsGxgYchnmMcxnYOCIZbBj4DJgUAbxmQOFGo4wnAbpZGAHqgcBzsQAALabC5wA68wTAAAAAElFTkSuQmCC" alt="c_0" title="c_0" class="math inline" />, with</p>
+<p><img role="img" aria-label="c_0 = \frac{1}{\sqrt{\mu_0 \epsilon_0}}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAArBAMAAAADEyIvAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABmklEQVRIDe2Rv0rDUBTGvzb9k7QJqRXFMeoqmCfQolYctdTBQbGjg9CCIG5dHESlRaQOgvYROurWoZtQs7oVfQHBoRYKem8SEnqbm8TBQfBAcs75vt89ufcG8A/5xN9nXOFgwChB7T/vf0O/fT9D/88zrljs7zDSX28js5M/OsIK8havrNHYDFicKGNGKu0HUK6takAac65Aqi9OUGi5CnRwS8tQcQ+Ih7gjbLj9p3TM72Ip1GwIGxC2slVrfogl0psJdfDkBV+xx363qSRzP7b84DWEalLJ6y9JBo/31tO6t85Tr3kGR18FYm08mm5iu82hHFnIAaoufqIxDVRgJsf0KJQ60EWkiVZUU8hakjwoVzonZRGKIeeklpov0OSaTHVD+hfyVJDKJAypV9NBE0M5rbyoQaTTPlA7OzWEnqojTpIDsEWsiXgbkAfYi9LBiuY7H9IQdPvxo4nLBTknt1DIXtDEjWOUiJfMUKBsXYydvJc818vEINsm0ZgyGTuZ9dgrtU5Hd8d0nhDtU8cazGNG9NeRLripc5BvGxp5wjvbBL8AAAAASUVORK5CYII=" alt="c_0 = \frac{1}{\sqrt{\mu_0 \epsilon_0}}." title="c_0 = \frac{1}{\sqrt{\mu_0 \epsilon_0}}." class="math display" /></p>
+<p>However, <img role="img" aria-label="c_0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAKBAMAAAB293L0AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAATklEQVQIHWNgYFQUZgABJwZXzsQEBrYCBgluBiUGfgUGhiMMsxnsGxgYchnmMcxnYOCIZbBj4DJgUAbxmQOFGo4wnAbpZGAHqgcBzsQAALabC5wA68wTAAAAAElFTkSuQmCC" alt="c_0" title="c_0" class="math inline" /> need not take the same effective
+value everywhere in the universe. When electromagnetic waves propagate
+in a linear, nontrivial electromagnetic environment, the total field
+gives rise to an effective susceptibility <img role="img" aria-label="\chi(\mathbf{x})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAATBAMAAADojanHAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGbNMiJEmd12iRCru+/oK7SQAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA40lEQVQYGUWOMU4CQRSGvwFh2aziHmEED0BjT2JiY8EmFFZEDkCCF/AAhmZjYUygMTbGBhIKLT2CPQWFBxBCLI3+w8zCS+b93/v/l5cBX0nuNYgbDr3DW1DJQ0BjA0CroB3sw6ciO8oKGoBptqn06/D4lw+/ZogqUYsSNS0t7XwGx6KDHyxdQW19pl6XzZ2Bc2nynbrAWc+X8C5lOVLTLei0PUQnm8K6tlDW+ivTG+jJZvIJccrLL9ONpSEnNit95cOFrhZ6Y9aBnOMyk3GbwJWbVZGOXsD8Hqqpt069bHvmWfIPt1UpmeUnMpUAAAAASUVORK5CYII=" alt="\chi(\mathbf{x})" title="\chi(\mathbf{x})" class="math inline" />.</p>
+<p>The effective local propagation speed is then</p>
+<p><img role="img" aria-label="c_{\text{local}}(\mathbf{x}) = \frac{c_0}{\sqrt{1+\chi(\mathbf{x})}}," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALAAAAApCAMAAACiAFPnAAAAM1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxgEwMAAAAEHRSTlMAVGYiq4l2zRAy3USZ7067Gs3LcwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAyVJREFUWAnNWYeyrCAMpUhTfPL/X/sSigoq6speNzPrSM0hphxdQt4Tyijl76m/rbljhHTi9rLXFkgFqqkmRlL5Gog7ih0YGGUihMXb0PGjV+60RzZ0hBgA/fNinIeopQXA48/DBYA9JgjGBQDm7QHrPC7y1mfm4YJSpsmXLAyOthYNZmkk6MNDcx+WQwGPtotryG7tswSmzFy2Pfn49Rbk4ebVY8eegl6H9Pczp23FR9d7TU5JiM86sndOksGNymf89pno8vkDCTF9GVi4Qejtw14TVFMd4BIS8j4M2G6W5r4Y9BbXRELsHmCCvTxFWO+oSt4xhspabBab7iuSNo8Z6hiwSYD16OZY62uA94/RpjeREG9L8GYoYkYweLiS4hHwp6NLALNyM87XfDiREIRmkDlZxAdPHq4Ayts9gbOMumTt1Pf3PhxJCEITyBEcVncUbcCcHnAMNAF2Fy6M8nvV1DRwaoDEO3DESEIWwIgLpGM6AZbouaJ3AFI4p9Dpb1ZTVNRAzLiiBNElhg5jTHMGlhy192M42EbZdAsBb0aW5qAnRoEVqGQCrgJqse4olfYf9kKwlfB2jrA506qjS8lw1Ve7PWazC+DaerKxkC1PUF++fULV+aSYv7DZi3iBseYzmakrLEatnz6oq6uO2WwOo1CTNfNnmreyiTsNjRmFS+NywMcPKaXOZa9tzzLW/k5EoAVgtssFQP3bbNYbGM1wFfDbbFYkS9YAUxY8nMNkX0RfZLNzTawB5sR6P8XCUGWz+Ki+IshLvPgy6e9qgIHEOAhlxHufzQZFz67Uon6UJcAXwJ70K4XMfyH9vSQ+a73DZjUZQzlekY4FsD9JmSWEMj7TvcVmZfjatxj4LEvMeTox110268/6lYuGV9ac1bmULoK+0sI8fYB9zmY/O5DFaJ8NrEXnVCohfsMSsOxiPnnOZj8DbMCitY/rBWAIufgmvkMFN3TxM0gnq9SEn9cPRWdkQkIrveJu4O0c4XDbBwPUySVpnezj/06yE/GHeMhmT1RVhsf4t0BlShwyPh61kuEV6BmbPVd3NOO6gcsdcv66bv0HhM8cxTjE7k0AAAAASUVORK5CYII=" alt="c_{\text{local}}(\mathbf{x}) = \frac{c_0}{\sqrt{1+\chi(\mathbf{x})}}," title="c_{\text{local}}(\mathbf{x}) = \frac{c_0}{\sqrt{1+\chi(\mathbf{x})}}," class="math display" /></p>
+<p>and therefore depends on the local electromagnetic energy density
+through the induced effective <img role="img" aria-label="\chi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAMBAMAAABGh1qtAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAVGbNMiJEmd12iRCru5wK044AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABJSURBVAgdY2BUdmBgTWBgZTdgYGJgYGB5yqAApBg6GUEkw2JvMOXnAKbiFMDUnAsgipPxAYiazfAQSDIGMNRyMzC4MTBsnsQAAH7PCsvLEBfsAAAAAElFTkSuQmCC" alt="\chi" title="\chi" class="math inline" />.</p>
+<p>As a result, the effective speed of light varies from place to place,
+tracking spatial variations in electromagnetic field energy density
+across the universe.</p>
+<h1 data-number="5" id="derivation"><span class="header-section-number">5</span> Derivation</h1>
+<h2 data-number="5.1" id="maxwell-theory-and-superposition"><span class="header-section-number">5.1</span> Maxwell theory and
+superposition</h2>
+<p>In source-free regions, Maxwell’s equations are</p>
+<p><img role="img" aria-label="\nabla\cdot\mathbf{E}=0,\qquad \nabla\cdot\mathbf{B}=0," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMcAAAARBAMAAACbTKXHAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3vzbv/ZXcJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB/UlEQVQ4EY1UPUsDYQzOea3XKrYOznbwB1RUFETwEMGx/QPiIugidHAUWlDETXERnG5yUlwE/Q1SQecq+BP8xIIfZ5Jr3rxXr3iBvsmT5OmTN9crFEO2YWDzWs2H++ZtBP49I+qzUMOH1kXne7qofS+TaFOSdUOA0SdB7E8OgxhWUB4jrt9JuF8A9Q+tUtThZt8IrNFBRiLZ9yiOTu8W7mxsxSs+gv5aJ0MimR+rDGC4ZbphQ2oo4sGSIPKFcVi3sRX30aZykiCR3Kcg9oZL4+RlGrrJEMzYncUanNrYinkLR5IgkcEXQewNN4fjZEwJRTYM4KA+DPVqPGXQPm7BF4QiTqUhiL3hZtsAx6bkhq1vBjuLaAsYnqMIbTTJVhqQD6Tghns7V7ySBC6O41Ojc4kH3uSMgBoqoE6y4RZ4CREV11WIr0u5pYYb0Hd413jwMxkiKFaqwXxVQJd32jBLqYiKIl7IV5E25Wbe9ZHwTxg2pYl8MYA5G8fiStU3mB58NjwwGAPlOu1JLeBNAHbxY/ZaOIBVrXdFpe1xkyGR6CZJ3IpvGvkm/a+KAQYe8WUc6bGwDL/KUTuJLFsYsxa3pNN4LfwDCukdU5ueCGArtgWtOToPU2+6+pTrKalnpHPEW2pxmIh6cf80p278wwRIy3UTuGlTqbmpGxOUXfgFCcKTsBsLKLgAAAAASUVORK5CYII=" alt="\nabla\cdot\mathbf{E}=0,\qquad \nabla\cdot\mathbf{B}=0," title="\nabla\cdot\mathbf{E}=0,\qquad \nabla\cdot\mathbf{B}=0," class="math display" /></p>
+<p><img role="img" aria-label="\nabla\times\mathbf{E}=-\partial_t\mathbf{B},\qquad
+\nabla\times\mathbf{B}=\mu_0\epsilon_0\,\partial_t\mathbf{E}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATMAAAASBAMAAADF8SRKAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3N77tjHqOnAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADTElEQVRIDbVVTWgTQRT+8rPZpNY2hx68SBdFEBFaqCLoISsqiD0kdwspFVS8mIviodWARdtTAyJaT4X2oJcq6EGQkqAnacG9eBAqVDx5sWltadRqfG9msjMbkoYUfIF93/uZ772deTsB2hLrWa6t/LaS68m7q0KSBsnowvLS52XDoeFs5hgZ9mJ1afGVuURnAJJwzXCNFreX3pw2HI2hJNfVw+sDJFxQS6qM0Ko2DbSFmENm5A9wZ8vwm7DvIDO6pivlwa623G9F7le3NpjjikkECiKbCbiU0Q/bI8itRf82SiBf1qVHLNAItYb0Crl3FEWuq/clKT8fWEPBXDTArcN2mTC3Fv+tnQEU5rOMB1zc2tSLgKuhIch1dX7JhOhjH6Vf4yUULEWEiy1Tbk7Plsnm1vasmwEDi3N4xA5N6AFFx8hpCBW5rh6nl4yK1IgrJ4lai5UaLk64eEpVuLVQOt8whZxTScDloCb00FNhjyEX0JUT5sgR6a2R6+oWrXkig48xIkBqu1hiED/L4jCUMgZ0r2SoZnVi/LUkroUMnc0jMSNsn7AyMXifPQbjGo2zfWkYnTRipIAaea06ueglXVIkiXt5oVPljpIA9Y+3NOT9X+SBdjU7UNA5yGPQhB6w6gTYOjycQhemMQ6hgBq5Ub03H5lRqwal5tOmnyHz30m+Wb9oDkFleNaa3wahCk6qtTVCWlN32YRdTGAOt7FxoMAKPrlRPbqp3pFe0hGUFITtChh4dGwC52+9l61Z1UIgaBjpjCstn5Bay/40MsDn+BJXMWbRqJMCfHKjeqgyoBb5o0GtxYcDkyEyQmXYH2MU2HnX0Hu3XzL6hNSa2DU9a91Ja/PGYewHtcYKPjm3xtVZ0q5Q/EGFHYYcvK7YZUg9v+Jijr8rbm1oA6FzgahvRMU1Tmk+oQfrg+vHGTzPhb0Cb9ek2jXUyGX1ngxn9aouegjzh8x/ecVqkkN1Er98CHvVf+hyAfanurgyQz8kMAkXaA5MOXrm+OTMHOYRfvCQFe2UJFfVx0R921zSEg8ldEpEwwDKBayGxjv2dtIXqhUhk5wj7Un8hM5v1prOaIr434wuNMdQBE1yjuxe1CTsgoCutf8ru28t4rTs7B8e5hcwjnzGNQAAAABJRU5ErkJggg==" alt="\nabla\times\mathbf{E}=-\partial_t\mathbf{B},\qquad
+\nabla\times\mathbf{B}=\mu_0\epsilon_0\,\partial_t\mathbf{E}." title="\nabla\times\mathbf{E}=-\partial_t\mathbf{B},\qquad
+\nabla\times\mathbf{B}=\mu_0\epsilon_0\,\partial_t\mathbf{E}." class="math display" /></p>
+<p>These equations are linear: if <img role="img" aria-label="(\mathbf{E}_1,\mathbf{B}_1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABOUlEQVQoFXXQPUvDQBgH8H9emvZsKll0cbCDu/kGfgPJkqlLFl+2ZnWrn8BAcRIhDkFwUtwESZYsLlac/QJOASmISuPzPGngOvSG5+5/v7vLXQBjiHXNZLBQPmXhXdYuckd1OHpMOBozKnvAuIK6aB3OD/D6J/GEaiCOXa9dwG59S+oATixeWIXug19JmxF6iXjgrHh/IW772KDBuDIDyVLofHUwa3KKPvs8J9+eNHNO/fH+XMA4pVjhkr2yyY+XZ/D9egs4RyQ3KMXpFYHS3K0L2fmAncbh+robdSyeLu8HDIa6t/tTdDx5H/Yj9ikl/v7WF3i/msCMUObzMK8T9pcY8v+zWLwbQ/l0AWnqnrqoGXO9omd4wHk7c3ib6G5/nmFKdt06944egDeKdqTNrXq3YKJT1zQF/AOOSV1faO0bkgAAAABJRU5ErkJggg==" alt="(\mathbf{E}_1,\mathbf{B}_1)" title="(\mathbf{E}_1,\mathbf{B}_1)" class="math inline" /> and <img role="img" aria-label="(\mathbf{E}_2,\mathbf{B}_2)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABTklEQVQoFXXQv07CUBTH8W//UKiAYXFikMHRRB7AqIMP0IUJh26MdHQy+AQ2EkcjDixuxM3E0IXFRYyzCS+gaWJIjBrquRfalMEOJ/d3PufetheMBv89pgKLycOwdTdMhyrtpNW+D1U0plJ2oBvjXqSO8w3Pvzp2pHra2a6lA8qtL50K4ATaIyvKe/VHp02fUqjdc9a8vNBuN9mQRTc2PZ11kfPdw+kyDygrn4/FO+/LnpO8vT5GOGcyE3OlPLY93IY10wPq+0oLLjmAWyba5S9OvGIv80oSTTiFEfWlU2myOcvcSAL4gMHq+6DaoF7LXPZjjJQXpCn3x57PPvQlqfdvfcodRbg9TJ/JeN4aJ6EZhTwF6PsfBrDrUgxwm/pQKcc0wE8T9pFJSY47X3XcJJnl/SZZ0Be7znbIwskHeJFo+7neuhcjRWHO15cu/AFh3mRp6qAAbQAAAABJRU5ErkJggg==" alt="(\mathbf{E}_2,\mathbf{B}_2)" title="(\mathbf{E}_2,\mathbf{B}_2)" class="math inline" /> are solutions, then their sum is also a
+solution.</p>
+<p>Linearity applies to the field equations themselves and does not
+constrain how physical observables are constructed from the fields.</p>
+<h2 data-number="5.2" id="quadratic-field-observables"><span class="header-section-number">5.2</span> Quadratic field
+observables</h2>
+<p>The electromagnetic energy density is</p>
+<p><img role="img" aria-label="u=\frac{\epsilon_0}{2}\left(\mathbf{E}^2+c^2\mathbf{B}^2\right)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ8AAAAhBAMAAAA19WTWAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACuklEQVRIDaVVz2sTQRT+NkmTzZLaBZGChzatBy0UEhG8unjxUDC5CB6kxkulCpq/QIOnHgOF+oMe9lT01HooiApZ0KNC8Oapiwe9SI20R+n63sxsdzO728P2hez73ve99zEzmSRAMiove0nyNMyP0wynzBY7wPTFFCEvNbW6iWHNyzuenGu5MDvGcFxYXB+vqYpRMZhoA6ZcVJpGWypzMlndcl9rjVEMq5ocK4seqk1LGprKxvBrw1gLwxjF0GhqeqzcXLwRrvDMMV1V1scEEKMIvogpCWh2TLmg55jZXd6/tQwsOYmuJWdmcLT/4QEJpN5M6HHCV59yG2iMYO0B9+KyxEQ12jACW6jlerIjYqYXBOaDI0O0nIrtCqYU9TBFhng8BMNCJ5IyUbkrDO2yvQaCFLWeSPxgig2v7QhojY6VbDDRE4Z+4XwQ9EVbZGgxxYaDvoD4K32MCyg0syzpStKWK36kh4aL8ySR2MbWgVI/ynx9wuaNobjC0VeiStsOzRwN/IhVhmVPXvTGwZWHl5X6S+beLCbsaIBQIGNEcJbejZHpU1KhDJ+g4DDDW95Tq/jOBMUGtiVIeUpD+PQScXXl0c+VVYL/ZC0MZ9XhhYbv8FWpySS2TEs1OqEmV2gdqppX2FLuass4xP0Cyaln2HJ5yyR2xw0N4hym2DBcofpQMCrdfh2261ldGzyth4o6w/eouUyRYelPhxHEtdlygE+XFjyu02KyC/66DgI3VJXhm/nPzLC4+1tqFq0a51xZaM/K+jfJJL9OylAb4LIwTCEV9QotT0I6ovEoOeN1VJXrEdbRWxR3JLepS9n1UraEO6iOpDx5QpcmnfgDi0lftptdbSyzPOkvgIa2bTU5l+mgCVWt1kp1FTQ2f1n18s+mTn5JZfOTZh1e/umUybNrz5opdH7qbhDkNvwPLzSzfrsSllYAAAAASUVORK5CYII=" alt="u=\frac{\epsilon_0}{2}\left(\mathbf{E}^2+c^2\mathbf{B}^2\right)." title="u=\frac{\epsilon_0}{2}\left(\mathbf{E}^2+c^2\mathbf{B}^2\right)." class="math display" /></p>
+<p>For a superposed field <img role="img" aria-label="\mathbf{E}=\mathbf{E}_1+\mathbf{E}_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAAAPBAMAAAACI2yHAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZiWYc3XEcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABLklEQVQoFW2RsU7DMBRFXyolomlBUTe24PAJ7JGqfACwsBFUBlb+oJW6sAEjW8QPILHyB0wdGJlZWKJIIDZzn+08vVaxpfj6+lxfWaHZydxUc1IjKipzXOXKYam5uqVkuXUeW6KbdsvCRnGQdL/SAEf2/sQJZ4qDzMaZABCIRPQozrdXioPM493IiM4GIj1Xt2kux06g5Vk50iJc3ZUuMn3isQEb26LDay5CrI847vITbt1OXCQAWNDyiu95cPoIc0kzxqX8Fkw1EBlhLthCt/HdjjvKD25dhKIHleAWokMfgZIWYm7ft9C0cffJWwC+D0XArVe+5eUUkAxuSX+GIuDwv2ZlZ0p7JTzaC2sK+7sTCVyaaVSlnLwORniL371RE+yBZfLx5d07dZhYu/kH/EZrI+ZOlEsAAAAASUVORK5CYII=" alt="\mathbf{E}=\mathbf{E}_1+\mathbf{E}_2" title="\mathbf{E}=\mathbf{E}_1+\mathbf{E}_2" class="math inline" />,</p>
+<p><img role="img" aria-label="u=u_1+u_2+u_{12}," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI0AAAAPBAMAAAArCFFFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABc0lEQVQ4Ea2RMUvDQBiG38Y0bWOhQXDVYBcFleLQORSdnLo5OOiS4iLxHwQndRJEQXBwUlFoHRwcBZcqCP0JmRylg4tTvXvv2jQNWEFvuHzfc2+efEmAn5eXPjbTaDxppyPFMM3Gkl97MmUYlWFdEihPgul5piooD91XyzpWIPqqL9aOKAjMJR1RHjLjRT1PeUy3jgZqHSyeMBrOIuvom2JgLCc8DF1DPgZQnnymizrmIjuwjonP0OJ1sBE0ZTvh+x++L2OSzeBNVFV/951zF7bsLuwoExU7MotHHrNUGwE9olfvpUPnDKh5MBkKgR0BBTXPJxqGOB98HxCMeMjMh2FPybMCV3rWPeKuuXHDor8RjHjILIcRPU8Ja0eh9GwDVx7wPL/wxPP+RjDiIduzGdGe4sr+hXyvnHOJ6aShbxLXO123Y5YPc2y0h7V9jwMEgBvHElX+9FX1qzFu9b7YmF7MDjdvez3xnd0Y/aWSP+o/loFviUhgxDqfyg4AAAAASUVORK5CYII=" alt="u=u_1+u_2+u_{12}," title="u=u_1+u_2+u_{12}," class="math display" /></p>
+<p>with</p>
+<p><img role="img" aria-label="u_{12}=\epsilon_0\left(\mathbf{E}_1\cdot\mathbf{E}_2+c^2\mathbf{B}_1\cdot\mathbf{B}_2\right)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO4AAAAXBAMAAAD+XW7AAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADPUlEQVRIDa1Wz0tUURT+3ptxfjwNZxPunKGiMswxBLcN0iIQtE0gETJBjFiB01/g7MrdUBQKLmZVgaBGGkHBDLUpIZhdtPLVpoUxPdEC++HrnHvfe777dB4qHvC+c77z3fNxf50ROFrTP/QeWUE9tf9STzEeSk6GZtXklBqGRp34GJrXDrAdZmilYHImCKjxtBqGRMkiOpdHG1dHfZxdgJeLLmlrdmPtZcVDgM7qduP1LQkM+fBwt4XSWQvGqp+2C3CTsRT0n0B63QX4m70CzZa3JJbxJ8J8PjCSwXDOx1IBX+auIXRj/3xk1sVEXSB63p8I88coSTIpWsmOqcB7L5EoxYVu5I8HkcO6FxcFYlj+RJg/whMtmMpzUoEd3QV7S+i2bvlLsm61LBHnALST0Hv9HNePz5Sk+5s+WStuysgZVcDR1d+e4zSdrzGh1CTdJxvOzDfyO9CSihWj5+E0mv4CmXj6X4GOM8QxNmnIbldNYKAu53hA90MJOLp3ZNPQ7b7+FylQUdeyG323LwCC/k2CpTRaUnoPgo0mkgfqbTVAs4iYtRImcIL+YDynQQJGMVbmAFI3buIUR3yfj9F293Awl6KB93m1LOmfGSV7jAVgHsFG0z4+m8hrdU8XJkzDJL7G5y0OHF/MNiJECoVGoVAG2muckbr8bOY5OF6igXXT65qgu7qvuLMxRW00wxXEezXiy322SDAvdIlJRveKACTLIpLrXciJQKw3atekroBYd/gvBN3ZZ2xiTGdKdIkp3vm2V5DsNYgflfeK1lUM6EaKGMyJulI3TWQOeZ+99Yq8XC8E3blXsKIjz1hXeZ6kUnPWC+cdYTIT0J3M4IYo65xvawUrru7QL7mJMk+60R95CDq/I+Mm8O5sl9gSajSKzXZfzifqBH2SDbZqV3Z0ueMSEE9VxBy5XuNBd45C0Z9Haz5dZi9/B5huWEy5RgPbHLjRBM1sqxF02oONRc+Vzn0UhSN1A0kqGjCm67wU1xKPVrjRBK2jixH+XZA2db3iuuJr2HZZOJcU2AmoqAoLeiyjgs2jZK157uCZwf1P8e/M/mc1YU43wfeA7+2BHRY6yP85yg/RYQWdeUnn+x8LJvr6sa4LPwAAAABJRU5ErkJggg==" alt="u_{12}=\epsilon_0\left(\mathbf{E}_1\cdot\mathbf{E}_2+c^2\mathbf{B}_1\cdot\mathbf{B}_2\right)." title="u_{12}=\epsilon_0\left(\mathbf{E}_1\cdot\mathbf{E}_2+c^2\mathbf{B}_1\cdot\mathbf{B}_2\right)." class="math display" /></p>
+<p>Thus, overlapping waves produce cross terms in energy density and
+momentum flow. This constitutes a physical interaction at the level of
+observables.</p>
+<h2 data-number="5.3" id="polarization-written-purely-as-fields"><span class="header-section-number">5.3</span> Polarization written purely as
+fields</h2>
+<p>In macroscopic electrodynamics,</p>
+<p><img role="img" aria-label="\mathbf{D}=\epsilon_0\mathbf{E}+\mathbf{P}," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAARBAMAAADK9FThAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d75kiVHZEZom7qxAFwrK2AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABXUlEQVQoFYVSvUrDUBQ+EfLnDy2dOl7i4FgH95Tg5NJObkIeoaPokL6BPkJWN+cKkjdIJpca6epiQy2Ig8RzTm6SmybiV7j5fs7HyQ2FgbtxvEvowuDMc849NcHhY++ZnWAM2miuhhUPMjDiShHBYXO7kgz2vom1gDVYr9guTqrBKCGHmPlJrAWs9Y/6bD8UIQ3Hp8SJQV6EpBVgTZitWr0N8lCZBrCe7kkHmSWkX2+ztz55vG3yiOwqRSzJOwEYXmO0cQVJRFn7eXWqLwkwCTmUh54ARPshbrOFtMpaVs513K23XNiJFmENBP5AT1MnTemF0JGgmr0tFT/XPlhTbcxDGm5GdG47/KKoulvPh4OpUdT0OUWdNSOmF6ihh/W2uxn7jW3GG/B/8qWuMFvcvCd2RJGb+0oNnQildsFe1yHwSyqQ26RjKkmTDm8b+qOh/q41xnZFcd9d9189+wXoBXSAbDqqtQAAAABJRU5ErkJggg==" alt="\mathbf{D}=\epsilon_0\mathbf{E}+\mathbf{P}," title="\mathbf{D}=\epsilon_0\mathbf{E}+\mathbf{P}," class="math display" /></p>
+<p>with linear response</p>
+<p><img role="img" aria-label="\mathbf{P}=\epsilon_0\chi\,\mathbf{E}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAARBAMAAABTDI1UAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d74kQVKu7RCKZdmabKQ32AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABL0lEQVQoFYWSv0rDUBTGvwx6JX/aUMRBKF7i4KiDqyQEn0DQsQRHl7o4au5S0C1vUB/hjm521M1JnDT0CUIpKDjoOW2viX8SvyHnO9/53ZNwCTrhZDM+Qr06u3GwH8/maQQxTepRpAWcoUGxrZpR9BMGaCuGO+xqRFv9FZ+HjP63VQqD2lP9baN3eE29GPtwyKSFJ6klpW9XwewG7i5JA462gO45HFeixcAklJzyoXktn64CslYO6x05pWlhSyqk32h70LOVlQF7YgFIyL/RvoY3siLgYM0AljKOK76+ta2xNHIiYMPnnF/rPhjHtZSbL7be5hwy+nJ6k4D+gayk5q53caJsSp94QkAQfuhV/ZMyvaQb8ERh2qbaPQMe8dqEVGZC43650jfYdeD4uTL/BLepVgjzytLzAAAAAElFTkSuQmCC" alt="\mathbf{P}=\epsilon_0\chi\,\mathbf{E}." title="\mathbf{P}=\epsilon_0\chi\,\mathbf{E}." class="math display" /></p>
+<p>Maxwell’s equations do not specify the origin of <img role="img" aria-label="\mathbf{P}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAJ1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAilU6eAAAADHRSTlMAMs3d74kQVKu7RCJ8sX5oAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAPElEQVQIHWMQsjmk7BTGwMBQ48DAfiQBTDPoNEDoOQYofK4jG4D8E51KYPUHgJqAoOYAmMJFA82fAFQAAGHLFFahLCOcAAAAAElFTkSuQmCC" alt="\mathbf{P}" title="\mathbf{P}" class="math inline" />. Formally,
+<img role="img" aria-label="\mathbf{P}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAJ1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAilU6eAAAADHRSTlMAMs3d74kQVKu7RCJ8sX5oAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAPElEQVQIHWMQsjmk7BTGwMBQ48DAfiQBTDPoNEDoOQYofK4jG4D8E51KYPUHgJqAoOYAmMJFA82fAFQAAGHLFFahLCOcAAAAAElFTkSuQmCC" alt="\mathbf{P}" title="\mathbf{P}" class="math inline" /> is an
+additional electromagnetic field proportional to <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" />.</p>
+<p>Interpreted this way: - <img role="img" aria-label="\mathbf{P}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAJ1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAilU6eAAAADHRSTlMAMs3d74kQVKu7RCJ8sX5oAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAPElEQVQIHWMQsjmk7BTGwMBQ48DAfiQBTDPoNEDoOQYofK4jG4D8E51KYPUHgJqAoOYAmMJFA82fAFQAAGHLFFahLCOcAAAAAElFTkSuQmCC" alt="\mathbf{P}" title="\mathbf{P}" class="math inline" /> is a
+secondary electromagnetic field. - The relation <img role="img" aria-label="\mathbf{P}=\epsilon_0\chi\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAAARBAMAAACFqVcxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d74kQVKu7RCKZdmabKQ32AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGklEQVQoFWMQsv+k7BTGgAswKrsoqbgoMDDUOzCwf0nApYyB/T8Dw84PYGUM+g14lbF9gyibb4BPGSNDIzGmMTEUgpVxfdmAYhpv6AIgn/2RAAP3AqDbLoEk6390KoF9eqIDCFpBQuoMDLK1DNw8Cgx8QC8ofwIrA3oDFfA0MDBM4HvAwPib4QHIp4tA0vUYyvhb47gaGCcwMNiyA63+z8AEhFiU5W9g4D3A6MDAECQGVsbAIIGkDO42/g0MrAe4gcrkBaDKziIpA7kADHgeQE3b/wCijPc7AzBOga5ABXF1WQ1cQNEbExgYlf8rKf//jSqP4CkAfcrL/gEhgJ0lW8rAcI3hO3ZJFFH2DQwn2VBEsHKkGBiS7kFlAKtHUi5rh0sbAAAAAElFTkSuQmCC" alt="\mathbf{P}=\epsilon_0\chi\mathbf{E}" title="\mathbf{P}=\epsilon_0\chi\mathbf{E}" class="math inline" /> is a
+linear field–field coupling. - No ontological distinction between
+“matter” and “electromagnetic field” is required.</p>
+<h2 data-number="5.4" id="phase-delay-and-effective-propagation"><span class="header-section-number">5.4</span> Phase delay and effective
+propagation</h2>
+<p>In realistic linear response, proportionality is causal:</p>
+<p><img role="img" aria-label="\mathbf{P}(t)=\epsilon_0\int_{-\infty}^{t}\chi(t-t&#39;)\,\mathbf{E}(t&#39;)\,dt&#39;." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAAuCAMAAAAsoRS4AAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAMs3d74kQVKu7RCJ2Zpkun35eHt8Ojz6vv05uz8WTgJAAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAT6SURBVGgF5VkJc/IgEAXMfdVqrfop//9vfnsAAXKYdsyYqZlpDPB4+5Zjs6FCrHxlK/NvlL6sNypsXVnJuvTbZJedarepbC1VH/vPgxBNsxb/NnmPX6dvWOCl3Ka8tVTtv8XhW4g329onfcYBzZR4q7190LyMuvytVvnlutbu2TRv8rlpeSuJ+9D/VmLeNO1NHzetbyVxlzd7cZlh/HrLiHbUkKk899otfBE+wE03Zy6Ndg8/9eCgIR1fdvXWZvE55AHTcnoSxM0guRkQUu20VmqXqNScCBTOfta5x589fHOOtqRTb20W3YEUJwc0J4lSKoE79epJEOchmVOW2nz1czPV5priD/yQ301FtRkW8l9mlneTo7HVubtvbQqHUhLU3cvJNVmoS57cXjLhfCSRVuiho2E7xm2hNA0aj58oaUmZAgOX3/XXUmxgbaITSJEltTk5xm2RaZydnsTgXJVhbNCznoZqrdul3kHZjqimEJLmpuOPfs56aSAPrU0YASkpz6eTw26DxAL+PBKDE8IhibPEVdvTUJ11m2fbnH1JfvFW/a6Z0DRWfdNLU9PQ2hgXRB+QQttPCCeH3YZZxi8dj8TgPCRx4tb2aKjOuF1p2hfkbpUqldK+Zu/H9UDETN3w+pD9bGqat4pWUg0zGFnzScxzLwUrrBxyuzGLe5TEIuF8J88TEdIgFVAURQl+0lDhQoeLlgX8utjUFe5KCQE3RVtANnn0arnPpqa16EgvDmtkzRIHv1YKVlo5oBneQMbtURKLxN4FbW2axp6ZF4wp14bKRnyO7j3Yf+p4B0C0aUNKfjX40PBZIjt2ia2FMFOyUrBo5ZDmirWOkxhki7GwwGnxaZAqcFsyFUV8bNy53YKl8NJFCjsB95sLoAR4HNF2jeCFElkTVekuO5JOCnJbOawZeyvIPMhqgHPIBGkS2FRRc+R2xismtaHMbRGiDm4Zj18DCYIJgKb5cURLlaThjK0F/KbgpGDZynFTJQsxTsLIGjVKXPABDVI5CiwYYjjdzmg+rB0xsrfZ7RTcrh0MKeYjGiIkvx4H1rAtvpwUbLB2nOYO1i9XBjhbSR43pahE1By7rTiwSc6Aa04TYilc7mgdDmf7OhvRsG+tzRIOrY2agY8HFzGdHOt2o2FyxkgsEoYkUykEEo+mLjKTk/feNTTJeZNjNhjHqkhX2uZthnu76vsD5FFEgxdfYTqE1iJ6LlopWDKh03xH4NcErrgxEhtkqy7PZddmwqORJoP1zdV2V1NlORPRbC+IKNYIVR31xTZN/EJAM++X0NoEvK8elzNGMo7smQZPfocxwkEHeG+7Nzk2nh/laA2MJS5OvHxrXDNzn5IzJJlCTpPX9OnG7d2CyR4wfT746qTt05WccPrWBkxxxZScIckUMmb0ypWZCFi7lER6TYseLzZBGkdL+qrIVMNRrbc2Dvdqp+XEJNNIjy5+pGCGle4hRsyW70s/v5hluZEZZNQUFWflPqvx+edoz1K2Js959vNrTcsv5b7p00vtv8j4/v4iw681+/X0I/LX+rPM+lF/RMCqxcBat3wcFjX+ieLxJA7xoSmc6exS0bRZbT4//oSngRPJRVz5/yFwyoZXI2pIebJdiSlQ9ZucL+DfaOF6Pu8jaXSeICkFl6/IIiI5qxRPt9uAF+e5qBLY2e6zeYD5gxWyaeBMti7L7lcZ/joj8h/cXSkzlXwS/gAAAABJRU5ErkJggg==" alt="\mathbf{P}(t)=\epsilon_0\int_{-\infty}^{t}\chi(t-t&#39;)\,\mathbf{E}(t&#39;)\,dt&#39;." title="\mathbf{P}(t)=\epsilon_0\int_{-\infty}^{t}\chi(t-t&#39;)\,\mathbf{E}(t&#39;)\,dt&#39;." class="math display" /></p>
+<p>In frequency space,</p>
+<p><img role="img" aria-label="\mathbf{P}(\omega)=\epsilon_0\chi(\omega)\mathbf{E}(\omega)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ4AAAATBAMAAACThalOAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d74kQVKu7RCJ2ZpleV2e3AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACgUlEQVQ4EW1Tz2sTQRT+dtvsNtlkG4uIenFJpFdzEA9SMGjxoocgVKEHWfSqEv8AabwUBQ859eLB0EvjLfgD7EWDopGCEkXqSchFsaAQSrGFHOI3OzszmzbvMG/e+37kzUwWUHFLbrKqHpudtmwnWbEQEpo5t108f5WsmmQ6PZnHr1NxmyyrOF84OR9oIe5IbKkMdydEthFT78V5bNpQXbLcIbDeN0K3G4H0w6kabMXUG9VI5kAVZAk/558RQoLC70kJeqxUVWkO5ngEAmTRz8J9I8S1SBDP91iqHWRqcjduTbdkNxQs+tm4Cy1EMwLpl9lpoQyssd6C2CXj/aKo3K95eI1JIMPx/bpg0e8tkbIWEmUs7T0s8H1LiB58Buiz6T8QUeHOrsLqtOH5AXKYAMQ/xQoEyx0Wt1kY4TQr+gk9vABWHnn4wEVR6/gNpPGDHgN08Qw4xEtDT7A43+qIcDIUKulnBXDBF7oNnBFdHXsL3SaOsZwjzumrvDSnK1jR/dmWEU6EpMV+TonH8SrY3Hd/zgD4jMPkXTkC3ASHfIkchdH9AUcTwvj+ovMSn4JfcXrSz9wf/a7jBf1O5AEqavgZfQmx35+EcMRvFqnFR3OrIbw6xSb+qvne8JB2iIXmu41ZXltdnBfZXWgh1uEtg99vZNCBd7r97SyQoy4Rqe+bTTxl4yNp2SqeX85daAiWVRwWisMBtJCvZl3Syldqlw7VTmVbvG/W7XOqmuoZlhZiRYEia4LBFWx1KsAH7LLWEsPSQvNjQuj1xMr4JdO+1W1hywFeq7ZhaaEfKjDKa7LK5Ue6qjgO3PgkvzbRSrJiIb4orszeSBrFTNU6yIqFiKD/KJqlgWKiiGIAAAAASUVORK5CYII=" alt="\mathbf{P}(\omega)=\epsilon_0\chi(\omega)\mathbf{E}(\omega)." title="\mathbf{P}(\omega)=\epsilon_0\chi(\omega)\mathbf{E}(\omega)." class="math display" /></p>
+<p>The secondary field associated with <img role="img" aria-label="\mathbf{P}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAJ1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAilU6eAAAADHRSTlMAMs3d74kQVKu7RCJ8sX5oAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAPElEQVQIHWMQsjmk7BTGwMBQ48DAfiQBTDPoNEDoOQYofK4jG4D8E51KYPUHgJqAoOYAmMJFA82fAFQAAGHLFFahLCOcAAAAAElFTkSuQmCC" alt="\mathbf{P}" title="\mathbf{P}" class="math inline" /> is
+phase-delayed relative to the primary field. The total field is the
+superposition of the incident electromagnetic wave and the delayed
+secondary electromagnetic wave, producing a shifted phase evolution.</p>
+<h2 data-number="5.5" id="emergence-of-an-effective-refractive-index"><span class="header-section-number">5.5</span> Emergence of an effective
+refractive index</h2>
+<p>With</p>
+<p><img role="img" aria-label="\mathbf{D}=\epsilon(\omega)\mathbf{E},\qquad
+\epsilon(\omega)=\epsilon_0\left[1+\chi(\omega)\right]," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASEAAAATBAMAAAAt9qY6AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d75kiVHZEZom7qxAFwrK2AAAACXBIWXMAAA7EAAAOxAGVKw4bAAADAElEQVRIDYVWv2sUURD+9vR2L5vzEkMawR/HnWAhaGulQVOIhaYSUU8Of4Cg4tmmMSgSoightYHFRrSQIFiYNPkL9Cy0CdFFsRI0REmw0HPevpu9efveelPcm/fNNzPfvp3dPSDPKlM6UsojSLwvuRFJes8XieGKhkeOrNeOnu5RUm9b16tMwKuP1/aOV9OQ7QiyHVRI2w1DJrJ/ewzewSk7YYahSSDoANfXGHCskuwIJ4rmhh0RmSgUofDbJlcZKmhFlb8MOFZJdoSVoqt7uopiSZCJUlHwU7ISP4gYGmypM/LwjgF7Nch2mBC6a0NdRc8EwUiUitCxTrTc1IkxBtpKUQG3RKWMa5AzMb3NUWQkmooio05paXYrMNACisvAmFJ0xyDITZYsY3jwWm8tRcGTYfhmF0PRqQVKbKySJY/gPmALoJ57rwqskaL6Om3cliXTZahCq6pkoQVveoocS5FfrCI0u5iKIspKrUj5F4HtNDyYAE6qM5pLoxnHIst4AyjjOSGWIngbiMwuhiJzjoZWFjECtGh4KhFwWM9RQbbq+Ra5FwL+LEXz2EkIK6Ljq+njw6EAZhepaOCXLIMfTeAL6BKuIYy7cwTsMjjpxiKnEaCyAdzDKCGsiFx+1l7uznSRisqbqkxD3X01R0NNgCa7jXP4SttksoEz5DrMIss5IkWvcJmyHIrU+8noIhT5bxeMVsWIZjLG0vzdmQOAv6zuGkqb/kc4rBhlyJJzVp7RrI7wGd3MJipFN2Ik37UPsgr5i5NxqYVLx8NjVCWMvHqnVu9seCcyNL3NkA3O4NMX83hMUBvfPu2nQyFjRQ+X6TJFl+QbNxopitP8NsPlmD0aRbe5yMws8LPGQFdRKVij85ddkrvWYpq9vmHoBjvIVQQHmbO86QVy087Adx15BDW8MrGfoitc8gI79DrIMwfZpApFOhA0cb4CyESlKP+i9TdEJYfDugT95itSHxxlgqwB/rUU7QA+3ze79FOEpq7mc9H/rv3Ief8hRZfwfdLhHyLp6wrRVtSHAAAAAElFTkSuQmCC" alt="\mathbf{D}=\epsilon(\omega)\mathbf{E},\qquad
+\epsilon(\omega)=\epsilon_0\left[1+\chi(\omega)\right]," title="\mathbf{D}=\epsilon(\omega)\mathbf{E},\qquad
+\epsilon(\omega)=\epsilon_0\left[1+\chi(\omega)\right]," class="math display" /></p>
+<p>Maxwell’s equations yield the wave equation</p>
+<p><img role="img" aria-label="\nabla^2\mathbf{E}-\mu_0\epsilon(\omega)\partial_t^2\mathbf{E}=0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALEAAAAWBAMAAAB9HmCgAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRM273e/iDSFGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADBklEQVQ4EZ1US2gTURQ9k3S+Sc0gRQSVhKJgNxpaqXRjhiLozsGNBSnJQqxUxFlIFQJtEHVr6M7iYqAifqBGqwsJkYiIG0E33dps6qZY0mppsYvx3jczbRPSn2fx7u/ck5f73hsgQN/x0Nu9jY4XdiZLubbUzqwmxgH0N2VahGpJr7ZIb5/K4/H2BL8aSe3EknM+Q2EjP3do7fQzLdeEJ2Bi0M7/mC8vzLdkiWRbUJIL5Ezap0h+Rq0slD8slIJKg4ks9RCIdQ7I1CF9a6g2BMNh1EfOCpQU2hxEPeBwPawI+3TcZSv/4XUIimOyMrI2xy2xvrMYldNQaxiShLK8vJmvlvBaxCdNMgW8QI6VHdrGFogWw0IkzZ5aN1yFlVX+vxuIp3FNRFkL0B3J81KsXIpuqRw3/W4bBrWMPJqsJ70lVo7htF/x14SDKeFpi0BwNpm6UtrMoYKLLyKjdLr7AIM2q1WBGnQLz2pcIeXrbDcwZmLM5lBeBSb8fGZttkk5YdIMR3qBaaAd4PtGY0Qdo0Ciyl1Rr7LGFvfOEvjlvCJlU6QemrCEQ9MwmpSnEP2Oql7UiHEIuE0zpTPBHN7QWae5i/b8ku0GSJbEGclC1BWOmDNI2/jKKFLyKLSCYanVRH8X8nwhYpApPyP/pTsKmxhiznxZ1pF0kOEKzXI5fAJ861RLJINlGu1ppaDWsiYwCBSxHzp11Qy6Z+fxkVikDNwK6MIkXJzxY2m1JyiwspYLAmEWkb10sSDVEqRMJ2jhLgaoUJPqUOfoIAPlB+SszzlexBWKGRcsYcQbxM10ELAxVnBC5z1rRSBmo/PJjeF3gFTFJww6d94Thfes/GZyCKNKL6XD5jAZiOVn18qznhkyyEbe9gxMGBZxu/psJY0jP/VfLl3/IrSrx6DkaHgVr1zx6OJuQm+3i1EhQ+e9BWLiN0ukRJCskBW3hRd3wsTeLY+Xnlu33/k5FOjwHRr8f2OqofNgGN33nct6mNi7DTYbNPLbZujBFLSGz4Vf+89VzIYGvqv2fyhrwStRCgAJAAAAAElFTkSuQmCC" alt="\nabla^2\mathbf{E}-\mu_0\epsilon(\omega)\partial_t^2\mathbf{E}=0." title="\nabla^2\mathbf{E}-\mu_0\epsilon(\omega)\partial_t^2\mathbf{E}=0." class="math display" /></p>
+<p>Plane-wave solutions satisfy</p>
+<p><img role="img" aria-label="k^2=\mu_0\epsilon(\omega)\omega^2," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAAWBAMAAADultUCAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsQRO+Jq81mdlTdmSINXOHXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACAklEQVQ4EZWSP2jUUBzHv6+Jubxck7sbFOkU0d24FKQtvcHDgoMHTopDFG3pIESEFpwCHUrpEtAunTLc6JBJuLpUWhenoKBrJnVQaHG3/t7Le3c500L9wb3f9/d9n1/en3uAiOEzmc47jHEvbYTn7SKugrOY+//ROYFb4dmdRlrOOWNE4ux6QM68GM6IhvKNfASUeE/Uz0dmXQy0NdRC4StUO+1i5NZErB1bC4VvUX0LqXZruZloy8qUUvgxXfPJSaina3mqKK0AZiSVoXDziO3W6EYXV6TpLHcvACYt5vpAH3fI/aRwy+9cVPLrOsWaKFqF8Rsze8A2ME3XQBaLgSOkpC7TT4T9qDtXqsrYQ3MfPk9c2t8PoAMG5MA91kYbrgJb1yodWq7Azc2I+a21VbFEBhtGAhw0gRg3FXX3kq/5cd7GdObkrL9Y0CMBEnwDD+icHF6IV4p7jEPaiozxOf9g8cZs7vVbBUA3FOELFgjpN+CGo6e0hfe0h8kwj/GUizVd2qIdYPn2m8EG/Xm+9eTlxyVanPQLHGAvm+wDrM13C6/NyPSxOgycDD8f8IddgCfeh3TnUNLs/r9Nsrblt2JOK9LXI81MBVpRrm1UzonjATNvZYGrZQK+ayHy6Z29KoJfuvqshchyW1VDarWY8sXbE8HbZS7H0zurBOmirL1J+y/dkWdeC8h7EQAAAABJRU5ErkJggg==" alt="k^2=\mu_0\epsilon(\omega)\omega^2," title="k^2=\mu_0\epsilon(\omega)\omega^2," class="math display" /></p>
+<p>so the phase velocity is</p>
+<p><img role="img" aria-label="v_p(\omega)=\frac{1}{\sqrt{\mu_0\epsilon(\omega)}}=\frac{c_0}{n(\omega)},\qquad
+n(\omega)=\sqrt{1+\chi(\omega)}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAY0AAAAtBAMAAACg4iq4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO8izUR2iatm3bsfPVmmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFj0lEQVRoBe1YW2gcVRj+5rKTvSVZwapFMEv6lBB0BZ8s1tEokqJNQF8ExQEfpA3atRQEBVkL0oe+xAtYbMVtQSxNH7YgYtsHV4i0Qh72QaUFH0aQ4mMqIbYg6H/mzJzLzGx2k+4lD/4P5/zX8///mTkz3wywZcq+veWQnRjgfHRrJ5a1jZr+72Mbm9bHkO6ux8yk18caerF0V30UmoX67qlepOvbGl318RlM1y82+1ZEDxbuqo9/gGzD8HuQbuLfTrS2vSzd9OGsA7mKsbC9DFrUN5rUQ6GbPgzao/0Vpwd9OJUtlj4X+i91irvdyYHZf0XxYJfXI0ycS1+24KXr7bDORFgj9J9Nj4u09vLfZyJ+k/nQ5Eq2kfU38RCmMLFdERqVWVQFhS+EfDwsVwsNZjNk7nqqdvW8EolnUhM+ChwvpVhORrpY2EikR1Vwd8nsnu5mAZFYMGqU7ePgRNiHqxpElbEw2dZZ1b3/vEicL6cky1MP42Ef1xS7vGtiYTe5kw2cUNwHwIrE2UZKtgOkS+tjzOPOLr2mGGfswbOBagE4RvI+IMP0g6CpldWLgExMXILOkUbvw7xaglOjIrNlwPKDBYCnM6WRGvmiBSzRdD+FMXHvFaLLjOuOLOZ/pd6dM/dyPngFD6uJ10gfX8cnnd6HY1VRxCi9Z8lkVAEWhtoEch7NThVGCSVYdD1ckgdAZrGFU2ril/SkD5KYK9Og9wFjA028AdwDA6gAPGyZmiOixkzQo+p5YNRlCkGd0A3ZhS9jxpMBml0KVh2X1MQ/SxNx5pMeEDyMgj7oQr0TXvAbVCndN2Wy2k2Ah13nfdgtmp06VgZ4PjI1bEBJvKD1YWdor1eZKnY98PW9wAugi3IIRRfgYeu4z/5ktU5SAVadvR2Dc76X3e79PR84DLNaUxKzgpTzkVtnN0hKH+x9QkU28DhmyczCgHU0ixn3Io4if+7SjeMu8Fag7+mwSMsm6SptXFMmdnzdxb4DDgjGa9wQvT8ON+mGc3H+xBcnj9LJ9sGWn6b30EP4Ex/D+WXpx+sUEVxLHqmORvK+DzVrqpvg5ziXY9OuJhf08TSMs65MnEAxT/Djsf/7d+kCEEV9nPKDB8CbLxdfrYH1ussjK9FPdOYXOUvjH4LTmIKriR2FBvfgOK7c3l0kHnNjThO1KU0T9pEzaeOccHlACfuuWJei9NAWweu62BY3h246/Cvrwaok6hANRdYR34/YYH6GS5/iL2LEbithv1Hf4nvFcrl7fPxWVxRCke+3bmNS8MSMGHpQtiWR+LG4i3mnHleRbHrYZ0NuqwyzW8z9WBjzQzjHpvhlaoebo7CZiMmXKXckpM1h4mIpYXzNTaiAB4DnTnNUwqxKWLbCFA4biLxgTAxWLE018hAbHyn4fJNPdojjdKMmhYmj/Irtc4VPsB7XKGEHxL2WcJYKBjwVMpuRwPZbo27gnxYwUOGMni2Om6U1Ff5J85A52wcKNfwelJE7n8DNsrxO8E96DoPL1wjneDZBBaIjBCZjuDnQ88HaFP4pjsNgxyjphzBboJ+2VgNJ3CyLymwK/6TfoDmDyib0ACzDqoB+2o5fvpDEzbKqNPgnrcPj9mxQbvaYPYLRMvtpO++l4GZZXwf4Jx0HzLkvBmAM9LEw/9Qc/SQcpz4SuFkW1Qn+Sc8Bc1+6AcrI3sJXxTz9tLWaMdycVo+APQI/pXkNVDe/FGD5/HuTs9eCn+gXZlz6cJa4Oa0aUb5oKM1roDqrFRyPkTJljX7aSrglCtZrag//dL8BSsZtc4nSsWNBBz783BFYpt1+t4d/bJmh0Pvs7UGvD0bRT1vxOSJxc2AXQwjgFBwnTMNiHgmA57SWPlvmooKbNftOFDIcjuileVzcSfutF5iUcvWkbmdp/gO9PKzLKFsxmAAAAABJRU5ErkJggg==" alt="v_p(\omega)=\frac{1}{\sqrt{\mu_0\epsilon(\omega)}}=\frac{c_0}{n(\omega)},\qquad
+n(\omega)=\sqrt{1+\chi(\omega)}." title="v_p(\omega)=\frac{1}{\sqrt{\mu_0\epsilon(\omega)}}=\frac{c_0}{n(\omega)},\qquad
+n(\omega)=\sqrt{1+\chi(\omega)}." class="math display" /></p>
+<p>The reduction in propagation speed follows directly from interference
+with a phase-delayed secondary electromagnetic field.</p>
+<h2 data-number="5.6" id="two-wave-interaction"><span class="header-section-number">5.6</span> Two-wave interaction</h2>
+<p>Let</p>
+<p><img role="img" aria-label="\mathbf{E}=\mathbf{E}_1+\mathbf{E}_2." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGkAAAAPBAMAAAAVAfxOAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZiWYc3XEcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABE0lEQVQoFXWROw6CQBCGx8KNT0KMB0A7Owt7EmNtbGyF1s4bSGKsfXQWJtxAe+MB6DiAhyBeAGdnAGcRl2SZ+fb/dtkAvcl0OJuCHBUIoAS9BNRWSgAVqAwxAofA0EzU4DUTYmc37bIlkHWnRTOHnVP/sQT6WgJ6ScsxTtJXkKiwJPTeLlvRBcdVb8Bov+HNcotyqxdDL2k7XBUzo2WGc0vnVNiMKabvhY8cjBTB6HIe0RcQHDgWfwF2UDtKSf8vRGwBFGdRrhtTVEc6IZbiXoQqLMztgsK6LajMJ73RbVFhYe4EsA6g576Hburngn5nyLQy2LJ96BtpaWKtxgyye3HzgJCLf/Nz7tNSI/gmVJrG2H0As3lpsG1/Cj8AAAAASUVORK5CYII=" alt="\mathbf{E}=\mathbf{E}_1+\mathbf{E}_2." title="\mathbf{E}=\mathbf{E}_1+\mathbf{E}_2." class="math display" /></p>
+<p>By linearity,</p>
+<p><img role="img" aria-label="\mathbf{P}=\epsilon_0\chi(\mathbf{E}_1+\mathbf{E}_2)
+          =\epsilon_0\chi\mathbf{E}_1+\epsilon_0\chi\mathbf{E}_2." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARwAAAATBAMAAACw+6+yAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d74kQVKu7RCKZdmabKQ32AAAACXBIWXMAAA7EAAAOxAGVKw4bAAADW0lEQVRIDa1VTWgTQRT+NjW7bTabhiCiQnGbCHoRexBv0lCKF0GKUA8iZdGD4KXxIB7EJgqVesvJa4Mg1NsiHlSUBg8SD0oUtCKiQVDxIrFUWygY38zubGe6k0bBB5t5P9/73rezs1mgl5nNXginF+Af6rnR5cLYyS0a+pE7NJYfH9sEMQrj+b3jLsuadfrpYtpeBSsRsXy5CGvFUxBK8I4gbdjzSpICqwM8aPPszOaaFGt7pbpCRHmSg4MVBaAELpeDaU9kzcBhcsxf3E+IkmYlOfFeBScRUZ7JmR9RAHJgtbicbH9WZDM17hGLgavcTZZELb6SnHivApOIKN9jdwZ8Lse1NHISuMCJUxWFXwlITrxXQZAcQUR5kpNaoZmSOZM1iqxPWdi1beSV245LS2gbu/NKpIrCCdbXp9g6Mww81PciQAQTSE5ERLPWbuT5m9WYI5tlRPuAoSuw0y4y6KO4vDzqAueqrAZEcgrLpPlznVJtutKsfW6CvEQJxlIT/hOgpe8NEcEEq7NBxG6dGBRLV4BqpgVjnejuUqncTrnAJbqYRXJwC3gMdgNHeUH8NIABfAf2+JkuvQLBJ9DuREQ6OYOzU6mKQXtxxAJyNIQ9f7i2y+Y15q7t53vIH3kih2+UPMwqka1NthawC+hrlrr0CgSfIBPp5Ez7cOpGETixAzhLU9gGGpVAjrw7wE5gkgCE3TBzHXiP7UBy2NP3Rgg+geRERJKcBnv2bOsHfSTrdpF2OwsER5mORlMn5zlMtjOElc4OyTmNe3QHPyjNbiXWKxB8ApcTEklyqDewdCvcncUWnUsvgHwsaeQ4q2D/R3Y17AyWF+Hu2L8pZnJivQIBNoHJCYjs66BvlkpGFFMz5yspyr6lyykxSH6046tyjEInX+is46VNj49IJUt+/bKAO9R6g46erhcCwSZIRMYxiUVxXRrhWHRndkXk7ZHAC9+sIEjV6Hs+4AmMWBPszWqWRYh4L0fwCQGIE0X4zc7QReANVil9U5RuH/e5a3oiQ+ti5ydwX0oErrE0AccbLIlCvJchwgkcxIkEXLdaPp7R5/KRrqbmnqphGF1GuuppKyIZThDh1utu4MwHIBXdYjd4JqurGDWYB1q6SpQLJ0TxXzl+LxQd5v9lfwDEuiVBZf2fQAAAAABJRU5ErkJggg==" alt="\mathbf{P}=\epsilon_0\chi(\mathbf{E}_1+\mathbf{E}_2)
+          =\epsilon_0\chi\mathbf{E}_1+\epsilon_0\chi\mathbf{E}_2." title="\mathbf{P}=\epsilon_0\chi(\mathbf{E}_1+\mathbf{E}_2)
+          =\epsilon_0\chi\mathbf{E}_1+\epsilon_0\chi\mathbf{E}_2." class="math display" /></p>
+<p>Each wave generates a secondary electromagnetic field, and both
+contribute to the total response. Each wave therefore propagates in an
+environment determined by the combined electromagnetic
+configuration.</p>
+<h2 data-number="5.7" id="local-effective-light-speed"><span class="header-section-number">5.7</span> Local effective light
+speed</h2>
+<p>The local electromagnetic energy density is</p>
+<p><img role="img" aria-label="u(\mathbf{x})=\frac{\epsilon_0}{2}\left(\langle\mathbf{E}^2\rangle+c^2\langle\mathbf{B}^2\rangle\right)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAAAhBAMAAABTr5iBAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAD/UlEQVRIDb1VTYgcRRT+uqd3ZrqdmQxIBA+6s/EQhUUHEjYgOQyCeggmezAgIroBWdGDjvESL2HIIcSDsrKgrngYEKMeZFcMIiJso7kICot40VMf/DlsCKPuRmKi7fdeVc/U/OyO4CQPuuq9731dX9frV93AGHv5rTGEiaUrtYktNW6hOcA72RzHmkj+ykpcxjcTWWrMIsFfwFncMcTyv64PYQRml110B5JLcX1KvYS9BpnpJd7Hs72g60XN/FI3ACwpdKDd3MPAMt5TRtFZ5k58O+IuLyltOLAleQMFeNhQCg5T3fDLi9muKgTy3fwKcl2/54R8nB4HKxCZgeOyYOjBwBMIehavavJNjue9zeOXfz6eILiAXFvhvuFIQznp5c1PmSXpfqaP9lEKLRvO9sEaVGwHzjM6BT8FPuogX4XHHQzaCcPZBqZ/4/6quJ1AvubSpDhqXScD5FzpmvoaEpUKtvBiBCSGE/SohWpbYJ9S+b8hJFnPX+gx2KVZENYyb3DONwF2Bnfl4USxxbd6ylBKrS71HJrKoVTuGoQk5Yo6XQKdH7OguJB5g/NUi4/aFqkKZlbTq8BDhtKTitJ0STmUuuUqhBQskMRainl3wa9jHoX1P4vbP4HeDranDZRZjRSnLaPcUCeTmt1HhuFsI3qhrkl8z+kL4z4wVWVp1ki5HlAJstncotiSIWTjagPSH366+Y+F/KY6Viofm/OrnANzn1QNaz+nX43bmsZUNUoYrN/b5vgor57tSY0Rmea1obt6LcszpFmp0/AbjJTDApZZYTEWAj+oB7yBVXgJgwd/F+SCDKNMpBKVqmhfmRBzi8//sihfqeu8xBJyKOWlZlvSgpnUZ/zGBGsEytcaHOd5jTQp4OsqBdymjKiuk9lVtGXvEg6lgjRW4F2OtoDYwjO+Chy+LyEsUiPf1bE2wPvkCOMQLyCs6mSkvA7QkFg4zq6onLUFOsFjH4ANES6Ff/AMbAh9lEmzs/AiVdBSZ2W07+pzlNpyn3AodfSKBFpPbfboaeCru++JcRLh+kaYXkIpVsKIodxkB8TeJr9vKX8ttP2GZaU+3HdRY8t5MtZIulSPsPe4YeO8nWHPShZyB8vfmUA/L3175nOKWSkTcOzj5BvcZB/SVehqZne+jWOx8ec5PZfBnAO7QtBwQLouB48QyNdcgm0m4KCLiv8xcmsGe4fTK8bVsVBzAsd1OXwzwBEnSfeMCUvVfhh4AmHHYHzfWScoMOInMIwnhAZ+jZGyYCcT2LGcGKfY5Bt2Mq7vwH0ctHmY6252V3812+nMrrQdk+GOmaHEpSHkRgFhfKNWHlqXP4WbZMUa4pskdeu5M/+9g/7fMz2VphOS+hfazvYIpTQSXwAAAABJRU5ErkJggg==" alt="u(\mathbf{x})=\frac{\epsilon_0}{2}\left(\langle\mathbf{E}^2\rangle+c^2\langle\mathbf{B}^2\rangle\right)." title="u(\mathbf{x})=\frac{\epsilon_0}{2}\left(\langle\mathbf{E}^2\rangle+c^2\langle\mathbf{B}^2\rangle\right)." class="math display" /></p>
+<p>The effective refractive index is</p>
+<p><img role="img" aria-label="n(\mathbf{x})=\sqrt{1+\chi(\mathbf{x})}," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJUAAAAXBAMAAADw9BCvAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACbElEQVQ4EY1US2gTQRj+srvZzWubQAUv0mwRRBBxRfTiZdCTD7SXIghKrj2oeykUEVkPnu3BgwfRHASPzcF7AtpjpR7sRaSLjwqeUitaHyT+szOzM1kLyQ/5v8f8+2X6Jw0wUbnDcdWfKIcPFdnEo2MH74ydmHzgyuSjgBOIaQm5R725nKHkGUEspVMsSnVxxFWi1lIsh/I9nJ7pH5aiEJqu4ueB0pYSBlqxFNOGiUSJjCiD4wa8Qz+E4Zj+lBIZIUNf5406NtBpk5BZdmwcZNfxG9qtRIrfV8RAPyaxV9ZzNVRKF1c4ePZkC2XgyDB48IRx9l9VuDOaNU3rW8IyrO630q9PIEa1tBAW2qgSWwkvMaDOzdV5qmucufwNZzkbzYpeAyE6QGXHoSj0+UjjNKw53CVW3f5Cvcyo6Trwk3jC9WgWbkU2vIT87kxE/SG9gDUUA9wk4jxtUK8yarrYY8AOuU6zVuevfxYXrgYNuAn557b56Qve8Aj1CBc4W+FGfl/HGMQHnruXv8XgdOiByh9GfZle8PqYKaUJteMD0mmW3hcuBzjB5/J/o8uzecLLZiIZ7ARrNqYY8B6bPeA2HZhV64h1YVe4dizQ2yGkrfvr/l+6URuLDFaIG/tgNfDuNzYHobyEmOfd3S0EBM7bwQYBLS9OAdZVwln43bY//MhXupBulUz9Q/BMjOr+Nf12ZVplBU2yFpVdYfSNUEJF6FB10jyqWIoOS8FidXqWR6TFQ7Ms9cNZY+JQ9/J3zTXbj1qbwetJ5xX9S2eHJZl6KnMUsdYVM9CN4XwIgXvCs1tmFiLhShBifPfEiIB/ZtOdQ1vuyJMAAAAASUVORK5CYII=" alt="n(\mathbf{x})=\sqrt{1+\chi(\mathbf{x})}," title="n(\mathbf{x})=\sqrt{1+\chi(\mathbf{x})}," class="math display" /></p>
+<p>and the local propagation speed is</p>
+<p><img role="img" aria-label="c_{\text{local}}(\mathbf{x})=\frac{c_0}{n(\mathbf{x})}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH8AAAAmCAMAAADa4rQeAAAAM1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxgEwMAAAAEHRSTlMAVGYiq4l2zRAy3USZ7067Gs3LcwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAltJREFUWAm9VwmSgyAQZLgEj5X/v3Z7ULIe6CpopiopHY6euxMh3heSROp9mCMELYXQ5mj1db1tAEFOeEv2dbAMQID7LKMQcn6cFN/5VsFFoE4L4WHDt8WHiOhsD/zh2+jAa7n0pTLAV+X4bl0767dTr5Qhkk5U+o/sLcXBm3vC+e+K82+7DRrdLmW0YXn9cw+vZa9Zr+/e0P/FQyjjraEdwnuKcT++OZ8Pyf/8EPvGtiFY0YWhiROlvJc2Zk/84NtticVtk7qdjoyYpW5CF2KaK1jo9UdKEpz4oc/iC1arVGxtoCalYpjm6saZ+TVckLR17qQTfJ/w3RA+Zdee4eetymkTP0RHUQk82byRiKQlNok/bo4/SCx8YB/Kf+IHBvLMUX2EQ5gBCowYloTVSwopFklXm/+ZHxjIsPMhjmoOlfNwNuLPNWcQFROm0avuzNID9lAaOZz5YYHPMBAtXcK3nHXTBmCaEBqumFuzdDMrEnv4IRUzLpzjj7nC5eaUhJ+DizUg1OYCbB9vlN8V9vANgkFWGtxLBgPXaSLb/7A6g5axCNsOJJXM3/Je87eWe1Jbvu1vuP8Ee3Sfvo/mSZ+z8kD3CHssKgUw67cMLjLppNTRzNipb7FHBpvt6/yALqHYpKfskT9fqyUhGdVy39xnj1p0Pt/zENFxmqdif4E9ji0dmE4D18mb7HGIr/jnATWCrUhMkWWPwxvqFiQHHTngUV3LHiWWWAb2Bv97mcjxVcEeJfjLM5lZfYc9lleVPe/QMhaV3XztVBV7XIM431XDHuc3X1xd88Xi7RcbrxDx5AV0hwAAAABJRU5ErkJggg==" alt="c_{\text{local}}(\mathbf{x})=\frac{c_0}{n(\mathbf{x})}." title="c_{\text{local}}(\mathbf{x})=\frac{c_0}{n(\mathbf{x})}." class="math display" /></p>
+<h2 data-number="5.8" id="consequence"><span class="header-section-number">5.8</span> Consequence</h2>
+<p>Different regions of the universe, characterized by different
+electromagnetic field configurations and energy densities, exhibit
+different effective propagation speeds. Maxwell’s equations remain
+unchanged. The result follows solely from superposition, linear
+response, and a field-only interpretation of polarization.</p>
+<h1 data-number="6" id="references"><span class="header-section-number">6</span> References</h1>
+<ol type="1">
+<li>Jackson, J. D., <em>Classical Electrodynamics</em>, 3rd ed., Wiley
+(1999).</li>
+</ol>
+</body>
+</html>
