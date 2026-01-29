@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Maria Hart" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="dcterms.date" content="2026-01-28" />
+  <meta name="keywords" content="quantum mechanics, double-slit
+experiment, which-way detection, determinism, propagator, path
+integral, phase evolution" />
+  <title>A Deterministic Demystification of the Which-Way Quantum Double-Slit Experiment</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">A Deterministic Demystification of the Which-Way
+Quantum Double-Slit Experiment</h1>
+<p class="subtitle">From Unitary Propagation to Interference
+Suppression</p>
+<p class="author">Maria Hart</p>
+<p class="author">An M. Rodriguez</p>
+<p class="date">2026-01-28</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> Which-way detection alters
+double-slit interference deterministically through interaction-induced
+phase evolution, without collapse, observers, or stochastic
+dynamics.</p>
+<p><strong>Abstract.</strong> We present a first-principles,
+deterministic account of the quantum double-slit experiment with
+which-way detectors. Detectors are modeled as physical circuits
+possessing energetic barriers and therefore necessarily introduce
+localized interaction potentials. These interactions modify the action
+of electron paths and rotate the relative phase of each path. The
+continuous transition from interference to its suppression follows
+solely from unitary propagation. All probabilistic outcomes arise only
+from the quadratic mapping of the propagated state after
+propagation.</p>
+<p><strong>Keywords.</strong> quantum mechanics, double-slit experiment,
+which-way detection, determinism, propagator, path integral, phase
+evolution</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#determinism-in-quantum-dynamics">Determinism in Quantum Dynamics</a>
+</li>
+<li><a href="#the-double-slit-without-detectors">The Double-Slit **Without Detectors**</a>
+</li>
+<li><a href="#modeling-the-detector-as-a-circuit">Modeling the Detector as a Circuit</a>
+</li>
+<li><a href="#the-double-slit-with-detectors">The Double-Slit **With** Detectors</a>
+</li>
+<li><a href="#phase-evolution-induced-by-the-detector">Phase Evolution Induced by the Detector</a>
+</li>
+<li><a href="#continuous-suppression-of-interference">Continuous Suppression of Interference</a>
+</li>
+<li><a href="#no-measurement-postulate-required">No Measurement Postulate Required</a>
+</li>
+<li><a href="#conclusion">Conclusion</a>
+</li>
+<li><a href="#references">References</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="determinism-in-quantum-dynamics"><span class="header-section-number">1</span> Determinism in Quantum
+Dynamics</h1>
+<p>Quantum mechanics is probabilistic only at the level of outcome
+statistics. The dynamical evolution of the quantum state, as governed by
+the Schrödinger equation, is deterministic. This statement is
+independent of interpretational preferences and concerns only the
+propagation of the quantum state.</p>
+<p>Determinism of <em>evolution</em> is not a question.</p>
+<p>The <em>evolution</em> of a quantum state <img role="img" aria-label="\psi(q,t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVBBmMpnvIt1Edomru8322y8xAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIUlEQVQYGU2PPU/CUBSGH0rlAqGCEmLidDFhcWqiCSuTq/wEnBxc+AEYGVzYcNHFoToaNXE3yk9QFxOnqqMLgwlx872lFU9yPt73uSc9hTQ2s8H1KBU19Uk6J601F55AebwAG+TCROUsLC983iBOZF61/g98w90feF0Avwfn4DdoevtIcNXuqpYevkIK0Cx2VhkxhKBWeRIg0JerMD4i5NLEcEMQyafah4KFe4HIj2GPakc+p8qihZF+I/SGmBm7ztdLbShnJat7e/hTbp3Pp1468JynDR94PXPAwMJxGQ4FWtd1qQtorPywo4vW12BLgJwrA6WZQs0JeHHlzJXAQj7OgJnI0rUK04VKd74NS9Z58+0TzON7Bradn4bJBtf78AstoDAa2N2ymwAAAABJRU5ErkJggg==" alt="\psi(q,t)" title="\psi(q,t)" class="math inline" /> is governed
+deterministically by the Schrödinger equation</p>
+<p><img role="img" aria-label="i\hbar \frac{\partial \psi}{\partial t}
+=
+\left(
+-\frac{\hbar^2}{2m}\nabla^2 + \sum_{i} V_i(q,t)
+\right)\psi" style="vertical-align:middle" src="data:image/png;base64,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" alt="i\hbar \frac{\partial \psi}{\partial t}
+=
+\left(
+-\frac{\hbar^2}{2m}\nabla^2 + \sum_{i} V_i(q,t)
+\right)\psi" title="i\hbar \frac{\partial \psi}{\partial t}
+=
+\left(
+-\frac{\hbar^2}{2m}\nabla^2 + \sum_{i} V_i(q,t)
+\right)\psi" class="math display" /></p>
+<p>This evolution is fully determined by the Hamiltonian —comprising the
+kinetic term and the interaction potentials <img role="img" aria-label="V_i(q,t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAATBAMAAADPIygvAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABL0lEQVQoFU2Qvy8EcRDFP7vO/T57jUJFQaJzhZJaNGxBIgokCoVE/AkbiVAoLlEobSKhwa1Co6HXnE6i2Yb6CpTizX5vk53k5c17b3ZndiGvajvvjE14c/MwOQMjxYQzU3uC2RMmhnVKI1S7LWwIqZDXm5OXMfUEN5ZH37CvvtelLGrFuQ+lQziXDEKeRBXBG7+1vHbwFWa68qKzH/HlfbBoES3dEBj3PZP3eqiP9quCWG+JoDm1bHJFKkH7VReCH2l20Ga0w5EOiksDS9gVbHfjNyKctXYVL5UBn9Uki0o/UE8ZizjhZoerCKa1/U4j1RTKIV5C4/W5y5Kue9DXrCuy8o+pd8Q9ITED3h3R3HT9lrSLsslhiv2IBV3ldDPKfXEt4fpPC521VkggLiqJfwc4PJZelWtbAAAAAElFTkSuQmCC" alt="V_i(q,t)" title="V_i(q,t)" class="math inline" />— together with
+the quantum state <img role="img" aria-label="\psi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAARBAMAAAAbE1CRAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAVBBmMpnvIt1Edomru21jGj4AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABbSURBVAgdY2AAAgEQwcAEoRgVQBwGZjAJplhEGRSZ0hkUORyEGDoZJtQxGDAsYmDYA6QWMDB0ArUZMDA851QA6bjIzGAOpFTXCCsAKQZGEMHAMB1CAZWBAMgaACWECiKotOLyAAAAAElFTkSuQmCC" alt="\psi" title="\psi" class="math inline" />. No other consideration
+is necessary at the level of propagation to calculate the probabilities
+at the screen.</p>
+<p>In the present context, the Hamiltonian is not an independent or
+abstract object. It is a compact representation of the interaction
+structure of the system. All terms in the Hamiltonian arise from
+physical interactions between the electron and its environment
+(including the detectors as part of the environment).</p>
+<p>In the absence of detectors, the Hamiltonian reduces to free
+propagation or to interaction potentials common to all paths, which do
+not affect relative phases.</p>
+<p>When detectors are present, additional slit-dependent interaction
+potentials are introduced, modifying the Hamiltonian accordingly.</p>
+<h2 data-number="1.1" id="the-all-paths-integral-and-the-propagator"><span class="header-section-number">1.1</span> The all-paths integral and
+<em>the propagator</em></h2>
+<p>An equivalent formulation is provided by <em>the propagator</em>. The
+wavefunction at a spacetime point <img role="img" aria-label="(x,T)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAATBAMAAAD7WukzAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA/ElEQVQYGV3PvUoDQRDA8f+Zy8XLB9kuhQgH+gD6BoKgnQoB600pWFxnoY1vcI1go42FrYKdWAp2aik2VoIKgSAods7MXlhx2ZuZ/c2wx0JS8G8ZNCJmZ+Pr8fPLvMpi5EbFDVmRlUJbkQckX+QrStaqOyOyCWnFK8xWcdrRuyCBVWiLrj2tP4Zm80GzWAe6/q68Ctz3mvtwBDPcuzLwpl3ZdtzqeSEgvFvRccxpsT3loRVyt+w0n1CExveUm4791mWrypdF0h/jY/mf53RnY5fuudQfn2/qe5Av2YA8t86SDutPJbJNnqjJ8hY19JyE1Gv5lw/sbA+zqg4Cv493KtcYietOAAAAAElFTkSuQmCC" alt="(x,T)" title="(x,T)" class="math inline" /> is obtained by the
+action of the propagator on the initial state,</p>
+<p><img role="img" aria-label="\psi(x,T)
+=
+\int dx_0\; K(x,T;x_0,0)\,\psi(x_0,0)," style="vertical-align:middle" src="data:image/png;base64,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" alt="\psi(x,T)
+=
+\int dx_0\; K(x,T;x_0,0)\,\psi(x_0,0)," title="\psi(x,T)
+=
+\int dx_0\; K(x,T;x_0,0)\,\psi(x_0,0)," class="math display" /></p>
+<p>where the propagator, <img role="img" aria-label="K" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAANBAMAAABSlfMXAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZVHa7MmYQq+9EIs18fhEmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAYklEQVQIHWNgYBD67MDgr8rAwMCWwMDgCqQZ+AMYWApAjPoChk4QzRDPMANMMyxj3w5hbD2zGczg/XxBHszg+MBwvwHE4nrAwPYAxOAWYGD5DmLcP8DAAFLNmL+GgfG/AQMAOMAVCT0x4n0AAAAASUVORK5CYII=" alt="K" title="K" class="math inline" />, is given by the path integral</p>
+<p><img role="img" aria-label="K(x,T;x_0,0)
+=
+\int_{q(0)=x_0}^{q(T)=x}\mathcal Dq\;
+\exp\!\left(\frac{i}{\hbar}S[q]\right)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT8AAAAyCAMAAAAdkSzzAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAid2ZVHa7MmYQq+9EIs0un35eHt8Ojz6vv05uz/wkxk4AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAhrSURBVGgF7RuJcuMqDGywsY2z3d59Xf7/N58OTh+J3ThpZ2c1nQ0GIYEQkhCsEP/gb5WAFuIkTdMYXQkh/9ZZ3mxeuhPWCtEYEl4H0vwHOyTQ1UKA6MQwCqHgt+52dN6LavatztjvZXAf/F8Pvx+Bk1RGCoNCE2Ic6AdkiMKMYFVty5rY9IWCgrXaBbbZhX4n5Kfnl1cQV9MKLYUEvQMwYaRjLTrpoeuM6LU9yiba0+4Jmp+ogQ+v4vFVtOAtaiUa3q993FlBkDhXaDuxfHfPfN6hqzLTYIH7FuiL7bClx81xXtwb8jCwmWBGXn5V6/l25Yp3MM9s2tcMDj1UhBFc1hbo0C7/LHh0NB4lyejVNL6O66Chldn+1Uo1Qh0zA7VR4ybCkuV6Tlq/4/P9g7nWqoexKfQfph+M1zLvTxjFGivVRk25NJUqV79LyKm9c2FnpLrvLQ2/A3+NRm+yvpPPgHr1r4oaDqTaHZ74pyngL/dfEAZ4YFDAYn1bDmcCxnG/p8yLd0oMBddzbDp3kP09x2RH26d78thqoC0Vdi7WQsByGxhdZkWtGHNtvMDxFEODC4j3aX4PkfJ92HkusvQeckckjcfyHwTP3n3cd0hVKbDt2xeORj/Kgzy51/tKjrh1rrCrEMvs8OpsZuajPjbXsdFKPDo8+t4bVOkEJJy7F4ZQp9OG6ZO/aXxMICsHBybweK6iya6ECmropawqKesq0VjgNqnCRMoGeOXTxwbMGYppBufc0BSqNMNarJCl0W2lSk7VSi3NiPIsBJI+6mAAGz5bKlYVvaLCPXoqshcecXFEsdJqI4nStjzJnx2eL/LAgu3t6LRodeXyI3KBs/rRrKcOJC6HHXAKSWTFhwlDBvYAIeBaIUkhBNuLLYfEFsnwIX+FIPJM4J5TeU8JE1wtW7Ge57Gnd1WIJu9peduQihVI6aP1DoR/Q7i1pi6k2WwvbBYz5TzzMu0mTYOglczbFspv7ovuF1dd+SBu2LRSOfdh1RLVbAipPYkM+qaP0TsfDXqYAtRmRThkGHjLJxuRj6Us09pYMi82sSxxsq9PF09vWe3GovQbqSmt2YbebsldUD/vHEgYxfjTR+d7941oU+DjxwAZ3tGaadb85J1BG9I3y2i4pZBzy+5tw7Qe0ultw7QnKL3Xuxp/tTaQa01gDM7CNGAdx6GStnEWaryvWZefcicdznIsMk84yU94ezFoa4fIkp0KnDdbSIxVE18SwqWxZx1cQQPD6+VH6xfsrKj7CJON8yee3tLMN5dCPNDAJNBugEJEgJCEUrKigQKOeiSZVSTASfgXO2GhbZzzmVUSWSCcy48mMTrItYUtIEZeS/AoqDwT9WapZGwSWqsLr8z65/GHyxvebdDRjG9R7JxfZVgzjaJrOJBApI7WEbOw3WDJxPO53xC/YMEKcunDeveCIouEM/mx0pEb5lUBPPKbREJnmJ7mJFzK0WDcJpM2H258eJonyD2lyc+X3QfSCXFEDeowoF5lByvlFABpG8ciIFFczWBf/D5GMhBDeoAPdgKKlQkFEQlnUmH5sfUIkRAmxhlOGe1QlXUu0dBHtNm2EaQTirXqsm5d5T68qYeUNGxOmHgb7UWSLYx25DA3l9+q/rWs0d7zwdwS4UwEjvYv+3AVFo0ni6kcWKe0EUhcM3Mb0TBSaXM50a2CV+FYv2r/rnIfbJTR0LHotHcnOGSaBWxeKGpBGad8/wYPipgFaNadnsWIuoFrQoRz+aF4Rm89ggc5IS9TwR+YP1jN4CqgNpk/X5nQMPFDd7UBna5IOX4ec70EMgvwcYX7sDC10fBUO1iqsQjqcFPTVQkMEEwgWkSUDfuP4EFnI2KVDtfqILJEOJcfUJKNI9bSOeAAQKIfpRrhigEdeBvSDBrOyb2/lm3JHIiEFvUvoiut+PxW2EViMf/nCvdhBzecZAg1VK1UcCfMxmhj4Ea5gv3VDkPdgbdRpg4eh3bgfDxw/wzgkShkjoST/ILmld3njxPmdhB6TCrRUvhb+UkLuEPU6LPw5N7Ptu9qvJBD5v3rKZbpP4gN2W9M+HmRMeEkPxtMXok+m+5MIIA/hgUPfcHmeP87RZ8vSOgTf9+uOX1EKr5gMvM3bYPvQn4h8vZ43t9Ne3mRMeEkP8Ongyl2Eb1D41QehJ+FKtwf4j/eCzP06Rlmyg++f389eTWn1rMdmjdwTSE/PLom0NVJ64X0kxcZE07yW4rmkJgtRVB+eW6LldQ2bQHjcxHei2lcRD+HMEq3EHilHrZ3fRqRLVVo5S6YRBYIJ/n5tF+iHUqLRiA07v3dQuzPF5Mve8cyxy98DRxWxqVXDUX+OWn3/nTZnP8xNd9y90FDLxyIctp2p+B1L00tpP8u4d2+/e2a5Mt1w9Mxtgc6NR7U66Rg50kXXc+j3rj1073cmMMq+eIZC13/bL4Wx4TOz4CHP/k4MKdDyZy7jC+7T2NZLgd1+QC5XLxcmDffs+Y5v/qFd+OCkznH3qOuTIhT5NRIT4lWQsB5b0rWzqu/oebJ/Upc8bozJHM2RI6p41dLKWaReE6HXTlJmiwTLjb+Mspdap9exKO/eovvxsNhurzK8m/GlcWsxnGQFJAsX2XTVdA5JpRPPYdwp7bhXXzwy4P0bjwkc5bejI9gFVMIe8QgY7a6wnWBdMMWoj/m/e7H29sDDTh7Nx70D+1gBDCLmA7DnFJM8cbGawrF+/GthNKLjq09boT38vnJlLN34yGZs/RmHNXjWPmJv+P/L+Tvxn0yZ+nN+PH6Bzq9NWQOOlTcVITK7/7N3o37ZM7Sm/Hj7R/MOySaN4pgQ0ZuI6Vj0abvxhf9hDnY/x47hW+lNnk3frM34986ydsxn7wb3xaH3W44Wyj/D5k8QN5feq45AAAAAElFTkSuQmCC" alt="K(x,T;x_0,0)
+=
+\int_{q(0)=x_0}^{q(T)=x}\mathcal Dq\;
+\exp\!\left(\frac{i}{\hbar}S[q]\right)" title="K(x,T;x_0,0)
+=
+\int_{q(0)=x_0}^{q(T)=x}\mathcal Dq\;
+\exp\!\left(\frac{i}{\hbar}S[q]\right)" class="math display" /></p>
+<p>with action</p>
+<p><img role="img" aria-label="S[q]=\int_0^T dt\left(\tfrac12 m\dot q^2 - \sum_i V_i(q,t)\right)" style="vertical-align:middle" src="data:image/png;base64,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" alt="S[q]=\int_0^T dt\left(\tfrac12 m\dot q^2 - \sum_i V_i(q,t)\right)" title="S[q]=\int_0^T dt\left(\tfrac12 m\dot q^2 - \sum_i V_i(q,t)\right)" class="math display" /></p>
+<p>The propagator contains the full dynamical content of the theory; all
+interaction effects enter through its phase. Quantum mechanics is
+deterministic at the level of propagation; probabilities arise only from
+the quadratic map applied to the propagated state,</p>
+<p><img role="img" aria-label="P(x,T)=|\psi(x,T)|^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ0AAAAWBAMAAAAof4P+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuzKrVCJmEO9Eds0xWRQzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACzUlEQVQ4Ea1TPWgUURD+7m739id7ySUBI9pctAsBj1RitYXgT+MWgoVgLuAfVgdBMIq4oqQKZokISeUjKYKFmEJEU52NiSh4NhFE4UBQsBIE84MQZ957u2+9OgM38803M98Oc7vAHtrU4B6KAW67XN1LQbvjhUbvqYEKVbqIUpb77QxqwEQdKPB+A78Hj0dAQ5co3JoYGB4c9qkhb5ZMmuTLhnZe9B/qH6suERMCi4Ki1YCzhUqLoLarKNZxG1NprqLU81nviymUYxyG03YSqXeJC30J/G30mh4/wbMmZvIUF6WeIwh16KftCfxNuC2mQlSimOjxCPZmfhmauSOwjgLvYkzqeZTzMqndhLODIMYQ671Hm/jHQGkVJ9MOwAfGAIGgYThCmZ4VG16gVOOBN6Tn7u5WqXIReBdhBQgmZx4K1fpNBuJyZsGexLL/Ej1Erh19e0zVeusciQtVjucLXw8ANeCcfarYUuSmDL/Ily6zVQlZWC5GNzGKImA3zyajqrWvybEv03P/cu52gLa9w+chC7ZkWJU+dRZas0jwGQ+ACsZFogofYo49It3P4y1gd8hVGuTYCisyjEifOrrfPtJr4wIzGyl9UIJiplfuMOHXyPXK1Rk0yIFvmjPSG6XXL8Eikz/SyncJzP2KVUnQbGtW6G+MXkk21svfD1uBoIvQbODuyHeDGra5M/d/zDYl8RNebU7MY1pQqm7ihrKSOtrvhId52l5gzhvxYvcalfSp76f/R+HMFTnwCe7QzFCE87TaxyMTMZGe2lKWyZHe0saUoDM3cffG6+uwXxEe+LOfGxZSPU7YplUA1LqcWSLlZCQ9OIzcBnsymSl4ulsvGzZ62SPUCOutS0jD0owePyJUpPZuXQHTA/0BpG2spy5wT1Pm0SXRrYc11WT0vEiP6cB6SiHQQkbvEdVC3aeD+39KZ+oibJPHBirEhHz8P2vNkmMokTqtAAAAAElFTkSuQmCC" alt="P(x,T)=|\psi(x,T)|^2" title="P(x,T)=|\psi(x,T)|^2" class="math display" /></p>
+<h1 data-number="2" id="the-double-slit-without-detectors"><span class="header-section-number">2</span> The Double-Slit <strong>Without
+Detectors</strong></h1>
+<p>An electron <em>quantum wave</em>, <img role="img" aria-label="\psi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAARBAMAAAAbE1CRAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAVBBmMpnvIt1Edomru21jGj4AAAAJcEhZcwAADsQAAA7EAZUrDhsAAABbSURBVAgdY2AAAgEQwcAEoRgVQBwGZjAJplhEGRSZ0hkUORyEGDoZJtQxGDAsYmDYA6QWMDB0ArUZMDA851QA6bjIzGAOpFTXCCsAKQZGEMHAMB1CAZWBAMgaACWECiKotOLyAAAAAElFTkSuQmCC" alt="\psi" title="\psi" class="math inline" />, propagates from a source
+to a screen through two slits.</p>
+<p>In the absence of detectors, the propagation is governed by a single
+propagator <img role="img" aria-label="K_0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAPBAMAAAD5dJlYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZVHa7MmYQq+9EIs18fhEmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAh0lEQVQIHWNgYBD67MDgr8oABmwJDAyuECYDfwADSwGUXV/A0AllMsQzzIAxGZaxb4ezt57ZDGSXgrTzfr4gD6QSOBoYGDg+MNxvYOBZwJ7AwMD1gIHtAQOrAfsGBgZuAQaW7wyMBrxA9v0DDAybIeKM+WsYGP8b8CzgAaqHggcgc6Cg1JEBAFnAHbobg4yIAAAAAElFTkSuQmCC" alt="K_0" title="K_0" class="math inline" />, corresponding to free propagation or
+to interaction potentials common to all paths.</p>
+<p>The wavefunction at the screen point <img role="img" aria-label="x" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARFSZImYQMrvddqvNiR1MEkMAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA1SURBVAgdY2AQMhE1Y2BXqAiYyMDFUJcQwMDAsBqIGRgOATEjyzOGBQyRrNNYHRh8VWTVGQC/jQgwYH9M7AAAAABJRU5ErkJggg==" alt="x" title="x" class="math inline" /> is obtained by propagating the initial
+state through the two available spatial channels, “left slit” and “right
+slit”,</p>
+<p><img role="img" aria-label="\psi(x)
+=
+\psi_\text{left}(x)+\psi_\text{right}(x)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMcAAAATBAMAAADWhATMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVBBmMpnvIt1Edomru8322y8xAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC/UlEQVQ4EX1UPWgUURD+bvc2e3uXuyz5wXYPjASLsCSKEZtNIaTJeaYRQ4pgY3uFIuJPzqBFuo0WQRS52EUDckQbSXEJAVGD+Ae2p60iIY2tM+/vbjfGgczMm+9737w3+y6AsuMyNvT6kGhJQv4QuLucUvQJa0l8uJsmc0aN9crMqpqKSjLpQkrRIpl8LEmZME1mtGNrKh3olGRWThdSipkAKGlOWyc6ZgKdcWyrheJbagn0myzJ0FtsKpuTNdNkRo2Zixbk/Ww1AODABFKKLPNN6zzWiY6JJsWaKnstkfynSbdidghl6zLmAW/o+skAPUpFBoWaGqPLFx7MgDeQqSaTVcs/pvsLQBCMYjkX9WMJdWAy+yUXo485c7tk7ymR6BQPxXrlAzkg60+HS8Ae81QTy7+bCWgvShHVBBsJxXiBxvnUbQON7D6NpicgnjGJOtykMFaOcJveIc4FIXBJcORNPHfPRj6gA3CR2YNw292Km9SkkaUS8i1yuYBcxwQqmjhxMUKFkXV2i/Q3t/vhl7hwoUVNuMrG7K9IKi7RDyG06oSWfHLJbwKBOnFmPJw+/2QDI8TAd3bz7PQ3ycVl2N6d11Nx/tnz4bUN72dK8Y8X2GJPvBDQaUQT800gUCeexrYT90aMeu4+GqkmfbX7NI93R514xGo71VHspBQ/2TgF/IBdnwgouSVOaJxAnXjz4VvRpBRgwl60a3A/Cop6XUU/pNoWTWrUqjt+DzdJKA6vDwTAKtzm9WYEjBt9kQjUiWd51L1RLe/jxpFHgzSnUMCqiTW7NQZSJs6ZSDRxU4riX9tNrf1ZJyoyyuO65vjOSuS2VLkYiEQ1AfhzchMaODe5eAVJxRWmq00wKkKDHKOV7UwzrLzJ0n30GZSEFUieV6P3e69WaRV/71S2X/hnGylFcXG3KtmO2iVX5AVqVriq0plOiTN6OtIG5CunRVLRF/CyJJ2QoeMlataeXNuRqYiEhyrsJYo6/YeiK7GaphwWJUGxD5IKq6d1saP4F9F/rUy/gB6gAAAAAElFTkSuQmCC" alt="\psi(x)
+=
+\psi_\text{left}(x)+\psi_\text{right}(x)" title="\psi(x)
+=
+\psi_\text{left}(x)+\psi_\text{right}(x)" class="math display" /></p>
+<p>where</p>
+<p><img role="img" aria-label="\psi_j(x)
+=
+\int dx_0\; K_0^{(j)}(x,T;x_0,0)\,\psi(x_0,0),
+\qquad j=\text{left},\text{right}." style="vertical-align:middle" src="data:image/png;base64,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" alt="\psi_j(x)
+=
+\int dx_0\; K_0^{(j)}(x,T;x_0,0)\,\psi(x_0,0),
+\qquad j=\text{left},\text{right}." title="\psi_j(x)
+=
+\int dx_0\; K_0^{(j)}(x,T;x_0,0)\,\psi(x_0,0),
+\qquad j=\text{left},\text{right}." class="math display" /></p>
+<p>Here <img role="img" aria-label="K_0^{(j)}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAYBAMAAADwhTuyAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZVHa7MmYQq+9EIs18fhEmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA7UlEQVQYGXWOrVLDQBRGT6b52ZSEZmqQVfgIHiAVHSQVGFTzBlS0mti6mDLIKBSiMx2mtg+AyBs0L8AMMxVIuJtstxg+85179s7uwr/xwCf5c/ygeX0WYaq5V1qjMtQVbmGFU7MaE7d7rfRLyhvIZRgeM+6uRfBJWInwxU7o1bAhSEQMprhz3IwgR66GpzkrqQpvSl+AGS+6br3LmoWm12CnSz3fExaa3j+2umziYz2ygwb1xaGA5eRk+w1+I19UYttcJLjfRJX8osthD1u8NNh0s/P4hvOTOmlshNk7bxgRVVFu0FRjXzFiOe7gF26kLN0nhtRbAAAAAElFTkSuQmCC" alt="K_0^{(j)}" title="K_0^{(j)}" class="math inline" /> denotes the
+restriction of the propagator to trajectories passing through slit <img role="img" aria-label="j" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAQBAMAAAA2ZkhwAAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAIu8QVESZq2bdiaoDY/wAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABESURBVAgdY2BgYBACYgYGEzCJRIQkADmsAiVAkoNhCkiCeTOIZJkAItkSQCSnA4i0NgCRkSCCoQqIjQSVgSR7mwADAwABUwZabWIS0gAAAABJRU5ErkJggg==" alt="j" title="j" class="math inline" />. In what follows, the slits are labeled
+by <img role="img" aria-label="j=1,2,\dots" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAAQBAMAAABgsKUGAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIu8QVESZq2bdic0ydrs8VakeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA7klEQVQoFWNgYGAQAmIkwLoHwuFd9gRJFMY0gTHANOOdPxD+Qgb7BhQZrByo4jkMbBOwyqMIQhVrMHB9QBEHcUIS0ISgihkY+DagyTCwCpSAhNLLgaAKLAlXLH8AzEciOBimIPFATLjiHWgSQC7zZzQxmGKuBjQJIJcF3c8wxR2YahnYEkCCmG5mdWBoAMmgAE4HFC4Dw1cGBnEDBoZjoSEJjMUMDMiYwR4ogQSYl/9ew3CogYFB////BB4NBgYeRQRmiERSCWc6QFkscBEIAxK4aIIOUD6qYiNBZTR1IC5cjQOKJHubAAofwsGuGAB+uCzPF79r+gAAAABJRU5ErkJggg==" alt="j=1,2,\dots" title="j=1,2,\dots" class="math inline" />.</p>
+<p>Since “by construction” there is no distinction is between the slits,
+the propagator is identical for both path classes.</p>
+<p>The probability density at the screen is therefore</p>
+<p><img role="img" aria-label="P(x)
+=
+|\psi(x)|^2
+=
+|\psi_1|^2
++
+|\psi_2|^2
++
+2\,\mathrm{Re}\!\left(\psi_1\psi_2^*\right)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV0AAAAWBAMAAACRTlKfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuzKrVCJmEO9Eds0xWRQzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEo0lEQVRIDaVWTYgcRRT+9md2ujvb2Y0LruhlEBZBchgVPCnUQYh6ccCDB0FH0M1NRiKsGxDnIDkl7PhHXFFsk8OKItmDB+PFEcSI5rAXFQRhToIeZCVCVklYv1evqrq6d2cO5sFUvXrf9977prqma4D/Z+tLk/ImohPBSVVvAUt25hbHp09EJ4Lja94a0hilZnyFiehEcHzNA8hnGtmpAe2wjggMTlX3t6QBB9CJYKgfHNcorAFGdsLytmtLj3SArgYuhrg6RqamDF0ZACEY4ELBuTQjrqUdgk4EJRHZXdeO3VdY1zVytRjqYe7cedtW8dkumnvIh7pqDnT2oxFni5+YwOALEi/NiCs0mqmjDIwH86UTRKd2kX8hNN/I1eJX6SG7f4hS18IA2T84qmRg5B2djUyn+YkJBnmnL0AwI57QaCVa2LV8gUPATME7cIlblG8Df2tAG7lafGgF5l56KNL1bAeN61hXMrDsHZ2NTLLnMcHganSghGFkcI+mRN+X6DgwHVpwBTMt1Xu3XbtGrhaQMvoRP0HXh8DMl3hUycC33tHZyCTJMcEk+/uLAgQz4nm9AT1MbwCd3styFmR/s5taTRu5WqpXHkXQ9TzwQwfbwPyps28VOKJZfjR4qp31Pu1XCMajYQ40Rko06HU1KqDTC8yORG/2zQ6wSQFUEuiNU9jK9FwHXZ9v/non0CKr8dj0EAssigdXac+JZ7LeSrNgvBURjCC0g7Qtc5heV0NuNuLOgt6NDvVef/V3eUk2Wmzk6Ky1Nd05jeM2weqil9yQZTLiK67xLw/LkULWwcx8spsiLyoEE2DveNraKJbk91drfCyXYpka9FKonIfpRVzqY4WNXEvWGm7wkP1im3hd6a4sGyMOeZfDdMGhNIOpLvVWCabEnedp8rUcOrO6+ufq6iIJDrQ3mwP5aF78TZ/g1IAU6s138dra2j2iRFtKrdupd6f5RrvUNcco33ItDkd7HMI5oU8zmB5u8UdaIRgLxYOnRXoJ+/11NeRSLFPToRbYlEn07oE/fdtIW0qt43z9Ds6BR9Pr4mMQ2wY3v8hdPDqYWOh/L7/8mGBsSuX8OtoYva7GheKg3nkKsnrTG9gokEkjpUutvfkixTN4u9S70bPN/0DaerN4F3jdaXGTwWxvkPaBmGCqHK48bYxeV4OXYpmaDm2VJ69eafONuovkZj6ziFfYyLWUWidSUBOOqa4zBaaeOGnTfkayfHa5w1eKXYbBIHv45HtcxgQTYO942hi9WkMuxTLV6f1qf7+NZOmBHl4+jw82O2zkWkqtiz+tF1zfq7qe7sPbGe887h2dDSf7BGKCBKtmuBRa0oq3MJxfBeVSFKKa0+uXYbaNfC39DzXHfazpmi00IemGROsY3iN98WICgzVjxNK+vhxv4SfKcqC92eg7ywrvVWdpFGrhOwF/TFDXlbQ1a4bs2IzeiNy5iMBgzRjhu1uNftUYGA9WqVxJo0CX3yLmhznqunBFE9+p5ZvwtzYiMFgzRpo+RL9qDIwHq1RZsVGg20O2sf8X6rqQaGJfpzB2ghcRyqBH40jsWzwOxL5Prs2uUTXa1+V/fKxbf+JsEk8AAAAASUVORK5CYII=" alt="P(x)
+=
+|\psi(x)|^2
+=
+|\psi_1|^2
++
+|\psi_2|^2
++
+2\,\mathrm{Re}\!\left(\psi_1\psi_2^*\right)." title="P(x)
+=
+|\psi(x)|^2
+=
+|\psi_1|^2
++
+|\psi_2|^2
++
+2\,\mathrm{Re}\!\left(\psi_1\psi_2^*\right)." class="math display" /></p>
+<p>The interference term arises from coherent phase relations generated
+by the common propagator acting on the two spatially distinct path
+families.</p>
+<h1 data-number="3" id="modeling-the-detector-as-a-circuit"><span class="header-section-number">3</span> Modeling the Detector as a
+Circuit</h1>
+<p>A detector is not an abstract “observer”. <strong>It is a physical
+device</strong>, a circuit of some kind.</p>
+<p>By definition, a detector:</p>
+<ul>
+<li><p>is a circuit with at least two metastable macroscopic states
+(“triggered” and “not triggered”);</p></li>
+<li><p>contains an energetic barrier separating those states;</p></li>
+<li><p>and therefore requires an energy transfer to cross that barrier
+and register a detection event.</p></li>
+</ul>
+<p>Consequently, the presence of a detector near a slit necessarily
+introduces a localized interaction between the electron and the
+detector’s activation circuit, independent of whether a macroscopic
+click ultimately occurs.</p>
+<p>From the electron’s perspective, a detector defines a spatial region
+<img role="img" aria-label="\Omega_d" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPBAMAAAAWtvJmAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIplmds0Q3VQyRKu774nYjM3IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiUlEQVQIHWNgYFQ2VmSAANcEBnEDMJPjJwMDFxADAWsBkPgNZvIfAFLlYCZvAJC6CmYyfWBgYPsCxEcYGH8xMDBfAIruYmB4xMDAYwBkArmsDAypDAx8LQEMWcwLGKw4GE6yPGDgSzNgcMvjLGBawMDzX4Hh/CdmBfYEsIEMDBwPxDOgTAaNbgcAv2AbCL7QT8kAAAAASUVORK5CYII=" alt="\Omega_d" title="\Omega_d" class="math inline" /> in which the
+electron may interact with the detector through an interaction potential
+<img role="img" aria-label="V_d" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAPBAMAAADwnzkiAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAeUlEQVQIHWNg1DdhYJBXZQCCdCBmBjEY4oE4Asyav4CBawOYtX4CAxuYwcAfwLALwmI/wCHAwNALxLwXGIFCzBMYGHgUPIEsdiBm/ACUyJYDsri/NTDwOogBWSxfGRicGE4CWRwPGBhiGDSALBDYxqWxAcLi2W3IAAABkBL4qz8wRQAAAABJRU5ErkJggg==" alt="V_d" title="V_d" class="math inline" />, capable of deterministically
+triggering when an energetic threshold is crossed.</p>
+<p>Within the region <img role="img" aria-label="\Omega_d" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPBAMAAAAWtvJmAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIplmds0Q3VQyRKu774nYjM3IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiUlEQVQIHWNgYFQ2VmSAANcEBnEDMJPjJwMDFxADAWsBkPgNZvIfAFLlYCZvAJC6CmYyfWBgYPsCxEcYGH8xMDBfAIruYmB4xMDAYwBkArmsDAypDAx8LQEMWcwLGKw4GE6yPGDgSzNgcMvjLGBawMDzX4Hh/CdmBfYEsIEMDBwPxDOgTAaNbgcAv2AbCL7QT8kAAAAASUVORK5CYII=" alt="\Omega_d" title="\Omega_d" class="math inline" />, the detector is
+capable of coupling to the particle and contributing an interaction term
+to the action. This interaction produces an energetic imprint in the
+phase of the propagated wavefunction and therefore affects the
+probability density <img role="img" aria-label="|\psi|^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAVBAMAAABF8IgWAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyVBBm7yLdRHaJq80d3w16AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAqklEQVQYGWNgQAC3gwg2AwPHBt4DDAIwEQHmB2wKDAogLgsQAxk8ByDcEAg3MgDCdYVwL4PVMDAkgLncBg0QWQh3FcMGINdEgNUhHCjO8f8/0ChWh8ksAZwLIMoYFLg4PrAxcEPNBAryXAByGWCyDJwLQhjYEFz+hqUgmxSAloFIJocEtgYEl1X6SipYHEiA1TjAGGAuVwMKF2gsECjASJBvYVwDMBtIgBkAgs8cR0syuyAAAAAASUVORK5CYII=" alt="|\psi|^2" title="|\psi|^2" class="math inline" />, regardless of
+the final macroscopic state of the detector.</p>
+<h1 data-number="4" id="the-double-slit-with-detectors"><span class="header-section-number">4</span> The Double-Slit
+<strong>With</strong> Detectors</h1>
+<p>When detectors are placed near the slits, the electron propagates in
+the presence of an enlarged interaction environment. It is important to
+emphasize that the electron does not interact with only one detector or
+the other. Along all trajectories, the electron interacts with the full
+detector environment.</p>
+<p>Accordingly, the Hamiltonian contains interaction terms associated
+with both detectors, described by localized interaction potentials <img role="img" aria-label="V_1(q,t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAATBAMAAADCPVhoAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABPklEQVQoFVWRL0/DUBTFf2WDda8bG5oAE6CZ4APgCIoKSMgMAjFBAlMYTHEIxBIEAsECGigCw7/0IwxHUDUQEswEkIDivLbLxknuueee825eXwoD7A8kVDU48wswM2ft+nB2aIemKmeF07ac4gDPl9pQrVtn3FKGJ4glTzuY0Fo3ljJ8wpbkVZuxxHnpB5BvwZHGis9t4mpmohGJi9tvPgWJQuRW3QeJGpTDXFeKsq8d27sO3iOYGKYoV21W6WgngFJtGS51Rwx7VBYRjlUjgZ7V01Flbg3zy4qN2FTZ+7zvIMloke8xLQde3TDJ8l8atMc7bsvsch7ArAMXstxYZLNJuL/7YUnfeK1XrclKcCY+V5kehKn1nDaKzYYeE8Bo3M9MPcuSZiL9kAgv9UpB2jM+wex89LPVfxFmeOzAH2cmPob8XlNIAAAAAElFTkSuQmCC" alt="V_1(q,t)" title="V_1(q,t)" class="math inline" /> and <img role="img" aria-label="V_2(q,t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAATBAMAAADCPVhoAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABRklEQVQoFVWPsS9DURjFf09LX29brcQm6EBi00HM3cTCGxCRiEHCIKGTxfJsBkMTg8Gg0llagwXD+xNqE9NbiMTSgSYsnPv6mnKS73znO+fe3PtBH8d9CQUNzuwcTE5bu/Q3O7XDriphhVO13MUJGU9qS7VunWFLMR4hlLysYZrWurUU4wP2JBtVhiLnuRdAsgJnGvMed5GrmZGNQJzef/VISaQCt5BZk1WEXDPRkkXO0x3bWw5XzGNCGCdXsFm+pjs+ZIuLLLFJMoQj8mWEc9WAr7Xa9ugObhHzzbI0bKvse5mOD+4MVEi2mZADL24zypKfGhJleMOtmEPqPkw5cC3bDUWjBsbg4f6LBf3xRlutyrZIV3WwLmHa0IwsnrqNxk9Hy/gwGPYyU4qzqJlA7wZkul7W7/aYLzAH771s5V+E/tNHDX4BTnA+/uoO/GIAAAAASUVORK5CYII=" alt="V_2(q,t)" title="V_2(q,t)" class="math inline" />. These potentials
+are present for all paths; what distinguishes the two slit contributions
+is not the presence or absence of an interaction, but the relative
+weight with which these interaction potentials contribute along
+different classes of trajectories.</p>
+<p>In propagator language, the wavefunction at the screen point <img role="img" aria-label="x" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARFSZImYQMrvddqvNiR1MEkMAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA1SURBVAgdY2AQMhE1Y2BXqAiYyMDFUJcQwMDAsBqIGRgOATEjyzOGBQyRrNNYHRh8VWTVGQC/jQgwYH9M7AAAAABJRU5ErkJggg==" alt="x" title="x" class="math inline" /> is written as</p>
+<p><img role="img" aria-label="\psi(x,T) = \psi_1(x,T) + \psi_2(x,T)," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOsAAAATBAMAAACD5eeSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVBBmMpnvIt1Edomru8322y8xAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACbklEQVRIDZWUPYgTURDH/9m38rKJl1svnIWNL4Uf2LgIcpa5xjpYiVgsWthuGzi4IDbHFUabQyyMtlrkigMLixUEiwSJWNgugp3FaXPlOe9j90WWtxsHdmYy88v88+aRBYxdy5M8tvKkHP+DrUJDmpza6edn7/eP9r2BrZisYWJqOy52BdQj2dbYjvqM5gAX0LUVk/V0XIVdAW0IoGMmU/AiXA8xXC6Z5oaObtYrptSiACN46WgNgYsCB2jL3f9jkf7kZlmxs1pUy3638+kn3wUEgtTWdGZmudmSrBP1N9HzHiEGgs3hTaHn/1SBaku2PfDCy4ksxE7WyK6A9pr9DexhBGz735pmSb/ldBzTc2YubUo3Hj5piOa4t4CTpb2p7xu0e1SBjncR4Q3PgIn/R94yWXCiwgPljQv4MUNLnMvAMyerZTV6ZXJ2WoF+INmJT6PQSslJa8cqPFY+d+2UZMEzONn78y+/5jPiFepnbOFEgT3620beiOhOSE5aJ1UhVj53tGAw8AwVrD4tNIr2tAI9CQTtNgbGu8K8ENcjpUU1e7dYT57TXnjmZvO7NSiuCudY4CvDFvADbHRLbGFHAHiVkANfSF/YWhixBDyrYs1pNYpPLlSKXHrXJf8a/HB42MdtOujbpzOpyyhdMu/exxv0W7Iq1shqtNVPHGOlCNRbe4cSZWGeYE0UqU5ki48AN2tkAYm+wMSFyvYBPVbDyhbTZZ8sSMi9fJhUsJ6QoEb56enUhUqRSIJ8IL05uk7v6FB4lmf1bA2q9iulgWd6qKqolPV1pfC2VcvWoLYNXow3SalggVKrVCjYUkcX/gKcSsEz+laCmQAAAABJRU5ErkJggg==" alt="\psi(x,T) = \psi_1(x,T) + \psi_2(x,T)," title="\psi(x,T) = \psi_1(x,T) + \psi_2(x,T)," class="math display" /></p>
+<p>with each contribution obtained by propagating the initial state
+through the corresponding spatial channel,</p>
+<p><img role="img" aria-label="\psi_j(x,T)
+=
+\int dx_0\; K_j(x,T;x_0,0)\,\psi(x_0,0),
+\qquad j=1,2." style="vertical-align:middle" src="data:image/png;base64,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" alt="\psi_j(x,T)
+=
+\int dx_0\; K_j(x,T;x_0,0)\,\psi(x_0,0),
+\qquad j=1,2." title="\psi_j(x,T)
+=
+\int dx_0\; K_j(x,T;x_0,0)\,\psi(x_0,0),
+\qquad j=1,2." class="math display" /></p>
+<p>The restricted propagators <img role="img" aria-label="K_j" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAASBAMAAABGPIgdAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZVHa7MmYQq+9EIs18fhEmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAi0lEQVQIHWNgYBD67MDgr8oABmwJDAyuECYDfwADSwGUXV/A0AllMsQzzIAxGZaxb4ezt57ZDGKzATHv5wvyMHGODwz3G6AcrgcMbA8YGDjEgXxuAQaW7wwMnY5A9v0DDAxAzRNMGBgY89cwMP43YGB4CxSHgQ0wBgMDewKCzRoAZ7PyXYCz2UIYGAC70xpSncfjbwAAAABJRU5ErkJggg==" alt="K_j" title="K_j" class="math inline" /> can be expressed as</p>
+<p><img role="img" aria-label="K_j(x,T;x_0,0)
+=
+\int_{q(0)=x_0}^{q(T)=x}\!\!\mathcal Dq\;
+\exp\!\left[
+\frac{i}{\hbar}
+\int_0^T dt\left(
+\tfrac12 m\dot q^2
+- V_1(q,t)
+- V_2(q,t)
+\right)
+\right]," style="vertical-align:middle" src="data:image/png;base64,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" alt="K_j(x,T;x_0,0)
+=
+\int_{q(0)=x_0}^{q(T)=x}\!\!\mathcal Dq\;
+\exp\!\left[
+\frac{i}{\hbar}
+\int_0^T dt\left(
+\tfrac12 m\dot q^2
+- V_1(q,t)
+- V_2(q,t)
+\right)
+\right]," title="K_j(x,T;x_0,0)
+=
+\int_{q(0)=x_0}^{q(T)=x}\!\!\mathcal Dq\;
+\exp\!\left[
+\frac{i}{\hbar}
+\int_0^T dt\left(
+\tfrac12 m\dot q^2
+- V_1(q,t)
+- V_2(q,t)
+\right)
+\right]," class="math display" /></p>
+<p>where the functional integral is restricted to trajectories belonging
+to slit-class <img role="img" aria-label="j" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAQBAMAAAA2ZkhwAAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAIu8QVESZq2bdiaoDY/wAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABESURBVAgdY2BgYBACYgYGEzCJRIQkADmsAiVAkoNhCkiCeTOIZJkAItkSQCSnA4i0NgCRkSCCoQqIjQSVgSR7mwADAwABUwZabWIS0gAAAABJRU5ErkJggg==" alt="j" title="j" class="math inline" />. The interaction potentials <img role="img" aria-label="V_1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPBAMAAAAfXVIcAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAaUlEQVQIHWNg1DdhYJBXZWBgSAdiZiBmiAfiCBBj/gIGrg0gxvoJDGwgmoE/gGEXmMF+gEOAYy+QyXuBkYF7H5DBo+DJwLAOyGD8IABhcH9rgDBYvgKFQVIcD6AMIMXAsAhMMjBwpkcBALkIExa5hpb9AAAAAElFTkSuQmCC" alt="V_1" title="V_1" class="math inline" /> and <img role="img" aria-label="V_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPBAMAAAAfXVIcAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAd0lEQVQIHWNg1DdhYJBXZWBgSAdiZiBmiAfiCBBj/gIGrg0gxvoJDGwgmoE/gGEXmMF+gEOAO+wAAwPvBUaGhQxmDAw8Cp4MfgyxDAyMHwSAStIYGLi/NTAwcGgwMLB8BQowOwA5D4AMES4gAQScExghjPX/vwEAoWUTjlae4QsAAAAASUVORK5CYII=" alt="V_2" title="V_2" class="math inline" /> are present for all paths; what
+distinguishes the two classes is the relative contribution of these
+potentials along the corresponding trajectories.</p>
+<p>The physically relevant quantity controlling interference is the
+action difference between the two slit contributions, which defines the
+relative phase <img role="img" aria-label="\Delta\phi" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAARBAMAAAAxo6E+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEM2JZna77zJEVN0imatdkZOxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAoUlEQVQIHWNgYGAQAmIQWAAm7R3AFAOYYgwrAPN4JoAoVo4vYB4XmBRlSAfTZxtAVABDvwOQWjyl9wADA2MAAxtQI5+DJI8CUJsAA0ijG9CCjwwMokBV6gwMOxkcGIG8QCBvPojlwKUA0sbAwFTA8IFxAncDA/OKjo6O1i8Mt7gEXjEw8P8Hgd8MrH6uAkBVMMACY4BpiMNgQnNgDDDtACQBQ7giQVjWjYIAAAAASUVORK5CYII=" alt="\Delta\phi" title="\Delta\phi" class="math inline" />:</p>
+<p><img role="img" aria-label="\Delta\phi
+=
+\frac{1}{\hbar}\int_0^T dt\,(V_1 - V_2)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAAAuCAMAAABJTObHAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAEM2JZna77zJEVN0imasun35eHt8Ojz6vv05uz8EN49IAAAAJcEhZcwAADsQAAA7EAZUrDhsAAARKSURBVGgF1RnpeqMgcBBRQbRpjibdlPd/zZ1BIKgo+ba1a/gTHIY5mBMCsMUoeFlVpWi3oP0bNKUEqEoA/hvMtuCBskOtAdQWxDem+XZ4PxILXW/MaCPyp/Plw4peVhtx+CmysmhSpA4fcPyghV6klncD06IxKQUu5upkbFPLu5GfBEkqcDRORuYnu5J5JExSgdvngFP2dclG6Pv7SCpQv+9P0CWJUgq8mT9L6PuDpxS4m9P+BF2SKKXA7ZWqV0qBs4vhJaV3BU8ocDK2hu1KzGVhDHack3E0tg2aQBc+2bdK9WwzK8Z8Mn0k470p+LTYfoQ6PCZGX01lsD2NRo9z0ZreEhGmpQ52aczxWDfB5WZMYPw1QV76/Forv5ICnIXqJqwBuY96UmdlzPHUWEImKk/KktFz/1gh75fM2c8Sv4JkrILpB4uXTuVc2U7gjV1GQDMyQcaDEvIh6GrWkhDd0B4NlDtAOfiVzvFL4PF4DwVUbALdTd07LfIYejdrjQSJ2gQzV0NA6CEVZK+eCTwZex0Z9mECxWXZdOOQG4ua/josNhJCKFWD5AVe9oe9XhNrd5XnlcDzJJDgkNG8CfoSmATtfKzrw8id09dSI0He09sQCJHn3ytqzCbPJNQEXpQxhM0NzgR0FyT3MiFhpM97DjXRmcSr9nZpb2ghk/rjgQq5kf2ZWr+CejxVcp9A6yCgP4HCCtBiAsKDYisKmDBiORdjuKZzrzGqbCa1WxqfQ7oWGsp4SnkIolVhBIs5PI3K9s4T2qDAYADcSI5mBcffiGAs5cp8KYa1DV8yOA9xx7wLCWMNgK8YDwVSPBweKe6fC4K9vQEArAmQE4YA+Dvt8zGwFMMNyS4qkFBgdLnk57krw4eDzCgQ8PAYnAU8CeCqcUOQCToFikEfZ9nUkcxhn0sxjJxYwdEv8VDI32kUzv4h92UUCHjAnOtoChrdI53g0Dghy4qyL71XEa9nx1IMg+yUajostkqEhCncAYUeLKNAwIOheUJPovho6P1vPmhpfchpawZwMrf1PaNVHcLBgTMKhM2igUHmKsRwWAuTJ9wH69JkXFfr8AQZC/+Ev/ZhPcMcAejZ2Lrh7AQiNJk0S4SANNpCiKGh9PD3lV7a40S/2qfzASZ5XebZgiZ/t0HcTQ4gIk1VIDvm7fstqozZ7Yggn7DzMp3yX5q1iBwzWoeAHOBfa61otDVMnzjwgDubfGszUlNGSFZQCQ3jpe7D0FEj0sVufF1sRYOKe5q0lAkKX5VIsru57EnAjCzMvqmMHlYOX7SnESrWKkPm/y0ryjjjUnC2T0JY3m2F/H+iPceZUx9S8dDZUB1+QxBd85r1xv45BltjWe9vJXMV43SBo32QEBjWj3vv1lJ8g35LabgUvuLVN/i0b3J0W3rFvyc/r9eDPY6XscDEeJf7fYBQDMhXiIGJAo9PuvF5x3pAX2iGdSD3+PLT2vwFK0gjLKvfmhUAAAAASUVORK5CYII=" alt="\Delta\phi
+=
+\frac{1}{\hbar}\int_0^T dt\,(V_1 - V_2)." title="\Delta\phi
+=
+\frac{1}{\hbar}\int_0^T dt\,(V_1 - V_2)." class="math display" /></p>
+<h1 data-number="5" id="phase-evolution-induced-by-the-detector"><span class="header-section-number">5</span> Phase Evolution Induced by the
+Detector</h1>
+<p>Define the action increment associated with each detector
+interaction:</p>
+<p><img role="img" aria-label="\Delta S_j = -\int dt\,V_j(q,t)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKsAAAApCAMAAAB9Tin4AAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAEM2JZna77zJEVN0imasun35eHt8Ojz6vv05uz8EN49IAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAN/SURBVFgJ1VjnmqsgEEUBC5b0dhPe/zUvAwzNZNV8utnwY0WGOXOYhllC1hmb7W6/DvLiqIfj6VwujroO4PZM9ud1oJdGPcnL0pCr4e3latCLA19vi0OuBljuVoNeGngj/y0NuRreXR5Ww14a+PotrVUd/Pg9pXWQX3INKLfu5fxPgYy/SsSBIMvDrTXllLUsXJozPw9uraqQrUfgjewreOWyQSO9FyezrEsWqEQlJaBC/anLOtkz+fUxvLVqqLYssxAUa88x5M+NaQ0RUAMUXqC6YmkO0kzmlm6Ux3SFcGBVYDiZPQxD8iQKq9c2GrGQk8o7tjPnoF5l3uwih22gAEypA68mtcmIFuKnR+I6XLYaOs64BontHVuYyAQJhvumPe9yeMMCucqFrpU65N4bxXNjVqN2qaIIQGy8Y4XMOXpgGrt41za5YTkXoiQ1zXOKmaeDKDxBPAXnrHWl5DVQrOyYfuEdq6pWNi6VNJGud8N7I6bo3h7xDQvh73W6IlNCSkUo7FK2NgqVFH3hgIjOHPUa1CrXvLxjlbRujN8DRQ8xMpOBGwhhANFD5IK2VahFW2ggbk31cJi7Agw0Suc4PGBubJjIiLj4lGI66sIN7zC1KSmtEoSlyindtixI15Aq6FKVMVZCrbkCDDR8kI1boToB1mJE+WwtTHvEpdXqqoIg0qBCuES3asxM54Dfag05DRcodCsh2rHcNJIejs0o1tiMfI1LqwKaKrg1yRnJsEkJSU1YrQVNxmwN4uk0HFcqKjs4ONZ0LAbZxDIxWkjWBcHjFpeWspPllDDSVN6XWBtoIQfmmdralspi25uDoEarcxoWZTBULCihauhkykiHjgi4jE3j0lK3oBBVp24owX2Tws8PtGCCKdRW6LyVznHiNJjOzdK3uKcU8hH5E6WDvD5ZfblkLLSYy61pT7GLCuPmlxhG4BJlZF8gvjy5tQJxOrUWkA4z6RpxdQdJdaP3ChJl5tgNPgh/AkALeFv1+taKqJJuklu57dc/WUtl1+CSSWXDd2ehBn4tlTk8I64Me9FQ269w8ka6ksfwI8tDJrPQwsvKeCkIwQrbasO18fmc31rvWRjnMHHHJfnImqj2kW13efqI3XeMbh/vaH1G5/g9/xo4yM1nfDTX6uFE9sOfsHNRfmd/eSW3+f9x+R1uqZXb5bJN1/7q++l+X5Xaf87wHHAoh1clAAAAAElFTkSuQmCC" alt="\Delta S_j = -\int dt\,V_j(q,t)." title="\Delta S_j = -\int dt\,V_j(q,t)." class="math display" /></p>
+<p>Only differences between these increments affect interference. The
+relative phase is</p>
+<p><img role="img" aria-label="\Delta\phi
+=
+\frac{1}{\hbar}(\Delta S_2-\Delta S_1)
+=
+\frac{1}{\hbar}\int dt\,(V_1-V_2)." style="vertical-align:middle" src="data:image/png;base64,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" alt="\Delta\phi
+=
+\frac{1}{\hbar}(\Delta S_2-\Delta S_1)
+=
+\frac{1}{\hbar}\int dt\,(V_1-V_2)." title="\Delta\phi
+=
+\frac{1}{\hbar}(\Delta S_2-\Delta S_1)
+=
+\frac{1}{\hbar}\int dt\,(V_1-V_2)." class="math display" /></p>
+<p>The total amplitude is therefore</p>
+<p><img role="img" aria-label="\psi(x)
+=
+\psi_1^{(0)}(x)
++
+e^{i\Delta\phi}\psi_2^{(0)}(x)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAAAZBAMAAAA1XFQ9AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVBBmMpnvIt1Edomru8322y8xAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADq0lEQVRIDc1WvW9TVxT/vY/0+T3j1IXSSkGgS6NIBSHxAo1Ciyq5CwMIasHA0sFi6eoFRPhorDBlM2RAVVPphX5ISAzOAAxleDN4MOnQ1fQPqCoGGBjSc+659zp+lq1m40g+X7/fOed+2O8ZeE8lCzey8m7XluDsDDq7rRJ+oio46We7LH6AXpAe3WWRoc9hHedxcWLxPuAHTagaml+P87A3pSZWjQPn8RvOgHpOlt95mN82pKCa1MOGl06uGYM+xWNcw9UxqE1Hay1yPRuWm+V61IjqNi5ac95ZMa/jLb3HCvljaUGOBHdo4MKGaVFRvEf0aNuZTiUGIFOlTy7hnJidmtAtusefcYyyuSCjtHQFS/gE+CWYajKnioqK87jnU8UeKfLrYmkJ1DNpSzR67IxexjRO4twkWtRHhlLq94+UqYB70uR+kIYd4KGZ5L4IngJ1NNK3jrWeAj5CuNHB/CiNMCPlNGrDa3ide9NNSnkKXhVnDyCg+X1KsLghAQVu/KbGdihG5VjyUdqXjlia5Wu6E+XpDOe4KmeHSt256d1zktG/2GFZFzPQjHo1UiGttkgbTJxaXN7e3n6DmUtEk54fs/MNUOFNs8Q563A/Dvvfo0Hx/qUFhQ846cSgOEGZWfo0CjQz0ZvPCBRJXc9A0X1SyC3vXl6jB0iDKYdLtb1YRYtWE/5ZauNDTn7XJXkxQDmnpTVEA8zE5/jREBDVXE+bKvH5nE9XgX851V5GigdRH8jC1wEtSFHSiaAujPoFmkwMWnhqOTE5hSp6+CX4VtFur2jWM5qYhdQKSU6qpEgNRKP+QZMYpk11u/90ux2qeflVe1BCnq7yTtcleYHNI1YrrLBKP53Ub5E3XSU1fI+CeocIYBmhyR6PNwV2Wve8Ab4Xks9ZvWLVYIW3saLDJL+9rOgLrie6ezSovBSIPEyz93ickCHRPS/ga0lSyzh6TQ8IM/FlgEXgbwStU4qc20OlENRNLNJkj6Ua9C/BlUoV/pDEtMKpYCVoIurhlgLmHu0jvYFoc2mzBnqYDYmgbmKRJhOjTW6xQ6TKl2tDUsXNT3+iNQUpzvAF6NfLLcvfso6xGnUTizSZWCihUFftqQkQ5WJRUeLcZ2MDhwoGaNRNLNI+s7SC1VW/RiZrd2HXm3LevjhH/iRo9LptOJZmCcZyVdy2L0T7Kr9o0Kq2dyX6wiSdYTR+Ql8pkXE0ixvLVcvb70wUy4igZmIx5gSaQ8nR4H/SCoXSVWr/AzD7wOZH2/YrAAAAAElFTkSuQmCC" alt="\psi(x)
+=
+\psi_1^{(0)}(x)
++
+e^{i\Delta\phi}\psi_2^{(0)}(x)." title="\psi(x)
+=
+\psi_1^{(0)}(x)
++
+e^{i\Delta\phi}\psi_2^{(0)}(x)." class="math display" /></p>
+<p>Here the superscript <img role="img" aria-label="(0)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATBAMAAACNYFu4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAnUlEQVQIHTWNMQrCQBBFnxolJkq2F0HQVvAIi3Y2prVbLFNoOhsRvUEawUa8Shrr3MJzODPBD/v/+zMMC50ZKvOeIVONBayvnkEpnDPK2WtqjwNL+EJckdVsYQMJNBWNU0hhJyxbeNhcauL4wLvm5EgdE8g8hR3KSVwyN+47opv+9YRugMPRwxmGK1rdJfSJbPZqeewko2DlYl79/QdmORq5tLXx5AAAAABJRU5ErkJggg==" alt="(0)" title="(0)" class="math inline" /> in <img role="img" aria-label="\psi_j^{(0)}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAbBAMAAACdJvIfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVBBmMpnvIt1Edomru8322y8xAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA4ElEQVQYGW3OvU7DMBDA8X8+QBRoFIi6J0LdGBIydGDJ1KXKwtJH6NqlXZmzsbGA5CKxIIYuiIWBR6AZeQEegZVzYgdF6km27+ezz4b9ofyNOulKx/GQ3FXWYx4oubHMeGZKZPnOG2tWlnVTHTYMoZa7j1xqusI5ATkzTSeGM/zNlkyEJ+NUJ3zqSdMpZPJD/BGJu4Ar4QUkR8U5leRt3N2S8mQFH0IFX2ankmfT/+rvINatbew8JnBdGI9foxgv2dqyI4l7IP9u414vwdKobXtoRXOs7NgkLz2qnx6/TeM/c8EgKDn4HXgAAAAASUVORK5CYII=" alt="\psi_j^{(0)}" title="\psi_j^{(0)}" class="math inline" /> denotes
+the reference amplitude computed for free propagation, or equivalently
+for symmetric interactions that do not produce a relative phase.</p>
+<h2 data-number="5.1" id="recovering-double-slit-pattern-with-two-detectors"><span class="header-section-number">5.1</span> Recovering Double-Slit Pattern
+with Two Detectors</h2>
+<p>The probability density <img role="img" aria-label="P(x)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAATBAMAAADlk9mAAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuzKrVCJmEO9Eds0xWRQzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA7klEQVQYGU2NrU4DQRRGD9sunW3ZtgGxCWofgYdAAIZ1SFY0qSWpwlUQVJM2EBKqmARNgkChVoHA1KFIVqNIEPwEwdy5mbQjvu/cc5M7EN6dwsLX5ufWbgGlultfzZLWN2mlrjWT7s1o/9BVBbXAcUH8xWlwmcANNB7ZC+5JYAAvBfewMZpcWjriHuZv25DDUbwfVfScMn+yMDUs4t8EOhaSD3Gxc6Sli8jCeu2Adu6ie+JC7kV9F8gf1dSm6qayhHeS/MJewxmsHQ69e8Vkk6yAuR99nAc8CABNq2zKpTM7yg27dDwrX60ojA5j+AdgKy5txQ5n7gAAAABJRU5ErkJggg==" alt="P(x)" title="P(x)" class="math inline" /> of finding the electron
+in some point in the screen calculated as:</p>
+<p><img role="img" aria-label="P(x)=|\psi(x)|^2
+=
+\left(\psi_1^{(0)}+e^{i\Delta\phi}\psi_2^{(0)}\right)
+\left(\psi_1^{(0)*}+e^{-i\Delta\phi}\psi_2^{(0)*}\right)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbEAAAAhBAMAAACl74h1AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuzKrVCJmEO9Eds0xWRQzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAF+klEQVRYCa1XTYgcVRCumd3Z6emZ2R9XiArCCgaNKOQgSxQC7+BB9+IIggcPGcEknmREcVmDMqIGwcUMEY3xoE02uIg/2YMQIgojhAiuyEgOIRBhPChBEBZEjEFYq+q9ev1eT/fIdqdgXlV99dXX7/XvG4AbZqdzK30cd+YXiTUgbDvJDQh/za3RULY1v4iVwOC8mxSOp3r5JS5LaxER0UDfLDAXR8aEr1hoULk0KNlsXCDM6a5h5RGRA4gY5VcFvBH+axFpRpNwMhxIOsZbZmNoWDlERN+KEfCjoDv3K/OJnuZQgDW4AI/Dg5JaX+1BwKSqQDHzXg39v4i0jhNDTrkvxJ36YDA16/fUrdYJuAhPwopf1lnzLPnPpBQz39PQqMiYa58hxh21thxjp74yrCm/Z9Omt8A8vAWv2dwJVo9T0hEkZp6JGBsVeeayZUuX+Awx7givCwv95zpOPh97LcUhIFiatQUOFm26xNds0uYS4HUZlHsAK/s7BoqZ0wOGRkXWzH0qIuKzxXTHH0S86c/5h1oAbd20pp0dFUX8ZLQpAiCCAjgVoXdsj46RuYTP2Xlwvr66UitHQb+6gW/k3j5CPGZJMWlU5PB8nyuJYYyY7riZGibbUL0Gzb5uxkfTM0XZOv5cAoIHCY8tvKZjZO6DaTgJj8U1E70NTYA98EXY30WIx8QVo6WIhLNU8OynubnbIVtMdxyhlpkehP/gbIwNJdBekXsJfy5BQbPVpYK1xpYOkbkMlUuzcELnoWXArbAKcASea0T8tfGYFX4u0kSiER0GxohxxwEaD7Sg8nf8LuMTyt08KBrpOtqXHRIU/AADKlhrbugQmVMctXVe62uP4z09bCn3jtaq3Ooz/yValgiWHB1ijhfD+kwfh48AJr6ChzFiuyCB9ooczsIjqGB7e5YK1kpDHSKz2sKw0tG5M6MH3txG26he1JfTZ54jepYIlhwdFh4rhow6ysPTAJst2ABoPL/6TgR17rSDgif2hp1Pux5B2bIEEwQZ5gcYfmIKMqOVlw2Ak0xjfkPlLBEspehQR7oY4vUBDl+e/Pk2gAWcWOUR/HbPIASLh9CeokiFnd3VCPEFh6CoghbTphS+AAyTS2YwM5oaNPoCv5HGvIOqWSJYStFhvVQxrJRnAQK+xYMhfm0q1/F81iNukUE1gq0aNCOPoKRqPb5gwTAtRoGZ0XEodQXvpzF/oWqWCJZSdKgD+mliiE/jympbxKgMcWi2cShHOMSmoNTGlfkEFddNRKfbMNcp1LZ46Nnf+NLfuXJFMPZa09l82ms2KoINmTrpYojSNZsaUjlcwGG6g8PIc1bur+Pt7BEU8nybGGKumcsUiulzLR8qQTXT3XzeR6UsESxl6LAgH9YVQ7Q80KvDcAOv7LEIv6W8svgBUjDT/Z5eji5BsaL7nPGkNDMYmio5M6MtB6KQme7m8yyhWSJYytChrlExxOodgGP4Q/sdagvHo/cBXufUDgomO71a1ycoW5aAP0WambIy2K2/BcIWzXjzGX/PUkSwTa9sRIcFzQRjMUTxe1Z69DCXL0Gwa3VXC3Bj5JmCcP9heo+7BOVRKOHtg2amrezVZZKIzWieigwU8OYsSwRJZmVJHW5PihF4rMslGo5KtCSB9godX1WXQKBv4V+cEzNtZT6ZMtY8KLjZN2aIIMusTPgJ74tRkfeNmjUZaR+0tZdR4fXoUuISEEwabyKY6a0sjJJEnTMz3nxOKIYzRLCWpcNtCTHC7ucCD8FeHU9EMUaRwvPFiEtAMGn814qZwUKylpIzM9580qsMbYciopsQI5jftab+nfbvmlScMv/OABwCgknbJKBKw7fnuuTGGzGdzeeZLtN3KCKHSIgh7H1mAs3rCt34ls0dQgzaar1vwxzBh7qnmIhz3NrQSQqGNVVE4C7dXEzEmUC54yRFw7sLCNhTXETEPb65B1wof/xi/lYoy+1dRMQ9/m43KRpPFrgB5uTgRUREA723HXHwfGF4NV8fdlWVtBYQEQnyL7hJ8fh0bglnq5pfxDl6oDD5Dynv6BF+3SThAAAAAElFTkSuQmCC" alt="P(x)=|\psi(x)|^2
+=
+\left(\psi_1^{(0)}+e^{i\Delta\phi}\psi_2^{(0)}\right)
+\left(\psi_1^{(0)*}+e^{-i\Delta\phi}\psi_2^{(0)*}\right)" title="P(x)=|\psi(x)|^2
+=
+\left(\psi_1^{(0)}+e^{i\Delta\phi}\psi_2^{(0)}\right)
+\left(\psi_1^{(0)*}+e^{-i\Delta\phi}\psi_2^{(0)*}\right)" class="math display" /></p>
+<p>so</p>
+<p><img role="img" aria-label="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+e^{-i\Delta\phi}\psi_1^{(0)}\psi_2^{(0)*}
++
+e^{i\Delta\phi}\psi_1^{(0)*}\psi_2^{(0)}" style="vertical-align:middle" src="data:image/png;base64,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" alt="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+e^{-i\Delta\phi}\psi_1^{(0)}\psi_2^{(0)*}
++
+e^{i\Delta\phi}\psi_1^{(0)*}\psi_2^{(0)}" title="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+e^{-i\Delta\phi}\psi_1^{(0)}\psi_2^{(0)*}
++
+e^{i\Delta\phi}\psi_1^{(0)*}\psi_2^{(0)}" class="math display" /></p>
+<p>The last two terms are complex conjugates, hence</p>
+<p><img role="img" aria-label="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+2\,\mathrm{Re}\!\left(
+e^{i\Delta\phi}\psi_1^{(0)*}\psi_2^{(0)}
+\right)." style="vertical-align:middle" src="data:image/png;base64,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" alt="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+2\,\mathrm{Re}\!\left(
+e^{i\Delta\phi}\psi_1^{(0)*}\psi_2^{(0)}
+\right)." title="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+2\,\mathrm{Re}\!\left(
+e^{i\Delta\phi}\psi_1^{(0)*}\psi_2^{(0)}
+\right)." class="math display" /></p>
+<p>If <img role="img" aria-label="V_1=V_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAAPBAMAAABHIsEFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAuUlEQVQYGWNg1DdhYJBXZUABCMF0oDgzihyQAxeMB3Ii0GXhgvMXMHBtQJeFC66fwMCGLskAF+QPYNiFIQsXZD/AIcCxFyx/2BgIzEBMkCB32AEGBt4LjAzc+8CyCAIkuJABqJBHwZOBYR1CAswCCfoxxDIwMH4QwJQFCzKkMTBwf2uAySLsBQtyaDAwsHwFmoVuMliQ2YGBgeMBFlmwoAgXUAYEFkEoFJJzAiOEz5kehSIB5qz//w0A5XgqLWkLsWcAAAAASUVORK5CYII=" alt="V_1=V_2" title="V_1=V_2" class="math inline" />, then <img role="img" aria-label="\Delta\phi=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAARBAMAAAB+/qLuAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEM2JZna77zJEVN0imatdkZOxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA/ElEQVQYGWNgYGAQAmIQWAAm0Ql7B4gIlIJKc4ZYgliMYQVgAZ4JUHEI1cTAdADIYuX4AuZzQURhZBYD6wUgW5QhHSxytgEmAaZ/MHCCzAxg6HcAUoun9B4AUjDA8YeB4yPQ2gAGNqAiPgdJHgUGBt53IGDAwMAJlP0DtFaAAWSxG9BDQLVwAJQCKgBay8CgzsCwk8GBEVmW5wcDF5AfCJSdD5Jx4FKA6wQyfjJwFYCsZWBgKmD4wDiBuwHJXoYUBtYHDMwrOjo6Wr8w3OISeIWslWEaKDT4/4PAbwZWP1cBFFmuKHBIQsVYUOTQOWgBiSY9B42PynVA5YJ5ANEmPVAhNZp/AAAAAElFTkSuQmCC" alt="\Delta\phi=0" title="\Delta\phi=0" class="math inline" /> and
+therefore</p>
+<p><img role="img" aria-label="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+2\,\mathrm{Re}\!\left(
+\psi_1^{(0)*}\psi_2^{(0)}
+\right)," style="vertical-align:middle" src="data:image/png;base64,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" alt="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+2\,\mathrm{Re}\!\left(
+\psi_1^{(0)*}\psi_2^{(0)}
+\right)," title="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+2\,\mathrm{Re}\!\left(
+\psi_1^{(0)*}\psi_2^{(0)}
+\right)," class="math display" /></p>
+<p>which is precisely the full double-slit interference expression.</p>
+<h1 data-number="6" id="continuous-suppression-of-interference"><span class="header-section-number">6</span> Continuous Suppression of
+Interference</h1>
+<p>Recall the expression for the probability density <img role="img" aria-label="P(x)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAATBAMAAADlk9mAAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuzKrVCJmEO9Eds0xWRQzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA7klEQVQYGU2NrU4DQRRGD9sunW3ZtgGxCWofgYdAAIZ1SFY0qSWpwlUQVJM2EBKqmARNgkChVoHA1KFIVqNIEPwEwdy5mbQjvu/cc5M7EN6dwsLX5ufWbgGlultfzZLWN2mlrjWT7s1o/9BVBbXAcUH8xWlwmcANNB7ZC+5JYAAvBfewMZpcWjriHuZv25DDUbwfVfScMn+yMDUs4t8EOhaSD3Gxc6Sli8jCeu2Adu6ie+JC7kV9F8gf1dSm6qayhHeS/MJewxmsHQ69e8Vkk6yAuR99nAc8CABNq2zKpTM7yg27dDwrX60ojA5j+AdgKy5txQ5n7gAAAABJRU5ErkJggg==" alt="P(x)" title="P(x)" class="math inline" /> to detect the electron at
+position <img role="img" aria-label="x" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARFSZImYQMrvddqvNiR1MEkMAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA1SURBVAgdY2AQMhE1Y2BXqAiYyMDFUJcQwMDAsBqIGRgOATEjyzOGBQyRrNNYHRh8VWTVGQC/jQgwYH9M7AAAAABJRU5ErkJggg==" alt="x" title="x" class="math inline" /> on the screen:</p>
+<p><img role="img" aria-label="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+2\,\mathrm{Re}\!\left(
+\psi_1^{(0)}\psi_2^{(0)*} e^{i\Delta\phi}
+\right)" style="vertical-align:middle" src="data:image/png;base64,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" alt="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+2\,\mathrm{Re}\!\left(
+\psi_1^{(0)}\psi_2^{(0)*} e^{i\Delta\phi}
+\right)" title="P(x)
+=
+|\psi_1^{(0)}|^2
++
+|\psi_2^{(0)}|^2
++
+2\,\mathrm{Re}\!\left(
+\psi_1^{(0)}\psi_2^{(0)*} e^{i\Delta\phi}
+\right)" class="math display" /></p>
+<p>The probability density at a point on the screen depends on the
+relative phase <img role="img" aria-label="\Delta\phi[V_1, V_2]" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAAATBAMAAAAno50EAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEM2JZna77zJEVN0imatdkZOxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABqElEQVQoFXVSMUhbURQ93+Tb5PfXBCFDO2XraunQsa8UHWNcRHBIprpmcBVCoZAOpR/aUfBDl1IEI3TpZJYugiSzgjxxKZ1SkkVSqufcb7QOXrj3nnPfue/d998H7tipu0OnpLYgNH9NU8Bj/V8b4cRZKTz4BTS+E3vxl04RcOK5FpGny17Q5wQ8PVjVEhAn4vkhkC9bAVhmfiXs6WFhLIiI7lH8CxwaZ9jpIU5FPL2CDUEctcXjC2DBOEM/Qc6wZ6zjo2P68vlDT31jRD1Ss5LDrgHP8eqYbXFc9ziuSrfFA540bRUPBkE9ej2wc8MyNOASUvyR7g0P+FbNdLPNED9xbroKS0+BH3CB6U4KCbiz2aPue7zlFupfYWVHGhfZuY2Qn6hqMoTDOsFz6TgeMNPCMEgettW39+xWF43KvMC+dLmvnU7n3RjHUfm3uF2e+8Vn7LcvO9dWvXQpmyCsLbKXOr02dYVN5qDKsBZbncgsr+gNIu5mzyNWTDjwdV1czzblnzZ7GWepfzm6qUuyreAVMkunQNnfEifoFTJLp0DZ/0+I7/ufB1fwv3FWd9XXJAAAAABJRU5ErkJggg==" alt="\Delta\phi[V_1, V_2]" title="\Delta\phi[V_1, V_2]" class="math inline" /> through the rotation factor <img role="img" aria-label="e^{i\Delta\phi}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAQBAMAAAAc1rnfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGZ2q0TdiSK7EDLNme+L/KPuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAApUlEQVQYGWNgAAEhBoYeMEMATIIJOxCbKwAuwBGUAGQzQvlMDgzMDElAvq4hREQhi6GVQY6BwYiJtwEswnGAwYCBTYHrwFJ2iKnsChwBDIwPGAuieCAq2BYxA1UmcTgoCANpRkUDXo3+/////2MQvgTS4cwQCiQhQAFIMSUwVEC5DBwbgCy2icpw57GCZNY3gEgksB6JDWaybWCQRhHjKBRagCwAAHLiGSL6pg1hAAAAAElFTkSuQmCC" alt="e^{i\Delta\phi}" title="e^{i\Delta\phi}" class="math inline" />.</p>
+<p>That is, the mere presence of a detector modifies the probability
+distribution not by recording an outcome, but by altering the phase
+structure of the propagated amplitudes.</p>
+<p>When the two slits are energetically symmetric, such that <img role="img" aria-label="V_1 = V_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAAPBAMAAABHIsEFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAuUlEQVQYGWNg1DdhYJBXZUABCMF0oDgzihyQAxeMB3Ii0GXhgvMXMHBtQJeFC66fwMCGLskAF+QPYNiFIQsXZD/AIcCxFyx/2BgIzEBMkCB32AEGBt4LjAzc+8CyCAIkuJABqJBHwZOBYR1CAswCCfoxxDIwMH4QwJQFCzKkMTBwf2uAySLsBQtyaDAwsHwFmoVuMliQ2YGBgeMBFlmwoAgXUAYEFkEoFJJzAiOEz5kehSIB5qz//w0A5XgqLWkLsWcAAAAASUVORK5CYII=" alt="V_1 = V_2" title="V_1 = V_2" class="math inline" />, the phase
+difference vanishes, <img role="img" aria-label="\Delta\phi = 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAARBAMAAAB+/qLuAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEM2JZna77zJEVN0imatdkZOxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA/ElEQVQYGWNgYGAQAmIQWAAm0Ql7B4gIlIJKc4ZYgliMYQVgAZ4JUHEI1cTAdADIYuX4AuZzQURhZBYD6wUgW5QhHSxytgEmAaZ/MHCCzAxg6HcAUoun9B4AUjDA8YeB4yPQ2gAGNqAiPgdJHgUGBt53IGDAwMAJlP0DtFaAAWSxG9BDQLVwAJQCKgBay8CgzsCwk8GBEVmW5wcDF5AfCJSdD5Jx4FKA6wQyfjJwFYCsZWBgKmD4wDiBuwHJXoYUBtYHDMwrOjo6Wr8w3OISeIWslWEaKDT4/4PAbwZWP1cBFFmuKHBIQsVYUOTQOWgBiSY9B42PynVA5YJ5ANEmPVAhNZp/AAAAAElFTkSuQmCC" alt="\Delta\phi = 0" title="\Delta\phi = 0" class="math inline" />, and
+the interference term contributes maximally. In this case the familiar
+double-slit pattern is recovered. The visibility of the interference
+pattern therefore directly reflects the symmetry of the slit
+interactions.</p>
+<p>When a detector is present near one or both slits, the corresponding
+interaction potentials generally differ, <img role="img" aria-label="V_1 \neq V_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAARCAMAAAC7Dk/vAAAAPFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMAdt2rMmaJ7xBEIlSZu83D2cfTf8ySNQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQFJREFUKBV1k1sChCAIRdHUfNS83P9eBzSEdMYPRT0XAgzA2Lo5wGGq9bROIxs+WMmwX3cbM7d1i2O7kL72Oy/MgAHcIZuFTDXTbS7CKOtUDhcy10RoULyYSR+vZKXqlBZaNJelgwIs5I7pRKxjLKdIj43G84WTBGay+NBLcKKCOlDKQ6TdugeFi6R+dYeHBdfSzbM0jZ52TxfpkPPtC01tQbHIs1Ql0LSDxKq2NEoNvQNaSrm+P5SvynWQEG2TuFY4dKulFGUOCoOE/nYh8ndO0rI86UEaB/dmZtsy4ok98l7WhFW9VTCF3StffgnK2lxxSLf5WNb/QYX5baXfv4PAX7jnBu9vekcIAAAAAElFTkSuQmCC" alt="V_1 \neq V_2" title="V_1 \neq V_2" class="math inline" />. The
+resulting phase difference modifies the interference term and alters the
+probability distribution at the screen. This effect occurs independently
+of whether the detector ultimately triggers.</p>
+<h2 data-number="6.1" id="detector-triggers-or-does-not-trigger"><span class="header-section-number">6.1</span> Detector triggers or
+does-not-trigger</h2>
+<p>To make the “triggers / does-not-trigger” point explicit, introduce a
+detector outcome variable <img role="img" aria-label="r_j\in\{0,1\}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAATBAMAAAD185dcAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIkiZlTdqxDvmc12uzLx0YIJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABX0lEQVQoFXWRMUvDUBSFT6GBaM1rQAdLKtZJcCoOugjWjoIQnBQEJ3+Av8AguAjSv+AoTqXFPZOCdujiZiGrg0RxcRJP7su1TdFLePfdc77cl9wH/BHurV9QTbEce5V4vJdd0JoS8rLaBOrtvE2QAObrX9B00RdzKyXofhZAd3f0LAI7eiEerVkliCK4t2gtEKRdK4KllfUdq5QbOYdOEymfSGrt6Gw0VoEhtSvlkALLwmaKgB/AQS2at8SCguYOWUeyWQgYhIjW1H8ajezPLN0A2wmOI3EEvDwF+DraCZe66Nlyzz4+Dm0tYI8j4izLFw2KnjW4diJ4LTzYWsBvwOkSng0pOtdcJDie0pAD34xYsrfMcS5mrsh3T84RR/s+XlvA+VkvGQ98hjAbT9yMCMgOktCbeVPBZh5tQ8Hfux5MgTngqGze7S7uq2Kzc5JnlTlviRc9Qo1SojvJxgd+ALdaUB6oDWLJAAAAAElFTkSuQmCC" alt="r_j\in\{0,1\}" title="r_j\in\{0,1\}" class="math inline" /> for
+slit <img role="img" aria-label="j" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAQBAMAAAA2ZkhwAAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAIu8QVESZq2bdiaoDY/wAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABESURBVAgdY2BgYBACYgYGEzCJRIQkADmsAiVAkoNhCkiCeTOIZJkAItkSQCSnA4i0NgCRkSCCoQqIjQSVgSR7mwADAwABUwZabWIS0gAAAABJRU5ErkJggg==" alt="j" title="j" class="math inline" />, where <img role="img" aria-label="r_j=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAARBAMAAAC/eehCAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIkiZlTdqxDvmc12uzLx0YIJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAj0lEQVQYGWNgwAakH2ATZWCweY9DgoEfnwSjopEjhoEgHaxmCuoMDBeAclzlIKAAUgWSiJBsEAaxUQBIokELRQjCAVu+Fch2AqpABiAJjh8MDCytCkBhNDtYNwAluQKQ1QMtF2Bg4DkAFOM2QJFoqt/0ACLAiSKOxHmLxEZhnkHhITgHNiPYKKw7aI4CSQIASeUfv+E2XLYAAAAASUVORK5CYII=" alt="r_j=1" title="r_j=1" class="math inline" /> denotes a macroscopic
+firing event and <img role="img" aria-label="r_j=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAARBAMAAABp3DInAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIkiZlTdqxDvmc12uzLx0YIJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAqElEQVQYGWNgwAIYjyhiEQUKvWbgNsAqc5WBZwFWiX8MjBMYGBWNHNFk+T4z8P1gYDVTUGdguACU4yoHAQUGBkagxGeGCMkGYUwdQLkGLTRhBgbmfwysPxgYtgIlnB6gyH5kYJ3AwAGUY2lVAErA7WC4wsBTwMC6gYGBgysARYcsyIM8B4BiaB5lPQoLEk4UDUict0hsFOYZFB6Cc2Azgo3CuoPqKLAcANiVI7MiDfenAAAAAElFTkSuQmCC" alt="r_j=0" title="r_j=0" class="math inline" /> denotes no firing.
+Crucially, the interaction potential <img role="img" aria-label="V_j" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASBAMAAACgFUNZAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAeklEQVQIHWNg1DdhYJBXZWBgSAdiZiBmiAfiCBBj/gIGrg0gxvoJDGwgmoE/gGEXmMF+gEOAgeECAwPvBUawAAOPgieEwfgBKBPmwMDA/a2BgbU7gYGB5SsDAwcP0CSOB0AlfAuABAiwQygGBl8YQxDKEHgFZVzcwAAANyATXrXdn2EAAAAASUVORK5CYII=" alt="V_j" title="V_j" class="math inline" /> is present in the Hamiltonian
+independently of the value of <img role="img" aria-label="r_j" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIkiZlTdqxDvmc12uzLx0YIJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAUUlEQVQIHWNgVDRyZAACVjMFdQaGCwwRkg3CIH6DFogEgq1A7PSAgeMHAwNLqwID6wYGBg6uAAaeA0BxbgMgAQScEIrhLZQ+A6EPbIbQdwIYAL8RDZXXW7z2AAAAAElFTkSuQmCC" alt="r_j" title="r_j" class="math inline" />; <img role="img" aria-label="r_j" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIkiZlTdqxDvmc12uzLx0YIJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAUUlEQVQIHWNgVDRyZAACVjMFdQaGCwwRkg3CIH6DFogEgq1A7PSAgeMHAwNLqwID6wYGBg6uAAaeA0BxbgMgAQScEIrhLZQ+A6EPbIbQdwIYAL8RDZXXW7z2AAAAAElFTkSuQmCC" alt="r_j" title="r_j" class="math inline" /> labels a detector outcome, not the
+existence of an interaction.</p>
+<p>Accordingly, the screen amplitude must be written as an amplitude
+conditioned on detector outcomes. In the simplest which-way arrangement
+(exactly one slit is correlated with exactly one detector), the joint
+amplitude takes the form</p>
+<p><img role="img" aria-label="\Psi(x;r_1,r_2)=\psi_1(x)\,\delta_{r_1,1}\delta_{r_2,0}
++\psi_2(x)\,\delta_{r_1,0}\delta_{r_2,1}," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV0AAAATBAMAAADBg8MsAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdpnviWbdq1TNIhC7MkSa9ydeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEY0lEQVRIDZ2WT2gcVRzHv5PsbHZmdqbbKjYgyHgS7ME9VBCjsFSqOaisgqUqlj3oxVJZUYgiykQasK1CTip4GWyIWLQZ/1CKlHY8eFEKW2pLhJYOGkmpRXI2h/p9/2ZnsruF7oN5v3/vfd533ry3CaCb1zDeMGsNS6rcd8rcdvro2azcIcB6aHebs6Zuy/TCgXJNZ7rKfi+N9Vaq08rsfKwUloJxAVW54n0l1kCwMJA5rTJWpmxNvDSuQocq6fcC5QzrxwPshxNiP7A4DNnPOX1Xe8eUzQsS8Ht5mN8qx4y8PDMeYCVyQmsGanty1oBTibam5H4C+cbPigHVuDzs9XLIyM5MajyAEzphPUU9NpjhNuhuzevlfjX5deFYHRMqe085ZDSg9w4B9a5QjEmirj/49y7/USB4dumAWWftxt5M+k2TkXY19KIfYuEyH3x48vlEErB9tyybzrqrZVxjtd6xAROpE042UAX86Er7Dfc9oLbcesr7WC1w9NVKd2EP/Q0+E3OitXgIo0O1pJqdToEOsOr/Us2wjQPqvSfZqyaK5ysdHcGfbkhX6dUAQeaI4YAL8yWAVlRrOuG5Hr7mt8S1pC2Yx/5KbtSOSHrt7ExwojHVAmZkrLvA3bBhJR8twl0EGv6mDUwmwA5cy4exaIX+honreEG6Sq8C/ETyaEBqt4sArQivOeHTwB8CtlPBE7GffAE2rxLCX7RT4KCMTVfpUq8Q61MvrC67agL8hxUzQhS3xe6Giddxhe4Dc+9+Nvc2HQkQ5JGAoOunRYBWhDMvvpkCpwT3c9GxCav0wonoV1rynNIzjWcBtpDkdZiSg3gD/CYu4+6FTI5i8SL8jjWr7sIORqKp/YUCkDwSwL1tFgFGEZbPE8PVAncTDYH0Ntlpvee4azjFrkmbn1/u3D9oC70in60k/Hst9Hawtza52vixx8EsXkalHT0+XzucAXtwnMlcrwII8ihAJXSbRYBRBPn3zUmwzz5ox/K+UYaofpUAR8Qa73P1VDh5q0dtO5Z6v4Dd2Ze8BHzDYsdLXdo/M/rUW8UZnEhxSezhlv1VAEEeBRD7WwQYRer/ByvC0tG1T+A/wuPY4HLUe7ENbKdr9WLY9AvNu/+dl6UkTMOdPTnbg7xOS/MJnuP5yTiUet3Ze2ET5qfAOm7K+fo8KIAgjwIE3SAtAowiSYHbVRY1bZdpI+X/y2NST3TeGFFzO/wIJvGbdj6QemNZZGoq4xO7cEq/DyxEfAR5JGBR7dFUpgAoKOJUs9y39NmCJ/iJI+m6t261+lSZYj2ms/ZwnL9I/sKp1PuzLHJMnc8B1Bv+dIseL4d+cQGQZLMTA4ALh+UEAygoEvkvZRG8RXkzWy0Su/KscviDq5obKjtR+AA8D8W5QRbpV9dzhBkLUKAGkYJpI4JC1e6pat73a9dV7pW8BNx8BmcL4fFPu15WiKU7FqA/CYi3EouxWwzKvi7F5WxUDosLlSs8FSoRl/NROTSA/wGpDFwdQxI9YwAAAABJRU5ErkJggg==" alt="\Psi(x;r_1,r_2)=\psi_1(x)\,\delta_{r_1,1}\delta_{r_2,0}
++\psi_2(x)\,\delta_{r_1,0}\delta_{r_2,1}," title="\Psi(x;r_1,r_2)=\psi_1(x)\,\delta_{r_1,1}\delta_{r_2,0}
++\psi_2(x)\,\delta_{r_1,0}\delta_{r_2,1}," class="math display" /></p>
+<p>where <img role="img" aria-label="\delta" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAANBAMAAACJLlk1AAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAdqvvuzJEid0imWYQVHSvnEAAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABHSURBVAgdY2BgEDJhYGBgDWADkQVAgoGhE0xKgEhGYZCQK3sDkLmA9QEDA98ETiAZzMAKFIlgYN/AwMDBcISBgYGzVoaBAQApaQlqISQU3wAAAABJRU5ErkJggg==" alt="\delta" title="\delta" class="math inline" /> is the Kronecker
+delta.</p>
+<p>The expression describes a superposition of two propagation channels:
+the slit-1 contribution correlated with the detector-outcome channel
+<img role="img" aria-label="(r_1,r_2)=(1,0)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAATBAMAAAC+W0SxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB40lEQVQ4EW1SMWsUYRB9u9nbyybr5Qh2wXiIxHbFVsyBMSQWcjaWshYS7a4QRLCIjWJ3JAiGoFwq2/gHwjZpbHLiHzgwJCAEDKQJBOKbb3budu8c+Gbem5k3833LAl4D/7Gx5GypyRc2UUoZuWbAYmLARa/HcLOUMhK2DWn0m8CDzOHg1iGwRthydMyNpCvAxkHmuvZR6YB8dLiNODKgUXbMZA6/h99DLcVkR0uj/n458ZE0V14g6CJIMAUEh19fWd+j1eOmw8wXrUuiyvgc8SnQxTQvvN3/7b3Qvpd7tWTtRNqE/7pDuydol0eVAZXnwF98Ap49rK+Gz6WO8OpOsNWY6ANTdZfIXSQfbLCTYuxgH6jLDk6gebUe4lZ1HZguKeOhMrpAyNt+xxz7n/CoEpWUuNbnTsahebvEuhNnCLvyTnZ4HGHK67Jqjs4ph+9kryk/wE9EWakjbKlykwL33Lvkn3kK9ph4ponoNrAif0K0Dj+F32Cat/3RBm4Q+lkHeE1QsAVgfvFpFn/jV1zg31dtI0q0vs2QKlxCA3in2PxmDsI8TvJ+2hL8eWPK6PKyPxhoSukUM6VM+uIyxazgK3mnFaOeojRP/GQMjAzmSfGtuKItK0k1VDOJHSVlP5aMSnWyf4toXovQaA3AAAAAAElFTkSuQmCC" alt="(r_1,r_2)=(1,0)" title="(r_1,r_2)=(1,0)" class="math inline" />,
+and the slit-2 contribution correlated with <img role="img" aria-label="(r_1,r_2)=(0,1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAATBAMAAAC+W0SxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB5UlEQVQ4EW1SwUobURQ9M04mjpkmoXQXrEMRu53SrdhAazFdyLhxKdNFie6yEETowm5augsGoSW0xFW39gdkNt10Y8QfCDQoCAUFN4Jgz31vXpyJvZB7zznvnnvfSwJYAf4T98SHuSZb2EROMmTaAFNDA1S1+iyzOckQt2WQrnYdztOhxosJ0CSMNB3PY3IB+IVCW7p2jxKAfHy4mXBqgK7c8RF2X5FKApRjTKo5+TZhL/PSZ+AGTk+J4nRCTDEPv2+avuXGWV1h6tnowb+Gf6kkcaKHEi/cHfyx1nXfxmE5bP4lrgg/ec5YEHQAh85rgVDOC+wBb99UG+47JbqP9p2vwcQAmKoqIU1eJDaaJZRzn98YqrKDExhWuQ8/Ku4ApZzTj+DdwM3c9idq7F/lRztRiInLA+5kvQvrALiC21NK+k52WDIqdc7IqhqTct69k55PsMOss1CFG2lnhwb13HnyL6pplFaAJf4TvGdUKnXA24Edww5IufN3C3hCaCdtYIsgE3P8CeaG8H8Aj1+sJSi24IX6vMsSa/gKAfBBY5M7KXDTOsn76RbnfNs4vdvbwWigcUqnhHHKpG9KyaqCH6Sd5tDraxSnwjGrY8honhy+l5SN15rEuhQTqW1N8vme6OXOyf4BvUBeiwJfe3IAAAAASUVORK5CYII=" alt="(r_1,r_2)=(0,1)" title="(r_1,r_2)=(0,1)" class="math inline" />.</p>
+<p>The quantum wave functions <img role="img" aria-label="\psi_1(x)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVBBmMpnvIt1Edomru8322y8xAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA/UlEQVQYGUWPvUpDQRBGz90N3mw0YTEGK2VTCJa3M2VewCg2tsEm7W0EQVFIl06xsLAJdkJqqxR5BPUJ9A3ExtaZ3RUHZr6Zw/zswr+ZecxbmfikG0nMcVST6XNu6kYtQio/ktCJalNVVJmux9lM23WmbkWjR99MtF4Tvzu9P4Ex/eZwk5nZgSY0/GE1gy9ub6h4KnbhGlocBdl+Bkuhc0UjXbPQMEWmvXCh+wo+NYzhxwV5hFC55spvmVP6ZjmItBMY2KmtKV9hb9EN6ZTncvtxC6wcpBDnAsqVJmLtIOFB3L3IlndJ1K40aH+086zyO/C5wKXMDv9A0jpKCb/gECT1E7ZwswAAAABJRU5ErkJggg==" alt="\psi_1(x)" title="\psi_1(x)" class="math inline" /> and <img role="img" aria-label="\psi_2(x)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATBAMAAAAUmIINAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVBBmMpnvIt1Edomru8322y8xAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABCElEQVQYGUWPvUrDUBSAv+QWbxPbEqziejsIjtkURMgLWEuXrsXFNYuLioVs2SoODi5BXIS+gQ7dXdQn0DcQFwcHPfdHPHDOd86Xm5Mb+I+4cX0aTObZ8YhHjnGw9+FQ3zEyfnzzoOeo/BTlwa66d4PtlsEmS1obDOJjO69IXk6uxjBl0C7WqKO9EW1oZQd5DR/MZ+TcnvLEBaQcGtl+BI9imyH7DO2ahS0V1HJdef7AthXvtkzhKzFyibiyX0v0J42zL4od6BT0DLuqUiX6GbYWfQN3mjTjbPNmHZQsJJJM5il6KY2NrpFyLTn7+YZXaWyc22LPuzgJlL+DLAwkvlPFn/AsHTT8AhboKIFgGetsAAAAAElFTkSuQmCC" alt="\psi_2(x)" title="\psi_2(x)" class="math inline" /> correspond to
+the propagated waves computed at the screen, in position <img role="img" aria-label="x" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARFSZImYQMrvddqvNiR1MEkMAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA1SURBVAgdY2AQMhE1Y2BXqAiYyMDFUJcQwMDAsBqIGRgOATEjyzOGBQyRrNNYHRh8VWTVGQC/jQgwYH9M7AAAAABJRU5ErkJggg==" alt="x" title="x" class="math inline" />, with the interaction potentials, <img role="img" aria-label="V_1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPBAMAAAAfXVIcAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAaUlEQVQIHWNg1DdhYJBXZWBgSAdiZiBmiAfiCBBj/gIGrg0gxvoJDGwgmoE/gGEXmMF+gEOAYy+QyXuBkYF7H5DBo+DJwLAOyGD8IABhcH9rgDBYvgKFQVIcD6AMIMXAsAhMMjBwpkcBALkIExa5hpb9AAAAAElFTkSuQmCC" alt="V_1" title="V_1" class="math inline" /> and <img role="img" aria-label="V_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPBAMAAAAfXVIcAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAd0lEQVQIHWNg1DdhYJBXZWBgSAdiZiBmiAfiCBBj/gIGrg0gxvoJDGwgmoE/gGEXmMF+gEOAO+wAAwPvBUaGhQxmDAw8Cp4MfgyxDAyMHwSAStIYGLi/NTAwcGgwMLB8BQowOwA5D4AMES4gAQScExghjPX/vwEAoWUTjlae4QsAAAAASUVORK5CYII=" alt="V_2" title="V_2" class="math inline" /> included in the action delta, <img role="img" aria-label="\Delta S_j = -\int dt\,V_j(q,t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKEAAAAVCAMAAAAZ1H7nAAAAV1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABcPecEAAAAHHRSTlMAEM2JZna77zJEVN0imatej34+r26fLh5Ov98OUMnyoQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAtRJREFUSA2tVtmSozAMNNjmMEeOmcnu7Pj/v3N1WJJJhQmpih+CsaSmkVoizr17nc6X07sx34p3/XCf/VsR3w329elun6+ANnHXu7Y0be02+ujDHOqjw/v+unEdujzbQZzyOuBtzJPAr2a+3zWLnfgsAXDmE/yM/WjmF3Z5yxBwILhpCoIXASivuPMYCknKqomdhAI3Zj69QMtcr/mP3eAuIpdO6hUyW4NQdpvisZF+OUSt0Q2WxIWJ+8r9+PZvoaARHaJlKi1sRq75jFWiZVmSk3LlEConnKBYLYkdV6CSz13wb7eXe4ZIadACzZmKam/f7TymhIxFDVgDS2LKbZR3/o3MQ9tFyYA5xpR6N/q29SIoKlUyWuIeY5itLyyE7dzvlkTovzyxUDqhsay6LAFirK7f33aDBV5JhsLPuR5olPlC2EXtHZR91YcBBIkDrlySSGwsiWAYp5Jee96xXcUw4BNXrE81cDo4lLYBy8ytENFV2wn2GtIjNxmZLWeUK5C0i9D/4Ro7XZajf2f17fG0B73QwCnHy+SGar4M/JgeO0fbCfYaQrXkFGKfIWSJJ4kG/7Ie86VQcTP1CFbJV/WIuaSQsRuqsrlKsIZg1iSFzlESIw+CFV40NEk1d1SHWf81DEgOyje6NrhGxkvKnjQl2FQ3dq2rpiFo92koK2ISedYE1ErjFgGGu0Prp/qkAHjTehfcNJj0RO2C3ZLOwHXuMRvzSvw1ZEaB5mpBzr3zsIpUWhsLhwi6a/5Rx3FJaVjg65GijRf7A8DYXLIErjQpBxKv05BgClfczYZqsDl5cnO9H9j7/ow9i0bnErmtWscp3UUZMMfH1+3HnT6Ougu2cAhFhhuGyn8PNVaTa8+nOoc+/tJGqc4fbgVbviQrf1E2BN3yewqje1GG59PJpuFDWnpYYY9Iava5JXIbhuHJsOvK4FHYp5vb7alLcaix97uRLP8BePEWZNKraCEAAAAASUVORK5CYII=" alt="\Delta S_j = -\int dt\,V_j(q,t)" title="\Delta S_j = -\int dt\,V_j(q,t)" class="math inline" />.</p>
+<p>If one does not condition on the detector outcomes, the observed
+probability at the screen is obtained by summing explicitly over all
+detector outcomes <img role="img" aria-label="r_1,r_2\in\{0,1\}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAAATBAMAAACO11WQAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIkiZlTdqxDvmc12uzLx0YIJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABqElEQVQoFYVSsUrDUBQ9qQ0GtGm1DpYqRhBEp6JQBwWrboJQ1EFREQR3/QGNDg6CdHXsKE5Fce+koA5dHAtZnaq4OFnPuy9JTan00tx3z7nnvJe+G6BLWLepiMKOwkgvBH3VsNRFttBGdIDJHDCy7G+f9QD7u4OqjaLJruBe2IUGTdZXm6IFrdX6myCaEkU8607S4/q/aW1Yy0ATpZmoyRifWfL7GExP+C8fdwKulEODP1dwcJKZdyatPS3ZOIgdbU6r+koTzA1gTHyKEdMnsJVx0+aOaMyza2O22usQDAnBZD/Ql1M+FWLKFuGqneeFsmJl3lS8RvBSr+uLGL0BFj3su6IQ0+UxwK18E/qKrGMO0wgfHY/cP4VtDcR0x2tXs9InoeSyvlApwUcHuUQBTxqI6QcwK8Q0zbnAjmqdqGSWmSR45UaNw1V9dabMqb/Klab3AvDKst/LMePvnLC7npL++emd1xpunjL1fxgDqKrl7xehcNgPTcbUSkD2NJuOaILE19Phbxr59sxA1bYmfXHYtz9aipBsUVKZh5oI+5xt9zC8iMZOAb9kO1xWPHvzQwAAAABJRU5ErkJggg==" alt="r_1,r_2\in\{0,1\}" title="r_1,r_2\in\{0,1\}" class="math inline" />:</p>
+<p><img role="img" aria-label="\begin{aligned}
+P(x)
+&amp;=
+\sum_{r_1,r_2} |\Psi(x;r_1,r_2)|^2 \\
+&amp;=
+|\Psi(x;1,0)|^2
++
+|\Psi(x;0,1)|^2
++
+|\Psi(x;0,0)|^2
++
+|\Psi(x;1,1)|^2.
+\end{aligned}" style="vertical-align:middle" src="data:image/png;base64,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" alt="\begin{aligned}
+P(x)
+&amp;=
+\sum_{r_1,r_2} |\Psi(x;r_1,r_2)|^2 \\
+&amp;=
+|\Psi(x;1,0)|^2
++
+|\Psi(x;0,1)|^2
++
+|\Psi(x;0,0)|^2
++
+|\Psi(x;1,1)|^2.
+\end{aligned}" title="\begin{aligned}
+P(x)
+&amp;=
+\sum_{r_1,r_2} |\Psi(x;r_1,r_2)|^2 \\
+&amp;=
+|\Psi(x;1,0)|^2
++
+|\Psi(x;0,1)|^2
++
+|\Psi(x;0,0)|^2
++
+|\Psi(x;1,1)|^2.
+\end{aligned}" class="math display" /></p>
+<p>For typical which-way arrangements , only the outcomes <img role="img" aria-label="(r_1,r_2)=(1,0)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAATBAMAAAC+W0SxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB40lEQVQ4EW1SMWsUYRB9u9nbyybr5Qh2wXiIxHbFVsyBMSQWcjaWshYS7a4QRLCIjWJ3JAiGoFwq2/gHwjZpbHLiHzgwJCAEDKQJBOKbb3budu8c+Gbem5k3833LAl4D/7Gx5GypyRc2UUoZuWbAYmLARa/HcLOUMhK2DWn0m8CDzOHg1iGwRthydMyNpCvAxkHmuvZR6YB8dLiNODKgUXbMZA6/h99DLcVkR0uj/n458ZE0V14g6CJIMAUEh19fWd+j1eOmw8wXrUuiyvgc8SnQxTQvvN3/7b3Qvpd7tWTtRNqE/7pDuydol0eVAZXnwF98Ap49rK+Gz6WO8OpOsNWY6ANTdZfIXSQfbLCTYuxgH6jLDk6gebUe4lZ1HZguKeOhMrpAyNt+xxz7n/CoEpWUuNbnTsahebvEuhNnCLvyTnZ4HGHK67Jqjs4ph+9kryk/wE9EWakjbKlykwL33Lvkn3kK9ph4ponoNrAif0K0Dj+F32Cat/3RBm4Q+lkHeE1QsAVgfvFpFn/jV1zg31dtI0q0vs2QKlxCA3in2PxmDsI8TvJ+2hL8eWPK6PKyPxhoSukUM6VM+uIyxazgK3mnFaOeojRP/GQMjAzmSfGtuKItK0k1VDOJHSVlP5aMSnWyf4toXovQaA3AAAAAAElFTkSuQmCC" alt="(r_1,r_2)=(1,0)" title="(r_1,r_2)=(1,0)" class="math inline" /> and
+<img role="img" aria-label="(0,1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAATBAMAAAAOpGKDAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA3ElEQVQYGVWOMU7DQBBFn4Pt2ICIe6QICdpIvgEWEk0a3NJEKxokiuAToHADCyslwhyBG2xDQ+PkJjkCs2NbdqZYzX///90F74rxTJw4GRPwdqJv4O4ta417C8+y5pznPCr7aIQFEBZEhoUyZsIuDFHptuXA/JRTaEqaRKHLUXMGD8LKgR3Yak6wG8198wtfltdR94dLcTNeNNbmavdGVHB9xIIEfyN/rlxbGsQbJgae1hl/BcxvV5ZpQZyK78boKTdJ4b3be1aJ/mxZ2FnsZfGNqp5NrZOlsv6I4R+uCiyZaJhEzQAAAABJRU5ErkJggg==" alt="(0,1)" title="(0,1)" class="math inline" /> contribute, with</p>
+<p><img role="img" aria-label="\Psi(x;1,0)=\psi_1(x), \qquad
+\Psi(x;0,1)=\psi_2(x)," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUQAAAATBAMAAAAaOGkOAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdpnviWbdq1TNIhC7MkSa9ydeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEFUlEQVRIDYVVS4gcVRQ9NTPVqU9XpVEkAY2UK8EIjmAgmI0LJbNQKURD/EFvxMXo0EIggptHJBAShKE3CiKUIgZBM2UEmYVgbwaDH2iYTQKCvYgY1EVAFzrDxNz7fvVedTe5i/fu55xzb7961QVoS3vG8/fAD93oKxXMITpIDXQyd2L60sEjj5XE2DcloBJpMVWIdGag9stTAJu46++n2NdAmzbODKZQtZZ0R8b3Gx7t+UcqyO95FjjrFJS7qbZgovaoVPus9XVOGiD7UlI61GOamQquWYYCnERc4CSwLmtySQ7tqeAa4gpxU9DeBbXbgkP1sKHAELRYIFWlJO2qxxQzqqWCZUjAhoiL4FjrB+kRryAosCTQslLF9nhXWnUTJv/SiHfX3nOQkhLAPaaYoeL60nERF90RupUqqlWPuId8GfnArbCvR/zB5H83Tnsf0og/ARZIdSkpcdxjiqlHtAwJ6A54SCwS4cZDvx3OHme+GjHbQbYLLHPG2tUiFV9XHFI+P3PpuVpybd11vqcRhw1wu4KWZBD34K6NZWewmcr+vvTCKC4We+gAmfilXEveYYoaMacRd4CblFg4zfYEkIo3o7oz2RwBfeBqttWZYD8BZtrDNOCjDfBiDS3JaO4hmQ+y9CmKNjvjC1iLni9a0tFyXHw3xuf0GuHXumSyGZHmI0kcUzm15snNEEF9bh3JOtDLdunRLNYuwvHfxTDdc4B0DEqSMfIUPeZkg+7QvR/jVFv6tbh4mt80sgO8sKlTTPYQ0YNeVTm9Lg1oRG6b0YgIBrR0vEYOulMOl0YOkF5kJckY7tFiHqcRe9fwSlv62xffGgHfMOsDXtjUiLiFaLl9F+khI+QR0z4BY0GLf6MoYSzdev8+uht9iiWQdiXJAHmK7DS2Rn+LJfBkw9DSn/1MIPLzZBc9hdcjbslToimbu4j91Z8kw4+C8pONmj6Qc0dE8saYyBZIvpLkLnZEexexk9d0b9LVhqGl5dclrnEiXA0r9brcAi7WwF/8152MWNBaV5QhJdeBDxH2T9QvAV9AsSymceTXxQCNpO1BTM+uhCC5feO2tPpGBwKfnr/+HrKj9DOO//cMtkv6QB2kD2BIjmPpA2+/THeKRjyIZOXSyhh4AdkRB+G46httgNtCSTJa9iCmZ5cPnK2BQ8ls6WSgwZEhCe10ieWZoCjp0zmb7I/U2fizdgsUumrRxPSMC/kkmCNt0F8ajtCObaDjvCLn+pEKZnb+dbapBnmbBY512qCZ6dkfFG38/88c6U80ttS7kcFhT4QevImTQnkLNSBMctZugJZp0Mz0zDQ3DF861zy92XMJx56Ie2A3VOVV2gyrhdWhBtpfbdDM9EyYaLZ0Zcr+nvihG+lS5eZm+vM05jNd6ds4+R/GR/S6AwAAAABJRU5ErkJggg==" alt="\Psi(x;1,0)=\psi_1(x), \qquad
+\Psi(x;0,1)=\psi_2(x)," title="\Psi(x;1,0)=\psi_1(x), \qquad
+\Psi(x;0,1)=\psi_2(x)," class="math display" /></p>
+<p>while</p>
+<p><img role="img" aria-label="\Psi(x;0,0)=\Psi(x;1,1)=0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAAATBAMAAAAuZP87AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdpnviWbdq1TNIhC7MkSa9ydeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACVklEQVQ4EZWUsYvUQBTGv9zdnkk2yS2CaKOk9gq3sBCvsbNRSXGI/gFWB7JWFhZG1EYQr7AQQYgiHlccbiFWB5fmQBAhYHUg7IoKCoK23rGH701mksxkmrxi5nuT33zfTjYJIKs/UEqfHb2tuq68c+ZsQpuPVAa66Md6j6682r44YnVKtTR/XZ2KLjp2BXjYuCBkm49eSOZX0eKFB3ANXkwD1mu3cB3PRbcHL4NXX2Bl4f2Ts5J5OaEYgxcewNvUi50VuEntFqQ4KroPcGIspGiWhQdkDJYoZiFt4hAeFB57cZAjyOqLBH8T3QzRENGovkLKwusxBi88gGDEGzFPDj9P/1gOzwOTDJMx9eE+wgNgqMVYeD1G56UH5nIvnh9gkVzTL8lN/w7wh2Iy8o4oZh/4S3LuNtcFVm3eiNF46QF36MU7BTYBh86QkBFnUJI4DVFY4bWqLLwRo/H0O9kDuOHFl4A9lsd5oKeiwJMxzf4MLt20NbFYDW3eiNF46QFsX7+VA+/Z5lnptTTFfaEO6azmf2PhjRja0qjSgxbefKKBHoHIP8CAgSCR59qFMypj6v/Gwltiar70IFfxVntjXO2t9TJ+BKKcXs+NMfCbX08/5+hGtXjgEIIH3QeTZw82Lb9RTorXj74/RniODO89mOJzArgn6GPTI9GsNt+/+O+y4N/dfVqYPHvwW1KWT3dHlCtnpFIEdKx2deWVw0cpttRCKsWGWtDnrrzc/UrO6hZVp1rW7VXXlZf7orQUcoKK6RUSMKauvNqeKaHPvt7WXVbLprLz/wHs1b+PaFZfYQAAAABJRU5ErkJggg==" alt="\Psi(x;0,0)=\Psi(x;1,1)=0." title="\Psi(x;0,0)=\Psi(x;1,1)=0." class="math display" /></p>
+<p>Therefore,</p>
+<p><img role="img" aria-label="P(x)
+=
+|\psi_1(x)|^2
++
+|\psi_2(x)|^2." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANEAAAAWBAMAAACs+WTQAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2ZuzKrVCJmEO9Eds0xWRQzAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADUUlEQVRIDZ1VPWgUQRT+csnd7W7u8mPAgFUam5AiVRBBmELwp3ELIYWQnKBJJwtBNKlWlFTRnFHB2DgkRQoRLCw01aUx/hXXGEEUrlKwilgYgxDfmze7O5ukiD7I+/nme/PdvN2dAP9t030HbC3fHT4gc3+a1yz17L+yG72Ni7uhf6qLLV8drGEM93PEp1I1cyCQO7jDIbwtd6Z2tzGQbaqEMd4ra4d+9p0MgZpUyxJSrzgr27ImkTkKWNJSiu8wIZKiJCEYBggPBi2lhvIWqg2pynWJiVecrEjlcgi/LKj1RimwSp8tOG2USqGU3XUEv9GVtLWSRKLiMCO5y1GohrGBA1k0SmUtRUsC70r4B0/K8RDFXyB1sf4kkag42HO6HIX3aBqK3zDBKPkmRTqYtoiUKg1+XmSP6amt4rQUwKskkag4WCWXo7ydnR5D2UepIzYrQKVGSvM7P6S8BLwL8Yzgqbl7Gp2WZIPC6HAQPYm5dDmKAWOpUnEKK8ELxniP9WNvjnOLOash4vnilyPAADBaPFNooJvRkQky872pIDpa1oXGispzqLSWKq0UwhkM8Y1QAIrR+foQsOkoeX+4w2sBzeI2zblTc52aqnibPqr6WivPUSkjVWrM05g/8Y1wB6hiXNeBVUfJ3+SeYotctUauoMllptBWIyWWyXGUpYxMXPlqTk9TOkxKTb4Rxnhxg92go1RqMRIMkOuKyO15TjQ5+KyU4yiiiqVnwhB9TnSOXizxyjd27nMq9DDCT7sxr+l1NErOc0J3/Jb6SSnHUdxkLFPaqmgaP90ItEfF2+avwFWajwz/O/yBBf0QuGU3sEGhI6r7sVFyOSqlZUqnfNAGpRBdGgv+IHdRuyHOarSdmzTpR3j9c/0hsJhuYRKF4MTkI3llXI5KaZnS8sa0NjdCNcKN62tXAb9ulS7EKX82yc4miURFgU/tDQAuh3GxTMncxHwjeDW71qGdNyLDTJaSLK5o5DHlay9jUJ8x5ihJyQfapDyl1/RnboTk59Jvk+kZijhvWGK7dkBKFY0gQVwO4XnjHesJdNMmdEvsUcK6LD5IyDaq7L8T3TAZh/C88Y48ZmMVyfxwPyVPOLGE1BM3M4eTw5lRzGiUxaZifoL/BU5Tx8ag+5KZAAAAAElFTkSuQmCC" alt="P(x)
+=
+|\psi_1(x)|^2
++
+|\psi_2(x)|^2." title="P(x)
+=
+|\psi_1(x)|^2
++
+|\psi_2(x)|^2." class="math display" /></p>
+<p>The cross term <img role="img" aria-label="\psi_1^*\psi_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAARBAMAAABDbMOIAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVBBmMpnvIt1Edomru8322y8xAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAx0lEQVQYGT3QMQrCMBQG4D+poJUORXESpR1cdKmTgwg9gTjqCbyCdLDg1q2bq4ijs4vewMnTODjo//KCD5p8709DQgBWDIxldlLYGFExFVO+TAK7rqWhfAVA1N9IQ/kSTZx91ughtVtYwIuLaSvvoJK/VGa+Ql0iw1kyVYEn8GB2sgOGTkssgIqXysyQmRNwB95hwuP2zFT2ALwCzDRTRTkwunYTzVSXJrcYfm6vU1i32R7/maj8fjhmku1kcBLI6yG88RwnTj+dlCKt4SbTKAAAAABJRU5ErkJggg==" alt="\psi_1^*\psi_2" title="\psi_1^*\psi_2" class="math inline" /> is
+absent because the two slit contributions occupy orthogonal
+detector-outcome channels (classically either one detector fires,
+<code>none</code> or <code>both</code> cases are not typically
+considered).</p>
+<p>This absence is independent of whether a detector fires; it follows
+from summing over distinct outcomes rather than conditioning on one.</p>
+<p>No interference term appears in this unconditional probability,
+because the two slit contributions occupy disjoint detector-outcome
+channels <img role="img" aria-label="(r_1,r_2)=(1,0)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAATBAMAAAC+W0SxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB40lEQVQ4EW1SMWsUYRB9u9nbyybr5Qh2wXiIxHbFVsyBMSQWcjaWshYS7a4QRLCIjWJ3JAiGoFwq2/gHwjZpbHLiHzgwJCAEDKQJBOKbb3budu8c+Gbem5k3833LAl4D/7Gx5GypyRc2UUoZuWbAYmLARa/HcLOUMhK2DWn0m8CDzOHg1iGwRthydMyNpCvAxkHmuvZR6YB8dLiNODKgUXbMZA6/h99DLcVkR0uj/n458ZE0V14g6CJIMAUEh19fWd+j1eOmw8wXrUuiyvgc8SnQxTQvvN3/7b3Qvpd7tWTtRNqE/7pDuydol0eVAZXnwF98Ap49rK+Gz6WO8OpOsNWY6ANTdZfIXSQfbLCTYuxgH6jLDk6gebUe4lZ1HZguKeOhMrpAyNt+xxz7n/CoEpWUuNbnTsahebvEuhNnCLvyTnZ4HGHK67Jqjs4ph+9kryk/wE9EWakjbKlykwL33Lvkn3kK9ph4ponoNrAif0K0Dj+F32Cat/3RBm4Q+lkHeE1QsAVgfvFpFn/jV1zg31dtI0q0vs2QKlxCA3in2PxmDsI8TvJ+2hL8eWPK6PKyPxhoSukUM6VM+uIyxazgK3mnFaOeojRP/GQMjAzmSfGtuKItK0k1VDOJHSVlP5aMSnWyf4toXovQaA3AAAAAAElFTkSuQmCC" alt="(r_1,r_2)=(1,0)" title="(r_1,r_2)=(1,0)" class="math inline" /> and
+<img role="img" aria-label="(0,1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAATBAMAAAAOpGKDAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA3ElEQVQYGVWOMU7DQBBFn4Pt2ICIe6QICdpIvgEWEk0a3NJEKxokiuAToHADCyslwhyBG2xDQ+PkJjkCs2NbdqZYzX///90F74rxTJw4GRPwdqJv4O4ta417C8+y5pznPCr7aIQFEBZEhoUyZsIuDFHptuXA/JRTaEqaRKHLUXMGD8LKgR3Yak6wG8198wtfltdR94dLcTNeNNbmavdGVHB9xIIEfyN/rlxbGsQbJgae1hl/BcxvV5ZpQZyK78boKTdJ4b3be1aJ/mxZ2FnsZfGNqp5NrZOlsv6I4R+uCiyZaJhEzQAAAABJRU5ErkJggg==" alt="(0,1)" title="(0,1)" class="math inline" />.</p>
+<p>This shows explicitly that the disappearance of interference is a
+deterministic consequence of the interaction potentials associated with
+the detectors. The interaction potentials <img role="img" aria-label="V_j" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASBAMAAACgFUNZAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAeklEQVQIHWNg1DdhYJBXZWBgSAdiZiBmiAfiCBBj/gIGrg0gxvoJDGwgmoE/gGEXmMF+gEOAgeECAwPvBUawAAOPgieEwfgBKBPmwMDA/a2BgbU7gYGB5SsDAwcP0CSOB0AlfAuABAiwQygGBl8YQxDKEHgFZVzcwAAANyATXrXdn2EAAAAASUVORK5CYII=" alt="V_j" title="V_j" class="math inline" /> are present during propagation
+regardless of whether a macroscopic firing event occurs.</p>
+<h2 data-number="6.2" id="ideal-scenarios"><span class="header-section-number">6.2</span> Ideal scenarios</h2>
+<p>The above Kronecker-delta form represents an idealized which-way
+detector with perfect efficiency and exclusive triggering. In general,
+non-ideal detector response permits additional outcome channels. The
+most general two-slit form can be written as</p>
+<p><img role="img" aria-label="\Psi(x;r_1,r_2)=\psi_1(x)\,a_{r_1,r_2}^{(1)}+\psi_2(x)\,a_{r_1,r_2}^{(2)}," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS4AAAAZBAMAAAB9Zt7RAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdpnviWbdq1TNIhC7MkSa9ydeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEAklEQVRIDeWWS4gcVRSG/5qZmqlHd9sLIYIotREls3AWCsagDBpIEA0lqMT4wI24GBhaCDSJIKU4EI2BrER3rYYRRZki+BhRtFwIggi9UDASSOEDJYhk4coszH/uq6p7umemwJ1nUefce//v3FO3b59u4P9j3fhVzDV93W7wUNIYarSJlwcvI+42YuDlb+JYU6jZFueAd4HFptB5PD4J2qHW6a9vQM/VcUTVtebGk4JJEA6gDnm33pYSXZiEV3M8hHHL9IQB48Su36fqessOR32mh5OgeAUj0HxPtDdqYNozkNpHLM700ILuXb9VdbVGxHawHbQwRA06gjABj/6MRaf4LetBrpV2IbSgrusTOxRvpMB20A0RatBGFibefmw9j3pexofGxvD1hAPnMqPYC6wD35uRck/awTZQp/TqUJiESatAa2DRKf738XmzhQM7PaM4ic69R+UjqGy8rknQxr9/16FWTyrDLJP8sfe3xfadQOfwWZfIxSKorP0iNmNK4UBgiSPvup/MN8hWqRidrhE0U4TJbBfzQDu7kK5Gz/ESrC8fZMtWJjE7MXCNDG/u044x2JwfnsKqiCwIXOb81ziOYMignfHhTNelIcm2CyhYCpMvh9IJPVzMU0l16pf8Elu2MonZiXkuuZ7Qz3IDKa4XUQXuB/xCpI9R81FdDV2XhiTbbqCnw+R+4Lzk2aOT5ffQExWTWDox5kfqwkHW1RVRBa6w+BR3a672nOn33+j3lzmjIMm2MwR8/uizBfCxJHpdHjTxpi49d0DfI7WoH6vsRKmIKnAJ2Bi0L9dELtTnxQ9eIPb1XUHr35Hnte5EV3gEtPgKH6YuFbMTq/td3S/808n5haSoAlnXRXhFKSnGzNSlIWbbFaT6fZjjEX/FH6h7f4ZpuaWL2Ynx/uhW3/g4qkQWRFRIkZ8up9eulUprPQemLg0x23TIOyRa2Vn/PnoZzr7y62m07+CMnBrrat9uYnZiPKz2co9ze9ZyJbIg/JRHfsvpmzZnf+x+yBcJ6E8e1oCpS0PMNhVCdtcLwUul7Kwt6pkgMJ4tGyaWTgz+uoyYWqPIgS3WKRbxZH8ulW+n6iK581IJJdtUCO8V+CF+yu7MdHbfDyQ335wt265KJ3aZ9DJwyYos+I5deRCYKzmgxwU9+Zl2CpJsbrctkN/l51TYnYnZvxipSSEuq+IZcxpuxuksuGiXnld1DUCPE3ZS+52gCAsl/3INajt3Migzbjx+Qq9WT6czoD+0a4Wq6yvQ+6Wd1D6zwylQq9uigrfRCYGBZSb6bVb1UlTH+Dmq+/eXuaH1NR1PhlQ9nTLbqv9vZv58AF8wU7TvmQb5CMUl9W+/1mtANZVmTQHRV8d7FTNgMv6F/cnOAAAAAElFTkSuQmCC" alt="\Psi(x;r_1,r_2)=\psi_1(x)\,a_{r_1,r_2}^{(1)}+\psi_2(x)\,a_{r_1,r_2}^{(2)}," title="\Psi(x;r_1,r_2)=\psi_1(x)\,a_{r_1,r_2}^{(1)}+\psi_2(x)\,a_{r_1,r_2}^{(2)}," class="math display" /></p>
+<p>where <img role="img" aria-label="a_{r_1,r_2}^{(j)}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAYBAMAAACPVClDAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdlQyIrtmq82J70QQmd0a05NiAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAElEQVQYGXXQu0oDQRSA4X93k12zWWFMZzcqBNItQQUrt9AmII6NlUW0E1OkjNimDiH6BpY2W2gphBReChsRKwsfwUdwZqJxJ+ApZs75ztwY+DcEqIrb9ca6TnSjEC82/ygInMBpSt2xK8LJkD3HjkgWJeU5YyHj0bE3iGHLsVXYsDcVNIIl6BYE/FT0CeTMvNo6dA4kDzPikN5fMc1Cxfm8xW1uWK7n1r3RmZn3s+DLj5viOdWFvF7xGznbeOp2F+7Nyh3FZvKp3/80bB9DxVgoIFBUX9fexxfWSkS6EWW6qUNZKwvzM/YWq3av1Gk1N+M07i5JzJGtQfeXzOz/FN9dlSnuGH/5OQAAAABJRU5ErkJggg==" alt="a_{r_1,r_2}^{(j)}" title="a_{r_1,r_2}^{(j)}" class="math inline" />
+is the detector response amplitude for outcome <img role="img" aria-label="(r_1,r_2)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAATBAMAAAAg4UMRAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABBklEQVQYGW2OP0rEQBSHv8kmk41KSGG3hUE8QA5gYWGzFpLKeraQ1S6Fjd16g8BiIYuSPYIXkG1srNYbBBQEQdATrG8mRBc2D2bmm9/35g+olM3ybNTbzEEtJT3oMowlzTtNALroNLGhX3YaP2ML/PeHq1afDj+OHFdsy4Wz+k1dNO7yKc7GX8Lf3MLoJBnqc2f07ty/S3s1zHmGxPZIh5SKl+zk4QQeGcj+TEZjCIxwXENlf6B+/s1eIjyQqSJI0HljphK45w4hmuAZvLQxLwXsC3qLkrAgyoSlZjKMBTgmpS/nb9zO/7xuTbRa1UwlvXfGTvqP4FXYN22wZsKFDcvWrK0R/AKVuS905V4zmgAAAABJRU5ErkJggg==" alt="(r_1,r_2)" title="(r_1,r_2)" class="math inline" /> conditioned on
+the slit-class <img role="img" aria-label="j" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAQBAMAAAA2ZkhwAAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAIu8QVESZq2bdiaoDY/wAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABESURBVAgdY2BgYBACYgYGEzCJRIQkADmsAiVAkoNhCkiCeTOIZJkAItkSQCSnA4i0NgCRkSCCoQqIjQSVgSR7mwADAwABUwZabWIS0gAAAABJRU5ErkJggg==" alt="j" title="j" class="math inline" />.</p>
+<p>Summing over outcomes yields</p>
+<p><img role="img" aria-label="P(x)=\sum_{r_1,r_2}|\Psi(x;r_1,r_2)|^2
+=|\psi_1|^2+|\psi_2|^2
++2\,\mathrm{Re}\!\left(\psi_1^*\psi_2\sum_{r_1,r_2} a_{r_1,r_2}^{(1)}a_{r_1,r_2}^{(2)*}\right)." style="vertical-align:middle" src="data:image/png;base64,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" alt="P(x)=\sum_{r_1,r_2}|\Psi(x;r_1,r_2)|^2
+=|\psi_1|^2+|\psi_2|^2
++2\,\mathrm{Re}\!\left(\psi_1^*\psi_2\sum_{r_1,r_2} a_{r_1,r_2}^{(1)}a_{r_1,r_2}^{(2)*}\right)." title="P(x)=\sum_{r_1,r_2}|\Psi(x;r_1,r_2)|^2
+=|\psi_1|^2+|\psi_2|^2
++2\,\mathrm{Re}\!\left(\psi_1^*\psi_2\sum_{r_1,r_2} a_{r_1,r_2}^{(1)}a_{r_1,r_2}^{(2)*}\right)." class="math display" /></p>
+<p>Thus the interference term is controlled by the overlap factor</p>
+<p><img role="img" aria-label="\Gamma=\sum_{r_1,r_2} a_{r_1,r_2}^{(1)}a_{r_1,r_2}^{(2)*}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJMAAAAqBAMAAABFDnSbAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIol2qxBU70Qy3Zlmu82B/HOfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACwklEQVRIDe2Vz2sTURDHZ5t928RsZK2CF8ElolQ8NCA9KqF48ZSooOBpqVApCHpToeDSk6CHnPSgYC6em4OC6KG5KL0Iof9AQ4+erJcK/lhn3nvz8jZ5FNxcO4fMfD/z5kv2RyYAEzGbPZSRZdnPieb/gTAbqIFTrT9msgQ3BxAbSUUJ7l0YQ7k+iZ3fGonNiJuLsDKEG6xkXvQafpxHuT6JWxk7BD3dFD3whlBtW2dFrzIMBzlkdXVZzroMz+oiTMgq6GtJCRHMxEF/9F3n6vX6GezYsfDLVlTPRGTl8ZfUCG63vZ5//AufbrXFXa51PpolY6TWJisYWBgRXEUkPqZMF/BZRCxUFk/28gCUlWhaGFGpE4mmv/yBKVp5KQud7/8dA1W8wC5UYgsjegoNRNcNRCvoGKWKahbnSZDA+lpEd9pEkHhZFiMSBpHVRGzY7/nF1QiadMQ35xwIe2z17grGkj58eh9vqo5a3x/CKokXByBqsRUfkznMmkZ/BT+GEK1Fn5kDUctpBa2Ex2ANZlMjVOFA1HBb7Zphbw/eGKEKB5INtsrdK79ppivf4VLZKFk4kORslTt92VIPxG5YOrclic4OdKINcxtLo4fFBsFbrjA/W3n1OXl8R5zHGnOwnLrQy8gascoJfmwAZfp9YH4tuvKkA0me//Ae5TVulAbAPELKlYHsOtD4FOojfYaxLvyUrDyg7KtLoXIMwWRsMwp7uqphnodag7J6AOBAPDbKVXUF+HpvpiNKF5igLKf0qcKBuKWyfhOuPd/Ztxrl7Y5IUZ/81mTqQNxSuYx/gDp+5DtBXpJyIOtQ6ZOJ9xY+LA/vwFR3ANeb3E2YaTdNE7je5G7CzLupqB3uNPrp0prj3VTUyt5pejcVtfLT0U7bKmqi5qydZu+mgqa4iOSas3ZTQScak2tuinlr9OCdZh005T9mfrbZqdE7tAAAAABJRU5ErkJggg==" alt="\Gamma=\sum_{r_1,r_2} a_{r_1,r_2}^{(1)}a_{r_1,r_2}^{(2)*}." title="\Gamma=\sum_{r_1,r_2} a_{r_1,r_2}^{(1)}a_{r_1,r_2}^{(2)*}." class="math display" /></p>
+<p>Ideal which-way detection corresponds to <img role="img" aria-label="\Gamma=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAANBAMAAAAgWpGhAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIol2qxBU70Qy3ZlmzbtB/3nmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAg0lEQVQYGWMQUlJSUmbABP4BrOkoohw2GkC+PgMDswCy+FwGXiAfKMzYgCz8jIF5A1iYYQKy8E8GjgKIMLIo50cGzq9wYW4XEFBgYOAACn+EC8M1AMWAMiArUQDjTwY2hCEIqR8MbAgr4WYzvGFgdsA0hKEP5B2h9U4BCANALDYzDQYAO2AYocPVdz4AAAAASUVORK5CYII=" alt="\Gamma=0" title="\Gamma=0" class="math inline" /> (distinct outcome
+channels); full interference corresponds to <img role="img" aria-label="\Gamma=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAANBAMAAADChorYAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAIol2qxBU70Qy3ZnN8y1tnQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFxJREFUGBljEFJSUlJmwAS+AazpqKI9E4B8XQYGZgFkceG5UGHGBmRhBl6oMAOIRgC4MEIIxEIW5nYBAQV0YRAfCpBVw8SANBHCRJjdwMAgtNYpAMlcIDPI99AEANwYEpzneIJNAAAAAElFTkSuQmCC" alt="\Gamma=1" title="\Gamma=1" class="math inline" />
+(indistinguishable detector response).</p>
+<h2 data-number="6.3" id="atypical-cases-or-predictions-of-the-mechanistic-view"><span class="header-section-number">6.3</span> Atypical cases, or predictions
+of the mechanistic view</h2>
+<p>The mechanistic view of detectors as energetic thresholds opens the
+posibility of <em>both</em> detectors firing and the electron be found
+in the screen.</p>
+<p>If both detectors fire, the corresponding detector response implies
+that the interaction experienced by the wave was effectively symmetric
+between the two slit regions. In such a case, the relative phase
+difference vanishes and the double-slit interference pattern is
+recovered.</p>
+<p>Similarly, if neither detector fires and the electron is nevertheless
+detected at the screen, the wavefunction must have evolved under the
+combined detector potential into a configuration with negligible
+amplitude in the detector regions. This evolution again corresponds to
+an effectively symmetric interaction and therefore permits
+interference.</p>
+<p>Detector outcomes label macroscopic response channels of the detector
+apparatus; they do not identify microscopic trajectories. In particular,
+outcomes such as <img role="img" aria-label="(r_1,r_2)=(1,1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAATBAMAAAC+W0SxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABr0lEQVQ4EW1QTStEURh+7nXnjssYk+yESbIe2YopH8VCbCx1LYTdLJSUBUu7iRSJxsqWP6C7sbEx8gemiFKKX8Dz3vce7pnx1nmfj/M+55x7AaeIf6rF7LGGXFFtlmVEvyEGS4bE6NQJw5ZlhF8xTNEtAzORcsF10kWVzb3JzgCHD0ywYqRuPjzeZHs1RFHu6I6UC+ZDtFdVNvcp2zigTCe9EjoA7+Viy8wtzL2VY04/XTWKdBI1dPLBZ41nZ0PnNm/zpfUPGRP9NMaaEHbNZSU/cQyszhfm/DXZh9976Z0W2xpARyE2khbID7OSl7gDCnIHT2A5+Tpyi9k9oNNK5lqSN+jj/DKXJpEJyfMN3kn8K+ea3LqzJhPOF+0kOShX9bHFyb/vrLUmMwX48hQmjxiIP3ec+oQrVUvk3WUEo4oI9uCGcIuUTN5XgCFSN6oC2ySpGgEGJlei3JUishUEJd0/I4RKp1EE9pWbfpQQP8F2vk9HvPcdkwy+vxu/B5qkTEqZpJx0HjtpV3hXMmk2g7qyMDEeiZ4Rv+fJ5q60dM2qCBWykWBVhd1bzMDap/oB2FpYUMmkEQEAAAAASUVORK5CYII=" alt="(r_1,r_2)=(1,1)" title="(r_1,r_2)=(1,1)" class="math inline" /> or
+<img role="img" aria-label="(0,0)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAATBAMAAAAOpGKDAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA9ElEQVQYGU2PMU7DQBBFX8zascEi6WmQQFAh5QgWFaIhLd2KBokCfAIUGmhXiigR5gjcwE0amoQ7cACQaCKl4O/gSJli58+b+buz0NtnM5JYbG0S6C1UH8LpfWUNd/wF15JjyjGXxmakgRSymtxzYuyRZMGuJw8MWs6NrXANbsQ2zAPzoWC5pPyBhh24EAtiTmwJ3zzbnLDNCfPGDF5b7qK3WJHJ+84eDCpuhOCXrIn36Y285sDYE8kosnSIm2jnqdxncediQuLh6rbio9b+R/pbv6bQtIV6FrkMD532XZ4qv/zrrEN8Sjhv1Zr121gGY+ujgD/YpDLU5jJAwAAAAABJRU5ErkJggg==" alt="(0,0)" title="(0,0)" class="math inline" /> reflect how the
+detector circuitry responds to the incident wave, not where the electron
+“was” in a particle sense.</p>
+<p>When both detectors fire, the interaction potentials have coupled to
+wave amplitude in both slit regions.</p>
+<h2 data-number="6.4" id="wave-mechanical-tunnel-effect"><span class="header-section-number">6.4</span> Wave-Mechanical “Tunnel
+Effect”</h2>
+<p>It is instructive to note that, because the detector interaction
+potentials are spatially extended and possess nontrivial spatial
+structure, the Schrödinger equation admits solutions in which the
+electron wavefunction is strongly suppressed —potentially vanishing—
+within the detector regions while remaining finite at the screen. This
+behavior arises from wave interference under the combined potential <img role="img" aria-label="V_1+V_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAPBAMAAACy3Eq1AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA/klEQVQYGWNg1DdhYJBXZUAGQp8dGBg/BQCF0oGYGVmKgYGtAMg3AInFA3EEiAEEHBCK9QMDA2sDiD1/AQPXBoggA+sEMIPzFwPDajBr/QQGNqgcTJLrJwNDAliMP4BhF5okw1cG7gVgMfYDHAIceyHSUGMZahgaGbbmAMV4LzAycO9DlbzLIMAlwJzAwMCj4MnAsA4kedjY7rGxGYh1iGUCywPWCwwMjB8EoJJA90NcyyDPCFTBlsDAwP2tAUNyfwZQsgkozvIVyAAbi9DpHwAUAwYrA8cDTMk+oBCjwwIgCQKLIBTMThBvJgPQLSDAmR4FpjkawBSI4Pr/PwEA9qIz6pvQ3bkAAAAASUVORK5CYII=" alt="V_1+V_2" title="V_1+V_2" class="math inline" /> and does not rely
+on penetration of a classically forbidden region.</p>
+<p>Transmission to the screen without detector triggering is therefore a
+purely wave-mechanical, deterministic effect. It reflects the fact that
+a wave —quantum or electromagnetic— is defined over all allowed space
+and can develop nodal or near-nodal regions as a consequence of its
+interaction with structured potentials.</p>
+<h1 data-number="7" id="no-measurement-postulate-required"><span class="header-section-number">7</span> No Measurement Postulate
+Required</h1>
+<p>At no stage does the description require:</p>
+<ul>
+<li>wavefunction collapse,</li>
+<li>stochastic dynamics,</li>
+<li>observer dependence,</li>
+<li>information-based causation, or</li>
+<li>interpretational assumptions.</li>
+</ul>
+<p>The electron evolves deterministically under unitary propagation.
+Probabilities arise only after applying the quadratic map to the
+propagated state.</p>
+<p>The disappearance of interference is a consequence of deterministic
+phase evolution under interaction. Nothing else is required.</p>
+<h1 data-number="8" id="conclusion"><span class="header-section-number">8</span> Conclusion</h1>
+<p>We have shown that, by following the deterministic evolution of an
+electron traversing a double slit in the presence of which-way
+detectors, one can recover continuously either the double-slit or the
+single-slit interference pattern without appealing to observers,
+information-theoretic notions, or quantum mysticism.</p>
+<p>By treating the quantum wave as a literal wave evolving under
+electromagnetic interaction potentials, we also uncover clear
+mechanistic explanations for phenomena commonly described using
+tunneling or nonlocal transfer language. Such effects arise from global
+wave propagation and interference under structured interactions, and do
+not require stochastic jumps, collapse, or special postulates beyond
+unitary quantum dynamics.</p>
+<h1 data-number="9" id="references"><span class="header-section-number">9</span> References</h1>
+<ol type="1">
+<li><p>C. Cohen-Tannoudji, B. Diu, F. Laloë, <em>Mécanique
+quantique</em>, Tomes I &amp; II, Hermann, Paris.</p></li>
+<li><p>R. P. Feynman, <em>QED: The Strange Theory of Light and
+Matter</em>, Princeton University Press, 1985.</p></li>
+<li><p>J. D. Jackson, <em>Classical Electrodynamics</em>, 3rd ed.,
+Wiley, 1998.</p></li>
+<li><p>M. Schlosshauer, <em>Decoherence and the Quantum-to-Classical
+Transition</em>, Springer, 2007.</p></li>
+</ol>
+</body>
+</html>
