@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez" />
+  <meta name="author" content="Alex Mercer" />
+  <meta name="dcterms.date" content="2026-01-31" />
+  <meta name="keywords" content="Maxwell theory, source-free
+electromagnetism, Poynting theorem, Maxwell stress tensor, momentum
+continuity, inertia, tension, torus winding, topology,
+reconstruction" />
+  <title>Foundation Equations and Forced Consequences in a Source-Free Maxwell Universe</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+counter-reset: item;
+}
+.toc li {
+margin: 0.4em 0;
+padding-left: 2.6em;
+position: relative;
+counter-increment: item;
+}
+.toc li::before {
+content: counters(item, ".") ".";
+position: absolute;
+left: 0;
+color: #666;
+width: 2.2em;
+text-align: right;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Foundation Equations and Forced Consequences in a
+Source-Free Maxwell Universe</h1>
+<p class="subtitle">From Maxwell Dynamics to Continuity, Momentum,
+Inertia, Tension, and Topological Discretization</p>
+<p class="author">An M. Rodriguez</p>
+<p class="author">Alex Mercer</p>
+<p class="date">2026-01-31</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> Starting from source-free
+Maxwell dynamics, we derive energy continuity, momentum continuity,
+effective inertia and tension for localized field configurations, and
+topological discretization on toroidal flow surfaces—without additional
+postulates.</p>
+<p><strong>Abstract.</strong> This document provides a step-by-step
+derivation chain for the Maxwell Universe program. We begin with the
+source-free Maxwell equations as the experimentally abstracted dynamical
+law. From these we derive Poynting’s theorem (energy continuity), then
+the momentum continuity equation with the Maxwell stress tensor (force
+as flux). We show how Newton-like laws arise for localized,
+self-sustaining electromagnetic configurations via integrated continuity
+identities. We then derive effective tension and inertial line density
+for thin flux tubes and show how toroidal organization forces integer
+winding numbers. Finally, we clarify what can be reconstructed from
+energy density and energy flux alone and what requires the full Maxwell
+evolution law.</p>
+<p><strong>Keywords.</strong> Maxwell theory, source-free
+electromagnetism, Poynting theorem, Maxwell stress tensor, momentum
+continuity, inertia, tension, torus winding, topology,
+reconstruction</p>
+<div class="toc">
+<hr class="toc-divider" />
+<div class="toc-title">Table of Contents</div>
+<ul>
+<li><a href="#scope-and-stance">Scope and stance</a>
+</li>
+<li><a href="#foundations">Foundations</a>
+</li>
+<li><a href="#step-1-energy-continuity-poynting-theorem">Step 1: Energy continuity (Poynting theorem)</a>
+</li>
+<li><a href="#step-2-momentum-continuity-and-force-as-flux">Step 2: Momentum continuity and force as flux</a>
+</li>
+<li><a href="#step-3-newton-like-laws-for-localized-electromagnetic-configurations">Step 3: Newton-like laws for localized electromagnetic configurations</a>
+</li>
+<li><a href="#step-4-effective-tension-and-inertia-of-a-thin-flux-tube">Step 4: Effective tension and inertia of a thin flux tube</a>
+</li>
+<li><a href="#step-5-toroidal-organization-forces-integer-winding">Step 5: Toroidal organization forces integer winding</a>
+</li>
+<li><a href="#step-6-discrete-modes-from-periodicity">Step 6: Discrete modes from periodicity</a>
+</li>
+<li><a href="#step-7-what-can-be-reconstructed-from-energy-density-and-flux">Step 7: What can be reconstructed from energy density and flux</a>
+</li>
+<li><a href="#what-has-been-derived-no-added-postulates">What has been derived (no added postulates)</a>
+</li>
+<li><a href="#references">References</a>
+</li>
+</ul>
+</div>
+<hr class="meta-divider" style="width:35%; margin:2rem auto; border:0; height:1px; background: rgba(0,0,0,0.35);" />
+<h1 data-number="1" id="scope-and-stance"><span class="header-section-number">1</span> Scope and stance</h1>
+<p>This document does not introduce new primitives.</p>
+<p>We assume only:</p>
+<ul>
+<li>a source-free region,</li>
+<li>continuous electromagnetic fields,</li>
+<li>and Maxwell’s vacuum dynamics as the experimentally abstracted
+transport law.</li>
+</ul>
+<p>Everything else below is derived.</p>
+<p>No particles are postulated. No “forces” are postulated. No
+independent conservation axioms are postulated.</p>
+<h1 data-number="2" id="foundations"><span class="header-section-number">2</span> Foundations</h1>
+<h2 data-number="2.1" id="maxwell-dynamics-in-a-source-free-region"><span class="header-section-number">2.1</span> Maxwell dynamics in a
+source-free region</h2>
+<p>In vacuum, the fields satisfy</p>
+<p><img role="img" aria-label="\nabla \cdot \mathbf{E} = 0,
+\qquad
+\nabla \cdot \mathbf{B} = 0," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMcAAAARBAMAAACbTKXHAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3vzbv/ZXcJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB/UlEQVQ4EY1UPUsDYQzOea3XKrYOznbwB1RUFETwEMGx/QPiIugidHAUWlDETXERnG5yUlwE/Q1SQecq+BP8xIIfZ5Jr3rxXr3iBvsmT5OmTN9crFEO2YWDzWs2H++ZtBP49I+qzUMOH1kXne7qofS+TaFOSdUOA0SdB7E8OgxhWUB4jrt9JuF8A9Q+tUtThZt8IrNFBRiLZ9yiOTu8W7mxsxSs+gv5aJ0MimR+rDGC4ZbphQ2oo4sGSIPKFcVi3sRX30aZykiCR3Kcg9oZL4+RlGrrJEMzYncUanNrYinkLR5IgkcEXQewNN4fjZEwJRTYM4KA+DPVqPGXQPm7BF4QiTqUhiL3hZtsAx6bkhq1vBjuLaAsYnqMIbTTJVhqQD6Tghns7V7ySBC6O41Ojc4kH3uSMgBoqoE6y4RZ4CREV11WIr0u5pYYb0Hd413jwMxkiKFaqwXxVQJd32jBLqYiKIl7IV5E25Wbe9ZHwTxg2pYl8MYA5G8fiStU3mB58NjwwGAPlOu1JLeBNAHbxY/ZaOIBVrXdFpe1xkyGR6CZJ3IpvGvkm/a+KAQYe8WUc6bGwDL/KUTuJLFsYsxa3pNN4LfwDCukdU5ueCGArtgWtOToPU2+6+pTrKalnpHPEW2pxmIh6cf80p278wwRIy3UTuGlTqbmpGxOUXfgFCcKTsBsLKLgAAAAASUVORK5CYII=" alt="\nabla \cdot \mathbf{E} = 0,
+\qquad
+\nabla \cdot \mathbf{B} = 0," title="\nabla \cdot \mathbf{E} = 0,
+\qquad
+\nabla \cdot \mathbf{B} = 0," class="math display" /></p>
+<p><img role="img" aria-label="\nabla \times \mathbf{E} = -\partial_t \mathbf{B},
+\qquad
+\nabla \times \mathbf{B} = \mu_0 \epsilon_0\,\partial_t \mathbf{E}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATMAAAASBAMAAADF8SRKAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3N77tjHqOnAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADTElEQVRIDbVVTWgTQRT+8rPZpNY2hx68SBdFEBFaqCLoISsqiD0kdwspFVS8mIviodWARdtTAyJaT4X2oJcq6EGQkqAnacG9eBAqVDx5sWltadRqfG9msjMbkoYUfIF93/uZ772deTsB2hLrWa6t/LaS68m7q0KSBsnowvLS52XDoeFs5hgZ9mJ1afGVuURnAJJwzXCNFreX3pw2HI2hJNfVw+sDJFxQS6qM0Ko2DbSFmENm5A9wZ8vwm7DvIDO6pivlwa623G9F7le3NpjjikkECiKbCbiU0Q/bI8itRf82SiBf1qVHLNAItYb0Crl3FEWuq/clKT8fWEPBXDTArcN2mTC3Fv+tnQEU5rOMB1zc2tSLgKuhIch1dX7JhOhjH6Vf4yUULEWEiy1Tbk7Plsnm1vasmwEDi3N4xA5N6AFFx8hpCBW5rh6nl4yK1IgrJ4lai5UaLk64eEpVuLVQOt8whZxTScDloCb00FNhjyEX0JUT5sgR6a2R6+oWrXkig48xIkBqu1hiED/L4jCUMgZ0r2SoZnVi/LUkroUMnc0jMSNsn7AyMXifPQbjGo2zfWkYnTRipIAaea06ueglXVIkiXt5oVPljpIA9Y+3NOT9X+SBdjU7UNA5yGPQhB6w6gTYOjycQhemMQ6hgBq5Ub03H5lRqwal5tOmnyHz30m+Wb9oDkFleNaa3wahCk6qtTVCWlN32YRdTGAOt7FxoMAKPrlRPbqp3pFe0hGUFITtChh4dGwC52+9l61Z1UIgaBjpjCstn5Bay/40MsDn+BJXMWbRqJMCfHKjeqgyoBb5o0GtxYcDkyEyQmXYH2MU2HnX0Hu3XzL6hNSa2DU9a91Ja/PGYewHtcYKPjm3xtVZ0q5Q/EGFHYYcvK7YZUg9v+Jijr8rbm1oA6FzgahvRMU1Tmk+oQfrg+vHGTzPhb0Cb9ek2jXUyGX1ngxn9aouegjzh8x/ecVqkkN1Er98CHvVf+hyAfanurgyQz8kMAkXaA5MOXrm+OTMHOYRfvCQFe2UJFfVx0R921zSEg8ldEpEwwDKBayGxjv2dtIXqhUhk5wj7Un8hM5v1prOaIr434wuNMdQBE1yjuxe1CTsgoCutf8ru28t4rTs7B8e5hcwjnzGNQAAAABJRU5ErkJggg==" alt="\nabla \times \mathbf{E} = -\partial_t \mathbf{B},
+\qquad
+\nabla \times \mathbf{B} = \mu_0 \epsilon_0\,\partial_t \mathbf{E}." title="\nabla \times \mathbf{E} = -\partial_t \mathbf{B},
+\qquad
+\nabla \times \mathbf{B} = \mu_0 \epsilon_0\,\partial_t \mathbf{E}." class="math display" /></p>
+<p>Define the constant</p>
+<p><img role="img" aria-label="c^2 = \frac{1}{\mu_0 \epsilon_0}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE8AAAApBAMAAACGt2nyAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3Zm7RO8boHsfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABQ0lEQVQ4EWNgwAOuT8AjiSRlNp9IhQz8w1oho+oGpFBBMDF8bcbgipBFYmEonM6ggySNYPJfQLChrFAMEaBAq38peohzrMCmEIsYC7pOLGrAQpnMuGRQxXkvsKEKYOUxKgrb//+KVQpV0AkWiNwuIBCAKovgsRUwSCB4eFj8CpiS/P/RAEiJfQOmQqwi8xkYOCASBNzIZcCgjNUEFEGTBgbmQKEGFDGsnHkGWIWHmaAvAw8kiabG4vfZZ4b+Bs7EBAZ2AQYQhRPwPmCQYuBhUGLYwgCmcCpkdWDYzXCFYQ7Dl1AFEIUTAG1cyJDNMI/jMwOIwqmOgd+A48eMaAY7BqBCEIUT3J/A+kABZNQmAiaGO0psunCF4Q4Dq6IGiMIJCkEy7EBfIygQExMAncYADEBwRoNSmIqAIsBgJA4wgo1CVQsAhg9OprGRb1UAAAAASUVORK5CYII=" alt="c^2 = \frac{1}{\mu_0 \epsilon_0}." title="c^2 = \frac{1}{\mu_0 \epsilon_0}." class="math display" /></p>
+<p>These four equations are the dynamical content we start from.</p>
+<h1 data-number="3" id="step-1-energy-continuity-poynting-theorem"><span class="header-section-number">3</span> Step 1: Energy continuity
+(Poynting theorem)</h1>
+<h2 data-number="3.1" id="energy-density-and-flux"><span class="header-section-number">3.1</span> Energy density and flux</h2>
+<p>Define electromagnetic energy density</p>
+<p><img role="img" aria-label="u
+=
+\frac{\epsilon_0}{2}\,|\mathbf{E}|^2
++
+\frac{1}{2\mu_0}\,|\mathbf{B}|^2," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALIAAAApBAMAAABjBW7bAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADNUlEQVRIDc2Wz2vTYBjHv2n6M1vXgMpOboUJOhxYGAxBhSEeFMHtIngYs4pUd1qdJ0+WHcYuamEgTIb2IvM2f+NtAS8KCsE/QIM3mZSKU3Dqsud9k7xL2iRNGQOfQ/J9nvf7fPL0TdoU2EncUXfSHdK73L9bZOT+G3JqsRKyBe6lTmf+AvQedAMCdYdkuQjo3VogzrXQITk3tZQuSroLECg7JI/VkCpI415c7F3BW+BZAHlowcdLpVwNmYLSRF7GlI/bn6yUk1UfMyBrzsyysy6jDx+cxHXOVUSy/ZEKktGti7pHLA2dLqbZWhZ9Lyfr5ydJAIseD0/OTH9VnaourZn1tVc1uvtApuqUW84GfzYIeKQB5TMjx1+0mDwFHbGfQP93Tj476llzJ72DLLPIGBslkbSnG3XbXNoiJ/9x8iXXgq+0yGpSJXFdsSxvfZ2Mx2aW/zCVUmsBLqdskY0YkdOVlFUNJ3f9ZuR5lMksDSBWcFBNZ05OGWxbVkzqYRFKVqYJpSumWSXnyYSaZFcYKVE0PbOMvLlq8A0nC48Qsjk88lxlM1tR6UeCUt/gM6eNqGTa5yzfDRt2DyterGlFgwPpqTNg0CV4yKVSvVSqkrZNwmrfQclUxcx47fvt4iA+M92KokOmashu0MxxU9smr+NqjDqC9plGl8uRyZ6ZG/ELj/mErQd75lv5yORzv+w7qFwB3hwa1FqhvEK/G6ub9VWzFoXMfzcmCaWzXmmCE4IOAihE2D47FE4G2+HWSC185EUBFAI4Zdtvnsh7Gi0eK4WR72NMYx4BFIJVeWRq8b+O5udmct6z6iRPIT9hWgCFcBzoUnFMJExEI08g02BuiR1YCGGldExoeCgSJlSRbStRcoms4UoC5CfgGrLhnNbWlfYNCr0+NuitIM2UW/uDK9+Cl5yVHg3pcRymm/HeKUU4Z7T2piV6kRYxjDnsb28WjghTsFdwTx7PcAP7RF9bkc6D+sJjFt30nye+vncBj8Kd7tU987MFd+6jpaPzA7irZsa1jma+aJrtyAnT/IEHlw8cr8zhts+Vd1iiP9q02R09GxGvuMF80kw1oj26jR7nXYpY6LBb9i3gpvBQ3G0AAAAASUVORK5CYII=" alt="u
+=
+\frac{\epsilon_0}{2}\,|\mathbf{E}|^2
++
+\frac{1}{2\mu_0}\,|\mathbf{B}|^2," title="u
+=
+\frac{\epsilon_0}{2}\,|\mathbf{E}|^2
++
+\frac{1}{2\mu_0}\,|\mathbf{B}|^2," class="math display" /></p>
+<p>and energy flux (Poynting vector)</p>
+<p><img role="img" aria-label="\mathbf{S}
+=
+\frac{1}{\mu_0}\,\mathbf{E}\times \mathbf{B}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAApBAMAAAAbumB6AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB6klEQVRIDe2Uv0vDUBDHv2lNW7G2nTto0EEEpYh/gB3UueCmiEXEOejoYEEQQUQRcRClutrBjko7FJ0cpI6Cg53EQbAqgj+Q592LSlrzEukmeIX0+v3cN+/dvaSAY8ylHGVvsW2iUSei/06P+f6xCZke7RDWOvuH0vVlF4lD61EY28oV9nM2rB+JwtF6jJV2E6uGDdWl5Sq0AbsWfgUmnljpBnyGHdXm5MTVuU1jp++RhS0gaNhIXUrOlM/auUXYGXjhPFE8h538dObDxLU0EDEJsrP5mavmxcsKfyuiXI3kJToGbjghp5ZIy+xAvPKagQ6ODEv2KL9lLWdTOpJhEBbTk5tsoC4XxJpMHC/latByYvhaFvBu/XK3ZI/f15ii4jOqJNOE8vSh8K3JKnbqglzYAUK1TlnwdeFT0Q3+NSzblBNqFUkSNmhmRJV9EgtUiH/3+b1mtoI4E0XwmnclgjTbJa7h3V4+QOtF30mhyIpzjGXfClkRo/M0qCuTds7PbS4Jfc/Z8K96TKAL/pRHiQLf08us31YU1EUO7uIUfgy6lChQyMA0ZjCiwC5ySwnbuMaoS4kCRWOt7+OLiCuwizyfCu0mG1pzuedsypzBrMvNFUi+Oy2NzFb+Rei3GcWN1TIdZ4MRzvzK+AGFqpE3GhiEAAAAAABJRU5ErkJggg==" alt="\mathbf{S}
+=
+\frac{1}{\mu_0}\,\mathbf{E}\times \mathbf{B}." title="\mathbf{S}
+=
+\frac{1}{\mu_0}\,\mathbf{E}\times \mathbf{B}." class="math display" /></p>
+<h2 data-number="3.2" id="derivation-of-local-continuity"><span class="header-section-number">3.2</span> Derivation of local
+continuity</h2>
+<p>Take the dot product of Ampère–Maxwell with <img role="img" aria-label="\mathbf{E}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMs3d71QiuxCrdkSZfnRx3QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUCB1jEDJxUnJxYmBgiL3AwFYLoRl6G8B8AU4BMK3ACqa5FIDSDLGXbCH0BW4ozaAAhCD9DIwTIDTPAgi9NoBByPaSku3dBAAfhRX5MBKeTwAAAABJRU5ErkJggg==" alt="\mathbf{E}" title="\mathbf{E}" class="math inline" /> and Faraday
+with <img role="img" aria-label="\mathbf{B}/\mu_0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAATBAMAAAD/rzkOAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3dqyJU77uZiRBmdkSpB1/9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA9ElEQVQYGWNgQIAJCKaQ/SclY1cQn3UBkICB/AIGxv8CQB5XAEwISANFGfwbgAwOJEGw6HwDoIgsuqj9AqDIVDTRkJ8ggQYGBpYHDI0QufyfM50nApl8BxgY+AO4fzPI5gJ5INv6FwDVbWBgeM7AZsDQwAOUB4nKfwSKAlUsYeCcwOfA2AAR3f+HgSENKKrGwJzAO4ERqA6m1gEo+pVh/8ZdE1ghotz6DgzcQFG+jwzLecBqQeFgrsPAwPMA6GeVtJ3n+Bz4GoDaIADkX6YEEFsB5AYoiATS/AEgjmwWVAhIXQTi5wgulNUApJEUQUXBmqFsBgAGzDh9m0q0GgAAAABJRU5ErkJggg==" alt="\mathbf{B}/\mu_0" title="\mathbf{B}/\mu_0" class="math inline" />:</p>
+<p><img role="img" aria-label="\mathbf{E}\cdot(\nabla\times \mathbf{B})
+=
+\mu_0\epsilon_0\,\mathbf{E}\cdot \partial_t \mathbf{E}," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANMAAAATBAMAAAD4wSVeAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZZon1jmHWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC6ElEQVQ4EY1Uz2sTQRT+NnU3m58NpaCIYGjxqFhQUBAaioeCl4gU9CBZxEtBaC+KN0P7B5iLB1FoPPSiRXMpUlDM0UKLuQiCFoInQalpldpiafzeJDs7m6S2L+y8733z5ns782YDhM0th2MzipvBIbD7NhPKGjg3NnR5TFMx9DeVeZqCNdwcGr7owa0GXE/UobVYvME0gyw04DzQK18gvTdBkyRt9m/g5AZwUzP7gLDWBuJ1JgYkER4W/bVZuDuCn/mEeCkV+wNETLIXDmvlYeWYFZBEmZh/qHYN+OlxvspHm5RK/gLSeU31BiEtpljchpRqFyDK2n6pqMctloCUEE4ViFcIpFTfHpDgzH8tpIXja4sNpgdkoRHP6vVHiJJbPC7FsGEvBbCUM1clyPEx7Ami8krM+t5iQ1qpEt7kyAdkYXM020rk2MfH3QU+KyZVVX2F3VxZviSi8pLJx2J1Sdhik635MiLsCh1VTa1BoH+6aJKFRiLLLDgjHG4J+uChJB74sqCcHGCUB4hxFfpDIodriGINy5ymkw0YWmfYi/y9gBSELH+wrjB3QGSmqnZFPM/xrHJSympmgAsq9Id0CStYwlHsrNfEhbXcv4zlyP0CCsFq7wKzIhPbbrWKu1KtUtfCbdY6e8VzO48FDLpsLl2rlNZKbANPT5w2C7AokmUpQZNrAWd3Qhzvod8rf1c5kkGv+j13+9gP3GbPIK6l6ms5DVjj8bJJSqlXeeaJRYoyzpVkBHgD18XLAc7wy3amJdL2LpPO1WQ7q+autNZdzGbkhrYKTBYxMLo5NNr02uvjquaUGuGU+NVW2Cb5DxyrcZd8DPv66PpqZQmvkf74SVyHVvL5NzmldoHB8Fq+d0mkLEPPhNGiGeGURBF19XwXmmcwk9JMXqM2uN9JmPGkGchnRbPm64YTaFryqo66St3RUz3A+xCXyIXCAwK7az7RVTxIUX+MQWjXA3ww6i4Fb/9Vzv5Th5n5B9UU48Xjma9YAAAAAElFTkSuQmCC" alt="\mathbf{E}\cdot(\nabla\times \mathbf{B})
+=
+\mu_0\epsilon_0\,\mathbf{E}\cdot \partial_t \mathbf{E}," title="\mathbf{E}\cdot(\nabla\times \mathbf{B})
+=
+\mu_0\epsilon_0\,\mathbf{E}\cdot \partial_t \mathbf{E}," class="math display" /></p>
+<p><img role="img" aria-label="\frac{1}{\mu_0}\mathbf{B}\cdot(\nabla\times \mathbf{E})
+=
+-\frac{1}{\mu_0}\mathbf{B}\cdot \partial_t \mathbf{B}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOoAAAApBAMAAADJxqhnAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARM0yInYQiau771TdmWZCMSfKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADdElEQVRYCe1VTWgTQRR+291s027SBE/Si0s9KFg0FHrppYsgVFDaUqQ3jfbQi6UVL8Ue3IOoh0IKguCpsXjylIs/0EMKvUhREpRCUUq3ePGixLa09afG92Z2k910dzuQPfaFnXnzvTffmzfzZgIAIJ3GJio5kRFjUka2xRxFvC71C0YFiDAqpI6j+pzO8Q77bIoAdFxNfpv00w9Uh/xQjoWYUmm/aTe/NqLq9NZdwnpKW13vH9SscUhVmRg1CH1WFrpeLsCEC/Kq47kz9Ew0cEmvNRNA7q52db8zvBOgmAe5SnOYDEPr3iLKWwdgfbECyjxolgf0GXi5sMRG0Un7DdDfeE3RE3JzDoUO6j7pIw7AeowKk1nQPaDPwMulAfShE0WN/2rwJs+NJRukdO4bOCjbAO8waiaegRkP6DPwcJG9Hz+Kmvzb4E2epSkbbDMwKROgI0PAVfyGScGoupaBk6SHiYcL5OubRfSmqIm9hmnoOXDgYO2oJHdwRxiAxRBj6ylWYjoiZA0VDxd8A+kzumNUJefdO8zjYH32k8OVQEXFNWxy4DsrB/TZKumIpAhde4zyiLTD4uGS8wB0nFp1fe0D2zvXBFwfzGNGyjKCF8mwYYBJPW70Kl9jsSLpOGzPYhMmDhdcwSgtU6D+UfkOt7Ed5ncSW8wjzwtbfo58PcQ5WNbS1KPM8o7OFX+JLB/yVnpGYoEPF/QhwWQatAoWCp2r627ajHl0+GfT3aY+vsuPlXKdYga6ObIpdK51rlNZiJexFCiqWrUYUa1xcmUAqxflYNG21s4VoyaHeNTQc827HoRBvK5jH63AXNULph2mJUtKzqQWV2lCK0uWcr1RgMscDm4xgzpXW0Fdhms811v7oDx0zaO3c+W8A8QKpA2yFmAA9Tv4kU+pasAPMoaIlwtWR7PwhL/DCxbILwJnKiaZZGp85KkPdgSUP8LOzWHEiilE4XZSdcs9DNLpEQySZDbIEox/yQTb6hbJPtI6UtcO/UfXTc1qRjBBiCl4kscST2N5RSTiXClD3YXeV5HEFefqBG0J5jqsKMKKc01DsiyZ8lwUUcW5zkGiECvTX2DzIs61A5Nj42UlkqjCXNI23OuIKFdxrtazixObkilFca7iXC3sCdIjqWFxrpRBRdT7htpmRZyrs9lQrvniXJEkaUcW5voPUNsuyWQkOBgAAAAASUVORK5CYII=" alt="\frac{1}{\mu_0}\mathbf{B}\cdot(\nabla\times \mathbf{E})
+=
+-\frac{1}{\mu_0}\mathbf{B}\cdot \partial_t \mathbf{B}." title="\frac{1}{\mu_0}\mathbf{B}\cdot(\nabla\times \mathbf{E})
+=
+-\frac{1}{\mu_0}\mathbf{B}\cdot \partial_t \mathbf{B}." class="math display" /></p>
+<p>Subtract the second from the first and use the vector identity</p>
+<p><img role="img" aria-label="\nabla\cdot(\mathbf{E}\times \mathbf{B})
+=
+\mathbf{B}\cdot(\nabla\times \mathbf{E})
+-
+\mathbf{E}\cdot(\nabla\times \mathbf{B})," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUkAAAATBAMAAADvxuK+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3vzbv/ZXcJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADiElEQVRIDZWWu2sUURTGv80+szHJFilsNIv+AS5EEKtdQbCwyJaCSIKNEhBTWBrcwkc60xmtUtgKKRQFA7uNjSSwrcTFNLZmExOMaBzPd+5j9jEz4oG5c++55/edb2fvZAMMRHZ+INGzTNiSqgQy1yMyPE0AYcnJQKPk4AyWNrY6m1tuzftS87jz/hJwrTeJ/HbQ2X7tQWQwqAWp2ex83mxnG33kQIdo0IhbcmR/RuK8V1kAql2kdn2Ck2oL+WAR6ZW+bPo38OCHTy1gUEu20gFwuouLvkon/R2iQStuyOwBuVtepa0uMVf3GZmIS8zuALLZE3SZ+eMTbQxqyRZdZg8x7qt0Ii57OkSDVtyS50oCNpwKH5doLGYWXYZ3uny6DpztTYIuC79cimS/FnfEZR5XMFJxZXrv6xADWnFLztWAUe9poqQu22nJpBpAbo2ydNksAy+58EGXY/tuSdJreVRcjuMCijVXpndxqR10EQNacUsW9uR78xonZFbt5tqakNN6UyficupIZtwNQ1ymZhtuzb1Qy6Hi8g4rWhx8+A7MxIBOvKVUVtq/0BmHMbmqx03jcrSRKzOJ6tHy1Sdyn5SrcJlRllk6WH74Tp65CZKhlkPTwfYx97umyI6+A9dxoBW35NMSaqxOvZXhlFzVbtG4xOptbkimBeyW5WPXuXLBb3yC37gn4bTgUHmWr1j/wUF6dx2SQCduyelGeo1s/qMMS3Lx1JjXObPODeOSf3PGhlzyD1RIwmnJITKonkt5T9+ISvEbY4V6toNvGQGKSxUnKZE5DI8lrktCNJCvcWvVHEt9lnM/I84lsgG7Mkj2aFlUXAL3hs+l6xAPiksVb0mJROpoxkw4mrdHTt+8LNzhUpd8lnrQw3PpPi5B82Z5LYeqy8dRLrVDAujEW6yRmK3pTYfxunmWdyuylBf1jGblXGa/1ORXRFdu4Lm8ceBWJEMth9Jl7jtSO65M7/y2tANXMaAVF3JKlafpyEauor/azaAkD7kGjKzJBn/HNz7J5LlcPvR3fGvFrYWUsFoO1ZpgD6O+jEXU0w5cIB6kuJD3Fc5rsRkoHx9f47f0M8lpi66YqEfnmTUtY0CQrAzB/zYyhNhEEjkVBzGfBILksMuTCXqFhCcCJJGPElQTQQiZHoaLw8Z90TM/i5okkOH/Cf8J6n8YES5RihIyuYQtFsRvp+I1k0EY8i/z+0qUNAttyAAAAABJRU5ErkJggg==" alt="\nabla\cdot(\mathbf{E}\times \mathbf{B})
+=
+\mathbf{B}\cdot(\nabla\times \mathbf{E})
+-
+\mathbf{E}\cdot(\nabla\times \mathbf{B})," title="\nabla\cdot(\mathbf{E}\times \mathbf{B})
+=
+\mathbf{B}\cdot(\nabla\times \mathbf{E})
+-
+\mathbf{E}\cdot(\nabla\times \mathbf{B})," class="math display" /></p>
+<p>to obtain</p>
+<p><img role="img" aria-label="\partial_t
+\left(
+\frac{\epsilon_0}{2}|\mathbf{E}|^2
++
+\frac{1}{2\mu_0}|\mathbf{B}|^2
+\right)
++
+\nabla\cdot
+\left(
+\frac{1}{\mu_0}\mathbf{E}\times \mathbf{B}
+\right)
+=0." style="vertical-align:middle" src="data:image/png;base64,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" alt="\partial_t
+\left(
+\frac{\epsilon_0}{2}|\mathbf{E}|^2
++
+\frac{1}{2\mu_0}|\mathbf{B}|^2
+\right)
++
+\nabla\cdot
+\left(
+\frac{1}{\mu_0}\mathbf{E}\times \mathbf{B}
+\right)
+=0." title="\partial_t
+\left(
+\frac{\epsilon_0}{2}|\mathbf{E}|^2
++
+\frac{1}{2\mu_0}|\mathbf{B}|^2
+\right)
++
+\nabla\cdot
+\left(
+\frac{1}{\mu_0}\mathbf{E}\times \mathbf{B}
+\right)
+=0." class="math display" /></p>
+<p>That is,</p>
+<p><img role="img" aria-label="\partial_t u + \nabla\cdot \mathbf{S} = 0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAAQBAMAAAAmBgasAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAByUlEQVQoFaVSPywDcRT+7np3pXpcbKbeYhIh0phvMUgkSmJhcJaSEJqI6FjEZCDSVXRQIpGQYBKJhclgNZWwmJQgQare+/V+d23SWLzhvfd93/t+f+5+AFrj+EeoQ7pbx14WUfIUc/osnqszBbQ4SNcR1ldHKFxPKdhYl32FUueXRaMD/d6QKEoFxFyqYacCMAsYTAQxgOiNhwYDFgjZAjXwuSNSeAJUVwJRTxHOcaPN94wLwkueXfkg7H/UuUsLTvUU3qBuMNELdZ9KXw6jDOXuOKSzuYKh1FX+WZK9qFoJ2gt1Gq3xrUBJZDEpBG93xHL+SoC+Xf50SI4kOTJ0FbLz9aIZKO9NN6pWRJZgsHukBIOx+chZXSvfcZVBXloBiNnQi41Ag2sWCe4mZ66SUzxkfmGYq7ZJyQFu5RtgEuYbdD58lwVj56AbzXboSAjy8JizXEFwuqf1a+x4hU7XRoF+u7VIr8cyUgme9O2FvMDM4YHeQJGqf3ccI+wS0ZRQHnFCdrR12oQDu8G/zovnFG5TEojaQc/GnAD20hY2yJVvXxG8v7v5Hsyfj11fBog7fWEZ2pbglIvuQPPtcALy7y5fNalYf8/WqL9IT2q3MazF2QAAAABJRU5ErkJggg==" alt="\partial_t u + \nabla\cdot \mathbf{S} = 0." title="\partial_t u + \nabla\cdot \mathbf{S} = 0." class="math display" /></p>
+<p>Interpretation: this is a strict local bookkeeping identity implied
+by Maxwell evolution. It says changes in field energy density are
+accounted for by flux divergence.</p>
+<h1 data-number="4" id="step-2-momentum-continuity-and-force-as-flux"><span class="header-section-number">4</span> Step 2: Momentum continuity and
+force as flux</h1>
+<h2 data-number="4.1" id="momentum-density"><span class="header-section-number">4.1</span> Momentum density</h2>
+<p>Define electromagnetic momentum density</p>
+<p><img role="img" aria-label="\mathbf{g}
+=
+\epsilon_0\,\mathbf{E}\times \mathbf{B}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGsAAAARBAMAAAAoKE+YAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEFR2ZjKJRO8iq92Zu82MdAVXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABlklEQVQoFY2Sv0sCYRjHv6eeFNkhQdBWS7MhYUMRFo1BjhJU71RLQ7NQOIVBUFBDSJFLQzrUGDQYaEso9RdUQ0NwYBb98hCv53m1800MfODu+Tzf73193/c84N/SzUTpOfGo+IvZWunyVBHaossGjsqqFYhDtyOq0oY5pr2qBsVwdqcqbZhiOk5Ug2O351LpG+1fUa0mU8zAMM2HdI2xzrGsYNI396xxhmaFGj9DsUmpulJwCyaKJasM6CnjW6PuS3MJImMIenCEwGWbNWpUswjJHqgWMteSusrYkeDcboBezNBIq23UVU/uSgJv8kEw+iqaxb1Z1nI4hgWa5dkMaWTqNseWPpj1+6Lg7pRWASYQpZliwDwbnpzgJl/J4DuTb43v6tkotooDkmQsx6Zztvjval4rnfez5VReXc39Rjq9Sa9gnzapvaSQ9NPHYttbLDnlnZ6KYZ22b9ol06a1kaSL/xT+Ji+egOgujsPY/3QiDTDkm2xV1XmOdritCsx6ULRKLfOAgOurRetg7C4W0pEOnvv7yA9VCnRz4BATaQAAAABJRU5ErkJggg==" alt="\mathbf{g}
+=
+\epsilon_0\,\mathbf{E}\times \mathbf{B}." title="\mathbf{g}
+=
+\epsilon_0\,\mathbf{E}\times \mathbf{B}." class="math display" /></p>
+<p>Using <img role="img" aria-label="\mathbf{S} = \frac{1}{\mu_0}\mathbf{E}\times \mathbf{B}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAaBAMAAAC3ETTrAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABpklEQVQ4EZVTQUgCURB9lpuGq4FBkEFZ0cFLFtE5O1RX6dohL3W07kEtFARB5KFLQujZSwVB2ApBEh0K7NopbwVBGJRQFr+ZvxGuu7k48P/OvDfvz8znL2Bj/qIN6ACpNw4JdnSfHeiAOWhcwxMzicYjpEbJ5/Tz3HEdt5Cp6QeDwMAq9sJ1uHSNOqoAuiv1XCkLRcQRAdqaaPzfDRpEx5AGPBZNr0ykOgpGGjUrKUQLd4jX4+R7dqYZIY0PV+T00HpkhHpDRsOG+Njl0MZI8yxhNYyAxh5pglU67Eh8cp2OITbJMMuminzN8GbxJJ1SdTmyRJ5nU6QM5nfvEoZxb2sG5k4mpMO9TWk8S+jVYBp3OY9PonS7bKxZfMch4P1fA8xzrjup8UdqHt6wDwQqFNrOQ3iSc//myco6mTJCZcatRr0h8EU43ZtXY55681+EMV7UCxxaTckLPS+47yCtbVr83tKn1kxC2tFvizcD7/GCa/kSmmWZuUtMurQ2M+YUbSHrLnc6ZZn5M+VkPdaipno72mod/p1anccbo1bnWrs3v3k6a/QD3kp4A8aVVe8AAAAASUVORK5CYII=" alt="\mathbf{S} = \frac{1}{\mu_0}\mathbf{E}\times \mathbf{B}" title="\mathbf{S} = \frac{1}{\mu_0}\mathbf{E}\times \mathbf{B}" class="math inline" /> and <img role="img" aria-label="c^2=1/(\mu_0\epsilon_0)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAVBAMAAABGR4Y+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3Zm7RO8boHsfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABw0lEQVQ4EZVSPSwDYRh+2muvvbanhxDjIRIDSQc/g4SLkNgQTEJqMIhIKmHvoAMGnVgEo/EiBuONbI1ILCIdjRIkTLzve3W+u3TxDPc9z/O+T79+3/sBhFify8u/MILpf/Vz8wkGmmWyQLoYLeiBsRQwhQwDCUX6NP17jPRluPZYZb0AbIV9Vm0NKyE9QX3kXLQHlAIvIKkG29ACS0ieM0YRMZvWCJKWGGbt72RiSCZbQK4QCZA0HRpOd/vE90e4Jpkc0EJ2ooY7qa6v+E11YPJ3ONkpxhwXJHMPZJgX0p847kTKgrFWJOMVegldRMKQzAwwSvYzYhfw4vY1kEMPGS/I2+F2UZJxeNjAIrKu6Rje+5L9gFMyLjFRpiUKzsTofg6osI2MpbvGyxuwiTMy6jinB+JHIufhJ8B38Iaj/Yqr1SmzjHHJZAro9TPKN18D9kinyjC/sBqnfepXjX00D9p8W1npFlqZ3a1ikKhuIbnTejhoOqaX7O5/wBMQt6Ptf9ojqjl8xYSSdKb43nJlNppCc9m+pfHwetzBX2NtDhhi1hx6lf0xGk8ENxGtSHo5BNOSDRQ/Lr+lGArVfC7/TLFB/g890FHSqLeKbAAAAABJRU5ErkJggg==" alt="c^2=1/(\mu_0\epsilon_0)" title="c^2=1/(\mu_0\epsilon_0)" class="math inline" /> gives the exact relation</p>
+<p><img role="img" aria-label="\mathbf{g}=\frac{\mathbf{S}}{c^2}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAlBAMAAAAKIlxWAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEFR2ZjKJRO8iq92Zu82MdAVXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABMUlEQVQ4EWNgwAJm3b0Sg0UYIsT5nYHtF05Zrg0MDKtwynI3MDBU4ZTl+qfIwIpTlv3//20COGUZNP7/b8Uty1B2/zdOWaCdnP0TcElzAy3Nxy3rwMBgj0srA/dnBs5mnLK8k+69U8ApSy0JIRPRdJxmsbZN/mWNU5b7A8MPRqAszyoQSEBTx/GBoR9NCInL85MRLZXw/4cAkCLWe2cTkBSjMXkKIALY7WX7teoIME7QgUoOA8MsAQZWoCWd6HIMnAZcCQwRExjmOzBM+YYhy/qA5QJI0B9obA+GLAMDWwJIUCKBgek7FllpsGM4z55ZFYBFdikWMYiQitIE5oAJOKS5HLgSyhkMcMjaMTBJ/v+fgEP2Cw5xsDDnR3yyrB8YGARwK9jJwILLwUBN05QcoVoB1MVOrfyR1E4AAAAASUVORK5CYII=" alt="\mathbf{g}=\frac{\mathbf{S}}{c^2}." title="\mathbf{g}=\frac{\mathbf{S}}{c^2}." class="math display" /></p>
+<h2 data-number="4.2" id="maxwell-stress-tensor"><span class="header-section-number">4.2</span> Maxwell stress tensor</h2>
+<p>Define the Maxwell stress tensor <img role="img" aria-label="\mathbf{T}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAzd0imRBUZjLvq1cXtLYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA0SURBVAgdY2BUEgRCZQZuZ9bdCeE7GCIZgDTDMgYrMF3OYAam2xgYwDSQIpXmEtytKMoAAPnXEeLBv9fHAAAAAElFTkSuQmCC" alt="\mathbf{T}" title="\mathbf{T}" class="math inline" /> with
+components</p>
+<p><img role="img" aria-label="T_{ij}
+=
+\epsilon_0
+\left(
+E_i E_j
+-\frac{1}{2}\delta_{ij}|\mathbf{E}|^2
+\right)
++
+\frac{1}{\mu_0}
+\left(
+B_i B_j
+-\frac{1}{2}\delta_{ij}|\mathbf{B}|^2
+\right)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaMAAAAsBAMAAAA6Ksp+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVO+rid2ZInYQZkTNuzI6UKoYAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAHmklEQVRoBb1aXahUVRRec+/8nzszN8hIXzxUGJjR1LUCCzzpVUEkboaGPnQHUoPoZ8oX32Y0jHpIpygoI+4hpaQIb/WYckcSipCcyAeRzINQGCj3RqFp4m3tn7PPPnvv89dDGzz7W9/61lqzztlnn5lzBUgzDqcRRWt2Rrt8T7Xro/82l5rZ4nKtbHpVbQ1URrNv05iMxLFs+qPJ8qNenOagyWn9ELBWP8BRKL5ENdNlqmyJqiL4XbOewAYw7Opkad/NgHy3F+AIlFACVkTEGemaa6RDZMMLmYpRuVshqCm1dNbkV7j4EvB2W9HHmQvinNyXUG+1KUXQUm7C5Fe4hBL5LCtvq5LbZCbUm/IMQUFLBdfgVqmEEpUgnRqp2bk5jdKJhHrGUxh8hsV6Qp1JKAHGlaCnIcyIY+ZDbEK9yrWQmhlBSycMXo1KKAFTPS0kiui0ozwSn1TvO0nrQ9FS6apPxc1JJUa6cdEh35qQFWFE1ssdapGQvYY40VJ+wuDVqMgSwGqUU2WhaTdryQ1EZL1dsJzIO54eJFoqtHSnzkSWAFajJPLpsWGm8kfYNluNaZkv+kYRLsHnxBhyfSqY//Hh1KiP4uaIEiBqLOXRuTvHN41vd6Jz5didnd+4bfyBFsoEkEPeWXnCQ/vVexlZg0sbl528YxnU0B4nXK3JPMGxsvrG49xa3KNgzZXxF+iZESBQA+glJm+c3PQwpkYVrfETlw+3YTPkunJwGOdtZp8DsFoECsB46Vj3LGZhlcVzUDpPyrGvU8UJSafCVTyqCRZdPNg/A6oQIFTChvq8F9TYzuUHAFdWiZ4cPQFhan3G/41Tl0ABiBEadYebrCXcVhEMe4SsznFXj8/y9DMzyOL8i0ABGC8fQyVsgJUD0hKrcYQLFwKuLKsth4VxoUntOjl/o/hPgLCMWk9xjrXkDXsI9pUISaMI+IwclPEks/FpUaI3rgCKjphyCRvgpQnSEqsx6xEBQA9wTVQYNh6HHEqX58ANA2qFD3u5yVrq57Ala7pMSPZZEZhauouFfYRLYkCgAIwPHeUSNsCkgy3xGh1yxukYaXEQmsrj08xuuHSuDfgPRwFCcmqU9ziMpC2V+/gRoTNP11LlOvMYW+K+MfjgDFUJwGOkKVTChp1XpBpTri9siOYAnhnDQR8kx4WbCYdOb3AoJYAvCOZf/GcmaenGZJ+U8we5A8kwXSXe0pJbDj1LNQJQK3QIlbiy48EXpRqNri+daQMsAhj4Np2LTYCLtxPIHxodrz5NdQwochpTbtXnWCZ6lay+VI7d9ygztMSffORrEX6WRcBBcgkb4LwTnLaGg/np4Fuob7K5sXw9DKouGnyFHoE65IhPAIBj53CcRa4xjwMa7dIcUdBOcBPvQz+4SksIXxwbOzk25vAAEkQC+H1WtZHvoi0A4tgSGDB7M2hpqIUBdHzjA3meaoPVrA+Qmh2l/KN4fJkgASgtHy5AfYLZ9CrhNtdUWkKv4SrV6TYHRazWcVEiAEsmH8MlbFxD100t4UrGdxGHPBIq7qVGG3AdYYx/lciu1CLvLCjgcuSk8SvkXZaJt1TsBi3RTQLFhpb4VSp0AVb1MAEDKUrY4avUcDA/GRYuYXdL9S2HWv6h6EK+VbLRnHIJV8IvZHnH3cKBKicSKMCHPBNvaf9o0FLM9sB3wykPqvdgAmAgRQkbKqeawVWiq3ZnD8pr/lwHpX6lyNYX/WzksH7Re+wqUSFsuDK+erJX6nOgyUlI6bE3eCb8jodfwCbn20FLbHEZrxL9PgL5U9vWPtTDBBykKrHxe2kLolv3hTb5KHj+XRjhkBHkaDXpK0VxOZmO+3U5c7BMohMByFWmw7DwxG5IBJiAj5QlgqvUmfZDcS4cgCHJ5LBPd7xCK/Cgjg9FXl77I3OwTKITAcTX0Pf9DNIs/yLLXCJoacaTchY/gcuSyeHFWwkY7nMTJ9TxocjX8VuOKNAlOhGganr54Ccjm6g/MpcIih3p+UnY/HrYDKzyXIADpMifJt8U+UCX6ESAvO27DfN+AweQskRQTHnAdr81pkXSMp1fVb4U8n7nxFX3kwlQG/iUYZ7pGci0JYJi+ENOHmdGZSuE/RtbJnV5rc/9uos42L7JJWR6BGqeb4Z/gnNWz5NQgm2cfs7YWb55o4UdL9qHnlnVfVV67ybvQDFZEkqIn2QxKbhrT7IEFfiAiBtqEsuGBVDf3aUxZTsuVPgSSqTMQtLhwzx5BI8Ts/a0QuMb5R14Y39K6XSvs5NK1BylRrQ5nEbKPltkEu196sgoPAFf+Y8O+gstMpg7EkoA/rxPOyw7WWmNghunKvYVb6Ndufb7a3CB0V8qXpOZVAKeN0VFcFsjeIn+7esvWpKpQW3xznh5210LrzBlwdUiNCKpRLrVy9OmOIf3zc+3tA8hEW9KmMIN9y98blpcpTQLIalEOe7Jp5avdVUmq63/YfM4SfEVHOOZzmTNqOsz/WEzxZ+f9QohZtgNmWjgjzT8yxXf8QBS/PlZzaDaK1Qi1j4a603hPKhq2Eqr73a4w+qriqx2tZkpotrKJNfE9B1GiM05IRPgY8XObF7OGHE4o16R/7//4eZfn/IHPAEBS2wAAAAASUVORK5CYII=" alt="T_{ij}
+=
+\epsilon_0
+\left(
+E_i E_j
+-\frac{1}{2}\delta_{ij}|\mathbf{E}|^2
+\right)
++
+\frac{1}{\mu_0}
+\left(
+B_i B_j
+-\frac{1}{2}\delta_{ij}|\mathbf{B}|^2
+\right)." title="T_{ij}
+=
+\epsilon_0
+\left(
+E_i E_j
+-\frac{1}{2}\delta_{ij}|\mathbf{E}|^2
+\right)
++
+\frac{1}{\mu_0}
+\left(
+B_i B_j
+-\frac{1}{2}\delta_{ij}|\mathbf{B}|^2
+\right)." class="math display" /></p>
+<h2 data-number="4.3" id="local-momentum-balance-source-free"><span class="header-section-number">4.3</span> Local momentum balance
+(source-free)</h2>
+<p>A standard computation using Maxwell’s equations and vector
+identities yields</p>
+<p><img role="img" aria-label="\partial_t \mathbf{g} + \nabla\cdot \mathbf{T} = \mathbf{0}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIEAAAASBAMAAACOfKCOAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB1UlEQVQ4EaVSu0oDQRQ9Y3aDUUNWrazcPzA+sDWNYLBILNQyW/gAEVIoaOf+gJhSK4P4QFBsREQLtZWA22hhYSwsfQUf+EDWmTuza0JiELyBufeec+bM3ksANHXhf1EzoFsVHCIuhSOphvsc/91V0HEoEsNsBab2bZDHkGIi28xNNj+X6LTDySQBOhAvYQzq2KtI04ppAXfAqOpkytv6iwckvIJyh+wWxABZWeOCHDpVJ1PawRJV2lRHihdsuL3PJEA5tFpAIEYIcE4OvaqTaRl4oDV1o2aTQ/H5ufFropRD3RcQJIAOMUVJhF3gTGBaBvhk3A6RjEES5cA+AFUK2HOoGxNhA+QQ5UyDDfZS72AZoUeh/Lm248AS/VVMnJ6DqCl8h1YT+mMI2HHE4OBP5OgJIJ/VTaGN01nZIcn5NgPB1a0o+k/3hZyH9+nBQtEayr8BfA+0yTx/xJgBVuT1Iofwx6CP/Uzh7wFHDt6FoD7JbrALLIxNtMsL3jcgbUmAzrIpkLD1J1zw7W/MGsgACdd9d0jrO+TFlCqCOff2xGtk1vb4vzou77DjaPgJ4R6bKN9BK71RtVuLBQpAKEuixqrSX0m2CKTMX+m/EJcH6yN/0ZVpvgHDVYRu3UTbdQAAAABJRU5ErkJggg==" alt="\partial_t \mathbf{g} + \nabla\cdot \mathbf{T} = \mathbf{0}." title="\partial_t \mathbf{g} + \nabla\cdot \mathbf{T} = \mathbf{0}." class="math display" /></p>
+<p>This is the momentum continuity equation for the field in a
+source-free region.</p>
+<p>Interpretation: momentum changes in a region are accounted for by
+stress flux across the boundary.</p>
+<h2 data-number="4.4" id="integrated-form-force-as-momentum-flux"><span class="header-section-number">4.4</span> Integrated form (force as
+momentum flux)</h2>
+<p>Let <img role="img" aria-label="V" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAU0lEQVQIHWNg1DdhYJBXZWBIZ2BgYAbieCCOAOL5Cxi4NgDp9RMY2IAUA38Awy4QzX6AQwBE815gBFEMPAqeYJrxA1iYgftbA5jP8hVMMXA8ANEAiGMMtlL4GTcAAAAASUVORK5CYII=" alt="V" title="V" class="math inline" /> be a fixed volume with boundary <img role="img" aria-label="\partial V" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAOBAMAAADH1sFNAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAmklEQVQIHWNgYBAyYYADpkDWBPb3KQwM9Y8ZGPgdGCoYOoFybEDMysDgyWAPZBhCFPsz6F9g4A0AcliKjeIZ7iswcIAkzBiYVjLwGzDEgiQmMDD8ZuBcwFgA5PA0MDB+ZeDewA5SJa/AwPqBgeuBE4ijL8DAtoCB/QNIFcN9oDUCDKw/BEAc7gDGJ0BjPoPYDAzLK4CCjAdATADT3xsL31gPygAAAABJRU5ErkJggg==" alt="\partial V" title="\partial V" class="math inline" /> and outward
+normal <img role="img" aria-label="\mathbf{n}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAIBAMAAADdFhi7AAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAIt3vEImrmWZ2MkTNu8hSI1oAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAmSURBVAgdYxAycg1OYGBgeFTA8RJIvVvA/QxEMeCkZN6danp8AQCyUBGEt4i1lQAAAABJRU5ErkJggg==" alt="\mathbf{n}" title="\mathbf{n}" class="math inline" />.</p>
+<p>Integrate and apply the divergence theorem:</p>
+<p><img role="img" aria-label="\frac{d}{dt}\int_V \mathbf{g}\,dV
+=
+-\int_{\partial V} \mathbf{T}\,\mathbf{n}\,dA." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANUAAAArCAMAAADYBj3YAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAMrsiRO92q2ZUEM2Jmd0un35eHt8Ojz6vv05uz/K/jykAAAAJcEhZcwAADsQAAA7EAZUrDhsAAARjSURBVGgFvVgNd+ogDIV+0s85nVOfy///my9AoWlJtW4g5yg0hdwESLhUiGfl4/B5fNYnwvtEMDKDnLHu9HX+Lhl5ZFEymII1/vAtjt+RXWDUJYOpagbtDBdGGl2UDiZTjLFHYITxRelg2LC63uK7wGhMA1NVTcOGVfnJ2BBflARGb76aC6sP+BffhVBjEhiVIVBdhWjiDidGGl2UBKbUeaKUjLFXdlsyHf8mSgGT6zwh2WT39Z5kkQLGOFRloggm/ARvOICFSAOD26ztehGeV0d4BwUUaWCKoWnkoNpgrb6fMwtNH6sRahOVFYzh1ARaA8EWTDeO3fQbOY5qFFH+OnC5IYD7YYNt2U3Tx94lFe50WHbnnrZgYMhFC9CIVsG2vTN/ldh1R4Gv5500fVST98xyP1cgxAZMq+fKeIXnzra9M3+tgDud1hZcYEcK1Cd4YdlWvg29Vk2ft2ByvfKTV2p7Z3v+qtqyp3o32ncI+FLbVKqVPUmX2qEcjGCPTgaKgTG9zCRNXsntCXP8tW1EtycCDgFfkmWfV1BXozXO00fQU9lsRjTjChGFMOTl5JWR5GM5tn1fzrZ7A/A97r66IyO3mj8BXxp1AEEpbLqc6WM54F5ZbOqh9uXZEoYwxCDqFUKPCKR8+MwGII3AfDJMs03Gh000f1VK7ZX5w5rQxwyZ5MKp1biHjyEM6b7ySufCAqbFIgagNTiocjkbVoUoZKJ4wE3cOqWEPuIkSRJrRAlpFpkvNPYZGDJo7RW+8l4RA4TqsWTOK6Jg3WSiWGbdkE07itJHnKRfLxUDQyx54BU1AFMFlikXk+Fhk4nigSwIpY8N9Ctmsj+uGBhiywOvqAF2TvMHh7XTeQuShegBc4DjVhh1jj5KkwTdwNdqBoYoeOCVmA1o7JZuNbnI69UEE23YZKJY2igsTQ4n9LHdk1KX2v0TA+Pf1V0HgGTQ2pnjQyfVCKW+5uKGm/hrXoPpUWCthLTW4XtKEc0A/DvB1TVdnZslyRU8S9ZuwI6agdkxal8XQxHbxdJdQmahwPbQx1OswsDEUi0MRcwWeewzvIZMRKuxBCkOOAMTRzFqMRRxmUGuTPLPh2zA7LZ9LXjdIA7mdS38CE0R5ZJK/Owg7Lyyl6SpYCxFLPqu6+mZ/55vFiIRjKeIZhf6eb4EhN2/itlIBDNTRHdRsUbf4RzT+i1diWA8RZzv/8aCw4+uhlITrGLcvrSZzr//szBCNk2FoR0LbqaI/XwZ00Z+mU+BuUmERcykt5wBCyP0xQgJQyy4mSIi2bDM18Ce4MPUZlvSJLI06q9PDkbr6XCxYsF5ijhKf5s4ncVx+rw0IktP5RSBUU0h9Zf+WHCOIoqm8h8eyqu4TV9tMTHm5Prx17VZjJ9hBpw48/ktJdztcjlM+P2QbKmEh5E6rEwyTgl3vt/dpKqsWXBeJ49RexjDQmu9JVLCEZOlSe1EkKJZ4B1AmhT8Fji87doLWgpfiM5KKXtfiAP3H3rbMq2rLEH8AAAAAElFTkSuQmCC" alt="\frac{d}{dt}\int_V \mathbf{g}\,dV
+=
+-\int_{\partial V} \mathbf{T}\,\mathbf{n}\,dA." title="\frac{d}{dt}\int_V \mathbf{g}\,dV
+=
+-\int_{\partial V} \mathbf{T}\,\mathbf{n}\,dA." class="math display" /></p>
+<p>The right-hand side is the net momentum flux through the
+boundary.</p>
+<p>This is the precise origin of “force” in this program:</p>
+<ul>
+<li>“force on a subsystem” is not postulated,</li>
+<li>it is defined as the boundary flux of momentum.</li>
+</ul>
+<h1 data-number="5" id="step-3-newton-like-laws-for-localized-electromagnetic-configurations"><span class="header-section-number">5</span> Step 3: Newton-like laws for
+localized electromagnetic configurations</h1>
+<p>We now extract mechanics from the continuity identities.</p>
+<h2 data-number="5.1" id="localized-configuration-knot-or-object"><span class="header-section-number">5.1</span> Localized configuration (“knot”
+or “object”)</h2>
+<p>Assume a field configuration whose energy and momentum are
+concentrated in a bounded region that moves without dispersing
+appreciably over the time interval of interest.</p>
+<p>Define total energy and momentum:</p>
+<p><img role="img" aria-label="E(t)=\int_{\mathbb{R}^3} u(\mathbf{x},t)\,dV,
+\qquad
+\mathbf{P}(t)=\int_{\mathbb{R}^3} \mathbf{g}(\mathbf{x},t)\,dV." style="vertical-align:middle" src="data:image/png;base64,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" alt="E(t)=\int_{\mathbb{R}^3} u(\mathbf{x},t)\,dV,
+\qquad
+\mathbf{P}(t)=\int_{\mathbb{R}^3} \mathbf{g}(\mathbf{x},t)\,dV." title="E(t)=\int_{\mathbb{R}^3} u(\mathbf{x},t)\,dV,
+\qquad
+\mathbf{P}(t)=\int_{\mathbb{R}^3} \mathbf{g}(\mathbf{x},t)\,dV." class="math display" /></p>
+<p>From the continuity equations, if the flux vanishes sufficiently fast
+at infinity (localized configuration), then</p>
+<p><img role="img" aria-label="\frac{dE}{dt}=0,
+\qquad
+\frac{d\mathbf{P}}{dt}=\mathbf{0}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKcAAAAmCAMAAACWJHujAAAAM1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxgEwMAAAAEHRSTlMAMrsiRO92q2ZUEM2Jmd1OwJWU/AAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAohJREFUWAm1WFmWhCAMZBERQYf7n3ZIglvP2I9E8UOhIVTRZCNK4aNNtqWRVreklLxb6OfX3wXnJ645x7i6mGb++oNDGWPwM/TiqQAnZAQrHz7R0SPBPNIW64c6b74Bp/JUMRMoZ30zwWydNQkFjixnLuBsPE1eOaI4F9VTjbl0kDF7gUYBwNl4cv/PcQzhUE/LP4xGjhtO5TlkB7bb/MBReCLnTEoxNUvyJu44IWfvTWTa+wQm7tFwLKinHnjwrbMPnMKzVeg0z4E+OrSfCeSh1cOMDhwRTwuarWmDPhJ/24HnCUfEEymORsFpu6qaPbz8CUfEUxVLn4vtlNO3mVQzdbGkA0fGc1hC0Ms0qxQzBvc188MZ6cvX94ajMb5TfP4q8HhwGKfUySlcuGljfJSbigZriywXfYFv7dhc9C9kMVEDkmMPW7vuwGMsdxQpr0NNPcxVah7YJCCc5NBZrpR58NfQKKj7GNuJjqWoFdsOfvH7U73VUHm+q6B/cXaewvyN/k9ie9r+680PnvnmucXFZKXYIdPJ3sDcZyQ7T6nBY9SqCevtbl4YIP1stKO/eqPwilLvUy/QoSX+w0FDoDufBGeAmAd+3nrm2fPQNPl5SDxkQGEMGDc1ppQ8cM5sbTzFTX25oNRaA2clkYoLcK6cMMbMnLMU8cRag2LhXHmibRhGiUFGU7FxrjTJkLdKw8fYv10hT3QYHJwPcPADWpyefCz2pfsEh2oAQyq3amE8/ULsNPQQZ68B4Jmc1n25+RDnqAFgDHiZ3LHcU5y9BtA5/X2Ic9QAUrciGPypT3GOGkCc1Cz0Nsfp3rYe4+w1gFUrhp+/JXQ38BRnqwGokmK8e5+4Mpbj/AJTuxY2kaWt6wAAAABJRU5ErkJggg==" alt="\frac{dE}{dt}=0,
+\qquad
+\frac{d\mathbf{P}}{dt}=\mathbf{0}." title="\frac{dE}{dt}=0,
+\qquad
+\frac{d\mathbf{P}}{dt}=\mathbf{0}." class="math display" /></p>
+<p>This is conservation of energy and momentum as a derived property of
+source-free Maxwell evolution plus localization.</p>
+<h2 data-number="5.2" id="center-of-energy-trajectory"><span class="header-section-number">5.2</span> Center-of-energy
+trajectory</h2>
+<p>Define the center-of-energy position</p>
+<p><img role="img" aria-label="\mathbf{R}(t)
+=
+\frac{1}{E}\int_{\mathbb{R}^3}\mathbf{x}\,u(\mathbf{x},t)\,dV." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMkAAAAqCAMAAAAuyI8bAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAMs3du1TviXarZiKZRBAun35eHt8Ojz6vv05uz2Zzw4kAAAAJcEhZcwAADsQAAA7EAZUrDhsAAASGSURBVGgF1Vl7Y6MgDMcHoqKua9e1uy7f/2teHoBosdPb3c7yR+URkl9CEqJV6p+2l8Pr8Z8K+MvM+zxLczy9nd+r9NIeZ22dwYImh3d1fN8j5kVMC5qc4bK4ZacLC5ocYad4l2EtaHL9WN6y05UFTarXneJdhpXW5AV+LW/Z6Upakxucdop3GVZak+sTXSVet7Qmb88X8Ap6r1P0PMF/vxSH2uMJHT+Reg6mgdzc3/JH2FZyjWITUlYgyfICIM/zotSeQeM7auhCd3vnfeMNP4pNyJohyUqwdQEN26+GouUtGjgyDeTCoRZXGQYcaiFJsP566nPbDe/EJvimkPSI2fiM4m3gNFEAcoROoZJHbpDg/+UUvH1JEhMsS0ohqRF960zVks2peU0qYN38MUg+MsHnhHj97wU2pS4vNiEghaREZ+nBErUNEL0mAOxKJS+rTI6u9yeXkPB46gabahUnNsEziYSUsJIyTdgjmtgSZIo16E2eG1bM+2IgX9s5pGoVjFL04R6qnD0i05RS+IflzJZJVAJJXWvN5Gx6LZYnWg3QdQ34O6GgOaXo+KiNYds1oY1mEKLU72e6VilR/CB6qEGrCrNPQxHpxUbLjuscCY0bdpUK7RDnbncmIO5oXeSJDypV+XBKoX00JxnxnqIAnTsz9iojQ5E2XqyKlt3eGZK2xHlWXpXYjS8aFyelBHwmmlCW41Y81ASmze2hx2LADxWEEFUGbWtJGycWbRwvE6M5koqchZRXqitUFlcXTpMG+IAHOWYSwc1r5IarH8sBX8JonQKBsJGdWGQfL5O0GRJLR8RHiecBkyPxWbgDtA1SCfQcvZlNN2qyLU6SAU/Iulb7OxijEE8cPQUleTmTZaKfIWEl6lLRWWgwE49xZ4KBnynMhRKNRSbqWvLKP2kf6YBXBrOFAV8FofGGqrcIyyWBcdk2gnKOBFUecqPIxzK5N7BHxFJ3kS+1eUGBVPNR6FqyW+tS2ANlTFF1xpiGMsnY0gFvCkDTGKz0hG/b6V5zumex8XLGAYGGnyHpO62zju/1IdQFWTXm4oDB+gjhmXJyfIFo0qEUgq2PNTnBdULz5WAqlsnHxEDDNUhmUuItCf4zahy6em0SfZdtN3wS6USTVUhm2Gxk227FkYQvkLHk140lPbp6JJYRxewwUaxAMlME3STwaDlt3xFMJzAXYpBN59SVJre1UazsCyhouArJvbwQPaFzTzPOUJjcnf3npkJYmD2S9mhthPLNXlUag2lx2v7/O/wUz5qRpXptUjTgrsu0EG77xHv+GuY/SsNvbhRPsV/f4IzxVtalocp1MFK5/yiu7cIadz2Nr27I4/BJjGq8vFueH+TbwXbuP7mjciEySaJv/KmrtRkmNaq7dfcjIfstvd0rKNdTgdEJXqhPmtQDJ+hQtQeavXVMDlx0FVTVSjud1VE+q7S24zjRtbK+1vVUz/CsrupDvj5ijLTkW0Pbd/Eb0TNoQRg/LpeDYEXv0ln8evosKjic59vN9Sh3mf4ZT2NmcrxPmsGapT/rZ9TfHf4Gn+cqaHsF850AAAAASUVORK5CYII=" alt="\mathbf{R}(t)
+=
+\frac{1}{E}\int_{\mathbb{R}^3}\mathbf{x}\,u(\mathbf{x},t)\,dV." title="\mathbf{R}(t)
+=
+\frac{1}{E}\int_{\mathbb{R}^3}\mathbf{x}\,u(\mathbf{x},t)\,dV." class="math display" /></p>
+<p>Differentiate and use energy continuity <img role="img" aria-label="\partial_t u = -\nabla\cdot \mathbf{S}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAQBAMAAAAWiheNAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABY0lEQVQoFZWRv0sCYRjHP2felZp0BM26NyghDbXc6qQJQdTQTTUEKTTkaEMtDYb/QA5JBEFDbRK0uDVIm5P9cGnKBoMKu95X706FS+g7PM/zfn+83D0vMJvgv/CtqOaYjNVD13aEd6qJMswY5MdkioerAqbtaEYpilmF5JhMRNonDduxC5okINWr3mVKflbQ0V7BZ4J/b2HToTy68iFId0vZmo4Bi/guRHIdtYwXrupgOkLM+jkQ5hP4VpgLGFpOKMEtiYLjET1SZiLqnNVT69NguoDSCdWjKQKGo4z0YBdNEuGWrL5j65FIFLUdgCOakhtgvipwLbxfZCTrL4liQKNLTEc7u4zzzLJUPJDVTZd9ArFIcXtS34d3tsVLefwPzUrazbyIt2oTSistbqCtlB5caWTQ5LZtvOVoiFWd53XE7pYya3FHGe3hzuB8u3Ff65+Uuz/sfdkYZIamijc95BgefwEqiVg2B/YeVAAAAABJRU5ErkJggg==" alt="\partial_t u = -\nabla\cdot \mathbf{S}" title="\partial_t u = -\nabla\cdot \mathbf{S}" class="math inline" />:</p>
+<p><img role="img" aria-label="\frac{d\mathbf{R}}{dt}
+=
+\frac{1}{E}\int_{\mathbb{R}^3}\mathbf{S}(\mathbf{x},t)\,\frac{dV}{c^2}
+=
+\frac{1}{E}\int_{\mathbb{R}^3}\mathbf{g}(\mathbf{x},t)\,dV
+=
+\frac{\mathbf{P}}{E}." style="vertical-align:middle" src="data:image/png;base64,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" alt="\frac{d\mathbf{R}}{dt}
+=
+\frac{1}{E}\int_{\mathbb{R}^3}\mathbf{S}(\mathbf{x},t)\,\frac{dV}{c^2}
+=
+\frac{1}{E}\int_{\mathbb{R}^3}\mathbf{g}(\mathbf{x},t)\,dV
+=
+\frac{\mathbf{P}}{E}." title="\frac{d\mathbf{R}}{dt}
+=
+\frac{1}{E}\int_{\mathbb{R}^3}\mathbf{S}(\mathbf{x},t)\,\frac{dV}{c^2}
+=
+\frac{1}{E}\int_{\mathbb{R}^3}\mathbf{g}(\mathbf{x},t)\,dV
+=
+\frac{\mathbf{P}}{E}." class="math display" /></p>
+<p>Thus, for a localized source-free configuration,</p>
+<p><img role="img" aria-label="\frac{d\mathbf{R}}{dt}=\frac{\mathbf{P}}{E},
+\qquad
+\frac{d^2\mathbf{R}}{dt^2}= \mathbf{0}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAAAoCAMAAACVSauIAAAAM1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxgEwMAAAAEHRSTlMAMrsiRO92q2ZUEM2JmU7d8/+P2wAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA0BJREFUWAntmduSqyAQRRu8oAGP/P/XTjcgQkRpMampqTo8zBhsem0JN3cAfrHMk1l+Ed+O7kYAZdrbu5ZC2n96tVZrvcq5lkz40HXQ5lWLPbvviACThJCNAy4l6weA2eIfAGN1KSKrC6H4r1k6ERFGfX4DnKlwH0YVE4C1+DVel8ACbbFdWyEivFZ68i0bA3xkyWlPMNTlbCxp12MuXg0RQQkK3rIxwMfcttsTWEtJL8vGetDnRBwF4N+onAHOVY3jPNOg83I6aevzPSjv7UDk2yUQ+x7FY+Mb4AxFX5uiQTdbuyzKWsxXKxiqlNSNa0sgdhaLn6FscCoM1yVUnjy6tW7wpTGHa1R+qGNX7MTQJPQ5B5xCBhrUA4kNQ0DWJyh9PWmOe9c7MbS7AU5IHc0U4XSEBIqxXjxRnhBz5RxwotyJHiXg4A7KF+rPysR7ojwh5so54EQ54Kry0gZwzATlqEqAvJb+RHlCzJVzwKnyfplnsUwvf3ygNWbSq5uxaVR27UNpZjeVjRga3wA34f43etQDQkqlq0fZR4jvNO5o35rtH5SuaAWHwR2Pv9M338o6uG1ndfq/xfhKXjznUF7NHC6LiqV+hPyk4CM4Kq8ewj+p4xO53pTTSbNYLlhv8ReRpVtvrQ8fS21cXVT+9xYXP865M/Q43E775LM3CmDpVhXvUHwI1qlm88Ir4Lldwu9EOEFzIHo31wfE7DHNOizGGDWQvybcy0J2n/MhErlul5DK7/4if/913s2L23vSnxV77wy2TZqNKNCbcu94nOctxDjvRlZdotBys5N8fJvylOjcroIqTpXzbhivzy6X2AKd5jbhkBC928WRWYihYS64x5mRduK4mTUqT4je7SqoqlV576Y3aKFEOZdtaJh3zaYips6Jwe26RBZvRrfIfX/FkLfKQRqDr6/NJSdubtftdLt3w10YOxrmguGGnWjJibive7frJPq8Ono33tQ+D4x3Jhrmzl6KVbcu7hOL6XfvxnBHrgq/DnRtc7OBWFS+ezd6ghdLyxCGeOMvVA3EovLdu1mFs4XLUUltFwzf5u0j+lNcYgJPL6N3M48z5+xitHWHltVyzwopja7vEt/bA/wAQ2QgMIngzE0AAAAASUVORK5CYII=" alt="\frac{d\mathbf{R}}{dt}=\frac{\mathbf{P}}{E},
+\qquad
+\frac{d^2\mathbf{R}}{dt^2}= \mathbf{0}." title="\frac{d\mathbf{R}}{dt}=\frac{\mathbf{P}}{E},
+\qquad
+\frac{d^2\mathbf{R}}{dt^2}= \mathbf{0}." class="math display" /></p>
+<p>This is inertial motion: constant center-of-energy velocity follows
+from derived momentum conservation.</p>
+<h2 data-number="5.3" id="force-and-interaction"><span class="header-section-number">5.3</span> “Force” and interaction</h2>
+<p>If the configuration is not isolated because other field structure
+crosses the boundary of a chosen region <img role="img" aria-label="V" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANBAMAAABr8kJMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdt2rMmaJ7xBEIlSZu83yBCReAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAU0lEQVQIHWNg1DdhYJBXZWBIZ2BgYAbieCCOAOL5Cxi4NgDp9RMY2IAUA38Awy4QzX6AQwBE815gBFEMPAqeYJrxA1iYgftbA5jP8hVMMXA8ANEAiGMMtlL4GTcAAAAASUVORK5CYII=" alt="V" title="V" class="math inline" />, then</p>
+<p><img role="img" aria-label="\frac{d}{dt}\int_V \mathbf{g}\,dV
+=
+-\int_{\partial V} \mathbf{T}\,\mathbf{n}\,dA," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANUAAAArCAMAAADYBj3YAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAMrsiRO92q2ZUEM2Jmd0un35eHt8Ojz6vv05uz/K/jykAAAAJcEhZcwAADsQAAA7EAZUrDhsAAARrSURBVGgFvViJlqsgDAVxwXU6Xaad18n//+YLoBgl1s4UyjmtGCA3ARIuCrFXPg6fx70+EdoTwcgMFGPd6Xz5Khh5ZFEymJw1/vAljl+RXWDUJYMpKwbtAldGGl2UDibTjLFHYITxRelg2LC6fcd3gdGYBqYs65oNq+KTsSG+KAmM2XwVF1Yf8C++C6HGJDA6Q6CqDNHEHU6MNLooCUxh8kQhGWNv7LZkOr4mSgGjTJ6QbLI7vydZpICxDpWZyIMJP8EbDmAh0sDgNmvaToTn1RHeQQFFGpi8r2vZ6yZYq699ZmHoYzlAZaOyhCGcmkBrINiCaYehHX8Dx1GtIspfey43BHA/bLAtuxn62E1JhTsdlt25ty0Y6JVoAGrRaNi2d+avErs+UeC838nQRz16zyz3vgIhNmAaM1fWKzx3tu2d+WsJ3Om0tuAKT6RAc4Lnjm2pbei1avq+BaPMyo9e6e2d7fmrboqO6t2o3yHgS01d6kZ2JF0ahxRYwTM6GSgGxvaykzR6JbcnbOKvTS3aZyLgEPAlWXSqhKocnHGePoKZynozohlXiCiEIY2jV1aihmJouq6YbfcGYDvuvqolI7eqPwFfGkwAQSFcupzpY9HjXlls6r7yZW8JQxhiEPUKoQcE0j58ZgOQRmA+6cfZJuPDKpq/KoXxyv7hk9DHDJnkwqnVuIevIQzpvvLK5MIcxsUiBqA1OKiccjasClHIRHGPm7iZlBL6iJMkSawRJaSaZ77Q2GdgyKC1V9jkvSIGCN1hySaviIJ1lYlimbV9Nu4oSh9xkv68VAwMseSBV9QATBVYxlxMhodVJop7siCUPtbQrZjJ83HFwBBbHnhFDXBzqh4c1pPO7yBZiA4wB0zcCqNuoo/SJsFp4O+eDAxR8MArMRtQuy3dGHKhqtUEE21YZaJYuigsbA4n9LF5JqUutfs3Bsa3VW0LgGTQ2anwpZV6gMJcc3HDjfxVVWB75PjUQtpwM+2UIpp3U05wc5X5X9klURr2kvU8ZLfGwOyO2engT2xLEZvF0l1DZqHB9TDHU6zCwLyq2ntlKWK2yGOf4TVkJFq1I0ivgrvxDMyLir1TwlLEZQa5Mclf9VmP2W37WvB7gziY32uhI2avDEWUSyrx8wRhp8r+WE8F4yhi3rVtR8/893yzEIlgPEW0u9DP+DUg7L4pZiURzEwRp4uKM/oOl5jWb+lKBOMp4nz/txYcfsyjL0zs5cMcgbYx3p+DEbKuSwztWHAzRezmy5gx+mw/BSqbCPOYSW85Iw5GmIsREoZYcDNFRLLhmK+FPcGHfdptSZPI0qhX3yYYo6fFxYoF5yniIP1t4nQRx/Hz0oAsPZVTBEbXuTRf+mPBTRRR1KX/8FDcxPf41RYToyLXj1fXZjF+hulx4uznt5Rw39frYcTv+mRLJTyMNGFlk3FKuMv9Pk2qzuoF553kMZ4exrLQymyJlHDEZGlTOxGkqOZ4B5A2Bb8FDm+77oKWwheis9Ta3RfiwP0Hdp4y1moV/KgAAAAASUVORK5CYII=" alt="\frac{d}{dt}\int_V \mathbf{g}\,dV
+=
+-\int_{\partial V} \mathbf{T}\,\mathbf{n}\,dA," title="\frac{d}{dt}\int_V \mathbf{g}\,dV
+=
+-\int_{\partial V} \mathbf{T}\,\mathbf{n}\,dA," class="math display" /></p>
+<p>so changes in subsystem momentum are caused by stress flux across its
+boundary.</p>
+<p>No additional force law is required. Interaction is momentum exchange
+through the field.</p>
+<h1 data-number="6" id="step-4-effective-tension-and-inertia-of-a-thin-flux-tube"><span class="header-section-number">6</span> Step 4: Effective tension and
+inertia of a thin flux tube</h1>
+<p>Assume a configuration whose energy is concentrated in a thin tube
+around a smooth closed curve <img role="img" aria-label="X(s)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAATBAMAAADlk9mAAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEInvq1R2Irsy3ZlEZs19rnf+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA7UlEQVQYGT2PoU4DURBFz9umfdCGUoXBNCFoMA22pD9QA46kBl+BwDQpCotE0f4BfEJFi0KsRWyyFQgsJWkKhjuzW27y7pl352VmF/514NXAPBx9t6qrc+jajUP32powhtoMUzU1D18kQtNqKXfv0RavvIZj5+SyJd6X2dxZPzOc6mTZkIpnjbVhavOTlH3PFr9CzCH5DFCxQbv9nrmy+NyBumUjJqm+aKoynuidGNo0c1E7Piyw7Ab2NuLS/u4VbuFx9cDTzwCu4e1CQzL1t9J71902EHdsn9Z0HYXFF2ejaJWNhfO9vBWIjiH8AZRQK9QpjnufAAAAAElFTkSuQmCC" alt="X(s)" title="X(s)" class="math inline" />, with arclength parameter
+<img role="img" aria-label="s\in[0,L]" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAATBAMAAADbtrbOAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZiJUic0yEN3vq0R2mbvQvSoYAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABJklEQVQoFYWSsUoDQRCG/zMacS+Jp6T3CguxyQZsBEUE04sPINdaRZ9EC18goKWwYCUIphbsrOVaEY5UiqjgP7t7520EHbhl9ttvZ4fhgKloj0IQXYR77lSNzJ4+hsCdUbntGu8VU3dKpbmPA698hsrJU6Et6Wg8OKX5GijRy7HlCosZbpzSmjglWloW0HWU7Q5TDL2eE7K5PnaZzOdcJBTuqKQ2XxhbgEEmV+LEQlF4TkuiZ7iwytq7ZtI6LArfbi/DjtwCVvgZGdTqhEs85iLBdg02XX4JNFKFOY0zAbmjVDoJ7t3mHGgTKF9gu1LinKNb51MzH8BIhOu+PfyZC7Y2DI4SYPC19/xGpYpquo7o8qCmeFSS/5VGWaT+UFjlL+XXX3f1Dd9EN0F5z5fEAAAAAElFTkSuQmCC" alt="s\in[0,L]" title="s\in[0,L]" class="math inline" />.</p>
+<p>Let <img role="img" aria-label="\Sigma_s" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAPBAMAAAD0aukfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMA74mr3XZUmSIQu2ZEMs0tc7M3AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAc0lEQVQIHWNg/KSkZPKVAQTYQJQ6mMlg38DAwA5hTlzAwMAKYXL/ZmDghDAZFk6AMhgY+hXgTGY4iyGCgYEDwmM7wMDAxMCdDeRdBWJ2hkvcFxg4C4BmmTPct2Vg4Fq1atX7rwy8ikBJMOA1gJvDuWcvAwAV4hRJVKmwNQAAAABJRU5ErkJggg==" alt="\Sigma_s" title="\Sigma_s" class="math inline" /> be a small
+cross-section transverse to the tube at position <img role="img" aria-label="s" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIBAMAAAA2IaO4AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAZiJUic0yEN3vq0R2VHD1mQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADBJREFUCB1jYGAUFGJgMGRwZGBwTShgYNC4acDAwKBygYHVgGECAxcD9wEG7s2GDABqzQZa3aknjAAAAABJRU5ErkJggg==" alt="s" title="s" class="math inline" />.</p>
+<h2 data-number="6.1" id="tension-energy-per-unit-length"><span class="header-section-number">6.1</span> Tension (energy per unit
+length)</h2>
+<p>Define line energy density</p>
+<p><img role="img" aria-label="T
+=
+\int_{\Sigma_s} u\,dA." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGkAAAAsCAMAAABRyWbXAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAVO+rid2ZInYQZkTNLp9+Xh7fDo8+r79Obs8yu3BrYlYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJpSURBVFgJvVZtu7IgDAbBNzDTynpK9///5rOB87KOnpCO7YMict/b2AsIsVkO9bHZDIoBtKfzJYkBbsbUF9FcNqMiAGfoIlAxkAZiUDGY6y0GFYNJjjGoCMwB/kWgYiB3aGNgEZjrd0oJLTt9KyFa+ErRoksNfNDyZKK0TlOts1S/DdwlrEP0A+TMlfU8UjSXZviQBc+tvh+BHcJOidODHNlKg4PSfeZ2VQP/gBOPfn8Xiv8XwPbLEuck0NNOHvOy13cHgak3kP0kpkw4JqRCZCk93ZAGq3KHwF7EYSqlqCb3iLaiMAVIvdiLeumizBxFISWHCXdOVXPiKWpuMlOTsOfj4sdSL0K7E8wvNcaDNk6NfvQ47/drJLDs7Fz70hjY1vlPK3rKSNKGYgZ8sFaKVjFPV71EQLAXWUsIjS7kI2FC7KxVowxzTc9Be6Gffa4lRIrl4XwhhZjAzkfMMFdJTxsGnJOedTVOywkhBNUIbhgROyXFIKg0feBymJqEeNI6c+HH8LaUELgK96dMrC98DERZaYG2S2+/6wq5QmMKnYLSb4uW1C4mBM6bTFqpPbHNpOwzU+YKKipQi28j+iRIASkhaeHqB7s/u9AO8bElx7Aj42M9QlznlfEHfOsUj8BGvs4Q+udrd4husZGHmrll3R3O1G2UMUYn74/nLdQva+sHTRTu0Oyf+9fLyk8/T/6q50/NPTW1cHC25rDrzrVn0fC1CDv1jpJcxY1vr2ZTs9xq1K3r6hFj3XHDl7itRG/Xn+/3cU3vD1IjSiN3DRiecniDHzAr8BDadRsn7/GSsK9PkyZh7LZY/Qe9xRVYGvyfbwAAAABJRU5ErkJggg==" alt="T
+=
+\int_{\Sigma_s} u\,dA." title="T
+=
+\int_{\Sigma_s} u\,dA." class="math display" /></p>
+<p>Then total energy in the tube is</p>
+<p><img role="img" aria-label="E = \int_0^L T\,ds." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAAAuCAMAAAD3NnzfAAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAid3vmau7RHYyVGYizRAun35eHt8Ojz6vv05uz54DxpkAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAKASURBVFgJvVjtoqogEGRFBQHNsrJu7fu/5mXxAyw8p5MRPxRh2WHZYaAYe780Odfm/eF/Ggn5n8y3GJdqy+iXxu7a/YEMMfnydcfTmVukih5pS3tmh7OF0AXhNAnBTtgP3gtp3zIl1AHHOLLKxpSUhJerg2okag08KQn5fowq+WuH/5JjjAA37L4FdUm/m6ZQjgMrps+E7w5p936lHNDJ37tYkPEcAAr+wn48T1qxAFO8AMgygDyDuaMqI3pclq5fvAB1n7Ri9kiVgjQ+o+GK1GosIsIgHPsDs8n88Y3Hxxb73Wh6ICmHEb5fOj3237ZWoVUzKr+rTI8xAirSXIX0FMEZVtIMlkXSojw3L42GrxvGZMmpe56RSSj0K6kyz8HGoNp1WaoXmZZSKZcqbYuPlJcAtWcOY3kxl7DZYt/XZcmlapoerV1Bs1e2AvOKGUpVFaRzso+8MUKqwUyEy6WJ0u7ohLoKFlVTqogY77LCYUE4CU5xcPJpMgzOtKJ2tsz8DhVnhRteB8k2FGE17kADfivyMR8+rau5+oEVOCdkRJElE6ym6c/xGhzSBA8MGEJdPq+rrFikipw3lmiaUajCKoMp7C6AGp0AZm4HLj0/fa2xQkKGBXhOi1ypKtcNE0IRB+2d0Xc+eY01dHiJNado66NakQKJ7aMnSBKoi6dtEv+B03tM1oP+D1a/d6/o12X9g/E4Vzc8fdrlmr/2Tj2VDO8Pa7Yb24/uCmjPBx3o3Uaf8eEd7myHsLJWDTesuNnm1u7EDu6yJO0BkPZXML+wq7vX0p8VZj4WNocQcXDt+9Y1p4/qdLsNE6BciaS58oHa60FyBo5odl+9cF77qU21/02cFKDjdoqNAAAAAElFTkSuQmCC" alt="E = \int_0^L T\,ds." title="E = \int_0^L T\,ds." class="math display" /></p>
+<p>If <img role="img" aria-label="T" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAVO+rid2ZInYQZkTNS4s8GQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFJJREFUCB1jYFR2CXVJdWBgLmAIY2BsYJjFwHmRgX0DgyQD400G7gKGCQxsAQycDEDAkwAiGRh4BSD03gII7QShGA5D6VsQmvs6mOZwvewOZAAAFI0NVzaS3KEAAAAASUVORK5CYII=" alt="T" title="T" class="math inline" /> is approximately constant along the
+tube,</p>
+<p><img role="img" aria-label="E = T L." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAANBAMAAAAAts5cAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid3vmau7RHYyVGYizRAHtTi9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA/ElEQVQYGU2PsU4CQRRFD4EVXFZgMHaaGGNvTNBaTPgATaiICYkJtYW9/IEkFpbuF/gLTkOtFtbS21BgFDQb5w3zcF9xz733TWZngWbLbLXITXxk9sxpg8JBO7RrfbjOnSCy7BMPYaBt3YWKBuEHtQXJFXxr+zCCWIPwkTijbFmfa3tLVe2SE0q71NzVU+0HjNUqN07ERX1RmWPz6tnpujnztp4KikNRN8mc+6X71xsr/tm92E91yog0hIBNzyen/lT04m5Kwy7gzfPC/akVV2xASUzuLT+SOQwL/0Xjq5WUf8UmX9BjPKHw3jbn2WorptL83HbYmZnLjDv7B3bAMRM2zSIdAAAAAElFTkSuQmCC" alt="E = T L." title="E = T L." class="math display" /></p>
+<p>This defines the effective tension: it is not assumed; it is energy
+localization per unit length.</p>
+<h2 data-number="6.2" id="inertial-line-density"><span class="header-section-number">6.2</span> Inertial line density</h2>
+<p>Using <img role="img" aria-label="\mathbf{g}=\mathbf{S}/c^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAAAVBAMAAADiLT7tAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEFR2ZjKJRO8iq92Zu82MdAVXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABU0lEQVQoFYWRsUvDQBjFX5MmNTFCEATRRUpXIYObIHUQR/MnxEkExQ6Co5sgCC0opU6Ng0tEVHDQyQ6OFro6KNI/QCKINnE4v8uFeoFiPkjy3vs97i4JkDOVrZwCYDim90/J4kx7K/ZGdIzLl5UO5U3BdE88M/d2DTs+JZsinbUzVJgLwPRJpnucj6jgDihRR3MSqLoNYHJhaiNTverbcAGLGM0eHGgHx/FiprPPftYpmKCrUj5lzMN4iEGBrBXw8UgpdTagdXbpWFXxccZC1AnIU9pm18AZsATF5sCKCrFcAD9LKwJ84DMF2mvXy3ZuAD2CMgfjIwVWTYi/89wCagiT3j4Ekr30OHhMxHCxBwctBzPk71Fs8FhjjB0OORfP8+99YJVUs7yckHYVJ1+Jyt56kl2jjY4kn0qjI2XTHpRvyadSdaXM6D4Fsk8R/xN5Y0iFX8UmURtPsmRuAAAAAElFTkSuQmCC" alt="\mathbf{g}=\mathbf{S}/c^2" title="\mathbf{g}=\mathbf{S}/c^2" class="math inline" />, the line momentum density along the local
+tangent direction <img role="img" aria-label="\hat{\mathbf{t}}(s)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAWBAMAAADOeor/AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAELuZInZmRN1UMu/Nq4kfpg5nAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA0UlEQVQYGVWQP2pCQRCHv6cr/gsqBA8g5AAe4aG1YJtuKxGrNCGxELyBVkE7j5Aydk87JcW7RirbdOa3sxp4w87M75uZ3YGFpEfBysMCMk58sRCoa6XxfyM39RhiVV55Ma57pZr8wRAy5Y3848Y/0PiSfrrxAqbX7zWf4skkpQnuV3oJdd/ytCO7DFrnBJod6zfEbrXXLuNdonncRX2bz8J7pwA6XF3OAXJeYSB+P6Y8w9vWa6c42Cgm7l9T6lhBN6O5vuVyLEvPjWexq+hMpfAHP6QlSw9VhKIAAAAASUVORK5CYII=" alt="\hat{\mathbf{t}}(s)" title="\hat{\mathbf{t}}(s)" class="math inline" /> is</p>
+<p><img role="img" aria-label="p(s)=\int_{\Sigma_s} \mathbf{g}\cdot \hat{\mathbf{t}}\,dA." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJIAAAAsCAMAAAC5ZRG5AAAAWlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACxH1ioAAAAHXRSTlMAVHYiZpkQRO+Jq7vdMs0un35eHt8Ojz6vv05uz38bc2YAAAAJcEhZcwAADsQAAA7EAZUrDhsAAANmSURBVFgJzViJduMgDOQ22MFNc2cT/f9vrjiDXZzGXbYt7zXGBkZjaRByCWnR3rbvuxY47TD2h+NJt4NrgbQ9kd2pBVAzjCOcm2E1AtpBI6B2MJdrO6xGSPq9EVAzmDf40wyrEdAN9o2QmsFcVqUkNahmlheBDqvULblcRGo1sIc1WZIRosQq0wqXpFZ006PadQf/93jrC6PqNQ+f/iV32wF4Milt6pVX1pV39CUP39fl7okFQrq8NyzQ0njqj6kTrrPb6WC6g0PqvXTdTGexHBcGNaXM3WKqvKeYZ1i14eiM0pAiIZQ2U2R/N+S4hsEuv0Jlcnx0g+pxoigTyppZmIjVM0pJSoqS8WGNMsaFcFpOcRXYPLv0YJkR2VaPE6sNZ9CzGQGxARjH5HvGKE0WMGh91omiCtB7Ev8igIuf8Q7NypV9bjP33qvHycatBE3mmZrDg6SLWR89Y3G3yTzUBdWbnvBI04w2Yuk55Ed3od1K046S//GDfBM3eEFJDDjUR0k7B7DsAOw7qr0kNlLiG9DBuZtPKS2oW6JGFGRxWB1FVVDSjoYOVIXBNhSUBmcfSajsOW7CcNUDOPnRFtRth1EOsxC7RZ6Sp8GdsG0wg9rG1iWpYx/QF52jExh4+YVuprSopbq6iZxvNWcTm6fkg+HZsIG4iSF6HGJ0HVWkhPLBHx8n5+7Oz+Iu3M/btapuYgC3gxQf4w5AeIgnvq4aDcHwxXSoXPrmvVvDpKDM73kWHNjROEm4cD9vdXXja/qmZ4nORWOM2a+TlFpkzXvwrujwKjBxuSU5gSb+mcTn1dYeLnl20eEurRAuoCKnYtpit1DVlEP08OJCHDjXc7dwWsCmXysm/NziJ6reP5lWfPKjFIp1vvter0zieUVhQeVzmOl9N5be7byawgyRN8B0RXl3KXJJ+ZzLQeIufQGhXFXvF3osuvW5+PS+qgxYhGk5sKrubml4EetcLQMWp3/HwA2OLiP3WMyYdIx9h90nNrZ3NxiqIvt5Xn2C1GzoED7hRp9+fgWlPbz5t+Nfyz/NPJOA9keySx8neKL/hqYv5Jq+c0Ol/uOsrufzNpLofJaONesPEjvebtG6DTWNwH9A0C8das3fAgsxY+SAEsfy55VTqDmDZUAsoX+Jlx4cRaiPHw++1PsLUlwb0Ev2iCsAAAAASUVORK5CYII=" alt="p(s)=\int_{\Sigma_s} \mathbf{g}\cdot \hat{\mathbf{t}}\,dA." title="p(s)=\int_{\Sigma_s} \mathbf{g}\cdot \hat{\mathbf{t}}\,dA." class="math display" /></p>
+<p>In null-like transport inside the tube (energy flow locally at the
+maximal rate), one has the identity</p>
+<p><img role="img" aria-label="|\mathbf{S}| = c\,u
+\quad\Rightarrow\quad
+|\mathbf{g}| = \frac{u}{c}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAAhBAMAAAB6qGcGAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyIqtmRInd781UEHbcgkVCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACNElEQVRIDbWWTWgTURDH/9m3myZht4mFeurhUbzpYc8iNCB+0IMJQqReavw4Ku7Bo2AQ1ItiD0VBEJEq9tbeW6EtpfVQIeDJ0kNOgnjZQ+NHocQ36e5LMmmMgb45ZObNm/f/7ZvZhQCG7EwOq4akm7LeyhymTQKGRIg5kwCkinZoFJAOktIoIFt1aismCVls3wsIkIsosR8YmjhcIDl2/3FzR8K+PH4zBzmwcnTAinwvAYlCgOdFk4CrgGMU8AoYGgBwlvWyf4uuLVfh/3+LYsGYo9Y737486Skg8aDx5xn4vnt7HWIVbvfLJVjKgpi/VP/OBWK+yrsLjb3oBqMlZVO0dwVT2Mn4Tk0XqiAxTva+PQVYSIfY8w4ALQFdJNUEHjZm2AMML+IzgglkfF2oA3FKhxRYyIRY4C3INshoX6r+Y3KXAbJl2nuEAjluXz+2Zywkdr06B7QqJF4DKQ4oVKniJW60CnUklnVIgZrByZHKvwAvgOGQtXAC8IB9TLvtYs7BDJpwnVc3CGgh6efQGbypYbLGWpTO4xYQeh8u0LEOE8WOpbpBql46XmUCUc05yp9YW1KXlh3H7Kcb6jmvb34qd6Rp0f0dCDXOd0wgOnY6r/MySvV13V9yoYzzv7UQF4iFY8/3+64t3FWXfWsSsF2B+8skwB45VvJ7AvyoB7Hv2xJeIHoJbGzlee2Rrp2yUzlSQS72A64avkH7aVCbpO19wwD13xRmWzSLZN7oJS5u3SH9v4NZduuJyY4ZAAAAAElFTkSuQmCC" alt="|\mathbf{S}| = c\,u
+\quad\Rightarrow\quad
+|\mathbf{g}| = \frac{u}{c}." title="|\mathbf{S}| = c\,u
+\quad\Rightarrow\quad
+|\mathbf{g}| = \frac{u}{c}." class="math display" /></p>
+<p>Under the same thin-tube localization, this yields the effective
+inertial line density</p>
+<p><img role="img" aria-label="\mu = \frac{T}{c^2}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAmBAMAAACMti74AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAq0S7MiIQ71TdiZnNZnaFbJ6bAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGElEQVQ4EWNgwAQchatmrtq5AFMCLMIYwDCbgeMBDtlcBrYfDKwKOGTbGDi+MTAF4JBNYOCewMCGQxIozLMBtxwDA38DPll9XJaCNS3Hp5XhIF7Zv/hkmb7ikeVb+XEpHulBIMWowGCC2xn8AWzfgLLcgiCwAF2dOgPHBHQxBH8hAzdqbPL/hwCwkhMMnA0Iteisrwz5KQm47GX6wrCcF10HA0PvagaGwAQGroMd2ZcwZFkfMC5gcA9g4GnAkAIKsBzgNQCJ8+NIQlwLQLLqIAILyEwACXZhkQEJieAQBzq4I4DPAYeNDIwXGBcoMTzAofkNA0fq//8LcMjiTa+soAjFCVg+MDAk4JRlmMrAi8vBQE1RHdegWgGBBTyCmh9LuwAAAABJRU5ErkJggg==" alt="\mu = \frac{T}{c^2}." title="\mu = \frac{T}{c^2}." class="math display" /></p>
+<p>This is the clean field-theoretic origin of “mass density” for a
+one-dimensional effective object.</p>
+<h1 data-number="7" id="step-5-toroidal-organization-forces-integer-winding"><span class="header-section-number">7</span> Step 5: Toroidal organization
+forces integer winding</h1>
+<p>Assume the energy-flow lines lie on an invariant toroidal surface
+<img role="img" aria-label="T^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAQBAMAAAAG6llRAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVO+rid2ZInYQZkTNMrtEdbKeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAe0lEQVQIHWNggAApNyiDgb2B2QHK5j3A9YCBUdkl1CXVgYHFgYG5gCGMgbGBYeoEhlkMnB8Z2Dcw2DIwSDIw/mTgLuC4UMAwgYEtgIGTYTdDA9AEngQGBvb//x2ATH4BIAEB+wtgLAYnOIvhMIL5C87k/g5jcrh+doewAZRxF0rYJ1OaAAAAAElFTkSuQmCC" alt="T^2" title="T^2" class="math inline" /> and form a smooth tangent
+flow.</p>
+<p>A torus has two independent non-contractible cycles.</p>
+<p>Closed flow lines must wind around both cycles by integers. The
+resulting winding data are coprime integers</p>
+<p><img role="img" aria-label="(m,n)\in\mathbb{Z}^2." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAAWBAMAAABQwI1fAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABv0lEQVQ4EZWRP0gjURDGv91sdrMxCbFKcc3CBdJGbQQtwmFpEQvFRlyuMNcc7HGIgiDrnyJlQK8MRhDSKjaWa2FjcSg2Vx1bhWsO0soVuZnZ3ZcsWujAm/l938xb9r0HvDVaf986KXO2kwnfs6HQtHyZ1xwpk0mfFIpLoWBGGQq0B4UMf/4d3SwAH8riVlO9SLRS3nwDdXIWI7OZ6kUim/JWUAp86EGHXdNL9SJRcqVWfrUZPHRLAZbgsJmTXUwTYdRZWMfl2Jvpwh6NQlZ58muV77db0e99/rbD0OPWPicO05uJgPIUcHrvmWv4wpa93BcYEms+Oxw5w5HK6Qfg7sG6xEdWZgznxIbHDkc1F1XOd7R+I+PgULxiiFmCK1r6erst59Ue6M4b0qZXoHqBfKA9i5FvgKFHS/1EZro+FnRee4gzWM0GzRCYDD1mnxPFp2IHWVcQyJZpFLsoOp5Nt7CNYujB9rn7NR7xf0KbC1iclKG70D0MYAxQ6AM1FAb0BTlqfP/mxvXT5qo8xX0Hdj3+ChUzwZx0Eb9v4kb1YCzV/MnYe0HdseMm+JjAK9VQU0jICl6ZU1ZHUQJ2Ai/rfzP3UfbCSa5IAAAAAElFTkSuQmCC" alt="(m,n)\in\mathbb{Z}^2." title="(m,n)\in\mathbb{Z}^2." class="math display" /></p>
+<p>Interpretation:</p>
+<ul>
+<li>the pair <img role="img" aria-label="(m,n)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATBAMAAADysUlJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8UlEQVQYGW2PsU7CUBSGP0ptBSR0YzAmTSBx1d3BhBfo5AwDxPEmDpDooDwBAyQuxoXE1UfAwcWBR2Ds7Ormfw8WE8pJb/Kf7zs3PRcqKaUyVC1hOPOse0BETjA7IDw0WXI5HM9KVKAHdYjP23cfoysbiJRXRhsw/3LRDbcmfH6EFiygf0/8TseEcnChGwmf6jdUU6YmtplGwqn6JfVV5WcrlrS0jv6sr/bNK3F27Y3yMDR6lIgxoZm62qU2zNjE8AxBn8CRE+acvKl1rAcw1l3tUFRUBJ6U/PmrnbDplwLrQUVsJkrhrv0XDzahtfdL6BecJii7EZchWQAAAABJRU5ErkJggg==" alt="(m,n)" title="(m,n)" class="math inline" /> is not inserted,</li>
+<li>it is forced by global single-valuedness and closure on <img role="img" aria-label="T^2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAQBAMAAAAG6llRAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVO+rid2ZInYQZkTNMrtEdbKeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAe0lEQVQIHWNggAApNyiDgb2B2QHK5j3A9YCBUdkl1CXVgYHFgYG5gCGMgbGBYeoEhlkMnB8Z2Dcw2DIwSDIw/mTgLuC4UMAwgYEtgIGTYTdDA9AEngQGBvb//x2ATH4BIAEB+wtgLAYnOIvhMIL5C87k/g5jcrh+doewAZRxF0rYJ1OaAAAAAElFTkSuQmCC" alt="T^2" title="T^2" class="math inline" />.</li>
+</ul>
+<p>This is the topological origin of discrete classes of
+configurations.</p>
+<h1 data-number="8" id="step-6-discrete-modes-from-periodicity"><span class="header-section-number">8</span> Step 6: Discrete modes from
+periodicity</h1>
+<p>A closed tube has a circular arclength domain <img role="img" aria-label="s\sim s+L" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAAAPBAMAAAC8dTTaAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZiJUic0yEN3vq0R2u5miby3cAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA7UlEQVQoFWNgIAg8/jkQVANUwHsBr6oCqCz/AbzKpKGy+QlEKTsPVsUoKISqWlBQASwAM20tmGfI4AiiLaYACXMgZhZgEQAJMMCUzQHzXBNAbmUL0rrAwOAAZLGEsYPFYcqYfoO5Gj8NgDRfAcNbBgagSgam/skg/qpVoatWOQBZjB8YGLiBtAqQZuADoktVIA0MTP4gEm4pVwADgxEDqwHDBKAYIxCfBLsimIETpAiujNOBgeEBAxcD9wGQIBwsYNgDYUO9oL+BgUuAgXuzIVwFmLHbWABZGUv8E9/5BahKUHiwAEERxOSUIwkBAMwdJgDvY447AAAAAElFTkSuQmCC" alt="s\sim s+L" title="s\sim s+L" class="math inline" />.</p>
+<p>Any small perturbation variable <img role="img" aria-label="\xi(s,t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAATBAMAAAD2RJl0AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIlUMs27ZpnvInYQq92HYgTFAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABDUlEQVQYGU1Pv0tCURT+ru+qpU8bmhzCIMRBg0sIgi5BNLRFQ43SFuTgIBj9E7o1tDyCwkme/8EdGyLaWhr7Axxa2vrOPYnvwDnfr3PffRcIFaeKOlUYikrWxmtQuQ6wzPhviEaU9vIOOM/4typrCXRhHf0AB+SP7AKzddkZsAfEjLHNLk7uJTKNi1HQNyceVRpdNMVHgZfuEM8+UzwTG8eek17C8x52n/yUvfh1nECNXfX6oncxnlYyccjmfRPhxLwDf4R1FTvRLeF5OWfS0hf5dxl4Aept8rKD2e3CPpD3e+EjZnANlD5osCIFDIl2miKQja9rEZfnuugUtjyxeJTw9er8+2ONZTLbFMUfAigs/tgRsOcAAAAASUVORK5CYII=" alt="\xi(s,t)" title="\xi(s,t)" class="math inline" /> on the tube that
+satisfies a linear wave equation on the circle has Fourier modes:</p>
+<p>Assume</p>
+<p><img role="img" aria-label="\partial_t^2 \xi - v^2\,\partial_s^2 \xi = 0,
+\qquad
+\xi(s+L,t)=\xi(s,t)." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUUAAAAWBAMAAAClN5ODAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERmMlSrdonvmbvNIt0dJ/oSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAD5UlEQVRIDbWVTagbVRTH/zO5k6TNm2ZUxF0bWh5+dNHQV0V0M5uqgUIjVXEjjVhE7CZQH+1GnFZEUdAnKq7EuPALBB/WbhQhioJgoVnV5avg3lieIpbH85z7MXPvnZuufAdyP/7n9z9zcueSADJOvK5mb0zunxhlAWHSOz+n42YResqveE7Li4iQa2c0MW2shyofw4NaXkSEXDug3XqEiraLcOXXWI4O5IuJsE+qd9wkB7SCWcdjkPjRZATszYC4bop+Y205e2IhUfcohYuN6sk3/y2MGE3Mysw1j0G6Oc4Bp4hrP2bgcm7mvNxEqwgR8ZkLJekvqFir54tAx9ypKMMJP+15KiQBBmjlM4hfHvBNeCFlaQixFiKOYWlWsyiBiy1ZOXpNMrpjveiMnTyrvsdBjmM/xri7/ry4p2+EmIeIS2hN9CP9iYvZ53RYA8dzvaDX1x66Lt9TIeLM4ZPp9naB910H7za2/+Hp4ZXlrRCxiXiN84HgYt9ZuunxJaMN6P6PzEbNvqdC7kP8OTPRpus4Ook+UEpjhHu4F58QWxB/uiazkyh7VlZmUjM9ntbEXZdfBtwv6HsqRBB4Qxq/OZrpAjxFw3fxg9rT9+mu81IRu5/lKOgcqMcthdRGRq8BSb/dlznTY/myLpI859QnXE3+VfieElkqEP0lywyeGctZDbGY40W1/BnYN+SlS3CD1GY4CE2n9FPxY6Tyusf0usHZ+LbZqNn3lMi+HpI5FxIFDcDBbyn4G7RHUEcQUd2TnBIFDVakm0gWvGtRED4F0j/eIwOd/GV58mjQ0cWkqIssf3x5J0MUtsdGDmVoTjozoKnIctzT0z3G1MfzLPsEriNZK3lnwWh0jYb0LaXrc2xOgadYoRPw76PvqZANeoXZLjKs0MeObiaoc4p0DiHfiibK+4iLaI0kUhskSv3/BC5NoXvcVQAT3i/1b9c9lvfR91RIZxj9Lr7oA6+y1Ypu1tC7S9ib495+jcBB+g1Pn7Y85VIW+57/De9Umu5xo4dmny178jHS9ZLnhe25mpUILz89l+EsIYfOOw4kr1DjMnafPQ9RHKkRSFYvQLyjKWeSxVaB/Y/rIqrH9pXP3vgwY0uyOkPDPEBZbc+AUhoZzFT6a5riK185j3E34u98AUH/pfWQxa5auj5HpWhLJ7MA3YDxDFXKQtZYEV+OHY+7eYSYIBHsUaLWA3CLXU1bTD8mxeWNR/dYIdG0z1wyMnR9foiuVpjQ1XwLFUsnvqj32vKRn6485otbyMc54Y0nZ76p2t92gJAgEe5RosuV31kpS4MqOmF5dI81xOH/l0160yrhrKOqzX/t9PGB+w8viwAAAABJRU5ErkJggg==" alt="\partial_t^2 \xi - v^2\,\partial_s^2 \xi = 0,
+\qquad
+\xi(s+L,t)=\xi(s,t)." title="\partial_t^2 \xi - v^2\,\partial_s^2 \xi = 0,
+\qquad
+\xi(s+L,t)=\xi(s,t)." class="math display" /></p>
+<p>Then expand</p>
+<p><img role="img" aria-label="\xi(s,t)=\sum_{k\in\mathbb{Z}} a_k e^{i(2\pi k s/L)} f_k(t)," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN8AAAAoBAMAAACMQDK+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIlUMs27ZpnvInYQq92HYgTFAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEc0lEQVRYCe1XTYgcRRT+erqne7a7ZzLRQ6IHHeJKEg2x0cAED9qsP2TxkHEhXl3dgwGFtCS4suthPAT8iewKQhBF26gkINFOojloxIaFrEbcTELAQ1yyB70FnIhRN5f2veru6ZmaHXYDu3PRB/3qva9efa+6qutNDbC8DETvComi6Nry0asQYUSjMcvRK3/JdFVYqG4RqP180lmxX59ATo68GX/f30m0PeV3jTtjBsWKQC/EfYYPmoEddEWuHPgh8pNgtS6PsutazRgV6HTcVwDGyDoUez10x3wsOUiJFlJoW2rErdEwHCBXOfjBb769sME1qsBR4Ab1ktUSQd+iVQgvtvrIsOvtHtv3/SMjie9dzfnA3My59T7UVz9zhgwX26Dxux7jEGs/65i+RZvbAZwQuFB22DE5geUjeo+lxKzpIXAJ1myIwpPA7ktAHUYDNnSOn3yINdNntNpTLwM1gQulB8hnXmzZH/IiLSE5Tw9huX4xF6L0uANtK5QyigHO4CcO//UjMYjoM9rbfED1BC7UOhc5J3Nj6+HrMhL7pdmCj/UIdhXKmFPfeLRRBH0zJZeWb4gizKYIY/qM9j3CdF90CDUMKI3Mja1CVJEh4RcmVMeMosoJI8CQ/ab94gH8CPu78a0OePfUmohi+hat/SdhA/QY4xPce8uezcA0Wx3y+7XM/WaHLxx1f0CtPLmvk0DC7e0jZfaIvo127yO0/IRWQZlInqOnycZb8yQX2SL5YjEULSndK9ZEVblMiwnQJ9ch9djTHGp1D2cDWmIyW7QY/jnAp4Tc7Yak4zP0vrDalRE1UvclUGW5QEuygHsIM0JSmZiciGSW1YCLYhmCnr86QatVyHqMns8XRagyTfZVeiS5khABhzFQ5kUvjU2WpSDZPR/vFtFntEUOmmN1pMk61yBFdLKMpIB5A7vBVeW8n0I92zuIWjnA9BntOEfTruadOE3em0kSduxhkechRGvitMJVhaa/nHwL7Lz9lKBv0d7Lg/IhVR8lMH/hMxTAHO1i+ipDpu0Rg6tKye36YLKg2LoMHCwL+oT2eIg7uRxbDpRbq9AO09E55cPw5JFq265ufGDXK1xVzLuqoRwn+e9QrRkT9AntsAfl6WeoIiQLpsYD9FAaiGG/E6Gq4nYiS3l2kzZ75ycpvR4CDqBNBcALcXyS8Lg82nxbQqiqSMgSrjLTgFb5vkXPtJQQaiP5LYldQg7Jo0teilRSYwXtuo1uEnVMtETLb2Tc79Mx4cxpQsMVTpt6NrWNemqtoDXECeBAQc+0yRIS5NOTipkaaVsYTSx7qpxiN9f6FN5F25siORPnNuxb7B20ij0KXUgT+WMVaXtTWa+1pOtz6j3q/57/9grwNYFlz8l5XxhrrfiaQGLWLWutU8X8fKk7smXQDj9+sD8J6Zpg1jlVkKztWqelawLdp6kGP7HWmRJ+uibomzYNwprpU0K6Joh/0BMB+rKmfE0Qv5FfltVKP95RXBM209+y05PzXj8SihzaycFVyfUvTC0TTqEICxsAAAAASUVORK5CYII=" alt="\xi(s,t)=\sum_{k\in\mathbb{Z}} a_k e^{i(2\pi k s/L)} f_k(t)," title="\xi(s,t)=\sum_{k\in\mathbb{Z}} a_k e^{i(2\pi k s/L)} f_k(t)," class="math display" /></p>
+<p>and obtain the discrete frequency set</p>
+<p><img role="img" aria-label="\omega_k = \frac{2\pi v}{L}|k|." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAlBAMAAABGyFGuAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEERUmbt2Ms1mIomr3e8aeFU1AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB6UlEQVQ4EZWUP0gbURzHv0kueUkuxEDiaD3arUibQhAkS0bB5aG4aqizkEEIWKhpt0zN1OLUbB1EkqGlRTPopuAQs2TsJqgUEynt5vV3viS9l7uXu/yW+/1+3+/n8Xt/OMA9Il/X3AV19wjzNbXqqnShtV0FdfMaek+tKpRwJf7BNB9YDk/qCst4u1HS6sVXSCdLUWNcU9RVlOLZJow9ROoKy1hbpwPTUwWghdiYpCr3SQiDAx2/SDCLGvKgU+tjV7Ws3N95+qyA9/hrITQiCkLWZJdU3ZlmIdDGKpBfsgQOtpmyRvUftKkX5J4SaU2PVCWEpvQIGoyOQgxGpwmNGh7BEeyxjwKJkJdVBKBdWNF0ozl0Xn4rkDIYnfps0c1n63FEvxtpgWQRRaCWMGwypTOmFD26lxm6I4HUcIBYKikTzorj5Rva8eO9nGAFGcwFP5Ft4l6+ocMEcryw/fodcs+3nCvbOxxVdEOExE9xeBX7ZWDZsOsuOcclFrOEsJuB2nX9a+k/V4b04Ob+v7FAO/dlKNq/66PCgbBmpjhSbcmfUe5ARoqcMOtZifCLRHpDAiWR0UuZHInB2pNdkposSqWfomH4cUmez1RNSZ0Bobq0iGdxSy/V0yQZ4vfAudTxLH78Pt7oO13/AOCKbK+9kq9ZAAAAAElFTkSuQmCC" alt="\omega_k = \frac{2\pi v}{L}|k|." title="\omega_k = \frac{2\pi v}{L}|k|." class="math display" /></p>
+<p>Discreteness is forced by topology (periodicity), not by quantization
+axioms.</p>
+<p>In the program, the remaining question is the origin of confinement
+and stability of the tube; in the trilogy this is tied to emergent
+refraction and self-trapping.</p>
+<h1 data-number="9" id="step-7-what-can-be-reconstructed-from-energy-density-and-flux"><span class="header-section-number">9</span> Step 7: What can be reconstructed
+from energy density and flux</h1>
+<p>There are two distinct questions:</p>
+<ul>
+<li>Representation: given transport observables, can we represent them
+with fields?</li>
+<li>Dynamics: how do the fields evolve?</li>
+</ul>
+<h2 data-number="9.1" id="reconstruction-statement-representation"><span class="header-section-number">9.1</span> Reconstruction statement
+(representation)</h2>
+<p>Given a scalar energy density <img role="img" aria-label="u&gt;0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAANBAMAAADChorYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAtUlEQVQYGWNgwADtJxswxBgYGB8wvEIIu8CYvAoMxTA2A4OzIZTNL8DQCtSjzMBkABLxzICIyy9gkHdgcGIVYCsAC/DcAVP9QOEFDA3yDKwCEHUcmQ5ABlAMKMMwjWE9RJSBgekjkLVegEHfgYFhB8NZqDBH8gIgi7+BQRVIfWFIZwKL81wHU7wHGMqAjA8sEStAfPdLYFEGjgtg7xzW0DwAFHBOhIgyMKhrNsCYDAxLEEwgCwAoUyGbThxgUQAAAABJRU5ErkJggg==" alt="u&gt;0" title="u&gt;0" class="math inline" /> and a flux <img role="img" aria-label="\mathbf{S}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANBAMAAABiGeI2AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAVklEQVQIHWNgVDZ2TWCQL2DoV2DQZGBgUmCYxcDArsCgv+cCQwBD/f+fvQwMPOv//woAijb/nwAUY5D6yDCXgYHjI8MUBga+DwzzHzBIPWAwPLx7DwMA/+sW2j/5FiYAAAAASUVORK5CYII=" alt="\mathbf{S}" title="\mathbf{S}" class="math inline" />
+satisfying</p>
+<p><img role="img" aria-label="|\mathbf{S}|\le c\,u," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAAATBAMAAAA0dN3wAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyIqtmRInd781UEHbcgkVCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABMklEQVQoFWMQYIAAGA3lolAKDCxBSskCDAoooqgcBQb/Aob+ACQ1V1AVAHkKDJEMDKxIai4qY1Ezi4GBHaHGFVMJ0Jz4PRcYDGB2FYVgmAKyq/7/z14QDQKHgCww4Mk5wsBgI8BwEMRTYOBZ//8X1BzLtxAVDAxhDBEMvAcWM8RB1DCwN/2fADGHQweqhm8Dw1kGduYPDIshagwYGLy+QO3i2wZRxJ8AojkCWD6AaAWGuUAOTA0Dj8YFkKg/mOQsYFMA8RQYpjEw8H2AmgMMBkUHoKg9AwMvAwP/BdYHB8Bq5j9g8HoAV8PAHAYU5XRgSAGqYbhVUuB6ASincmj3HpB5yICl5xjQNjaZmjYGqwS4HKoaZPUHSFdTpAQEsDCCmsWDcAdOu4BqDKDKYTSyS6BsAA8KPTSZ8jE9AAAAAElFTkSuQmCC" alt="|\mathbf{S}|\le c\,u," title="|\mathbf{S}|\le c\,u," class="math display" /></p>
+<p>one can construct at least one pair of fields <img role="img" aria-label="(\mathbf{E},\mathbf{B})" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAATBAMAAADL1vgSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQYGWWQrU4DURBGT3/YUGjDekJagQdLEAheYE2D5L7B1mEQ8ATdpCHBkNTUoNBF7Jo1GF4AQhV6TYOhaWfm7i5NuMndb+Y7M3cmC40B/495LfL5bPg8M5yny+HrGRxpdgxxQWdshHhKd50RjCSNjNAPDQnh4s5cpdKTtbKafL3AN+wmRqLgj6QLuIQ9KY2LZiSiR16brETF3td0mdZk9Xn+IdYBPCgp2jWZwnghPSG5EdnQM93t/VeeCjn0hO6pBDaH/o/N8RtAb1AT7RF7J9Q5cOImEulujWtpf4SmQ39Wuk7eRlg4v5KKG+hIQXlcFYjel9dbzot+rf6pyoMqEO3pzLYrnW1ya15Skm0RbwOCjFBb3+kluwAAAABJRU5ErkJggg==" alt="(\mathbf{E},\mathbf{B})" title="(\mathbf{E},\mathbf{B})" class="math inline" /> such that</p>
+<p><img role="img" aria-label="u
+=
+\frac{\epsilon_0}{2}|\mathbf{E}|^2
++
+\frac{1}{2\mu_0}|\mathbf{B}|^2," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAAApBAMAAABaYt+AAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC5ElEQVRIDc2Wz2sTQRSA3ybbZLNNkwXBHhv1oIEeFoR4rXpRBOOl4KFoBKn0ovUfkCAUeiqRYkDpIUcv0oogHhe8eFBY/QtiwV4iJZUqWrHrm5+bTWYnu9WDU+jMm/e9b192N2EAjj6sT0evja+07+/FJ/8m819o80+ayT5Dum63AaZPJxGn0mYbAH7RS+BNpS0vbVgNw//X2noH8q5xLaKdXY+EPFB2q0YByh0ouHZEay/nWgqvShuDAmQ93q0rTK7RLfoiGJh/iLUkIQ5FcmP2UsNCjW/05nc/z3cB14WWUMjZbB8+4gGSwW7vVQdrlKio6ZI3wYdMAPC8T9grcyKlmpH8BjCDN0WPTlexmmnNfcLeYjZTJaUkanO/qZajalJoDTT6kHc6FCs26TT8j3Wb/UW0Ah1mZEy7LcEJZFdhmW5rtZM/iZahxinIuNIUWVDtA9zy7SBojdXa99Aj0AsTTo50UlvEsTSi7R0SrdyO7zY4W3vphGhzBiYwVA3a7RpmkmjxkU3Rm8BNbdiMOgM2yHuFL1gJ/4S2tnh3h36iMmfYRK5LXjAjcCQKr+F9VCsjqgU4HrIQfxNQawZeiO7DnQyaYu4tZs6FrF4b6bZvXn8mG4wsWLf5r0m1V7/zx2DfBnhzpupFbDJg3/TgIIGW/ibcQA99DMaCdCgW4kkl0MpqVkPu6ujIr38kmwqtOcdoTrBggOQ1au1TqHtYodAKDydEKEleUxGJyPwCslu4IWG5kBQnRBwCbFURici8AIU+bjhiUy7EBnBCxCEQrkRucJ7qDkaqNRK5JnxQpeL3NvVXxUIkyh38iU92UOFX+hJ/xZBYgcxWwoMKKyp447SEaEPWTXhQYbp346xAiG2YrIwcVDSVVgU8TRpTlDiA+vnLQwcVXdmx1YeuLg9ACGsPHhfTdHszCMZoCVHYOXnxrUUPKvoe0mVLFcLTg0q6Qj2NR0Ac9KCiB9NlV9LhSemqBvwD14cDKWTvuusAAAAASUVORK5CYII=" alt="u
+=
+\frac{\epsilon_0}{2}|\mathbf{E}|^2
++
+\frac{1}{2\mu_0}|\mathbf{B}|^2," title="u
+=
+\frac{\epsilon_0}{2}|\mathbf{E}|^2
++
+\frac{1}{2\mu_0}|\mathbf{B}|^2," class="math display" /></p>
+<p><img role="img" aria-label="\mathbf{S}=\frac{1}{\mu_0}\mathbf{E}\times \mathbf{B}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG8AAAApBAMAAADJ6moiAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIqu7ZjKZRInd781UEHbgFuNXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB30lEQVRIDe1TMSwDYRT+2rSuolrpYDBwWJhaETMLVrMmdZEw0pnBhUEiER0smsh1ZtCIQdImmlgM4roQW21sKkGCyHnvv15d5cqdTeJL/vvf/33vu3fv5T/AEctTjvSPZPfML42I/hubT/cvDSfdvI2a4usfHle+Zl3Hj/kGJLP7hb19u5jU3go7vYLpSWNLtmv2WK/CN2onoOcQNMS1GgT83xlRKdudZEQ8wUwWkGQOnEAVp/zi/ZbKxsUMn+LFMhokK4V3MubDrHbSuhVMDtBUjlaMl03eHaFXI3khhGVEVI6oYuzZpA6MV37nbB9hQFCfD/1NM42YwJ2g9ef5wTkzQVozMp+pjZFelWrGwIIiJO5xVOWQqnU9cFCHYcHsEaaVps9g48wTR7tAqNHIbA00HARlPgQWVN6EsfLI0TYQIblJj6S03HBavcecVVG7QZeQWP4KrnhfIpamGlJZpU9tP5ERK2PotFBkxgl8MzWjg6QYrXVazGSPgGkm/+FlAv40Rrzk13OjHe3vSF3Uz66DJYQzSATGXBusxFW0KJIcTFhn13sRraWIEsy5NliJD6hcXis+z0bpCRuB31QMHZ5fTUqy5LnHthJ/c977VKPil0mdsd0Tljxl25LdlfoAeCaRr5UK+VsAAAAASUVORK5CYII=" alt="\mathbf{S}=\frac{1}{\mu_0}\mathbf{E}\times \mathbf{B}." title="\mathbf{S}=\frac{1}{\mu_0}\mathbf{E}\times \mathbf{B}." class="math display" /></p>
+<p>The construction is not unique. The two missing local degrees of
+freedom correspond to polarization (duality freedom).</p>
+<h2 data-number="9.2" id="what-requires-maxwell-dynamics"><span class="header-section-number">9.2</span> What requires Maxwell
+dynamics</h2>
+<p>Reconstruction does not determine how the configuration evolves.</p>
+<p>The evolution law that preserves divergence-free structure and yields
+the above continuity identities is Maxwell curl dynamics.</p>
+<h1 data-number="10" id="what-has-been-derived-no-added-postulates"><span class="header-section-number">10</span> What has been derived (no added
+postulates)</h1>
+<p>From source-free Maxwell evolution plus localization/topology
+assumptions stated explicitly, we derived:</p>
+<ul>
+<li>energy continuity,</li>
+<li>momentum continuity and stress flux,</li>
+<li>inertial motion of center-of-energy for isolated
+configurations,</li>
+<li>interaction as momentum exchange through boundary stress,</li>
+<li>effective tension and inertial line density for thin tubes,</li>
+<li>integer winding on toroidal organization,</li>
+<li>discrete mode spectra on closed loops,</li>
+<li>and the precise boundary between representation and dynamics.</li>
+</ul>
+<h1 data-number="11" id="references"><span class="header-section-number">11</span> References</h1>
+<ul>
+<li>Light speed as an emergent property of electromagnetic
+superposition: Polarization without matter. DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18396637" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18396637</a></li>
+<li>String Theory Derivation in a Maxwell Universe. DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18249258" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18249258</a></li>
+<li>Geometric Inertia: Mass as Trapped Energy. DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18249230" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18249230</a></li>
+<li>Defining Electromagnetic Fields from Continuity and Divergence-Free
+Structure. DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18269184" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18269184</a></li>
+<li>Maxwell Electromagnetism as the Minimal Dynamics of Divergence-Free
+Energy Flow. DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18264435" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18264435</a></li>
+<li>Canonical Glossary of Terms and Symbols for the Maxwell Universe
+Research Program. DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18272625" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18272625</a></li>
+<li>The Maxwell Universe Research Program — A Logical Map. DOI: <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18274175" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18274175</a></li>
+</ul>
+</body>
+</html>
