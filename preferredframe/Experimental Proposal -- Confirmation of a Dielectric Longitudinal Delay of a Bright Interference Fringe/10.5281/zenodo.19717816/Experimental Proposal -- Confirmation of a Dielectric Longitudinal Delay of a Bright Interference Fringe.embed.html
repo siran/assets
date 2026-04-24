@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="An M. Rodriguez &lt;an@preferredframe.com&gt;" />
+  <meta name="author" content="Leo Marchetti &lt;leo@preferredframe.com&gt;" />
+  <meta name="dcterms.date" content="2026-04-23" />
+  <meta name="keywords" content="interference, Mach-Zehnder
+interferometer, dielectric slowing, dielectric longitudinal
+delay, constructive interference, energy density, bright interference
+fringe, refraction, Snell’s law, total internal
+reflection, time-of-flight, speed of light" />
+  <title>Experimental Proposal -- Confirmation of a Dielectric Longitudinal Delay of a Bright Interference Fringe</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+html {
+font-family: sans-serif;
+}
+body {
+font-family: inherit;
+font-variant-ligatures: common-ligatures;
+font-kerning: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: inherit;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+.header-section-number::after,
+.toc-section-number::after {
+content: ". ";
+}
+.toc ul {
+list-style: none;
+padding-left: 0;
+margin-left: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+.toc ul ul {
+padding-left: 1.35rem;
+margin-top: 0.25rem;
+}
+.toc li {
+margin: 0.4em 0;
+}
+.toc-title {
+display: block;
+font-weight: 700;
+font-size: 1.1em;
+margin: 0.5em 0 0.4em;
+text-align: center;
+}
+.toc-divider {
+width: 35%;
+margin: 3.2em auto 2.8em;
+border: 0;
+height: 1px;
+background: rgba(0,0,0,0.25);
+}
+.toc a {
+text-decoration: none;
+color: inherit;
+border-bottom: 1px solid transparent;
+}
+.toc a:hover {
+border-bottom-color: #1f5fbf;
+}
+.heading-anchor {
+margin-left: 0.35em;
+text-decoration: none;
+opacity: 0;
+font-size: 0.85em;
+color: inherit;
+transition: opacity 0.15s ease;
+}
+.heading-anchor::after {
+content: "\1F517";
+}
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+.heading-anchor:focus {
+opacity: 1;
+}
+.heading-anchor:hover {
+text-decoration: none;
+}
+</style>
+  <script>
+  (function () {
+    function slugify(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[^0-9a-zA-Z _-]+/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+    function headingText(el) {
+      var clone = el.cloneNode(true);
+      var drop = clone.querySelectorAll(".heading-anchor, .header-section-number");
+      for (var i = 0; i < drop.length; i++) {
+        if (drop[i].parentNode) {
+          drop[i].parentNode.removeChild(drop[i]);
+        }
+      }
+      return (clone.textContent || "").trim();
+    }
+    function ensureId(el, used) {
+      var id = el.getAttribute("id") || "";
+      if (id) {
+        used[id] = true;
+        return id;
+      }
+      var base = slugify(headingText(el));
+      var cand = base;
+      var i = 1;
+      while (!cand || document.getElementById(cand) || used[cand]) {
+        cand = base + "-" + i;
+        i += 1;
+      }
+      el.setAttribute("id", cand);
+      used[cand] = true;
+      return cand;
+    }
+    function addAnchors(root) {
+      if (!root) {
+        return;
+      }
+      var headings = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      var used = {};
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        if (h.querySelector("a.heading-anchor")) {
+          continue;
+        }
+        var id = ensureId(h, used);
+        var a = document.createElement("a");
+        a.className = "heading-anchor";
+        a.href = "#" + id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.setAttribute("title", "Link to this section");
+        h.appendChild(a);
+      }
+    }
+    function run() {
+      addAnchors(document.body);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Experimental Proposal -- Confirmation of a Dielectric
+Longitudinal Delay of a Bright Interference Fringe</h1>
+<p class="subtitle">A dielectric-first derivation and two experimental
+tests in a Mach-Zehnder interferometer</p>
+<p class="author">An M. Rodriguez &lt;an@preferredframe.com&gt;</p>
+<p class="author">Leo Marchetti &lt;leo@preferredframe.com&gt;</p>
+<p class="date">2026-04-23</p>
+</header>
+<p><strong>One-Sentence Summary.</strong> At Mach-Zehnder recombination
+each arm beam is the in-phase electromagnetic response to the other, so
+the dielectric slowing mechanism applies directly and the bright fringe
+propagates at c/2.</p>
+<p><strong>Keywords.</strong> interference, Mach-Zehnder interferometer,
+dielectric slowing, dielectric longitudinal delay, constructive
+interference, energy density, bright interference fringe, refraction,
+Snell’s law, total internal reflection, time-of-flight, speed of
+light</p>
+<h1 data-number="1" id="abstract"><span class="header-section-number">1</span> Abstract</h1>
+<p>A dielectric slows light because the medium responds to the incident
+electromagnetic wave with an in-phase polarization wave. Maxwell’s
+equations then describe the combined field — incident plus response —
+propagating at the reduced speed</p>
+<p><img role="img" aria-label="c_{\mathrm{eff}}=\frac{1}{\sqrt{\varepsilon_{\mathrm{eff}}\mu_{\mathrm{eff}}}}
+=\frac{c}{n}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ0AAAArBAMAAACQm5eNAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACJUlEQVRIDWNgIA7wVBKnjkhVzJk/iVRJrLKhbh6jojCxXgWrI+RfJwZXaprHVsAgQU3z+BVIMo2BgYB/7Ruoa958BgYOkkz8g181lwGDMn4VKLIcId8jUQTQOcyBQg3oYqN8ckKA1IxHyA6UjMfrAgIBhPRA5bGphmW8xFxtIk3Brwya8VgP9HGiKOT/TwBgUQ0SgmY8lgntKArI5oAyHqOSwvGgPA2gGdhCBLfR2FSDMt5sBg/quM+kgQGU8ULO+FDHvHkGYM9cY2DAZR4nzljBHQwMsxmMWSZ0YVXA3YBVGL8gY6DCrAtxCtgUzcUmSIHYZgr0YtHK6cDQu30nFgkyhVgMOCIY5sA1+zBwT4BzUBhiGkqeKALYOSYMTFAJcP7+zNDfAOJjZHbmk48YpKEq8VE3GRhngutpcP7mecAgBVKNkdkZGJkWMKTgMwgix7GBgWNJIogNTp+sDgx34RyIChjJG8DgBmNjpzkLgNl5Ati/sPzNLsCwkAHGQdXFd4DhM6oIOu/QJwaGbgYGAaA4LH/zG3D8mAHjoKq3Z2AsOIAqhM7zYmCIYWCQYeAQgOXv8xNYHyjAOKjK1Rl4AxRQhdB58w8Ag4+BbbkTAyx/hztKXDoA46AqT2LgDGxAFULnsRewgTwLBLD8XYjMAcuQQvD8ZIcqh+VvcIjDOKQYBVELSSkIfcDkRxHQB6YYZMAYgMwjnc2nQLoefDpQK1B8KhFyAE9Xts7tvco3AAAAAElFTkSuQmCC" alt="c_{\mathrm{eff}}=\frac{1}{\sqrt{\varepsilon_{\mathrm{eff}}\mu_{\mathrm{eff}}}}
+=\frac{c}{n}." title="c_{\mathrm{eff}}=\frac{1}{\sqrt{\varepsilon_{\mathrm{eff}}\mu_{\mathrm{eff}}}}
+=\frac{c}{n}." class="math display" /></p>
+<p>A dielectric is, at bottom, a coherent recombiner: one in-phase
+electromagnetic wave riding alongside another.</p>
+<p>At Mach-Zehnder recombination, the second arm beam is that in-phase
+response. Both arms originate from the same coherent source, travel
+equal paths, and arrive in phase at a bright point. Each beam is, for
+the other, the in-phase electromagnetic addition that constitutes the
+dielectric loading. This is not an analogy to the dielectric case — it
+is the dielectric mechanism, with the second arm supplying the response
+sector instead of the medium.</p>
+<p>At equal-beam recombination, the arm amplitudes are equal, so each
+arm is the full-amplitude in-phase response to the other: <img role="img" aria-label="k=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAANBAMAAADGc1rlAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsQRO+Jq81mdlTdmSINXOHXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAcUlEQVQYGWNg1DdgwAJc0cU8BIAi6Wiir+RBop1oogz8INGP2ERZPjDOQhUHqWVTEBQFivKWg0ACSB4kypHoYA1iIwBIlF8FwYewQKL+YgpowiDRJIYjjEBhNHM7GQ5yoyrmd2BgOMywawOKqFl9mwAAxsUUKuXlTsgAAAAASUVORK5CYII=" alt="k=1" title="k=1" class="math inline" />. The dielectric formula
+then gives directly</p>
+<p><img role="img" aria-label="c_{\mathrm{eff}}=\frac{c}{2}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAAhBAMAAACcrW4HAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABBElEQVQ4EWNgwAmEBA1wyoEkWBRYAvAqSGdgbMCr4BNeWQYG5h8EFHB+YGDAb8ViBib8vjAV1CBgyWCSZlQUxu8cJwZXkILEXG0gyesCAiiRxFbAIAGUYT3QxwlSBwf8/4EAxONXAIuxTGgH05iEfQMDA6OSwvGgPBwBN5+BgWM2gwfUBCxu4DJgUA4544PDCpMGBuZAoYZrwASG3Q3zIBE6m8GYZUIXmvvYYjfCRRgDFWZdiFOA88GMYIZ+NBFUeYaVDLwL0IRQuY8YWD+gimDwuAswhFAF7Ceg8jF4RRgiqAKsCqh8DJ4ShgiqAI8AgwKqCBpv7pmDF9CEULnv//8HKQAALDIxxbKm0CwAAAAASUVORK5CYII=" alt="c_{\mathrm{eff}}=\frac{c}{2}." title="c_{\mathrm{eff}}=\frac{c}{2}." class="math display" /></p>
+<p>The ordinary reading takes the routed output beam and predicts no
+delay. The experiment is a direct test between these two readings, and
+it reduces — in the refraction version — to a binary outcome near the
+critical angle <img role="img" aria-label="\theta_c\approx 48.6^\circ" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAAAPBAMAAABTt1/kAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGaJIrvddhDNq0TvmTJ+KqhmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABWElEQVQoFYWQP0gCYRiHH678w0l62OISXQTlEgRJSxBC5CDB2dQkRLU0BJWSS9EXjRU1NdTi0BbB7bm0SoERNFSKINRS1hS19X6HSCDUC/fdc7/fAy/fAdEE/4yRF8EYne7UGtCbs3RuFPLUduuQItLprRByWdP5LQ9hm1GY47DDMy4wFQeShzI0w5Z4wS+clrd5oyCmP5pVzCJRIb8th94bOGJIUCZwNnUFRY12lfDnpSwjEh200PfwL46d6ApMKNV2K0IGVZj51qFTYVa/ibgseCAtjN9obooXfNxeEny3W+sc1f2hu99ji+dTwWPJHJd+pbsSXRXW4xqfyknvHsbd2PJkWlYpeayWl2JfmdaEaD3xvYfYTkYIssjP9wn4VtnwEj/nPHsUgOB9WXmcxazzQlqF5zn1ktCwy4hHv47GdYJcweI1yduW2y762GvzX9A1YP1V6+4He0BOIRg6y6IAAAAASUVORK5CYII=" alt="\theta_c\approx 48.6^\circ" title="\theta_c\approx 48.6^\circ" class="math inline" />.</p>
+<h1 data-number="2" id="introduction"><span class="header-section-number">2</span> Introduction</h1>
+<p>In a linear dielectric, an incident electromagnetic wave induces an
+in-phase polarization response. Maxwell’s equations, applied to the
+combined field of incident wave plus response, yield the reduced
+propagation speed <img role="img" aria-label="c/n" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAATBAMAAABxdXByAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3Zm7RO8boHsfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAApUlEQVQYGWNggABuKA2lTFG5wajcAyhczgQULrcBjMuoKMzAwMPAIKah5AkUc2JwZWC4xMB88xGDDAMDWwGDBAODBwMj0wKGFAYGfgWQLgcGBu4ABjcGBvsGII9RgIGB7wLDZwaG+QwMHAwsQCF7BsaCCwxcBgzKDC1ArjpQuQIDc6BQA4MukJvEwBnYAKSB4ACYhBHMG2AsMM02AYULdCIyYIZzAE3eE7j4GhMQAAAAAElFTkSuQmCC" alt="c/n" title="c/n" class="math inline" />. The dielectric index
+encodes, at bottom, the presence of a second in-phase electromagnetic
+wave riding alongside the first.</p>
+<p>This observation generalizes beyond bulk media. Any configuration
+that places a second coherent in-phase electromagnetic wave alongside a
+probe wave should produce the same reduced propagation speed, by the
+same Maxwell derivation.</p>
+<p>A Mach-Zehnder interferometer at its recombination point is precisely
+such a configuration. Both arm beams originate from the same coherent
+source, travel equal paths, and arrive in phase at a bright point. Each
+beam is, from the other’s perspective, a full-amplitude in-phase
+electromagnetic response. The mathematical structure matches the
+dielectric case exactly, with <img role="img" aria-label="k=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAANBAMAAADGc1rlAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsQRO+Jq81mdlTdmSINXOHXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAcUlEQVQYGWNg1DdgwAJc0cU8BIAi6Wiir+RBop1oogz8INGP2ERZPjDOQhUHqWVTEBQFivKWg0ACSB4kypHoYA1iIwBIlF8FwYewQKL+YgpowiDRJIYjjEBhNHM7GQ5yoyrmd2BgOMywawOKqFl9mwAAxsUUKuXlTsgAAAAASUVORK5CYII=" alt="k=1" title="k=1" class="math inline" />, so the reduced speed is
+<img role="img" aria-label="c_{\mathrm{eff}}=c/2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAATBAMAAAAuSD1+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGklEQVQoFWNgwA8u4JeGyDIHEKOK1YAh9bYAIZXcDKwGHJ8IqZrGwDWB4RYhVZcZ+BQY4oGqGBWFsaoVEjRgYNgAktoOxE4MriBmYq42kOR1AQGQx1gUWAIYeBSALOafDAxsBQwSQCbrgT5OIIUA6QyMDQwsDUABdgUGBn4gBgKWCe1gGk6APcYC4gYBsX0D0GlKCseD8jRAQjDA/APEEgRiJgUgMZ+BgWM2gwfULLi7OD8wMDQwOAAVHGRgYmDgMmBQDjnjg2HjYgYmAw6gKs47Z2SBPggUariGxV2mghoMTAcYGPj+//8LNBEIZjMYs0zogrCRSW5kDgNjoMKsC3EKKGIgji2GCDaBTGyCGGLg+MEQRRcwgAkAAClnMYOIZ5QIAAAAAElFTkSuQmCC" alt="c_{\mathrm{eff}}=c/2" title="c_{\mathrm{eff}}=c/2" class="math inline" />.</p>
+<p>In Dirac’s framing of the superposition principle — <em>each photon
+then interferes only with itself</em> — the two arm beams are two paths
+of the same coherent state. The loading one arm imposes on the other is
+therefore self-interference in the strict sense: the photon encountering
+its own amplitude. The present proposal tests whether that
+self-interference carries a measurable phase-velocity signature.</p>
+<p>The ordinary output-mode analysis disagrees. It normalizes the
+recombined field through the <img role="img" aria-label="1/\sqrt 2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAWBAMAAACvYqi9AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARM0yInYQiauZu2ZU3e9xcUtcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA60lEQVQYGW2PvQ4BURCFj73rZ/0tWorttNuqbCOUOo1CR3QSnYJKJ4hOItmIB+AJaL2Bx5CoRLFm7nUTV5xi5pwvcyd3AFMiIt1NBqR7v4RzzYDOJx0M2lRJzD605LMZq5QK0NlegEZd0lDRFpJB4kXeZSraim6Q87HT1AkkTYTIHzHVNE3jHuDIbXtNy0CZ1g35hf3QdE5mAYyYWkdNZ2TqBVpLmnDhP2QvZCwvzi3Do5Km2MQeFrcKMlTdAjDgiFuXilgXr0B/WfVxkvTsUctH0VMmIJSdDviWvZJJfDMg7ptZJbr3j+xf9gZPsSkXAvQotgAAAABJRU5ErkJggg==" alt="1/\sqrt 2" title="1/\sqrt 2" class="math inline" /> routing factor
+and treats the bright port as a single beam propagating at <img role="img" aria-label="c" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIBAMAAAA2IaO4AAAAJFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHJj5lAAAAC3RSTlMAVGYiq4l2zRAy3TJfpZAAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAuSURBVAgdY2BgVBRmYHBicGVgK2CQYOBWYGBgsG4AErMZGDgYuAwYlBmYA4UaAEZkBBf/RikeAAAAAElFTkSuQmCC" alt="c" title="c" class="math inline" />. This paper derives the loaded-fringe
+prediction, frames the disagreement as a direct experimental fork, and
+proposes two tests: refraction at a glass boundary (geometric) and
+time-of-flight along a propagation path (temporal). The refraction test
+reduces the discrimination to a binary outcome near the critical angle
+<img role="img" aria-label="\theta_c\approx 48.6^\circ" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAAAPBAMAAABTt1/kAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGaJIrvddhDNq0TvmTJ+KqhmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABWElEQVQoFYWQP0gCYRiHH678w0l62OISXQTlEgRJSxBC5CDB2dQkRLU0BJWSS9EXjRU1NdTi0BbB7bm0SoERNFSKINRS1hS19X6HSCDUC/fdc7/fAy/fAdEE/4yRF8EYne7UGtCbs3RuFPLUduuQItLprRByWdP5LQ9hm1GY47DDMy4wFQeShzI0w5Z4wS+clrd5oyCmP5pVzCJRIb8th94bOGJIUCZwNnUFRY12lfDnpSwjEh200PfwL46d6ApMKNV2K0IGVZj51qFTYVa/ibgseCAtjN9obooXfNxeEny3W+sc1f2hu99ji+dTwWPJHJd+pbsSXRXW4xqfyknvHsbd2PJkWlYpeayWl2JfmdaEaD3xvYfYTkYIssjP9wn4VtnwEj/nPHsUgOB9WXmcxazzQlqF5zn1ktCwy4hHv47GdYJcweI1yduW2y762GvzX9A1YP1V6+4He0BOIRg6y6IAAAAASUVORK5CYII=" alt="\theta_c\approx 48.6^\circ" title="\theta_c\approx 48.6^\circ" class="math inline" />, where the loaded reading predicts total internal
+reflection and the ordinary reading predicts standard transmission.</p>
+<p>The logic is one-sided. Constructive interference yields a denser
+in-phase combined field; destructive interference depletes the field
+and, in the dark-fringe limit, cancels it rather than producing anything
+faster. Only the bright-fringe direction of the fork carries a
+substantive prediction.</p>
+<h1 data-number="3" id="theory"><span class="header-section-number">3</span> Theory</h1>
+<h2 data-number="3.1" id="the-dielectric-mechanism"><span class="header-section-number">3.1</span> The Dielectric Mechanism</h2>
+<p>Consider a region in which an electromagnetic probe wave <img role="img" aria-label="(\mathbf E_1,\mathbf H_1)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAATBAMAAADSXRa0AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEHarRM1UZrsi790ymYmFLq+pAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGklEQVQoFXWRsU7DMBCG/6ZpWkNBmVg60IGdPAJPgLJYQmLxBGPzCGXoTKSKEakMFRITDCwsyZKFCd4kS2fzn1NLoUosxbnv7vPpLAODOXpXIJUhqq+tftt6a3prNVb284qJwQ+3C2BRQz16AZFlaDPH99xTJ+A89kZbGAERVXYoh2WXcGowyZ2QRp1CmOCIBxd1kPrz7NmaARsci7ArKJwtGymyWmsO6bjGkwh1SOFu38V3cPyCygm8S6oOBMcfmDUCpkmnsNkPCZzMe4RR7K6JSyPCmuRnEFZLBAZVsdOFzSXxnYFvcePeQnicQSXN5Wi/MzKeGp7EwINPXb/m/wThNYvPXpB/1AbGv/xC00oeCONSamzctxTwBw6kX5SM4gXRAAAAAElFTkSuQmCC" alt="(\mathbf E_1,\mathbf H_1)" title="(\mathbf E_1,\mathbf H_1)" class="math inline" /> is accompanied by an in-phase response wave with
+amplitude ratio <img role="img" aria-label="k\ge 0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAQBAMAAACSDPCjAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsQRO+Jq81mdlTdIplW3vygAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAuUlEQVQYGWNg1DdgwAJcwWLMcDmWlSlAkXSwKG/5BagOCQYOILMTwuN95ABhaDNwPWBg+AjhMDAnbQCzPjKwBDCwfGCcBRVfMQHIYPzLwPiZgU1BUBQqyjAHqJoFKPqXgSPRwRoqyqJnAFYLlOBXgankbgMKMvB+ZOD+zOAvpgAR5uyC0F8YuAMYkhiOMIK4ZtoQQQZNBq4CoHMPcgP5LHCDnEC+OMywC2gzEuBeDfIx6YBFCQRgZgEAdQMlANM10FcAAAAASUVORK5CYII=" alt="k\ge 0" title="k\ge 0" class="math inline" />,</p>
+<p><img role="img" aria-label="\mathbf E_2=k\,\mathbf E_1,
+\qquad
+\mathbf H_2=k\,\mathbf H_1." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAAARBAMAAABay+9rAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZZon1jmHWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB3UlEQVQ4Eb2Uv0vDQBTHX4TE/rKtxVnOrlKq4FBwKBRxKxRBBEFSdHOxu0ML0lnddJH4F7SDm6D+FQoOEkEQQSTWudZ3l+T1kubMIHhD8959vt/75pL0oLBSK67VIDy0dgenFJDEheqATZe/FmnCKzx3iJoOGO2wFOBKTCkgyZFDbkgtFeSWKRcfd0jjF2+iUEBfBKqksVu6DxTnk3ny+kXJT4qCvkiZRO7Qnpg+mfTpJ0XB2CRyB5NSjJxUpB3tERvTiYKkUu2J3IG3aA6qDGDnndsz53zYWGVbs3N4cWG3hWXkMAfFYnkI+tMd4gi3oIkt12s6aQaGlbTd1vudeu53sRQQNlmASY33RezDhTQJQG6xJ33DhShmsMBmgvedOxRUQGawwDpS4yUV4EGaxOXJLd7Trgu5WDuBrB3Q3s6LZBfGJgF8qNz8K5eSMhYcdVA7ftKvsKrhBE/KWPFJiYrKHUrqNeAUpdIowbKOLU/qNTDJOJPguOScrxX6Q0puLwn9eHQVq6NmKt8c+7GqwHYDzz0XYpJWD2CvQd4S596lEcDkdik+PW3dF1yD5ZeTV2MJgO9QOdL9lJIh2JOgMRrZUhsqb+rN35MORt8hi9ymX+7lNq7GZ/lP489JP7pdtr0I1BLGAAAAAElFTkSuQmCC" alt="\mathbf E_2=k\,\mathbf E_1,
+\qquad
+\mathbf H_2=k\,\mathbf H_1." title="\mathbf E_2=k\,\mathbf E_1,
+\qquad
+\mathbf H_2=k\,\mathbf H_1." class="math display" /></p>
+<p>The sum fields enter Maxwell’s equations through the constitutive
+relations</p>
+<p><img role="img" aria-label="\mathbf D=\varepsilon_0(\mathbf E_1+\mathbf E_2)=\varepsilon_0(1+k)\,\mathbf E_1
+\equiv\varepsilon_{\mathrm{eff}}\,\mathbf E_1," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUcAAAATBAMAAADxD9INAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d75kiVHZEZom7qxAFwrK2AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEL0lEQVRIDYVVTYgcVRD+euL2TO/sdCbrghEjdHY9BaOrePFgdlj25EHnJDlkZfDvlMAkl8QozvgTFk8ZgiBBg+1FdBHZQEJAXBk9CIK4owfxJyuNa1hB0HEVgxfHr173e/16tmcs6PeqvqpX9XV1dTcwVn4Z66WzNCrAb+d68tHcUAucXtiZXXzMAjJqz5lbmr1rKciAwPQDi7NLiwL69SGXNitaMbuzEQE3aObnNHFKSSsos1WDc287G6KtUgfFAXC8rwG9t/pwN5RxVkND+6uAdzCLvUazGMqSmzMbnFYQnCRR+Ccboa1CnND/VwOIYo0p8LvSGZIrAdwX/4g9fhKwLnvAS0haOQXeJWkFcQnJ4p+7ghTANjGhg6+M+71YY4pqpSp6uWl8tqI6lpCc7MSeQ7Jd4zWUM/YOrWkFcQhJDFRBMZXc+PQTtX+mEhZwMsGBlGRQVGe8nvGJ4h+7W8FTDRpDJJV5iThJpjmPfSFCFLqq6CDJpIKyalwHoaha/I9xu9JrKuFLGuduSJaCBK0le7z9Gjkd0W6RJUvS6zvvxg6StHNKKMVUVVarbyrQVp18dI3a8iblByqTvJyVNjAvJOd2mOB5QiKa5M5CAJy9SqTPa0JObkqOkNf+M8Ae7kMky919M8Be4kM5JZQiVUVWzr3PtaUqbHcF0SRDpSdLcd8LmMIq3EB18gLXU4lLk+x7fDPaFfJ6xD6Jk7dF6E6GeELQbCcLlzvb7GS0K2eSQKpSyp2fHW4tqYDTvERyZtJ/aAWXcABOoBIWOEGqKBs2GzdMJgYHg8kucAS2bH3b9HpOF9MCKpLLm18fVs9n7+eC7YmyOXFdz6RUpVSqP8mmKgTSJhEh6f2lVL1I489hBv68SgjcGZMkbDrJgeihzE7W9Cm1h/wJ1Z0atsTKdvKtO7rEZFg5k3ZOGiJStbgaXvjwlQ+okSQr2CSnbkrUsgyWzGST11U8pQiohEfzSE60sRXFJM1MFnmyXHdreS/OR3iQz9GQTHPyjIhUPYAf005iom2RdDfYEUuehd+UTuKe+K5LN/NInm/K99PtWgdR7GBbdbIQEU5+Ecl38hDu4z0cJy43bnKaT5BUXb/4nUXyfFNInoig/t3f8KQlpfu/50y+yReN/9nB7Nzg7yGScmhh0ChVG+BLYsvLh0Ov53VRasJf37msXAnJIzjDZq3yKQ7lTM5L1aN6JpMKQnImTAJ2bwVJd8LgTyZaMpOxdRFtTEUmRisBibs9bXHYOqmOL1Nd50wRPu5nKlU1zzHoznPnrY0QZ2UNKQPvyjtx3G9WuDsYrFn3YTz7n6NqkfEj47LJm5ypF8Vr4a31K6FB3ni4MY6kinPrJnyU8vgIx9P5+ESUj49BOcjj5fXxbj7K6ogIL/8hvT0ifAz8vyTdMYeVa3RAI/doPpobmoL/AcW3R7AS19g5AAAAAElFTkSuQmCC" alt="\mathbf D=\varepsilon_0(\mathbf E_1+\mathbf E_2)=\varepsilon_0(1+k)\,\mathbf E_1
+\equiv\varepsilon_{\mathrm{eff}}\,\mathbf E_1," title="\mathbf D=\varepsilon_0(\mathbf E_1+\mathbf E_2)=\varepsilon_0(1+k)\,\mathbf E_1
+\equiv\varepsilon_{\mathrm{eff}}\,\mathbf E_1," class="math display" /></p>
+<p><img role="img" aria-label="\mathbf B=\mu_0(\mathbf H_1+\mathbf H_2)=\mu_0(1+k)\,\mathbf H_1
+\equiv\mu_{\mathrm{eff}}\,\mathbf H_1." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAAATBAMAAADWoVPlAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3dqyJU77uZiRBmRHaMoFoMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEB0lEQVRIDY1WT4gbZRT/TTYzZpNMEtvDLgrbEMsitbKxhfZQSuPfg1IadEW9SFAooqWbux7GQqFQSlPopShtlGXXgofVQqU92PEgCFYJZbEiLM0pZQ/CttJDsTB9782/75vMbPdBvnnv9/795u2b2QE2ldJwU7c4K9khP6e6hqnoVsBth+439r6eFZkH+euFuf9e1COM57wGTnh7BgSXerpPsVqKLqpxdgW4RqpaIBmk2MnuC10YXk0JUNV/gYUNoPpIBVm3PDo8l1UckzPlqAyAW3rp2xRmuXwoBcjMkkR3IosjTkZwfYxsyY9Ue+UykkGOD3f4ZIM0LHJsnX5qAcYyJIXspWZ6rOWOkS0PJFTtVewINH7wyKs+2SANuzlqiX5qAcYyJIXsoX56bKG9FbJ2Kz0bJwlPkL3Hoav008lOnmJx2KnLONn5h3oEDqMgA3mK8ER4ymTR1dPzA3wpCOM6WXvD+BPgsjpZpUDY24cS3RceXnj1HHsmX2Pps/oAN1aM0RATpC/cbzTmHqH0CTuAiGyj0aAH7NhlwjbYcZ6z32St2i79j5njQJONGkNhWtF5eoowAizPL3DVYbci3JvN0fpvdCa68wN2ts/uSOwuPkYBN/E2QcG9WR/57ogsmZ5rDvN94HPfFZ63YTXhlF2zTohONvfN4CpNltiEkz3KQYpIb7KLg58MuiS6M9kdskpRSrGFC7RY09gWhwtxGt8rO2V8QS+jXnaAA1GmKIuY7NktwzHqZArZKK16hiBMKGTljpCPdlZ6U0y+9iOHhmvAY2OTyN7Q36O5DvZhHVO4wv4N6kj+IFyfLE2gj+TOzmKiU+kZ3VKT0vXJ3nnGIUzdWZ8sgYFIb+ume+v7u78TlOgeTTbeWV66Zy/jPamaCE+SvUJTottVd5a27ofrPbMruE72OxykP+5mZKX3NN7KnGxprsXtIrlTK3ZdnmyOmDyB7MuA6USZrNj3sFzmyeIFsqoDcQb3uBsvWcD7BIU76082fnVJ78W1w+Nk51f4f39jv7yqpagc377x2deDVfyNSof9jnwbaGtA/9qfl2+DSq2NshunklbcefTaH3bLdjACrh/ZVWNvQPYAjndATy5/G/gFkmsgvS+GO6t2n2pzoTGZZSRHNc1W7HvHV4OuIb6GIQo0f0Vo60jqdAvzMaqlnY5xmE3FIFV6T+PdfI0fmEiC7pEdKw9YNUZ9IC5rL/8qASWNmel5fZUTh1RlAjOfQr0LNU0dAf75QsKlNh/S21pyt/eW3QhE2D1GQo1edaF8ECqbXb/Snfxh5YvZCzXtOrmimZqh9NbwTMPqRy67E6mZSrmmu2ikofwVKtr1F83SDaW37tiK1X5ykJkdku7aQs30ko8BLE9qSGzdRM0AAAAASUVORK5CYII=" alt="\mathbf B=\mu_0(\mathbf H_1+\mathbf H_2)=\mu_0(1+k)\,\mathbf H_1
+\equiv\mu_{\mathrm{eff}}\,\mathbf H_1." title="\mathbf B=\mu_0(\mathbf H_1+\mathbf H_2)=\mu_0(1+k)\,\mathbf H_1
+\equiv\mu_{\mathrm{eff}}\,\mathbf H_1." class="math display" /></p>
+<p>In a source-free region,</p>
+<p><img role="img" aria-label="\nabla\times\mathbf E_1=-\frac{\partial\mathbf B}{\partial t}
+=-\mu_{\mathrm{eff}}\frac{\partial\mathbf H_1}{\partial t}," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOcAAAAnBAMAAAAGMkKnAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3N77tjHqOnAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADrklEQVRYCbVXP2gTYRR/yeVyybUkGToICs1QB4vF2NRCQUwQoaJDD4ooKiRUUHQxk1NLM5SigxhB1HYKrYMO1Q5Cu0iP6KINtItDpUJAULrUq1ra2tr4ve+7NHf2vtzljw9y9/783vvd9+e+ewGoXsQXqSqSqkNzC08qXdJ8MT//OsSFGAIEDYNzO2pgYfuDwV2tugHesPAHYHjDSSaiIaYBBLecwHmYCEiLSOrZ5SGMfkQ3gBRA0pDUt20sztclrQGkd8YmKWnTDz5ROYLo+kn9cXiO0+vqS5dLczWKrp90iOyJglC8OzLr5M2haIjt5PMLWyCe4j6cTSAHkIjgmgacTC9Fl0YqnLSpzQuLvwFigKRS0X6oDF0ihUO8qjZ+eR3gLCUVixkbLABD103q0kD66HikDF03KXyBKylKevWX7UCBof8lDRaphAz5g2+W85+XDQ6z6rt+GOjZu2w/u+QEIWg8ewv07NXX1P0jSqTLVJeclK7vJk+jjIOskEjn6IapKh7PCcXkaowhdzxkhY7hzKZNRQlpypMyuRpsJOIAfspwgFS+hdUJqSr8V1LfGvlIIRUIcfz0EYlpXhXvNYonC99sUsVNgHGGeQoDVIntzKmlLN8ZlHDJtLiPIOC0IRAMieQAqSwPQhBnCP9omioxTVYB+gvUqP4yBcI0Znm77xV42a1pIavHzrM7rimoUVX36reXq0RWQH+x2eutGSEyAlYz0Aa+NPrbxcWUCY05eoZnnS0p2U+jYQTT80OKu1RqVH95C00RzOoVVW6yazOqx/bWlDyOL8lIa1jTNUhcVHrG5NzjJYXL2hdnIbJ73WFUyfTC7UitI5U3oMMvFTwKZ6Qt9ElaI4y0hdzayY+clPm5YqgCacUG2v0uemncfe5Z1kB6+QmjwOtQBq8SXvZLBVJsoLnSjGPwJY1rKp8gs7gn+hj3bKPimjZaJp020BdMrrIRDBFdKrhCvWKpQjBFTgBR0TGRMnafNrGE2ZZCG+ivliGAKerv7JFm3Us6RCCTCoEks4hRo5AGmvenotOy5DCQ4VKplRQbaPJnwbFIN8djZKx1CTbQn47mMo6LPAL5/kT+iGO8FZA8c7AQcM6Jk7ILK1alnPty2G7TTeospzkM4k8gn9A6hDXQbJM6KpPIgqDJVewBi6qsgW6ziHBcrxTwpN1xqEdYA/1ejDgt0kpeU6U50+8Ub4mj7faM1zJm5QxExBloSiWtYo59tIHuPu4YD6MDCgjXQqWEvz+tMz2rWeycAAAAAElFTkSuQmCC" alt="\nabla\times\mathbf E_1=-\frac{\partial\mathbf B}{\partial t}
+=-\mu_{\mathrm{eff}}\frac{\partial\mathbf H_1}{\partial t}," title="\nabla\times\mathbf E_1=-\frac{\partial\mathbf B}{\partial t}
+=-\mu_{\mathrm{eff}}\frac{\partial\mathbf H_1}{\partial t}," class="math display" /></p>
+<p><img role="img" aria-label="\nabla\times\mathbf H_1=\frac{\partial\mathbf D}{\partial t}
+=\varepsilon_{\mathrm{eff}}\frac{\partial\mathbf E_1}{\partial t}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMkAAAAnBAMAAABXpnHEAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3Nu+/Rz64aAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADh0lEQVRIDbVWP0wTURz++uf6Si22g5sSiImDDtoISkg07WDEuHiRTQYIJv6JDk00TqR0InFQa2IUmBpx0MQENt0khMHYCk2cnOziwEIKiKCi9f259q7ce+8Oom+4+93v+97v67vfu9cP2M0wXmX90K8888NScqbNHlKqlxffJ5UUCsROhTKktFJeXJnT0ZTYJiJdoT/A6HclhQKJLEYQqgMdNR1NiaVAqkwFS0UlBwgBOa5ibGhYOojUuEp6VkcCxpgKQb+epUDvTU4LlcSmgsHS5OZUmqnE0athKaG2DF6KN5b4oSQBTxB7yFRuazgaKEc7W+FvbP+amkaqwG+qUtoGjLNqngqZB4ZSQkWzlngXjHW2ltd0I5xR1VLmjZ8AfeFsj+n6MlREqCb6EschZTUVEKMb84JQmamqSMCMiXCeqQB396ASqIF8FSpfUmqVTvq5mEJlfA8q+ITBLFfp0DQf7SnjDe0IXUtkvaGSqPPhPJhG323PtS/9+uD6udFrR8DPsQUn3UUbHzE5rVRfbagE17rp6Gmhpmu0v5pd1ELWPxwUsPGN3a+3cP+dSuz4Y1H5BFt9/j+pNMsOZYC2LH0M5Gm/ijTA7tdiPPjISqhHdBUIc5g2Z4QHu1e5bJKiWoIixhYwxRlt+UgXD9Lb5fJSo/vRc2wIgKP2xYYKdlIRPUoiI6CJG+JurWUXR13vHZNNjZy+XxElXNfOfKgokuFZcbdUdh511qclPjB2gNhj8HyKPRwzqllYePMmWOEN0RZgQrSl2X3/R11BlOo35kTgvga2ukXS7ktNfJVcxX75rqlNiP7TA32Tsfmny6aLZSUuZURA99hhHjX2mO+10Fc+QCphU76WA1y5M8VrB6hYsEhDeo5V+DkmU5E7ulsLheDFF0VbxekPc0lWn7CLbEhUmKOTUYHoMGCrUH8op7mz1lHnBLijM2Qvn1QCyX5j1iIzfwgpz1mNxc2jzgHQPufQPuzINMOTfeRtcNl6ZP5QwWtO0AZjzKJ6D1Lzx5NV4o6OOiavwfwhXfUeB3N0z8tHvWZzf+iDJ69DqszRfZaDjiz3hz54jimOUDg6+l/hMeaZP4Q3T16GO7pYVQ7aWeEPvXn2jJaIO7pgpiUneRD+0JsnmcpS3NHFCwMKuJEW/tCb1+DvuHNHty87vCPteuT+0AfPNVEkmKMLXeXHn4LB08wfOnh/AWGcFZ3gFj97AAAAAElFTkSuQmCC" alt="\nabla\times\mathbf H_1=\frac{\partial\mathbf D}{\partial t}
+=\varepsilon_{\mathrm{eff}}\frac{\partial\mathbf E_1}{\partial t}." title="\nabla\times\mathbf H_1=\frac{\partial\mathbf D}{\partial t}
+=\varepsilon_{\mathrm{eff}}\frac{\partial\mathbf E_1}{\partial t}." class="math display" /></p>
+<p>Taking the curl of the first equation and using <img role="img" aria-label="\nabla\cdot\mathbf E_1=0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFIAAAAPBAMAAACFEoWBAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRN3vzbv/ZXcJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABIUlEQVQoFX2RsUoDQRRFbzLZnWRhMX0wsRZBIYKVsoVgmU+wsJAUgRSWCaSyDWmt/AH9hnxACvs1lZWdq4YEIaz3zfo2ZIW84r65dw4zjxnspa7qcGXj2fx19pKZgpY/26xTTU0KND/UaQ+6h4D3LfZWMyG9hTrtQ4S89FguHmlG0uJKnfY3+CSuI6DW14xkiDN12pcIpkA1ASoagWQvN7qwCSwn8lbAg2Yk4zWzCwmql1IHQECS52FcR8SGhozAM5+o5xLkRYww0BqZRwkHom7OEPsS5FVawsh7VBabMYUE7gokfmCmzEurNvWvHHmfkfmceIcfCdBxKit3O/yv4pnP7uU56ElGUW2czuM0KZLmhr8p2063pLHldpjgaPJv9xcLFkdKMfplkwAAAABJRU5ErkJggg==" alt="\nabla\cdot\mathbf E_1=0" title="\nabla\cdot\mathbf E_1=0" class="math inline" /> gives the wave equation</p>
+<p><img role="img" aria-label="\nabla^2\mathbf E_1
+-\varepsilon_{\mathrm{eff}}\mu_{\mathrm{eff}}
+\frac{\partial^2\mathbf E_1}{\partial t^2}=0," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAAAoBAMAAABeEDjmAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIolUqxB2MplmRM273e/iDSFGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADcElEQVRIDbVWTUgUURz/zdfOOmvsdOm6Sx+QBrVkFh7CpTLDS0Peis1FofJQDURd1mpPkhA1RB8oHRbtUCa4WDc7LHgSgoSIOuVeOixCrJYoGmzvvZnxY2dnV53xf3hv5v/x+82b9/6/GcCjtRz2CFC1/PIrcEkxWjXHU1BpFuJyti6X+jk3+XvOE5RLcVhHN8BH0VoE98UlyZNbAB4ACY0yoEvzhOVa/BBoB2XQRd01aecBuXeoFQFdpQxZYTcYnkN5glEkCUMgu/MHda+U88A/rlQiO706uysMoSikP+wBWosKYejMsRsfh64MhKLFgCyyTTXWsf3uH9cgpm0GyHGuOsMOuj9C2kFbYwgmazDQ7mfZWx/qY9J3M5t23O1YDQbW/VtHZ5n93eYSUrOrk7Ml1Y0hXGKmku73qGBuDPxCE7ETdvd7UDBupuwdKL2N1CP9peN1u/s9KNhwQaVQ65ZCiHmO0TFtdb+vCjaFQJrydcWBOt3s/koKJj3+pNO87dsSlDytCs4DolleUcEuaXLGDJOxA/VbppPnIS/SSmkZGDIhKiqYYcbMcb72PgXPUYsCCmEgT0/sqYo4uyAqXEHBTt3RaDRwciBHV32apfbceG2WVBkJPCGhFkkLGXbBviS2go19JjZN/InzMRptlPI6+Dge0Rs+c1WG2UibxiIN2sYtQWBvCeKitQ2UwalghlnRLmWBUAxf6a2oX7FxqswrEPIszC03WWmUoVzByOceaBlUJl4WNIRVafGuMGi8b7j1wqpxTGv7gGkE4mb4ojWzNZQrGHmDnXJO1NgaxnU+b/ShbX0N0judggjP0nTabGOk47g26ovEzEhlBbv50eA73mQYw5GzzQOZg6Md6wwjGhEcYB/OmBgbR6GnEXKBeuSNbsCpYMEkkS26Dx9oZv/GfVhCgHxMtRTczhZ7y5sJ4FAwyDlObZdmAHb4+rBX1BNWUQxyHvVJYL/lKJ8qMTgUDDjeIv/gC5YICAeM++mjhg0lF0F+L6Vv9n3ZbO1AmdftVog6IvcGR4r039L1l297DA581MXxNj882YDrnDPoi4c8fThHDr6SCfiC5wSZIOofIwcgUlpwBv3wSCvkx9s6AH7gOTEUomwXwMedEb88XBHyL4SMTr8AnThTSOjYoyedEb88wWuHiOz1qFXw/gO8LwfRm3uuPgAAAABJRU5ErkJggg==" alt="\nabla^2\mathbf E_1
+-\varepsilon_{\mathrm{eff}}\mu_{\mathrm{eff}}
+\frac{\partial^2\mathbf E_1}{\partial t^2}=0," title="\nabla^2\mathbf E_1
+-\varepsilon_{\mathrm{eff}}\mu_{\mathrm{eff}}
+\frac{\partial^2\mathbf E_1}{\partial t^2}=0," class="math display" /></p>
+<p>so the combined field propagates at</p>
+<p><img role="img" aria-label="c_{\mathrm{eff}}
+=\frac{1}{\sqrt{\varepsilon_{\mathrm{eff}}\mu_{\mathrm{eff}}}}
+=\frac{1}{\sqrt{\varepsilon_0\mu_0(1+k)^2}}
+=\frac{c}{1+k}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUkAAAAtBAMAAADRtoRjAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEkUlEQVRYCe1Y34tUVRz/3J1f9+6OO6ORqPhwM4qihwbc7CHSSbYUEXJjo6QS9yFC0ZjEHqKX64MEhjZBWqbtIAoq9DDQQwVBl1jwocghIrAI9z9Ikkwh0O85d87cc849d+/d4ybz4HmY8/3x+X7P537OnXOGAXKOS+2cwATMvjLRKiuwoWPL0r4yi5MhX7NlCftKA42MkP1a9pUZlAxp+7WsKlcsbxhIZIas1uJdbSqLfnFHJiUDwGatqI1N5VtwAgOJzJDNWvYs/87kYwbcU5aFm2YSmdF7ytK7BgSZlAyAWmgI5grZVJ7FiM13/PCL77ZzcUqArCqfWv5YotH9wH0Fhk4B56EHho5TktBmPB8Hl02ykfcKXRw6XkWzcrQpt7CKVc3sf0IrHia35nM2pfCYp9Cq3c4Yi0OnNaNLRhomFEdsCjiq2P5AQg+d2QFcZ51/6aW32Wmf4xWRnmBxaKlQNXO0GW3g4VPYOsxaTgQoTK0Ipn/avlQsO6ZXa4GY+l6qGgtvtsGt34A0ll7qCqKHOm9V3bv0vO+DuMMprC+2j8S+ZI1JMCmcZhZ6yYy7OxmjCEWdR3R49T0V+7PkOlP+571dvhQZmF8MrFxGMdocBVtUPOZwiY4CG+QLhSUKe26xib7Q0YTp/pwxfZWR19ITms/cfYBJIsfHp0jcJH2WIyGrBA5EU8an18TRr7/NAEnpK5ItzFaKRC0CvCxAYtZY9l2RTZmLDfdVnB4kt2OsPXAMhttNBh2fYtriXKIp2tgLOl4FVq95j+oIgz+BkX6U3/PX8VHA/LRLv9SG+8f76oOMNahAXTxy59jJwrrJQwWWuidn5WyKfQXOSf5jhN/z1XmsYcDEpS+qPwQOB17IXaH7OPPUxSOJKLGnwKHShwqs7AwPSckUk3bQPTfDkvw8LTXx58AxlbwO+CIudB9lAXXxSKIaqmFZoMXMgb9Objk4yX5P1r4T8bTZa9G13uY7Lu75Sh1nIBxTXRdY/XGAEyvpa81092Z242kGVFlGEo0Hm27/o3dRgZePU8cFxw/0LwjtYJ1A4p6vNdybnwlHK/6E/DKBj7xQR3fEB9d9DOvouKFhkmg0YBltqCxfw5fq70kNTe42gHZwLdy6uOcvt0vzvnDUAudqA6hQzCcZm14XXPc5ekB+p6mLRxLxF1btAvwXBfrn5QFcdHSE5ndCdrCUz2+GuOdfeW7VL6FwVLQ73gMJB9a03PPmwXXfj1lwMirLSCIDS3f63528b5/lBayk7VlwVFpsB9kQ9/w7ssMz8UeZ/oBqEcsQh0q9wjy47m9gIyoBgUwSPRMXJ6w+y0Q8GajeYjvIhrjnr8sOz8Qf7g3Q2wjsPehzLbnuTEt6VLNEpHzqcIPUlJ6IzqA4Sl/bBcbv/LVkgGqz2gXXfQ4/otCMixSJvonjd2M9STsoD2eH7Ol2J6TzJxotUpXrXmGvqsRGlkhmLwpt5nF/MVWVblfATzzIjksa3gw92LMirM7LAtW39bKOKrWvc0OWWtK9WleBfe9xY/R/D/4VpCzRMMbNUSN0KYNvLmUztdcdIJDL2dUO1IwAAAAASUVORK5CYII=" alt="c_{\mathrm{eff}}
+=\frac{1}{\sqrt{\varepsilon_{\mathrm{eff}}\mu_{\mathrm{eff}}}}
+=\frac{1}{\sqrt{\varepsilon_0\mu_0(1+k)^2}}
+=\frac{c}{1+k}." title="c_{\mathrm{eff}}
+=\frac{1}{\sqrt{\varepsilon_{\mathrm{eff}}\mu_{\mathrm{eff}}}}
+=\frac{1}{\sqrt{\varepsilon_0\mu_0(1+k)^2}}
+=\frac{c}{1+k}." class="math display" /></p>
+<p>This result depends only on the existence of an in-phase
+electromagnetic response with amplitude ratio <img role="img" aria-label="k" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAANBAMAAACJLlk1AAAAKlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmU0mKAAAADXRSTlMAMrsQRO+Jq81mdlTdgIQlWAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUCB1jYNQ1YAACVxDBkA4mO8HkRRDJcoFxFgMDm4KgKAMDR6KDNQMDrwpI3FdMAUgmMRxhZGDoZDjIzcBwmGHXBgYAM30KYRgI//EAAAAASUVORK5CYII=" alt="k" title="k" class="math inline" />. It does not depend on the physical
+origin of that response.</p>
+<h2 data-number="3.2" id="two-physical-realizations"><span class="header-section-number">3.2</span> Two Physical Realizations</h2>
+<p><strong>Linear dielectric.</strong> In a transparent linear
+dielectric, <img role="img" aria-label="\mathbf E_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAPBAMAAAD0aukfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZZon1jmHWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAc0lEQVQIHWMQMnFScnFiAIP4Dwxs9XAmQ38DTFSAUwDGVGCFMbkUwGIMDPGf7IHM2DdAbvwHbgUGtgWcD0BMBgUGRQXeAjCTgXECAx9ElIFnAUNzA0R0fQDDRAYGIftPSvb/E7gEEhigYDfDAiiL7f//BwD3CiJu3L05RAAAAABJRU5ErkJggg==" alt="\mathbf E_2" title="\mathbf E_2" class="math inline" /> is the
+electromagnetic field of the medium’s polarization response, and the
+amplitude ratio is the electric susceptibility, <img role="img" aria-label="k=\chi_e" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAARBAMAAABtKeIaAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsQRO+Jq81mdlTdmSINXOHXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAtUlEQVQYGWNg1DdgwAFccYgzMKTjlOnEKfMRlwzLB8ZZKHI7GxkYnoBE2BQERYEUbzkIJABZD24wMEwA0gwciQ7WIBoB5B9wgjn8KggxCItnwQYww19MAU2KrRHo99WLGZIYjjACpRD2MDACXcvu4MLQyXCQG1UT308Ghve7FzAcZtgFMRYuzVXEwLAXzkNmLNjPwCDOALICDXAZ8G9gYJsN9hKq1D4GXgWg4zABowMDcxdIAwCGGiUXk3dP5QAAAABJRU5ErkJggg==" alt="k=\chi_e" title="k=\chi_e" class="math inline" /> (analogously <img role="img" aria-label="\chi_m" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAMBAMAAAB7FTvLAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAVGbNMiJEmd12iRCru5wK044AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAB5SURBVAgdY2BUdmBgTWCAAFZ2AwYmKJuBgeUpgwKcw9DJiGAzLPZm4J6VWKq4ACTm58DAxOcwl6EBxIlTYGDwZTjGDebMucDAMJOhm7EAKMHJ+ICB4Qh3A08SkDOb4SEDwwWWBZxTGBgYAxhquYFiYODGwLB5EpQNAIJXFXUo0difAAAAAElFTkSuQmCC" alt="\chi_m" title="\chi_m" class="math inline" /> for the magnetic
+response). The standard reduced-speed formula <img role="img" aria-label="c/n" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAATBAMAAABxdXByAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3Zm7RO8boHsfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAApUlEQVQYGWNggABuKA2lTFG5wajcAyhczgQULrcBjMuoKMzAwMPAIKah5AkUc2JwZWC4xMB88xGDDAMDWwGDBAODBwMj0wKGFAYGfgWQLgcGBu4ABjcGBvsGII9RgIGB7wLDZwaG+QwMHAwsQCF7BsaCCwxcBgzKDC1ArjpQuQIDc6BQA4MukJvEwBnYAKSB4ACYhBHMG2AsMM02AYULdCIyYIZzAE3eE7j4GhMQAAAAAElFTkSuQmCC" alt="c/n" title="c/n" class="math inline" /> follows with <img role="img" aria-label="n=\sqrt{(1+\chi_e)(1+\chi_m)}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAAAWBAMAAABuySBUAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACrElEQVRIDaVUTYvTUBQ9SdOmnek01RHciHaccRBhIIMogiBBXflFF1ZEULNwYBS0QRAGESeDCK5klu7sQnBbxB/QjQrKaF0oriSIzk6po6gr9d770jYJTTe90PvuPee885L3XgqkRv3fqNFJ9QZOD+FGpszWyBZDDLIejEoqL8zhVJoIUaQKbgDZVBInmKqm81CKVMFzYDeQXx8s0GxA94H77mAeYEVqGA0ggDn7SymMpDAASsD1uqsIRw3RHESbRD3hqtVD94yf4N8CkwRZrsIPJGhqSZEax4Axj9g097vAY6KHuJMC2vSRfS6NyfgAFBiLu0/SMSyJlMhVKuLu2iEXpi+8mr502dYa1BdrHO2QAQgb5ybu7r0G1GlZQJPouLtZDJDhWRykQPkg9Kp0vbRAlV4GbjMSd0fdC2cXHDMgOu6O3O9wcaIKDqU1ZCs09EN748l9wDXGxP1Z7cKX2nluxyu0rBROLqBR3Om9v4Xv/UQTVikoP4BFbpEwCi1gLwHHGUw8+8S6A0zN8K4aTaITz46Pl2DMrbyYb6t9NzvYnidZZN/1n3zVFZ10z9FqWf+ekKsD3OsuMpa7h8+EL0UmwFrvIKinMDaQsWksOZT+0I+ie9/NH8DypgpwE/hMuOVTouje92WaeAVn+b1IAd3G1S0i6KdX/BnKyRrv/r4XvOuunwO2MUJbNwWcvPjVFb7rvqsB7MRTraU2V7hEqvubGTGrfbzrXtkBLCAHPALof64XobuudYAzRjN7RxQ9OlqUGg1pyaEbhiOV7lhlTMzbsvKYwoQ4Khkz+E6fSq6tz8aeTZFh1jbaUt2KodxsRbHhcFGkbLa4iobm4aURAqwYHA8Vky8n6JwP45PN4H5OK5yisQicmg4BUUTJXj0XVl4PSRbCmEk02rPiP/Fcw7Xtubi9AAAAAElFTkSuQmCC" alt="n=\sqrt{(1+\chi_e)(1+\chi_m)}" title="n=\sqrt{(1+\chi_e)(1+\chi_m)}" class="math inline" />.</p>
+<p><strong>Mach-Zehnder recombination.</strong> At the recombination
+point of a Mach-Zehnder interferometer, <img role="img" aria-label="\mathbf E_2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAPBAMAAAD0aukfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZZon1jmHWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAc0lEQVQIHWMQMnFScnFiAIP4Dwxs9XAmQ38DTFSAUwDGVGCFMbkUwGIMDPGf7IHM2DdAbvwHbgUGtgWcD0BMBgUGRQXeAjCTgXECAx9ElIFnAUNzA0R0fQDDRAYGIftPSvb/E7gEEhigYDfDAiiL7f//BwD3CiJu3L05RAAAAABJRU5ErkJggg==" alt="\mathbf E_2" title="\mathbf E_2" class="math inline" /> is the
+second arm beam. Both arms originate from the same coherent source,
+travel equal paths, and arrive in phase at a bright point. Each beam is,
+from the other’s perspective, a full-amplitude in-phase electromagnetic
+response. At full constructive interference <img role="img" aria-label="\mathbf E_2=\mathbf E_1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAPBAMAAACmSdRUAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZZon1jmHWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA60lEQVQYGWMQMnFScnFiQAOMyi5KKi4KYNH4Dwxs9WjyDAys/xkY0j/AFDD0N6CrACng+AFTIMApgEUBI8NEmAIFVmwKmBgCoQq4FND1g92wCCoa/8keqCD2DYjLMxMEHgBZrP+VPwFdEQ5kxn/gVmBgW8AJEkYAoCM3AZUFAUWA3lRgUFTgLUDIAllABUxAmARRwMA4gYHvAboCBgZJuAKeBQzNDUAFyG4Ack/BFawPgPoZbgoooLi+ghQI2X9Ssv+fwCWQAJcEMhiV/ysp//8GNgEivpthAbICGDsZxmD7//8BjI1Ecz+5BgDrZEYuDz9SIwAAAABJRU5ErkJggg==" alt="\mathbf E_2=\mathbf E_1" title="\mathbf E_2=\mathbf E_1" class="math inline" />, so <img role="img" aria-label="k=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAANBAMAAADGc1rlAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsQRO+Jq81mdlTdmSINXOHXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAcUlEQVQYGWNg1DdgwAJc0cU8BIAi6Wiir+RBop1oogz8INGP2ERZPjDOQhUHqWVTEBQFivKWg0ACSB4kypHoYA1iIwBIlF8FwYewQKL+YgpowiDRJIYjjEBhNHM7GQ5yoyrmd2BgOMywawOKqFl9mwAAxsUUKuXlTsgAAAAASUVORK5CYII=" alt="k=1" title="k=1" class="math inline" /> without further
+substitution, and</p>
+<p><img role="img" aria-label="c_{\mathrm{eff}}=\frac{c}{2}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAAhBAMAAACcrW4HAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABBElEQVQ4EWNgwAmEBA1wyoEkWBRYAvAqSGdgbMCr4BNeWQYG5h8EFHB+YGDAb8ViBib8vjAV1CBgyWCSZlQUxu8cJwZXkILEXG0gyesCAiiRxFbAIAGUYT3QxwlSBwf8/4EAxONXAIuxTGgH05iEfQMDA6OSwvGgPBwBN5+BgWM2gwfUBCxu4DJgUA4544PDCpMGBuZAoYZrwASG3Q3zIBE6m8GYZUIXmvvYYjfCRRgDFWZdiFOA88GMYIZ+NBFUeYaVDLwL0IRQuY8YWD+gimDwuAswhFAF7Ceg8jF4RRgiqAKsCqh8DJ4ShgiqAI8AgwKqCBpv7pmDF9CEULnv//8HKQAALDIxxbKm0CwAAAAASUVORK5CYII=" alt="c_{\mathrm{eff}}=\frac{c}{2}." title="c_{\mathrm{eff}}=\frac{c}{2}." class="math display" /></p>
+<p>The physical realizations differ — medium polarization versus
+free-propagating beam — but the mathematical structure, and therefore
+the predicted propagation speed, is identical. The dielectric result is
+not transferred by analogy; it applies directly, because the mechanism
+is the same.</p>
+<h2 data-number="3.3" id="sec:split"><span class="header-section-number">3.3</span> Why the Split Phase Is
+Different</h2>
+<p>The split and recombination use the same physical element (a 50/50
+beam splitter) but are not the same operation.</p>
+<p>The split takes one beam and produces two equal beams from it. Its
+purpose is to prepare coherent arm beams; no loaded interference fringe
+is formed.</p>
+<p>Recombination takes two coherent equal beams and concentrates them
+into a single signal distributed across two output channels. The bright
+channel receives the constructive-interference fringe; the dark channel
+receives nothing. Together they account for the full input energy — the
+fringe profile <img role="img" aria-label="\cos^2+\sin^2=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHEAAAATBAMAAABVbP+yAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIlmdjJUu83vIhCZq92nAnmkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABX0lEQVQ4EWNgIAawGR3ArwyngiUMl/DrxKkggsEcv048CpTw62RgwKWA+zUBnRgK7KAaeANQdUqg8RmgCrjhymShLFcuuBCIsSQeXSdUAbMAijoGBkYBFlQRfjSdMAUYOtf//4RFp5BJAEOKiQCDWXIBTAFEJ3OaOWv9gvBfZhdRdYF4IDvZChgaWBQYDrMqMFyAqYDoDGLgZeBfwP2FIRIqznMXBBRAPJBOTgGu2fs3MKxn62KAux2iM2MBK1Anw0cGoDQ6AOmMBwrnAw0RuD93AUT+7N0bvXeBqY335y2Qzl8M/Nh1ysN0cuX+hpkMDaFl9zfg07k/gIF7/QaG+M0LGI6h6rRi4ElA0YnmT6YCBismBYYjzAcYVFF12jAwBYB17l8Ak4DT/AJAppFxAIOJUQKzc3ICkAcGENeamJmxnr8a81f0PEa0bLrfFABTjEJD/YkiRhyHGzMwMTUCAPHTXoNiRKoiAAAAAElFTkSuQmCC" alt="\cos^2+\sin^2=1" title="\cos^2+\sin^2=1" class="math inline" />
+sums to unity.</p>
+<p>The dielectric loading question belongs to recombination, where two
+in-phase equal beams combine, not to the split.</p>
+<h1 data-number="4" id="proposed-experiments"><span class="header-section-number">4</span> Proposed Experiments</h1>
+<h2 data-number="4.1" id="the-two-readings"><span class="header-section-number">4.1</span> The Two Readings</h2>
+<p>Each arm carries amplitude <img role="img" aria-label="E_0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAPBAMAAAD0aukfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid3vmau7RHYyVGYizRAHtTi9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAg0lEQVQIHWNgYBAyERQ1YQADtgQGhhIIk7+BgYEDwpw/gYGBC8LsZ+CGMBgY0hiOwphmghcZGGasAHJ5fjJMZ2BI4N7AwMD9gWECw/IAzgQGBtYLQJkVDpwGDAzMAgwMLIwOPEDm+QIGBkEOkCjjfUfBoH/sAexAtRBwAWQCBMxYyAAAaT0XdRaHZYgAAAAASUVORK5CYII=" alt="E_0" title="E_0" class="math inline" /> (energy density <img role="img" aria-label="u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO+rdkSJIt1muyIVtOIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA3SURBVAgdY2BUZmAyYHBiFWArYGiQY2AVYGCYxrCOgYFhB8NZIPmEIZ2JgeEBS8QKBobDGpoHALCxCaVmVwkTAAAAAElFTkSuQmCC" alt="u" title="u" class="math inline" />). At recombination the two coherent
+equal beams combine: the bright fringe has amplitude <img role="img" aria-label="2E_0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAPBAMAAAAFYbKSAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdomZu1QiEGbdMu/NRKugN9EaAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAsklEQVQIHWNgAAOm2UZKrw1ATCGTACDpwsDAC+IyJbD/AFIfgVgAiDkXMFgyMHD9AjJBqrgbGPQZGBg/MDQAOWDgw8DA4sD2AMpjAyrkdtJRYOASBenmaWBgyF/AdYGBhaEDyNUA4n4GLgbWewxLGBg4gJIMb4A4VZhhNQPDVQYOBoZNQK6BMkM2A5ft3WAGtr9A9yiAZLn////MoPNZSW9+wT2GK0BFcMADNhnO5RJVAABFIiKrzPRh+wAAAABJRU5ErkJggg==" alt="2E_0" title="2E_0" class="math inline" /> and energy density <img role="img" aria-label="4u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAMBAMAAABy/puxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMondmWarzbvvIlQQdkRf/gN0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAaElEQVQIHWNgYGBUYIABZgcYiyEMzmQUgTNZWRwYpB0YtgBVBbA48GyYyJAL1C/A4sDH+IFhIgMDKwNQAVMC1wcGhhAl5SIB5gesDUC1DBwODPwH2C5sgDIZTr56ANSnOWkBq/drVQYAMl4TRrZ6OBUAAAAASUVORK5CYII=" alt="4u" title="4u" class="math inline" />; the dark fringe has <img role="img" aria-label="0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMBAMAAABCcoqQAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARHZmiTLNIrtUme8Qq9MyhvYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABHSURBVAgdY2AQMhFgYGBNYEhnYOCYwKDFwMAXwCDNwBBXwBB3gEEOSIIRkFEXwDDvAAOfAMNsoEoDBl0GBsYGkC6GSVMEGACgDQxqAEhSYQAAAABJRU5ErkJggg==" alt="0" title="0" class="math inline" />. The fringe profile <img role="img" aria-label="\cos^2+\sin^2=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHEAAAATBAMAAABVbP+yAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARIlmdjJUu83vIhCZq92nAnmkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABX0lEQVQ4EWNgIAawGR3ArwyngiUMl/DrxKkggsEcv048CpTw62RgwKWA+zUBnRgK7KAaeANQdUqg8RmgCrjhymShLFcuuBCIsSQeXSdUAbMAijoGBkYBFlQRfjSdMAUYOtf//4RFp5BJAEOKiQCDWXIBTAFEJ3OaOWv9gvBfZhdRdYF4IDvZChgaWBQYDrMqMFyAqYDoDGLgZeBfwP2FIRIqznMXBBRAPJBOTgGu2fs3MKxn62KAux2iM2MBK1Anw0cGoDQ6AOmMBwrnAw0RuD93AUT+7N0bvXeBqY335y2Qzl8M/Nh1ysN0cuX+hpkMDaFl9zfg07k/gIF7/QaG+M0LGI6h6rRi4ElA0YnmT6YCBismBYYjzAcYVFF12jAwBYB17l8Ak4DT/AJAppFxAIOJUQKzc3ICkAcGENeamJmxnr8a81f0PEa0bLrfFABTjEJD/YkiRhyHGzMwMTUCAPHTXoNiRKoiAAAAAElFTkSuQmCC" alt="\cos^2+\sin^2=1" title="\cos^2+\sin^2=1" class="math inline" />
+distributes the full input energy across the two output channels.</p>
+<p>The dielectric loading applies to the combined field at the bright
+fringe. With <img role="img" aria-label="k=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAANBAMAAADGc1rlAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsQRO+Jq81mdlTdmSINXOHXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAcUlEQVQYGWNg1DdgwAJc0cU8BIAi6Wiir+RBop1oogz8INGP2ERZPjDOQhUHqWVTEBQFivKWg0ACSB4kypHoYA1iIwBIlF8FwYewQKL+YgpowiDRJIYjjEBhNHM7GQ5yoyrmd2BgOMywawOKqFl9mwAAxsUUKuXlTsgAAAAASUVORK5CYII=" alt="k=1" title="k=1" class="math inline" /> the dielectric result gives
+<img role="img" aria-label="c_{\mathrm{eff}}=c/2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAATBAMAAAAuSD1+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGklEQVQoFWNgwA8u4JeGyDIHEKOK1YAh9bYAIZXcDKwGHJ8IqZrGwDWB4RYhVZcZ+BQY4oGqGBWFsaoVEjRgYNgAktoOxE4MriBmYq42kOR1AQGQx1gUWAIYeBSALOafDAxsBQwSQCbrgT5OIIUA6QyMDQwsDUABdgUGBn4gBgKWCe1gGk6APcYC4gYBsX0D0GlKCseD8jRAQjDA/APEEgRiJgUgMZ+BgWM2gwfULLi7OD8wMDQwOAAVHGRgYmDgMmBQDjnjg2HjYgYmAw6gKs47Z2SBPggUariGxV2mghoMTAcYGPj+//8LNBEIZjMYs0zogrCRSW5kDgNjoMKsC3EKKGIgji2GCDaBTGyCGGLg+MEQRRcwgAkAAClnMYOIZ5QIAAAAAElFTkSuQmCC" alt="c_{\mathrm{eff}}=c/2" title="c_{\mathrm{eff}}=c/2" class="math inline" /> (see for the full energy and routing
+accounting).</p>
+<p>The two readings differ in the phase velocity assigned to the bright
+fringe:</p>
+<ul>
+<li>ordinary output reading: <img role="img" aria-label="v_{\mathrm{bright}}=c" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAANBAMAAAATYY6oAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO8izUR2iatm3bsfPVmmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA/klEQVQYGWNgVGZwTWDAC3SUEhicWAXYOy6ClRUCScYbUB3Mu0FgAZDHfYB7AUODPANnwkawnACItGBgUATz4MR0BiYHBobVDDwMEGVgCaCyh2AGnPgDZt0AKtuleaBXa+INhpkzl1h2nag6AFcCZLB9AfO+MIgxbGKw4J4iYMFywZ3BmKUAbDbcbYwfGBgcGBi+MBxg2MFwmluBwYKlwJfBiCEAyQkgg64x8CQwMGjpMICVCQBdv2chWBkbSBYOspSOQNmbGHZwg5RNYAAps0iEK0FlLNI8IGvGWM3wvFqw2vOTMFA1PsB0gLEAnzxUjkuA4QERyhhW6jRgVwYAUpM/qLHjgS8AAAAASUVORK5CYII=" alt="v_{\mathrm{bright}}=c" title="v_{\mathrm{bright}}=c" class="math inline" /></li>
+<li>loaded-fringe reading: <img role="img" aria-label="v_{\mathrm{bright}}=c/2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAATBAMAAAAADRzsAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO8izUR2iatm3bsfPVmmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbklEQVQoFZWRv0vDQBTHv6lpqr0oEUFwEGs7tXQQhRIHpQgiDoJ/QsTNqa52KU5FECwIUqcqLqKgdirqcIOD4KKLdKxTV390FOp7FxOlLRIf3Lvv93ufu1wSIGhNBQVdzqj8j486OJyPBd8zhKijfwbnxzBoYS44n0FY4gLQElh0/t6WjhPQYKYJLIStSPGJDTZpaHUlgb4brgo5IUUF/ZKU8QYUJjDgXJEBLG42MMnzTx0glIXIUhCR1M5gwuXJKP5FCb+pjyLYnnOrE3+dlLupUh3l8snszv2W5Nwro8UqTsOUrFoYRRW22Lds/XEJM3pOPc2/v/YKZHFJ5DadzLxEDQ8iBlvPrWAaq79uxwc+w3R04jW7mCCbSkPxFr3q7ZHiDcb82ojfwSwA4Xb74zusoiaY3wPz9prPemLIE+58nJTjGS2PZn44v/w+Qts6ar3DuzYktVzPBZR6xlHL/e3di43uiJPTdKH3guPFXypzVExz2wv7AAAAAElFTkSuQmCC" alt="v_{\mathrm{bright}}=c/2" title="v_{\mathrm{bright}}=c/2" class="math inline" /></li>
+</ul>
+<p>Two experiments can probe this phase velocity: refraction at a glass
+boundary (geometric) and time-of-flight along a propagation path
+(temporal). Both access the same underlying wavevector magnitude <img role="img" aria-label="|k|=n_{\mathrm{eff}}\,\omega/c" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAAATBAMAAAB2N65nAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyEETviavNZnZU3SJ+GwgpAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABg0lEQVQoFY2RMUjDQBSG/3gJTZOQdqs43eJsodCucRNx6CTFRReXiiCK6CSFKjp2EIROGRTEIrg4KAgZBLHtoKirZJFOQkEnJ1/uGoVT2rzh3kve/713P4csRGgyDT8HIg425QFjw8Wy25OJA/NUJUJ2fpDtpAiNj4IDTUpJtrCLCBDIB6WRiAdoIQkpOIw+aymIcz17mpd9Oo2A5FyObXdDQlK8UJTI+AHFPoC3ou+QBrA7Exw2FawBLACmb64Rkt4ozylbgnPYtQjZ1JfyKIAB9H67wBUcj5DMJPUULzmYwmtdp+kB0tB9oAZ8kZSQxRL/gywjE6J9Zhy1qh589GB5cAK4nxJZxwtTvLh93BuMm57YUkMO0+SDHPWB6GJNPDnKxawGclZqr1IWyFbl5vIQmKENr7BCQp7RCRTE9lG61ciNQN5XrNUycEJIr3sceRGh2I/+Me6Gdf1B9unkcTUo/kFw12aPqWosdLNxNQSJJTLb+fg7MfJ7jwFL7zsi3Lj/DWt/T2lXGCI0AAAAAElFTkSuQmCC" alt="|k|=n_{\mathrm{eff}}\,\omega/c" title="|k|=n_{\mathrm{eff}}\,\omega/c" class="math inline" /> in the
+overlap region; they are not independent confirmations but complementary
+observation channels.</p>
+<h2 data-number="4.2" id="refraction-test"><span class="header-section-number">4.2</span> Refraction Test</h2>
+<p>The simplest test to discriminate the two readings is geometric.
+Snell’s law at a boundary between two media,</p>
+<p><img role="img" aria-label="n_1\sin\theta_i=n_2\sin\theta_r," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJUAAAARBAMAAAAmrfOyAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABmklEQVQ4EZWSP0vDUBTFT/LavmItjcauUugXqIIodKl0Eod2UbqInYRKhYCIYodm1EEQRHEMfgELugp1cCzGRReFLOLq0NKx3iSmsflD7R3euzn3d04ejweElfwWNvHqISRrOSDTj502cB9PxsuOsYGU0wbu/yeBG5QCM/ziWDLSRdNvC1L+kEK2uFS1mQVZ2+3HbvfTKiAayHuc48mjWk7QsKoBMR1l9FHKxM6BxMPHJ2Qz7WmDaosam5Tfg0gTBKQ8xDJmDED4QpWyUiqdmlbcWXN3sUieierhZAfRDLhBnu1LxcxSQFnNAv8maaRMMmYwLZy8Nt3cAMDT3WHWKZJtNnwgNKSySCR1Pym+rJgA/X4+Dm4ATMHjMKuBtULunubufdkk1gt+UrqaNVFmoMPADeraeLWyIn26e1QsEW7ZJDYDyEMNOChAzGFvzrKxrCzVezvPlXpPRXxRRTLnBlFnk2JVgY9kGaDm0Lw1YrM/EsUA8QTk81ZUJUX6Vc8uFO8cmF72a3ww0P3qlCk5Wf7xxIowsSPcIOAHFeePK2bQbKQAAAAASUVORK5CYII=" alt="n_1\sin\theta_i=n_2\sin\theta_r," title="n_1\sin\theta_i=n_2\sin\theta_r," class="math display" /></p>
+<p>is tangential-wavevector conservation: <img role="img" aria-label="|k|_{\mathrm{tangential}}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAATCAMAAAAAj2t8AAAAM1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxgEwMAAAAEHRSTlMAmbsyEETviavNZnZU3SJOAaoAfgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUJJREFUOBGtlOtyhDAIhUlINje0vv/T9hBJrVm3O52VHyaQwydgRnJ0ssk9nb1zvArYb2EXdvddzovzPTc+7PhzVMq3oUq9DbXxXai4YfS1AffxrJInZtbR/w9VRjO8RMstiSMFMZQMgTV9uXTRIXQDtXnsumlV/lBY9GKZRAMVN0aL3bDEkvA9m+A0LlWcOrAUpNY6Ql3U2+pCGijloFktRolZNwsRZucShUJh0SfjLAcL7SIFmNAa1Fu1MI1ZdRQFXpCH2MNoKceYo4UOlAkNhRySpqRR1Uq5hh8UnMTk9LKg0E5X1NrbMqGhumR/aIMurlzxi3gEsbwO0QZXpO8oFSlqCK9RjPeHLNLcV8mhbUK+FFQhSSqxhVSE/S/hfCe1qicDAWlP4Tkw5U7ursag7C7P2Sd/uo6Ta9LUpGIYf9s3tL8IZqjyA18AAAAASUVORK5CYII=" alt="|k|_{\mathrm{tangential}}" title="|k|_{\mathrm{tangential}}" class="math inline" /> is preserved at the boundary, and <img role="img" aria-label="|k|=n\,\omega/c" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFUAAAATBAMAAAAT2lwYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyEETviavNZnZU3SJ+GwgpAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABR0lEQVQoFY2RMUjDQBSGvxqDaRJStzre4myh0K5xE3HoJOLi5CSC6KCTOAg6dnDqlEFBEMHFQUHI4FLtpq6SRToJBZ2cfMmlCidp/Yd7l7vv/fdfjmkylXQpGPNdhTUXwkQBpZf7uihYltlodv+H3RvLimEqBR0pI32tq5TM2A8pxWwIpUQIkcIeWBcG698untfAjoVT2uihlwg7peoNzc4ci46At0bkC+PJ1GrDKjiRsyVseae1ZPjGl3gHUMcCeYBDuMEPha3MSruRt4oj94kpMxmBtH0JI+xaU/1h16kkENHHDfFjgk/NbvNiGXmDAV079asyL1kl9QDSDB2efCOD26bqwu7K3fUJLIjnK24i7DOPscF6Ec17eN9wN1twJmy/d5rmzWTcTS/moxp+5ZMRbCB/TWs869X+z/4emTfJAxUpGG58Ayd5PgFX5/DfAAAAAElFTkSuQmCC" alt="|k|=n\,\omega/c" title="|k|=n\,\omega/c" class="math inline" />.
+The refraction angle therefore reads off the wavevector magnitude of the
+incident wave. The testable content of the <img role="img" aria-label="c_{\mathrm{eff}}=c/2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAATBAMAAAAuSD1+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGklEQVQoFWNgwA8u4JeGyDIHEKOK1YAh9bYAIZXcDKwGHJ8IqZrGwDWB4RYhVZcZ+BQY4oGqGBWFsaoVEjRgYNgAktoOxE4MriBmYq42kOR1AQGQx1gUWAIYeBSALOafDAxsBQwSQCbrgT5OIIUA6QyMDQwsDUABdgUGBn4gBgKWCe1gGk6APcYC4gYBsX0D0GlKCseD8jRAQjDA/APEEgRiJgUgMZ+BgWM2gwfULLi7OD8wMDQwOAAVHGRgYmDgMmBQDjnjg2HjYgYmAw6gKs47Z2SBPggUariGxV2mghoMTAcYGPj+//8LNBEIZjMYs0zogrCRSW5kDgNjoMKsC3EKKGIgji2GCDaBTGyCGGLg+MEQRRcwgAkAAClnMYOIZ5QIAAAAAElFTkSuQmCC" alt="c_{\mathrm{eff}}=c/2" title="c_{\mathrm{eff}}=c/2" class="math inline" /> claim is that the combined field at the bright
+fringe carries <img role="img" aria-label="|k|=2\omega/c" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAATBAMAAAD185dcAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmbsyEETviavNZnZU3SJ+GwgpAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABS0lEQVQoFY2RPUsDQRCGn/MuXJKLyXV2so2dYCSghYVnL5hGsRDsFfGr0EIknWKVwirV1So2wVK4wkpFhGgfKytJwB8QJ7tnik0Ep5iZfefZmR2WEG2OCSO9QRTuTARjIxEtFvd0ULAmiQUG+9O62nd+WxwoOJZggaesxKJqS0sKGnK2wBbOq8FgwSQCfg+DW/hdXY9gUicyOtN1r+2OMqKeScBR+nGFmxcBfVWZM6Bz3jezZKccAG6dTAwXnAmYO6wuD3dsUMGFkGxEUOdBwNKUXLWWwY9JyOHFZKEkTQXcnFfD4BXEfJKPeIZOpMED3l37jbJIXGOCJajBInjSsUGrYI+eXd0Ij9bv7y7xBBxvcyvgG0+JDe72euHXdn6nSr4KxZPHSEBt9jJGFT8oKCMNzgMiTT5+BWWSP8Hmf8G0EZTNDfmE0dZO5R/Bij5my2+TdwAAAABJRU5ErkJggg==" alt="|k|=2\omega/c" title="|k|=2\omega/c" class="math inline" /> in the
+overlap region, which at a boundary with glass of index <img role="img" aria-label="n_g" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAANBAMAAABWYCMqAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAZUlEQVQIHWNgVHY2TWAAgYpMA8YFYJaANQNTAJjFcJaBVQHCmsHAX8DAaHyAgf0DgxwHQw/LBAbmBwxnmRmesS1gYDJgyBVh+MAEVcswga8BoovByB7KYGDwg7IYE5SgLF7jCwwAs18Q+owdvQcAAAAASUVORK5CYII=" alt="n_g" title="n_g" class="math inline" /> bends the beam to</p>
+<p><img role="img" aria-label="\sin\theta_r=\frac{2}{n_g}\sin\theta_i," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIMAAAAqBAMAAABioPVzAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZlS7MomrzSLvEJl23UR4cKuQAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACY0lEQVRIDa2UP2gTURzHv3e9xPNySS6RSsEUE4cWnEJnoYe1Q8iSwWKhSwYVpzSCiOOp4NYmLg4Oep3E6YJQ11wHcRGJoIsgnCKCCJIpxCLGd4l3l/ZeLu8R3/Du+36/z+/77v3uD8Aw1K0VBioS2YSlRQLTk++R6EynIomHiHUjAZbkXJ2FimQaemSaJXmTBYpkYrM+ECATuQFLMpXHrLdR/vmlxbLVkBHnDQr7dDCgWRQ2A3bRl/Ny0dd0IXS8uFC570ngmyflDrqennBNVb3EDtKeHLvO2co0i4C+ACtY+MoyZWYL5RCNUaFw7pS0aqz1szWyfo3gqL7vmMgWimt9afXukgOodfzr4TriSBvKb5QI+mnjSnVU8fI6GddG2p+lCqrow7KlJpD8sHF7lFk2JGKBP7BMkDmp+QVhId6BTizSDjkEmfEOBReK/7rhWpCECdk/3lj5wBukS9uPhqQBYtEI+nZv2/QsUk1sjRWHpbx06G42tPiOWGtELCCR9yzkjvIYrwoOyVB7IRh44Vvs4LkpVF2TM4jpQwvLADpxRzx50XbjtCG0cHloofRJO1GD9hEPTOSyWal9tdz72iZP9fNbyGNv7XEb4aCQL/cutWvlnoNUzoFcR4nS/9zxwoi1+yvKh/PuK8Y6kntUiyJrPeESCxA58Anof7CY4HwkLB7sndaPRLgXuyVN5OkPZYP8ItQqJc4T2kfc5uEp7BP3uxIzLUqKMUR+hcsp/FCajDwFE+rYF3BLmqGlqob18+iqNsWeK9Q84XDxFDh3lhLkDD3j5EO4qL8JxTgDsUxlYsVfwOiUnADCP5wAAAAASUVORK5CYII=" alt="\sin\theta_r=\frac{2}{n_g}\sin\theta_i," title="\sin\theta_r=\frac{2}{n_g}\sin\theta_i," class="math display" /></p>
+<p>twice the ordinary prediction.</p>
+<p><strong>Setup.</strong> Arrange the Mach-Zehnder so the two arm beams
+are collinear at the recombiner output. Isolate one bright fringe with
+an aperture and let it propagate toward a glass slab (<img role="img" aria-label="n_g\approx 1.5" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAARBAMAAABwV9yBAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABC0lEQVQoFWNgwAo4noGE2d8aLccqDZRS+wZWsX9qAQ4VDAwQFQLo8kwzjzAwMDqAhJFUMCo7myaAxIBAtfymAAMrmAlRoWzbwMBQkWnAuAAsyMAQwMAxJ+UOQgWLAsM2BgYBawamAKgKAwYG3p0HECqArFNAfJaBVQEsiEKAbQGKaALxDAb+AgZG4wNAJs/McBSXcgsw6AO9/oFBjoOhh2UCUMVhl55AFykgA+oXvgKQLcwPGM4yMzxjWwAUVmBg8NkZAmQwMPxgYCh1YHZgmc7AwGTAkCvC8IEJKIsALFf/XWPILGAwulMAE5zA1wBj4qCN7HFIIIT9EEysLMYEJaziCEFe4wsIDhoLAC6YNmLKsGh2AAAAAElFTkSuQmCC" alt="n_g\approx 1.5" title="n_g\approx 1.5" class="math inline" />) at
+oblique incidence <img role="img" aria-label="\theta_i" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAPBAMAAAAizzN6AAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAVGaJIrvddhDNq0TvmZS+qxkAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABfSURBVAgdY2BgEDJhAAImA1cQ5cbAB6LCGfqAJMcLBj8gxT6BQQ1IsSUbz2IQYuDbwJAE5Pk1sDwAUnsYmC8wLQBq62lQyGBgY1jNwDKBgVt9AwOzAlAWqKkJTPGqAADVjg8a8FlavQAAAABJRU5ErkJggg==" alt="\theta_i" title="\theta_i" class="math inline" />. A reference beam
+taken directly from the laser is sent to the same slab at the same <img role="img" aria-label="\theta_i" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAPBAMAAAAizzN6AAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAVGaJIrvddhDNq0TvmZS+qxkAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABfSURBVAgdY2BgEDJhAAImA1cQ5cbAB6LCGfqAJMcLBj8gxT6BQQ1IsSUbz2IQYuDbwJAE5Pk1sDwAUnsYmC8wLQBq62lQyGBgY1jNwDKBgVt9AwOzAlAWqKkJTPGqAADVjg8a8FlavQAAAABJRU5ErkJggg==" alt="\theta_i" title="\theta_i" class="math inline" /> for
+standard-refraction comparison.</p>
+<p>The two arm beams remain spatially coincident within the apertured
+beam, so each is still the in-phase response to the other and the
+dielectric loading argument persists as long as they propagate
+together.</p>
+<p><strong>Predictions.</strong></p>
+<ul>
+<li><em>Ordinary reading</em> (<img role="img" aria-label="n_{\mathrm{eff}}=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAAOBAMAAACMfhKgAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAqUlEQVQYGWNgwAk4nuGUYmBgV/uGR5aBgaAso7KzaQJ2I4B6KzINGBeAZJmEDoPoo6FAEAsSAJksYM3AFABi32CZkACiEQBk71kGVgWQSBjLAxCFBECyMxj4CxiEjTneGk12QJICMoGy7B8Y5DjYFrA6QPWi2sv8gOEsM29EawOmyT+ATjVgyBXhUcC0l+Xqv2sQm9gWsBeEsWxAtRbBkxVm28M7GcGHsgD8fivPQJ15bAAAAABJRU5ErkJggg==" alt="n_{\mathrm{eff}}=1" title="n_{\mathrm{eff}}=1" class="math inline" />): standard refraction, identical to the
+reference, <img role="img" aria-label="\sin\theta_r=\sin\theta_i/n_g" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAAATBAMAAACuF8goAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZlS7MomrzSLvEJl23UR4cKuQAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACC0lEQVQ4EZ1SsWvUYBT/fbkkjbm7XHpSKXjFS4cWnPIHFHpYO5RzyGBRcMkg4nS9QcQx2rHU3tShg6STOOUoFLpdCoqLyDm4CEIEEcSl03EWEV++9PtyrbZwvuG933vv937key/A/1n3vDFlKjivldWduzwa3mnajEynDFfiHLC+wMxb51ALRCWL30Rq9HEk8Ei0fJFsosJhQRTOxkJs/kshpy0g4smtvHQaRaFxoYJ5jC0+cTAyx2Yvq4vB0rDaouJb5E8WnKrjLg3VxadzCVBqI9uZC+Vw90qDc5ahoxKYv7BC6efVOz6vovggNQ9QPfgYIorVDlD+uPoYDmDZeL5iKy7nzgcqKeA3ohDky3amIL3yBA1SqCT0AvL4kHb0EPUZlHzO0n8+TBWIE8IQz+SdE7e2zbsBSGHrZE869fahxxTInq2FQsHq4B7eOAmvC2fMHaf6XOE7tC7zgVlqvkhrymQX0yjWhYLRN3eUSzdi6ss9sAB7UmETr0L7E2gzoKPNW/hhdnAVWoMrRAHQ1xNjneZHjHVxmyuYQ9okWjDaMH2AtbHP8Eh1UatW1d795uBrj8755T1QGxknyA6denNws9dqDhJYtQSaDZbQYW0sX8dRKSbOGUv/i4usvIuC7HcmEoklyI4s079AcRobsli7JuFY4HXOfpnDcZD8TKXxbpy5nBsIqE16+AOjDYKHHtAsFgAAAABJRU5ErkJggg==" alt="\sin\theta_r=\sin\theta_i/n_g" title="\sin\theta_r=\sin\theta_i/n_g" class="math inline" />.</li>
+<li><em>Loaded-fringe reading</em> (<img role="img" aria-label="n_{\mathrm{eff}}=2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAAOBAMAAABjvHmeAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAw0lEQVQYGWNgwAl0TwnglGNg4C1g+YxHmjuB4TQeaU4DhvsMDIzKzqYJOFStY2CoyDRgXACSZhI6DKKPhgJBLEiAgf0bA4OANQNTAIhzg2VCAohGAD4DIPssA6sCSCiM5QGIQgKXQewZDPwFDMLGHG+NJjsgyTEwMIM0s39gkONgW8DqANWNsLuRgRmo5gHDWWbeiNYGdMPZTnTIAB1swJArwqOAaTfn//9/oJaxLWAvCGPZgGI1MkdWmG0P72RkEQgbAMDVKxqATb3RAAAAAElFTkSuQmCC" alt="n_{\mathrm{eff}}=2" title="n_{\mathrm{eff}}=2" class="math inline" />): <img role="img" aria-label="\sin\theta_r=(2/n_g)\sin\theta_i=(4/3)\sin\theta_i" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQUAAAATBAMAAABrQAWQAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZlS7MomrzSLvEJl23UR4cKuQAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADqUlEQVRIDYVUTWgUZxh+ZjO7zv6v0VgxadnVYi8egidRwcUkB8klsQaDehgkFbElbi8iHmRU1JMkXgS9OF4KoYVdC/XQHrIptL0U2UKLYBEmIkIvEnoIUUR93m/mm5nsrpsX5nuf9+f53mfm+3aBDe0H3ZHVAGhGsAdqY+Z6tMZKiQEnFvnQ1pnrGgDfR1CjyrRGobc18pmZho5DH837NMwNWMMhDkDOQ+7kXgliQxIlv2q0gi4YE9c01J5MYEyiaRhD3wAVwbRu8176JcBqYUVj7TfJFnWZOaxT9DUfF2ydu4WihtqTCfwryzAmUWxCJRj2nNfXzHRooPi/kW0BZlO2C+yoBtofRF1D7eW1ja+5kPkl0jaSZV0KfLd5ddfq0LAPuI0k01kntkP4KkEu8wZzsbKCZGL0Fy6KyU8ZfbWgNZhn7NxiHnJG1vpnmf8D0QEHbZgX0FfjA+zZsXnGz6fp+ivDI2vmoSu7PSBXi52y36KYJdFApuwNyXSbN4YUik7mLY6w59nUcZuOlj0jNkHUknCuCizDenEbuySEHL45ARtrqDdNbp3/Z+qCf+ceCfEr6SHTgGhY5jPY4LIid7RtHq/3F45JDXiHuguu+RJb42bVJPqWzzkk+JV+94tpF4mLqFJD0eM5cMVffiVchTmqNJyT3BYXuIeu81Kvz4oG7uXC6nKopmhIijKbX2cC/ImJ5V3g/B3Fc0ANc503SZglpcEWhhznU6DrvKvnXa2hMI+T+K3iCUVbpkW0mU+iDKQ9ikVlkIgZa/cb0a40/Idkw7CZjIxM46epJ8cUcwZZKp1ntX3eNmA7smWtwWpl7iXSh5vsjO4DeYUyXyjF7BwSNa/QWFAaDAc/hhpuYcEt8TWB6D7IRBzgq1Pu/0itKA3t8wx+0UEkq0pD3eEtSnnWNWHG7BIw/up5A98x9wlPo7SpOgKwy2jgmNKQ4bfJYxb+1YmoZCoNwjyBhSbkT7h9Hm4CQ/395uLM+OqLRf44lx8zEW2i0K/A/ffvG/iM0RLMo24Rf6rTMZYq5fHV0cXZ8VUPhSHPvzUxNpkYuzutmLlTp6m61GXeZIyhofxPxO1GEPAdfEvjMrBfRzGffxALCDuYfe76BhU9pbB2C2cFhYBoNXSjsbQCy9ZRzGe3xwLCDqYWta7tobMu7BoEw3PVsJqpIeuG0cdBB/Pnj/duUHmu6n1h1+e5JraGUS/QxjSqvZp71ixV9VeBkwOAo3IbLW3MaIv1xA9VYgTfjFu1VQAAAABJRU5ErkJggg==" alt="\sin\theta_r=(2/n_g)\sin\theta_i=(4/3)\sin\theta_i" title="\sin\theta_r=(2/n_g)\sin\theta_i=(4/3)\sin\theta_i" class="math inline" />.</li>
+</ul>
+<p>For the loaded reading a critical angle appears at</p>
+<p><img role="img" aria-label="\sin\theta_c=\frac{n_g}{n_{\mathrm{eff}}}=0.75,
+\qquad
+\theta_c\approx 48.6^\circ." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAAkBAMAAABYj8MqAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZlS7MomrzSLvEJl23UR4cKuQAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADmElEQVRYCe1XTWgTQRT+spmky2abJpVKwYixIkURqXoREYxK0VrEKopIawklltJD24O9Lx7Ek6YHxR/Q9SS0h26RKojY1IMiFI3gpYgaqXpRpBWRWLX1zSabpMkkKUq3Hny0s2+/973vvd2ZWTJAeZPGb64MlafZwTjf5JMa7ChUvkZwNdRweZotjFG4Y7YUKl/kOqq08iw7GPI06r2Q/IYdxUrXcPRh1IGPSrQ0zY6o6kPjRpxmS7eLAlrhc0g1AjBFm1ZjhfzFICU00+meA0ctodWWgxq56KNHKxIZWsrxjrdzp23z53dyf2B7XjRzK9JkLZDajpiUwIS2Gy6L/cFy5DimLT//GliTj+xDhUZY7/z8jPzmEndFJtSsNPAZapD4nqAnvCfbSkbBGVOKtoJbGVra2QrVILcFiMnB/GDmXqi50kA3FJ49BRbKmaBM2rBOG1dsUmgiP/AV3ihhCXqmEq1kNdUr9wBJpxTWbKATko/c5/SP1LJ11K1gu7S9yeoegh7DEechgbn8LXkoS4LNmlgt5PGaRF7Yus1qPjp3Igg3xx0eA4dev+fuF39qyZDbSMEqTfmJJrp5dex4mC5kdzrJTqX8haOHRzqpLy+1kuQxpQVKDC8W0jJ3Wc0wvNcOtPKAj1qRb/SRJ/+AM8ghsnqN8c/6HIZ10FjpM9GcYT7XcnDeB3VD5gnx8TYfBJbVJGnXpEEUWh0Ghj790sidyU6E+3sXbyWJKh3yLC4IxIpA8ldI5gRVmYQnYppI0wFqZQduxemtzKVFePaZXt1qhVZhK1S/LhYtQEklysENQGUQzwriJpCj6bnSlVq2q46d7N8fBviDfMm2Uks722pFjitX0eFKEGMRawVb0j9j7oJ/YIpMUI7myODHjsF1JA44Df4tpT/shEovx7RVcIXMVoY1IO5OMCuQjpe4TFEHcjewjbaErlzGWV1EzmrGgKFJ4pM5DUTAYpR9EBUJAnhyoLqajUWav70bo9389ikcBg8syqSH7WCXgVFiB1o1NPlEaSJNduKiprY95Nns/gMzq0krSJYMJVEALhIIFuH9qebhuiKC5eFireAvNMtXFTEkEbg82JK38v9AJprYzIFM3TTSICLYiFkHsnYlGrKxrKiUdSCLKH2isI1Y6kC21u/tDwzoNtYVlDIPZKzBrS//WzEPZK6eD4nlb8V8UZ4Y8I+0whpkLaLEBfNnP7R+LXvpGljSur8BB4n2EI/JrKAAAAAASUVORK5CYII=" alt="\sin\theta_c=\frac{n_g}{n_{\mathrm{eff}}}=0.75,
+\qquad
+\theta_c\approx 48.6^\circ." title="\sin\theta_c=\frac{n_g}{n_{\mathrm{eff}}}=0.75,
+\qquad
+\theta_c\approx 48.6^\circ." class="math display" /></p>
+<p>Above that incidence angle the loaded reading predicts total internal
+reflection — no transmitted beam — while the ordinary reading still
+predicts standard transmission.</p>
+<p>At <img role="img" aria-label="\theta_i\gtrsim 49^\circ" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGaJIrvddhDNq0TvmTJ+KqhmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABO0lEQVQoFY2PsUsDMRTGP3LxGi25QifdDhELhUKxRRCK3NKKU0cnF12cXF0cDhcXQaGbk4Mudbk/QERxFrIUO54uuggKDgei+JI0rRwIviXf+35fXl4AVyJ2KneWm8bgm1EOABWyWL1t/aCfukBQR/HhHPJlFeigNLL5hQv4CnPwoyd4wAaO3TU+SKysKtxCqkfiIkPXcYiBmRC8Kv4JdqPnF06wOOErhjOp+DdYpvfztxunKNuEGM0PpcI7vA/tlhJsWQr3fJASr0Jm2u/G/M1y7v7HaDWwpXnjX8FT7IwSoh/ZHGqN5V4KvRlVB0dxuENCRLq1NaVwjWnzWR+X4CbpIJ3Ee6gZo1hJ4IW/GMmgdRc9701M/0Dz/a8YmNUqX3KBHDZc2wVUno37GWC9efg3L1CydT+O/1P8AG9ER3G+BZqaAAAAAElFTkSuQmCC" alt="\theta_i\gtrsim 49^\circ" title="\theta_i\gtrsim 49^\circ" class="math inline" /> the experiment reduces to a binary discriminator:
+either the bright fringe transmits into the glass or it does not. No
+timing measurement is required.</p>
+<h2 data-number="4.3" id="time-of-flight-test"><span class="header-section-number">4.3</span> Time-of-Flight Test</h2>
+<p>If the refraction test is positive, a direct temporal confirmation is
+to propagate the fringe and measure its group delay.</p>
+<p>Use a coherent source, modulate it, split it into two arms, and
+recombine the arms so they form stable fringes. Then:</p>
+<ol type="1">
+<li>isolate one bright interference fringe with an aperture</li>
+<li>propagate that selected fringe over distance <img role="img" aria-label="L" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANBAMAAABvB5JxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid2Zu3Yyq+8iRGbNVBAzgK+nAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAASklEQVQIHWNgYBD6LMAABCwOIJKBPwBM5SeAqXgwyVACoVrBFOcvMMX9gYGBi4GB/QADw00GBg6gGQYMDPMXMLBvYGA8byjS/wAAmMUMShpQ6qcAAAAASUVORK5CYII=" alt="L" title="L" class="math inline" /></li>
+<li>propagate a matched reference beam over the same distance</li>
+<li>compare delay slopes <img role="img" aria-label="d\tau/dL" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAATBAMAAAAg4UMRAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsiRO92q2ZUEM2Jmd0gkiEXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABFElEQVQYGW2QPUsDQRRFz35vxJBgL9kyndsrJI1gobAiiJ3BQrEyWChYLWJlpYhFunQWNv4AwSX2ErAxYOFPCERLiW9mHIiLDx73vnMfM8zAbFVnB/ELEwtWxDhLKS/fhUZ+ZpNnZVbBTQwJu0ZBgwOodQxxc6M4GjShUTeklv4mVW3k1iMNwsNblqfTLxlc6f1eBsc6aXLKa0Vvr0mYR13YVkmccOJgHnIG50QdvE+VBDmb5hyQ7R2COvEYfFqpI7qulipXeBMaED3AjZgwaTNSSSQfMGbPJyhgSMB9kbOlkjvpbO4xptUmyvFH129970MlF9IbvcXL+af3wW5fEVuJNWX1hmVi57BuXVnV3/xf3l/8A9+nMX3jl+ogAAAAAElFTkSuQmCC" alt="d\tau/dL" title="d\tau/dL" class="math inline" /></li>
+</ol>
+<p>The ordinary reading predicts equal slopes. The loaded-fringe reading
+predicts a larger slope for the bright fringe.</p>
+<p>For the equal-beam limit,</p>
+<p><img role="img" aria-label="\tau_{\mathrm{bright}}-\tau_{\mathrm{ref}}\approx \frac{L}{c}." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAAAmBAMAAAAYfEVPAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIs3vmVQyu0SJ3at2ZhDuAQXtAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACG0lEQVRIDe1TT0gUURj/Tft23fWN6+QhKA9KN08V2EG8rITSv8N4sJuybMGClxYCPQUPOpSeRNzAUvBQ59bARUFFEKEgaTsEdcgGMalOQREeoul74+y4Mw7j6rv2Hb73+37f7/vx5uMNcPJIvbh28uHq5GgVKJx/FGbd0cRvdQ/9h7oHL6h7xNbUPdqEusdnslC1eQnEDcWrdAFM0ULbA1YUPSZ/Td/7q+jxf1xuYL3TAob8u9Au2PZFP+WvWmz75wGjz5+9DJQOCImY0e8nglWP7y1y4EHft4xflEUG41nJnZJ5WFCqjYT3FtNTJtBEvSedtQIHF8CzEiRkYgK4RScejlLcl6hBJorUluWcbmq2nXCq5ITr4VRMACMO8tKYi5iQ4Eo3/WaBnYKZ4MXN5POZYaG/eb3zajbZUZFiL3pBzfinSr6XKLb19cbQl4LX3AcxA9xkYnmXie/pdpbZRtmvuAQs7+axygTxOpC+3m0RqkarBZwDuGgqLYCJ7fQcM2MBD20OWMDTR4tMICxu07dRSI8ymOAfs46H5rA1qYyb++uu4QKQm1xID7qo9Lh6JtCnm+VxmhYXEamBzcQzI1dqOF/Orb4176wFtNSMFyu5+QAdWg4iF8ofh3zsvaf6puLvD/8nqY0P9Q27qhUsHUsfItbbDz3YEFU01VyJ7tfTbbPqUUVr7tK7j1Yc3W008O5oVbRCKw5aUvEPWNF1eWzG/roAAAAASUVORK5CYII=" alt="\tau_{\mathrm{bright}}-\tau_{\mathrm{ref}}\approx \frac{L}{c}." title="\tau_{\mathrm{bright}}-\tau_{\mathrm{ref}}\approx \frac{L}{c}." class="math display" /></p>
+<p>So at <img role="img" aria-label="1\,\mathrm{m}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAMBAMAAACO67B7AAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARM0yInYQiau7ZlSZ7zH3cdAAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABQSURBVAgdY2AQMmBAAFc7ZB4DHwEe8zyvPdtWNQL1g1XmBTDfYpCF8fgE2B4y5CVA5fgcGJ6g8J5h4wmANDuwgVWm96kbMDCfa7R5IdzXDAAecRcH+yp91AAAAABJRU5ErkJggg==" alt="1\,\mathrm{m}" title="1\,\mathrm{m}" class="math inline" /> the
+extra delay is about <img role="img" aria-label="3.34\,\mathrm{ns}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAAMBAMAAADff4MYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnaribvvEM2ZMiJU3UTLqD2FAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAzklEQVQYGVWLsQ7BUBSG/0uTm5RE7YZKPYDVogYTiw0T0cRcT8BuMVgkkhpEolPFA6j0Jdh4BAwdLM65RTjL95/znR/IWyZoEqw5fkYzcKf8xvlzZmotOF+Iyq8C5E3tDH/xr1ITtTMMUnpvF11QOLYAkXwyBDiPTb2v11CmKNqqRfCVyl1knJ1ixdeOUgQjUQFi2E6A9AqeC4XRvH5qADlWmSjGIYRNrTe6FFmJAEtorhxg7yoAiZJPMQP1S1aITaCA9bAJ3atuH9fiMXwBMg46sL/lsXsAAAAASUVORK5CYII=" alt="3.34\,\mathrm{ns}" title="3.34\,\mathrm{ns}" class="math inline" />, and at <img role="img" aria-label="10\,\mathrm{m}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAMBAMAAAAaDRmJAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARM0yInYQiatmu1SZ75Ssq3wAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACUSURBVAgdY2AQMmBgEJ0uwIAArnYGDMwKDCoIEQYGPgMGrg0MMWhCQFFZNCE7Bwa7BAarJ7NPZ84AGQpUIgcUcmBge8pgO4HxAkQIyAeKMjxkyBNgewYR8jNg2JfAwPCEgc8BJsQnwLAXKAkUSoAJcU1giEAREmBgXAB26hOGPLDG9D51A4at24F227wQPtdo8cIAABZHJJkndPQvAAAAAElFTkSuQmCC" alt="10\,\mathrm{m}" title="10\,\mathrm{m}" class="math inline" /> it is
+about <img role="img" aria-label="33.4\,\mathrm{ns}" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAAMBAMAAADff4MYAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnaribvvEM2ZMiJU3UTLqD2FAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA7klEQVQYGWNgEFRWYGAUMmIAgyUQCkKyCDB8YnBk4FcAc2+iSAUwJDO4MrAZgAQZLZGlGBjYPwL59QIgwVUzUaWYGoB8DbCYAFCKK37j4QcMMgcDgIaAVEpOAEkxMoDY9QpcCVwODCAbGMOBhGgBkFgFluJ/wP6dp5thAVCAIQKIWRuAhABEagPDdwb75A0MzAsY5hdYMXB+B2qf4nLDi4GBHyTFffg7w/4DDPbcfxiYPwB1MTBEAjFIinEDwxwGlgL2JAZ3hjIFbnO4FPtvxgkMQP0qygcYmJxsGLiyGRiWpHkzcM23W/n5oeLBAwB8Zzbw/Us6jwAAAABJRU5ErkJggg==" alt="33.4\,\mathrm{ns}" title="33.4\,\mathrm{ns}" class="math inline" />.</p>
+<h1 data-number="5" id="sec:energy-flux"><span class="header-section-number">5</span> Discussion: Energy and Flux
+Accounting</h1>
+<p>The dielectric argument above establishes <img role="img" aria-label="c_{\mathrm{eff}}=c/2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAATBAMAAAAuSD1+AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3btEme+blZMVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGklEQVQoFWNgwA8u4JeGyDIHEKOK1YAh9bYAIZXcDKwGHJ8IqZrGwDWB4RYhVZcZ+BQY4oGqGBWFsaoVEjRgYNgAktoOxE4MriBmYq42kOR1AQGQx1gUWAIYeBSALOafDAxsBQwSQCbrgT5OIIUA6QyMDQwsDUABdgUGBn4gBgKWCe1gGk6APcYC4gYBsX0D0GlKCseD8jRAQjDA/APEEgRiJgUgMZ+BgWM2gwfULLi7OD8wMDQwOAAVHGRgYmDgMmBQDjnjg2HjYgYmAw6gKs47Z2SBPggUariGxV2mghoMTAcYGPj+//8LNBEIZjMYs0zogrCRSW5kDgNjoMKsC3EKKGIgji2GCDaBTGyCGGLg+MEQRRcwgAkAAClnMYOIZ5QIAAAAAElFTkSuQmCC" alt="c_{\mathrm{eff}}=c/2" title="c_{\mathrm{eff}}=c/2" class="math inline" /> from the loading structure alone. The following
+energy and flux calculations are consistency checks, not the primary
+argument.</p>
+<p>Throughout this document <img role="img" aria-label="u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO+rdkSJIt1muyIVtOIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA3SURBVAgdY2BUZmAyYHBiFWArYGiQY2AVYGCYxrCOgYFhB8NZIPmEIZ2JgeEBS8QKBobDGpoHALCxCaVmVwkTAAAAAElFTkSuQmCC" alt="u" title="u" class="math inline" /> denotes energy density (J/m³), not
+intensity (W/m²); the two are related by <img role="img" aria-label="I=u\,v" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAANBAMAAAAOH7AzAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAEIndmVS7djLvImarzUSxOJwNAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAArElEQVQYGWNgYFT+EsCAE7Al4JRiYOAvwCPZ34BHsh6PHEMaqiRHCAOrAwNDqwPjLKDEdLCkzxkgOARkinI28BQwMAbMYLjHwMD1AywJJx70M3A2MPBxfGCoYmDg/gAXhzB0GNYDGUwHGDYwMPBcQJO0Y9gGFGF+AJLkVABLwu1k+MhwnBXoewGOBQwM6x+AJRHEB8Z560CS3AwMQvlHEeJg1pa4IKCBrKobGAD5MCgz0G6qAAAAAABJRU5ErkJggg==" alt="I=u\,v" title="I=u\,v" class="math inline" /> where <img role="img" aria-label="v" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAIBAMAAADZ48iGAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO8izUR2iatm3eiwuE4AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAySURBVAgdY2BUZnBNYHBiFWBvYGiQY+BMYGBYzcDDwMBwA0w+YRADsp8wHACSWjoMDACtKQc++2324QAAAABJRU5ErkJggg==" alt="v" title="v" class="math inline" /> is the propagation speed, and they
+differ between the two readings.</p>
+<p><strong>Energy density at the bright center.</strong> With <img role="img" aria-label="k=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAANBAMAAADGc1rlAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMrsQRO+Jq81mdlTdmSINXOHXAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAcUlEQVQYGWNg1DdgwAJc0cU8BIAi6Wiir+RBop1oogz8INGP2ERZPjDOQhUHqWVTEBQFivKWg0ACSB4kypHoYA1iIwBIlF8FwYewQKL+YgpowiDRJIYjjEBhNHM7GQ5yoyrmd2BgOMywawOKqFl9mwAAxsUUKuXlTsgAAAAASUVORK5CYII=" alt="k=1" title="k=1" class="math inline" /> and arm amplitude <img role="img" aria-label="E_0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAPBAMAAAD0aukfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAid3vmau7RHYyVGYizRAHtTi9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAg0lEQVQIHWNgYBAyERQ1YQADtgQGhhIIk7+BgYEDwpw/gYGBC8LsZ+CGMBgY0hiOwphmghcZGGasAHJ5fjJMZ2BI4N7AwMD9gWECw/IAzgQGBtYLQJkVDpwGDAzMAgwMLIwOPEDm+QIGBkEOkCjjfUfBoH/sAexAtRBwAWQCBMxYyAAAaT0XdRaHZYgAAAAASUVORK5CYII=" alt="E_0" title="E_0" class="math inline" /> (energy density <img role="img" aria-label="u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO+rdkSJIt1muyIVtOIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA3SURBVAgdY2BUZmAyYHBiFWArYGiQY2AVYGCYxrCOgYFhB8NZIPmEIZ2JgeEBS8QKBobDGpoHALCxCaVmVwkTAAAAAElFTkSuQmCC" alt="u" title="u" class="math inline" />),</p>
+<p><img role="img" aria-label="\mathbf E_{\mathrm{tot}}=2E_0,
+\qquad
+\mathbf H_{\mathrm{tot}}=2H_0," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN0AAAARBAMAAACrwLTmAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZiWYc3XEcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACcklEQVQ4EZVUz2sTQRT+NmaT5semSylIa8BlPXiq1eI9UgQvrcZrVRLBS0+NBSkexP4D0qSeRIS99KY2CFVCBQMiokEIVPxFV/fiVWNP/qLrm6m73dnObug77Mx773vftzNvZjB0ctI8PYkY25iyP05F5pUjrol5d6IZiYBWejGwMe0BKj2kbsrB2c1rlEjXgKdyAIuqLn1ch0332oOXZQouAIm6lyQ9LC16njC+w5IDDFpAVogLTpyeVh3YJvBvInG8ItLTM7rnCeMJ5I8DhympCnHBidM7oOM5oPwAnlW9ItIzVLneWWg9YBUFDysb4/SSDr7Q5hDJW7+00ssavhOepCm1gNlwOOjH6RFuHsjUgOt+SWWrZPgOm+TvMOvy2JwOnLHHgNEZARNwVNc0TfG8vGIE9zgmRXuZvGHb21BWLB6p9HIGcJ7N927rMYAqDgG1gsMQEvPWJ2dIOAD9NLUwjW+8mvUPxlU2T9NqBNMcoEDnCRfqCm2K1Dw9OcNnqvnOW9jCQV7P7oNyd8xRv1qPWDZo7I8yBq1xpq2cCiYC8/96OSkD35VlfofvY5hXMb281cAIijvXYrd/uTIcJLuU19qpPnoIMOz2b42d7WlqoYVNXPH1VssNfMJg+BoW19famGsCdpatb3aRF4Q+3n7KGJTO+kWk/vAWsvURw1Bpyyy51UaK61UFsnOu29bG39i3f+bquRqGHSG749D7eZS/nzKGpOv+xftfzVvjHbTwJMDQuTyCVv6xLmHkIYN1ohyVZfF+DAl2Pn2GoqU+/KC8jiQcvUQpHy2D9WNQVrp9GMKsMY9oGBrh749hf2iZpIp/Hw7M20Ih+FgAAAAASUVORK5CYII=" alt="\mathbf E_{\mathrm{tot}}=2E_0,
+\qquad
+\mathbf H_{\mathrm{tot}}=2H_0," title="\mathbf E_{\mathrm{tot}}=2E_0,
+\qquad
+\mathbf H_{\mathrm{tot}}=2H_0," class="math display" /></p>
+<p>and the instantaneous energy density is</p>
+<p><img role="img" aria-label="u_{\mathrm{tot}}=4u." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAAOBAMAAACV9fwGAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA+klEQVQoFWNgwAMYJ+CRREhxGyDYeFjHiFLGKIxQxqjMwITgoRjNw2zAIGTAoAwSdGIVYCtAljVLA4JMkMgBZgMWhUCGdBC7QZ6BVYBJAMRUBBEIwCjAbMDB+IEhECw0jWE9Ay9Y2UWEEhCLhwFoKWcC1wew8A6Gswx9cxh01DleHgALwIjDM2e/FOBu4LkAFvjCkM7EJsCYwGiQCOYj3MbAa8DA78BWoAAS/8ASsYJNgLOA4QNEGVgthAApY3DtaljmwMBwWEPzAJvASpAyLiQlQCbj1MgFPEZNcxhEF0AkmLsEEzgSLBaiKsPgMZozqJ90EC7AkIAJAAC8Hy9kUn2o8AAAAABJRU5ErkJggg==" alt="u_{\mathrm{tot}}=4u." title="u_{\mathrm{tot}}=4u." class="math display" /></p>
+<p>This is twice the input laser energy density <img role="img" aria-label="2u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAMBAMAAABy/puxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdomZu1QiEGbdMu/NRKugN9EaAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAb0lEQVQIHWNgEDIJYIAApgT2H1Am5wIGSyiTu4FBH8oEUj4MSw0YgkF8tl/sAbsYHoKYPA28XB8YdoGYGgwMTA/YPgBZHA0MDJwXOByAzKsMHAz8BXwCAQxctneDGfgZqq9dYOD+//8zA4fpVQ0GAIVEF5c9XReqAAAAAElFTkSuQmCC" alt="2u" title="2u" class="math inline" /> and four times each arm’s energy
+density <img role="img" aria-label="u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAIBAMAAAAy1HOFAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMAMlSZEO+rdkSJIt1muyIVtOIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAA3SURBVAgdY2BUZmAyYHBiFWArYGiQY2AVYGCYxrCOgYFhB8NZIPmEIZ2JgeEBS8QKBobDGpoHALCxCaVmVwkTAAAAAElFTkSuQmCC" alt="u" title="u" class="math inline" />. Across the fringe profile,</p>
+<p><img role="img" aria-label="u(x)=4u\cos^2\!\left(\frac{\Delta\phi(x)}{2}\right)," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMcAAAAsBAMAAAAjqLG0AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEbklEQVRYCaVYTYgcRRT+ev56pqfmZwUPe4jbuh5UYjKyOWhEadQQcQ/Zg0IEDyOCQVl0FJEEFjIsKBGUrCMGIys2imE9mBlJkJykN3sQEkMW/AlIlEH04G3VEX8IjO9V1fx0zdp2Zt7hvfe973tV013dVc0Ak5ioGd0pVbCp7FQNblw4y42ptmpPUMioNFWh+IbKJ/XZNo+Qu6bGERQOqxQ7KYqqBpOFeY/793+jRlmj0FYpihwXNZgsXJXttZlARhdIqIyujgD2+eQmtUSLR0jVCgscnbuAgs8ZWbZKLsduUssHPIINixcl8c76XqQpWd77+h6A5039Sm5S2y0H2A/woiym6qeRByx3R3AO2GLuBLsJ7RfZ/xJAiyI2Eyh5p/nCZrwAeJS5Ax77icz5h9v59SsuIF8XNOZNXHmZ3Vl2ReLGt51vUW+uxQPYHi3zNZpAYBfmufIjuwV2tlRwNoY5tcwKkK9wKy0J8DNKeBif8sJnnQ5qehLHWHmpBdMxzGqLTbrjLksbU2RHg6R7a8ZF0cNFcVb4cIgne0L6vquq7MF+ITrJrQC7PdZ0pbWwtEhPgO3i4zteu5m2lIA5fCt9z9l1lfVf2R6B6X42nPCG8vZwAQgIOlVdK3gyuVdDFeRew2lb4YE/M0iHsicp/2EIU+oy/Jod2SkVLqugPe+a0hq9REfxlFGQ0C77wGchJksV4ENd26PiTFljGb7rgVd7iY5Tc0ZBwmP8hDweYoREWVcGoQdvKghrFokKP9bZ2bUNT+4+UqddMKcVyK6+gMTSYYhbLjnd7gqgj5FhNeBL6OjigUAlD6TLmRpawA3W1Xydnney5NNsNA4E5qAUuJMOiSNIBtO942/bSdSgPV+qqaw+g3TZadMrYnXoktNeTyDjFE0iFcBBfPRQB87WLt+SVOq3kHJbUOIfynYCTVhtSuwqubxHbmABTSIVsDq0nW8Bf2X+eFbyjpykpN6TUU9S+skVPdQ5XEKqRaDocllXVRD3nPz8TbAC2d4k+OB5j1krxpX0J+ngUIIXvt70bD3JYE2ArwCp4BPokQ5d0AUkXZ5EXQln/23927WVOriGnyBaF70LwCdmB00iFXgPwj+JZG0DuTKLUnEX/pQHbNx2e4AX4TTWGtT8pTHJ9GPvKgXE6jrEUgNfnD+vNH8a0m1gyaXijYFm9DYw2Bd0PSr8HUUqrlnn6LIjK3gyDHY4BSP9GZM9cp9rlI7LG9urOhVFJz1DFgGfM7icP7JMl3m4RF+3rLL1fuH/k6OGJF9GeGvXp8FgEr3b+EZjFDzuhdl0gPfDFXxv4OuHpfpIj3HEIMYDODJGuKA+JIZr5oeDZXxIDGtj5vaCKSwG4cqoIszHQKOfuqtGV2HFKIwBnzF6RGAUmr5RGAO+YvQs0xkXsvtDaDyQD0J91t3HZkOF0fsZouOBbHjl093u76FGezMExwRXovv2+dF8PHbei9QtRrJxyWw7SimqUWx8biNKuiOKvA5u5G+PoV6n2gf/ApEN/x7XaKR+AAAAAElFTkSuQmCC" alt="u(x)=4u\cos^2\!\left(\frac{\Delta\phi(x)}{2}\right)," title="u(x)=4u\cos^2\!\left(\frac{\Delta\phi(x)}{2}\right)," class="math display" /></p>
+<p>averaging to <img role="img" aria-label="2u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAMBAMAAABy/puxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdomZu1QiEGbdMu/NRKugN9EaAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAb0lEQVQIHWNgEDIJYIAApgT2H1Am5wIGSyiTu4FBH8oEUj4MSw0YgkF8tl/sAbsYHoKYPA28XB8YdoGYGgwMTA/YPgBZHA0MDJwXOByAzKsMHAz8BXwCAQxctneDGfgZqq9dYOD+//8zA4fpVQ0GAIVEF5c9XReqAAAAAElFTkSuQmCC" alt="2u" title="2u" class="math inline" /> over a full fringe period. The dark
+fringe carries <img role="img" aria-label="0" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMBAMAAABCcoqQAAAALVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAOrOgAAAADnRSTlMARHZmiTLNIrtUme8Qq9MyhvYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABHSURBVAgdY2AQMhFgYGBNYEhnYOCYwKDFwMAXwCDNwBBXwBB3gEEOSIIRkFEXwDDvAAOfAMNsoEoDBl0GBsYGkC6GSVMEGACgDQxqAEhSYQAAAABJRU5ErkJggg==" alt="0" title="0" class="math inline" />, so the spatial redistribution accounts
+for the full input energy.</p>
+<p><strong>Instantaneous derivation.</strong> No time averaging is
+needed. At a full constructive-interference point, <img role="img" aria-label="\mathbf E_1(t)=\mathbf E_2(t)=E_0(t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKkAAAATBAMAAAAZqjAPAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZiWYc3XEcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACqklEQVQ4EXWTP2gTcRTHv5c21+Su+UNwsQ7+SBxcqhUcuvUoBR2KxEGHiuZwEUVoJpUOeiAFEcETJ4dCFDo5tIgOgoWMKghFcegQiZOTkhYsXSR+3+8uvV/S9MHv3Xvv+36f+93LL4BhjyVuGIWBMCOaM1A0031A6exseW42kkJ5PDHbAKsyVz4xp3QxKz7T1LHhvs23tuZ1ngBqHdgPdM1ZBx4h3TY2MEx3gRsdXXtNZoBr/TowVgc+SNEAkIqngRRTXEuAkjgxoWb2dK5IaOi2RGZUaMRzMQCkFrNFaZNDbAPfJU6MVAvPJJevKBSRqyaijo5zd1oiA0CqSmvqHU7RA97r1n1HagoXJR3zgSOAG+5rUbCGfBQYgFrHUVHRg/t1so3RKOt5Ul9FMYWN8g/A60nx8y5uRpEBqO3MKGC5DkzxOG1+JGjjL8Q2GaW7lR36302MMLvP1eHCJ9FXJMK51iQwsdAHqHVcBVxSsPko+MBoANN41jfALazgOsu7XOdNGbC3cQyo59smQOYKxYqlgLfcMBLQJabnmirhF0qcqUdhOhElyvPnxpXQqlsqAcjNskJSM1PAFrsOzhU4CrTwEMiFbPC4DMsqnnehaXkmQKjjDTm9B5zKVCOqOVcSPiMzLUKqvRxTk7mObhKQa9qeCRDqWlWoJ4EzDv9IpBjGCcD5i2wRqQAjxQbsuqEyXFznhzg8qwEozeyUZ7q+UFeBhcvAn75NVqVbrnR38dKGU0V61Ue+3deQO/2l9XzPDd36QYA9hd6tu9e3KU7cdQd2qJOxYFiD4svia5sANi74iNrjvQM7F7v/gKg93jvQMHGVt12/bwBgN6VzPBA/1G7r6sehmhTtJt0BwDsp/hQ33Nwq6/nicFGqQwG2KL64Q8xnXTcdovcA/wHElq0GpzVIZgAAAABJRU5ErkJggg==" alt="\mathbf E_1(t)=\mathbf E_2(t)=E_0(t)" title="\mathbf E_1(t)=\mathbf E_2(t)=E_0(t)" class="math inline" /> and
+<img role="img" aria-label="\mathbf B_1(t)=\mathbf B_2(t)=B_0(t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK0AAAATBAMAAAAQQZB1AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3dqyJU77uZiRBmRHaMoFoMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACPUlEQVQ4EZ2UvWsUQRiHf2sy95G9PY/8AcmSdBrwREFE8BbUxiZbpLDKpdFCQnLYmmILBUGiKwQxWngEEZIqWARE0LVKCCmuEJU0iY29H0HvCK7vO3e7mdvMHiFTzMxv7pln515mF1Dbew676kpifnRgsPJz5Ny1znaHx7ed0BmM0XBk9LzbTg4PCQAYqDxfnk8CszUYYUmuFhvAO2QCGeIu8wcY/iGjHgDuATtSoQDkxbgnt52g/hFgyxB37O3/K6MeAOaAk3UmFIC9L8ty2zT1dLDXMsQde/O/egAQe0B1ignFwN5KnRdxHzAofZIh7tjb15JRD6BAmx4kAfJONNuSGqylUwGysVJOyCvGfTnVA+h3zK+7SWC2uXjlCbDmAWUgF1CpGMlf5VanWSZcXLhYQmbTTwGQfTq97GJopsvAdXhcxy0bwianC2RXyXbQuA65FiZxPQVA1YW1B68QqAB76RrRkmEDX8jXd9hLN3EQGykA1mnTP8sxPBVg74d99ppl4BUhh+sLMwyAlRQAzwCxX/SNmgocnBf0hDFzqu1V6kt14DfHvJQC4DK9cncHfFFTAfKaZxxZ3NPA2SJwg86sNK7vm9/0bpSgB0y68+sNPq8C8Pfhwhj9ERv4DszcBLYUKR2Vvw93AuCb0ANYaq4svIDlWJ4GEFTcibbwYZc3Claj2BuwC4EG2J5zkVtliXAiVddYDVu9gaHbdB+1BuGzKS9/63JG4bjAZxZ8jCya8ZiAYJWr8UVLRwb+Aw2vtvoXzfRvAAAAAElFTkSuQmCC" alt="\mathbf B_1(t)=\mathbf B_2(t)=B_0(t)" title="\mathbf B_1(t)=\mathbf B_2(t)=B_0(t)" class="math inline" />, so
+<img role="img" aria-label="\mathbf E_{\mathrm{tot}}(t)=2E_0(t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAATBAMAAABCTm97AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZiWYc3XEcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB+0lEQVQ4EX2SP2gTYRjGf6e9S5u7/KFba8Cjk0uqBfeEIrgUjYtDRBMncWoc/IOLN0oRmuAkXbJ0tUWsUHS4WRGKolgxcg6uknZyi+97SXpfUptneO99n+/35L7vu8C41tRoj7tj8xE0e3F54dKysdrU/plhJO3nlc7+SjwmUK2L8yRB0tvwFDtKHO3SP+5LTTXgXTwmkMRZD9SMdUrqY/D707B+ZT2CXFt+SC0Dknh+Jq9mrFtSD+DLYBw8lvAuwFnBbHUMSOK+ncQfgFWG3UFu8LhCpgtbZPuzAdW6ad9gy7ifihFThhW3KYEecrdvG1DtsCQrR5I9piI5phreC9WetqzKBi93ijBfBQOqdV0frikiZ3Ckz9VhKmBUi+AccAYa2ciE9Oz49xRO5bF8eC3t6UCKoUwEWblkbjSthuUnkH44a6MY2b/br34yLfval9j42f+INyMppxpaZRPSuNduMUdBv18ZFqcr/XhydreCXOeekJnQKZuQxrcqLb6T0/g5WJK/xh15m6HC252Q1W3opOXtBjRbOlwo9eotJ47X2YTqddDNGrra64WZ8x87z/+6TbdxHPpwe45d701++GUfGdnR1s9Gx6FC2375zXovtx8o7TRHM8Y0f3MS5ISKeoHWE+WEuvRfaEdXfmmZoJMhR1P1CVFdGkL/AEwdiLisVedOAAAAAElFTkSuQmCC" alt="\mathbf E_{\mathrm{tot}}(t)=2E_0(t)" title="\mathbf E_{\mathrm{tot}}(t)=2E_0(t)" class="math inline" />, <img role="img" aria-label="\mathbf B_{\mathrm{tot}}(t)=2B_0(t)" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAATBAMAAABPUB88AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3dqyJU77uZiRBmRHaMoFoMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACDUlEQVQ4EX2SMUgbYRTH/6deorlcPMTFxR4dVVBx6NZcqC4uvYJDt8ahQ0U0uw5pURDENqKIVtQgUrCV1rUU2utSFwcpGl3ETA6li4JDIDR97zvjvZiQB3fvvf/3+993774DquI7K/kquVK4g9ri1w8HhuSiw81XqZTrSPz97oLfOJwUNJmCVrJ8le+xI+AbQh6VIv6sJqmbAS4UKiDy42k6QBuofAvYgUJVxDWKlKaB1iwvCIj9W30s+jFO6Qr4UO5VbrSwBOg3wIskCwJifzzLoh+zgEbScblXOezhCxAlfU71AiL/SEHAKZjbXR7CQlLlG6DJMc7yqhHQZGHtyaKAaZRmj+ZkaXmQYlgt6jRTeGV810XnBCAgfv93WYwyFbKg2+R1id1Xtrtbg0ezuzBvkI56EmL/gyu8ZrLZgmYDp1Q23vPvkXZA1z/T0dKaHUDs/1E0u7zQr/zvPRh9wA5x9+aPeqSt0hEUYxktJaHb/RNoR0eTBdDjeoyk7w/mzyEKPKYfYSqS0VMSIr/R6yCBz2hlfzfQHwOe035BaBvnr2DQJzw44v0FxP//ox4goSu/i0tg4iVwGJipCpdKBWwXPi6vw3TMdA1o41k7jltOLIz4xvkKv2xs+hbVUEc+9PeTtklnsM+w7khLRd05VhfSM0y3qKdU+GRTD8ox+FPSNeo6kM64W8MjpTL0H1cAjV79bpLCAAAAAElFTkSuQmCC" alt="\mathbf B_{\mathrm{tot}}(t)=2B_0(t)" title="\mathbf B_{\mathrm{tot}}(t)=2B_0(t)" class="math inline" />,
+and</p>
+<p><img role="img" aria-label="u_{\mathrm{tot}}(t)
+=
+\frac{\varepsilon_0}{2}\lvert \mathbf E_{\mathrm{tot}}(t)\rvert^2
++
+\frac{1}{2\mu_0}\lvert \mathbf B_{\mathrm{tot}}(t)\rvert^2
+=4u." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUkAAAApBAMAAABKJ8Z1AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFPElEQVRYCdVYW2gcVRj+5rL3S6bGFl9MRlJI1YKDlRpQYWgVEcGkoGBB4saHVEHoGl8qCC4BSw1Yg62VaqhTxFYfNKnW4pMZLYiFClEEQaQu4ktoCVusgreO/5nr2d2zm9mtufRA5vzn/77//N/8c86ZzQAr3g5qK57i2hOc7L8eVKJn1VTuvPBt11VdNZXqYdy0/lXmSaI0Ue5O6KrVUt6wGQWcX+cq1TMT2I+b17lK9sSfx8blVMrnDAEl5hMXBwvma+nSCTmE91riPnASzwgoMVWKgwXzMdeD7NK4T7ZA1d1aKgytbyojp+hPQR++qcfcUU/FdwoKvWywYD7mKrHLTnbhWurzZ2ldvgraQn2fji49NsphSWarpKBA/VEO8M2H9i5qnrkgXXSWLp6xOM5ywRyVN1MV4H7INu/z7CLb46TkjhqyP3PwPtJoYquLqac5oMlcgPw70H+ZA9oGS9Mcs84s0ugHoFrndAfSBAV5KjFsRniVvGVQHGFJv2ocHBHhqUz+y7lEwSGcM0KzwaCagG729QZ3MPRUaoEacrOy0/7I6Ezlc1mP+HXAr+s9lcrfkVMYHMJftVT5I71kRkCLUNw8lVXZrxmRChbYEZUukcp0he0iau1U5v70OOwqDA5gqTdSKQ1AjkYYQfrYoo1EQG3oXZWpKucl5itLM6DAAmYdX0Ebldm9XDZhcDB5XjFwg4EBNt6R0JLlAADm6AZteobMs32cWv0JyFRena8y1G856n+ivxp74kFrqdLZtv0TLWABguAoqa0Yqr4Lexi90o9EFJetkkILSJgECZpby3SVQz4i+y/6ezSWStrjBe6JC4P9ySVNMdJSDbvc8RHMwltnt9CarAIvkztnulhwcfzGlNBJVEWVuLRz6Pb6aE2OkH06VKmMjy+Nj0+TLwhz+5q/xyVHC9M1B7NpvZaHYiBTytbc4Wf0wihQOoB+6KpzwBEy265LupkScaksFPYwaCqy2boMW8snTrVUHTtMJwz2Zzl79O1FLVfJL7jjK9gjH5zB1sE07RpKhkuq7qmMlkiY3qsllH2LtvxlmcIYs2jv6EAl1TJMJwjmkhYM9JjJss6y19TH309qUkkyxmj0K3CKjpMPGSJovsqX9DFsQi87NosmcloZ2YW4tXzkDzr8/XTC4DAtU4kHpionTODsllvtpJYpo8ZUTgCDt6HlD156j89fXZp3rDG8iR6mMqVDnrCQt2OodN/jozap9NMJgwOV0hu7rfydkzPYaHmupPYBU5kFTniO7wNqQx+uvbGsq9JCtuRSCmYMlcFkYTphcMBq6pWpDaV0aeg4bQiTgX40x0sd+o6NQpVDxzdhvzJFxfRuiO4uxNjvFa+9cJ/uW6xbCOwonSg4YDX10t0YPGf2lkmfwUDFbKS8hWGbfKGS3rL84mEKA951qXdxmOtgl4yl/hMOOJVRujbBXGCzOclcXzT5T0GZI2eoMiKkdbLzmgjLabgnIka1jHxtgiOSwKK1CVhNwBPI1MgpNQEemUU1Ywkb73ABdCdNzSKPOLiJGstRqMaiNZAuAE/7L40GZGWGs6JSLJcqe5m95YfNrj85LJegEb/U6IgzLtrsLX87refzcejXzMnY3UxBr9BMCdu6/+TQYdKuapGnWyvq+DjOJ4cO9QjpdGRQxk7bJPLosdQrN8b45NDp3CJ+74FJQ+Rv65OGDgzgNS0zYsf4fNN2ppjgk47TucqE4/yGY09tvrfifnKImWpNaL+wrO4nhzVJHzMp+6eIPtFOx6SvDY2Oy+ugyf9HEf8DwJBYSyj+CbAAAAAASUVORK5CYII=" alt="u_{\mathrm{tot}}(t)
+=
+\frac{\varepsilon_0}{2}\lvert \mathbf E_{\mathrm{tot}}(t)\rvert^2
++
+\frac{1}{2\mu_0}\lvert \mathbf B_{\mathrm{tot}}(t)\rvert^2
+=4u." title="u_{\mathrm{tot}}(t)
+=
+\frac{\varepsilon_0}{2}\lvert \mathbf E_{\mathrm{tot}}(t)\rvert^2
++
+\frac{1}{2\mu_0}\lvert \mathbf B_{\mathrm{tot}}(t)\rvert^2
+=4u." class="math display" /></p>
+<p>The factor of four is instantaneous and exact: amplitude doubles,
+energy density quadruples.</p>
+<p><strong>Output routing.</strong> The recombiner maps the overlap into
+two output spatial modes. For a lossless 50/50 recombiner,</p>
+<p><img role="img" aria-label="\mathbf E_+=\frac{\mathbf E_1+\mathbf E_2}{\sqrt 2}=\sqrt{2}\,E_0,
+\qquad
+\mathbf E_-=\frac{\mathbf E_1-\mathbf E_2}{\sqrt 2}=0," style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYAAAAAqBAMAAABIGZGwAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMs3d71QiuxCrdkSZiWYc3XEcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFMUlEQVRYCb1XXWgcVRT+Zpv9yU42LktBCoWOiS++lAp90KeUklfjKogvYhZ/0PiSINT6Ul0Q8bGxihihsBb2Te0ilFKCusUHaUQIRYTSrO6TPuluAgYxreM59+7M7Mzembm7ufSEzJx7zne+e8/c+fkWiLPK6bNzi2cjWWt+ce7RRScSNTVUsysXojPlch+5d6PArAu81o9GTY3V7MqFaExJdbhY94AF6fAUhX+8oOmzmj28EP05qa48Xfbwsy3h0RQWPvSCps9q9vBC9OekOieraCCDZ/RJxkNSAwr28EL0GZf7RSdABztwJQia9qgBBXt4IfpzLu8tOMD7a7LCb2B+D8j+2dbnGQOZdZm98Hy4RC7kxZ1wNH203Lcd4Dn6Z/MbwNfAG7gso4aPtAPEnn02TCsWkmtMb4fDqSO+9eDkHAbe2rj02AYvWtylmQr+4GjUrJ5LFo2OMZbseIlL7PNsXfLEQh5xZgf3Aie1jOpgrcsGhncAOAZ0VBT5uio6RowaYHbRQFAmF4LSBDuAmYaqgS0Ungj4A+944E7miQa2VA3MNPBefUxSbvxqVdFA8W8E34dh0reGB5P43ACxK3bgajXu6xOrNCoLe3MLbi3cgDXvzs27+/g8p1ifte4FS6d/6nzc9kbRs1ryEMpjDzcwWEixXIsSyTFd6FHJE0Bzp6Q/eAvJgd0qBgjfm66huHNODM/TQ9j2E1GHL3SSoHo5WsDjTTTCYfuruyLAd0ogecIYGn2zVBOxQl2c5GHVvT808twV4Bdc7PLwX/pvsKM0biBBUNk//z5alnPd7XC0gkyNI9TAkOQJY8Yb3QQexwzvmLVLh2psNTVgQFCdQ7HNU1ADQ5IndtL0RGENWEKpT8hiH92EAmpAIXkSCpSpXdhnODGp0giRWg4wU+ZQnjzk13LrPIgxauBKTEo/bO3DErpeKg2v8NYGma5OmGHwxjbVfvsf8IHgWOU2pi7c5micScnjZQMWL5J09tE2NbDPSCl5kmp0ch8B8p1wktGrZasFq9lgX2G0AyR5Dmm0euqBjJ8B+hsxljVJFi440eJHACh1+dijhzSbx1/sK0w8A5nRxENJ81GuP1yS20VW3kIUpk+Q3RrOju1nnGKVi+SaL5H36g08HENDDQhBFZPWDB8ge4ahtAMkebwGJnwGYO+KK2pXxevnKeJtf4GjzK8w0cCWl/Dvai+QeA7Q76C4zlBugJRG+g6c4A2OJX+yyanjm9faQO6A7qXtHbyClTpHo8YNkORJN4unpPUp7Tp9yHKfQiqN1zt3LnfqSpwffNv3VE7P4ejTrtsGbt/r3Fmo8w4c7XI0YgPJU+x0Oo1IKjJM1OfZ5l1YS35F6g5YbR+rcqa60egNXE/6HEfhqnG6Ps/6ZakN5Gs+VuVYI8EMP9HVkfA4gXR9PkYDx3ypqbkEq7mNgF+zKASjl+OXPyRfgiCbugOf+FIzNEny4HANTNdKtQJ94xMsaCABJFIkbgZSMw1pLr+CI2V8b4iPpNpAahoi1KC5CXo1/KYB1IEIqSakpg7aCEaKkzcNcFWIg36tsEgzwKZFYTkDfU6S59Bm97qQV+Pkobl0CXx9nunqliTgpk+h1KK8lJoJQIMpT5//aoLTOpC/VujD9MBsoM9nu0ZmnEOTeAZS0whjKslAn1/DbCpUA/Bd2SGUlJoacBMQqc+tHzdfMMF25DP+4kmpaYJPh0Po8ynXvacDTsPM7qUhzOd7jknOJZNkelyj+lyvTo16YB+wYPpRfR7khrz/AViEuYqSwUqZAAAAAElFTkSuQmCC" alt="\mathbf E_+=\frac{\mathbf E_1+\mathbf E_2}{\sqrt 2}=\sqrt{2}\,E_0,
+\qquad
+\mathbf E_-=\frac{\mathbf E_1-\mathbf E_2}{\sqrt 2}=0," title="\mathbf E_+=\frac{\mathbf E_1+\mathbf E_2}{\sqrt 2}=\sqrt{2}\,E_0,
+\qquad
+\mathbf E_-=\frac{\mathbf E_1-\mathbf E_2}{\sqrt 2}=0," class="math display" /></p>
+<p>and likewise for the magnetic fields. The <img role="img" aria-label="1/\sqrt 2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAWBAMAAACvYqi9AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARM0yInYQiauZu2ZU3e9xcUtcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA60lEQVQYGW2PvQ4BURCFj73rZ/0tWorttNuqbCOUOo1CR3QSnYJKJ4hOItmIB+AJaL2Bx5CoRLFm7nUTV5xi5pwvcyd3AFMiIt1NBqR7v4RzzYDOJx0M2lRJzD605LMZq5QK0NlegEZd0lDRFpJB4kXeZSraim6Q87HT1AkkTYTIHzHVNE3jHuDIbXtNy0CZ1g35hf3QdE5mAYyYWkdNZ2TqBVpLmnDhP2QvZCwvzi3Do5Km2MQeFrcKMlTdAjDgiFuXilgXr0B/WfVxkvTsUctH0VMmIJSdDviWvZJJfDMg7ptZJbr3j+xf9gZPsSkXAvQotgAAAABJRU5ErkJggg==" alt="1/\sqrt 2" title="1/\sqrt 2" class="math inline" /> routing factor,
+combined with the <img role="img" aria-label="1/\sqrt 2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAWBAMAAACvYqi9AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARM0yInYQiauZu2ZU3e9xcUtcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA60lEQVQYGW2PvQ4BURCFj73rZ/0tWorttNuqbCOUOo1CR3QSnYJKJ4hOItmIB+AJaL2Bx5CoRLFm7nUTV5xi5pwvcyd3AFMiIt1NBqR7v4RzzYDOJx0M2lRJzD605LMZq5QK0NlegEZd0lDRFpJB4kXeZSraim6Q87HT1AkkTYTIHzHVNE3jHuDIbXtNy0CZ1g35hf3QdE5mAYyYWkdNZ2TqBVpLmnDhP2QvZCwvzi3Do5Km2MQeFrcKMlTdAjDgiFuXilgXr0B/WfVxkvTsUctH0VMmIJSdDviWvZJJfDMg7ptZJbr3j+xf9gZPsSkXAvQotgAAAABJRU5ErkJggg==" alt="1/\sqrt 2" title="1/\sqrt 2" class="math inline" /> that already
+reduced the arm amplitudes at the initial split, returns the full input
+energy to the bright port:</p>
+<p><img role="img" aria-label="u_+=2u,
+\qquad
+u_-=0." style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKYAAAAQBAMAAABuNRksAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMlSZEO+rdkSJIt1mu8158cdgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABR0lEQVQ4EWNgwA7YJ1/CLoFXlKNmBh75WQz+B/BI45CSY+BbgEMKKLyRgXkDbllcMpcY2A1wyTEwxDBwfsAti0vmIwNHAFCOUZmBCavZvA9wSuHSxfiLgfEL0EwnVgG2Api9zGkgMAHMXS+AIgVTAqFRpOC6OIBm/gIqaJBnYBVA1QDhvcEthUsX0ECgsUAwjWE9kOyAGIQgOQ/ApBBiSCyILiQBEJPrIwMTyO8MOxjOAkkMM8/ApUCKMABEF7rwDwamAJDYF4Z0JpiZ8JBh4FBgOACVQtcI5kN0QaQQuu4wsCeAxD6wRKzwnJk2cwpEAZQU7mgyAEtxpaCIwzggXewzZ86ERy9YoheY5kEaDmtoHoC5E6aDgSH+/38DsBRjDEIQiQXRhSQAZjIVzWBgjIKJYoQnTIIBGDBkAvqaqUCmK/FpI91MAK2BUYTpzqUuAAAAAElFTkSuQmCC" alt="u_+=2u,
+\qquad
+u_-=0." title="u_+=2u,
+\qquad
+u_-=0." class="math display" /></p>
+<p>The ordinary reading starts from this <img role="img" aria-label="2u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAMBAMAAABy/puxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdomZu1QiEGbdMu/NRKugN9EaAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAb0lEQVQIHWNgEDIJYIAApgT2H1Am5wIGSyiTu4FBH8oEUj4MSw0YgkF8tl/sAbsYHoKYPA28XB8YdoGYGgwMTA/YPgBZHA0MDJwXOByAzKsMHAz8BXwCAQxctneDGfgZqq9dYOD+//8zA4fpVQ0GAIVEF5c9XReqAAAAAElFTkSuQmCC" alt="2u" title="2u" class="math inline" /> output and finds no anomalous
+refraction or delay. The loaded-fringe reading starts from the <img role="img" aria-label="4u" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAMBAMAAABy/puxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMondmWarzbvvIlQQdkRf/gN0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAaElEQVQIHWNgYGBUYIABZgcYiyEMzmQUgTNZWRwYpB0YtgBVBbA48GyYyJAL1C/A4sDH+IFhIgMDKwNQAVMC1wcGhhAl5SIB5gesDUC1DBwODPwH2C5sgDIZTr56ANSnOWkBq/drVQYAMl4TRrZ6OBUAAAAASUVORK5CYII=" alt="4u" title="4u" class="math inline" /> raw overlap and predicts <img role="img" aria-label="c/2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATBAMAAAB8awA1AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3Zm7RO8boHsfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAp0lEQVQYGWNggABuKA2hTFF4wQxs0QfhIgcYghn6FaBczgSGlQzcC6A8bgOGRwysHxgYGBWFGRh4QKI8BQwMTgyuDAyXQDz7CQxsBQwSDAweIF4RAwO/AojhAMSsCkDpBiCDUQBIKAHxfAYGDgYWIINXgEGBgcuAQZmhBcibfffiBgbmQKEGBl0g7/3//xuAFBAcAJNQghkqCOGyTUCWA7sLLsAMYwEArEEYhAJXyOgAAAAASUVORK5CYII=" alt="c/2" title="c/2" class="math inline" />. These energy-accounting
+relations are consistent with both readings; they do not by themselves
+decide which propagation speed is physical. That discrimination is what
+the refraction and time-of-flight experiments provide.</p>
+<h1 data-number="6" id="conclusion"><span class="header-section-number">6</span> Conclusion</h1>
+<p>The experiments test which object should be treated as the
+propagating fringe after recombination:</p>
+<ul>
+<li>the ordinary normalized output mode, with <img role="img" aria-label="n_{\mathrm{eff}}=1" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAAOBAMAAACMfhKgAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAqUlEQVQYGWNgwAk4nuGUYmBgV/uGR5aBgaAso7KzaQJ2I4B6KzINGBeAZJmEDoPoo6FAEAsSAJksYM3AFABi32CZkACiEQBk71kGVgWQSBjLAxCFBECyMxj4CxiEjTneGk12QJICMoGy7B8Y5DjYFrA6QPWi2sv8gOEsM29EawOmyT+ATjVgyBXhUcC0l+Xqv2sQm9gWsBeEsWxAtRbBkxVm28M7GcGHsgD8fivPQJ15bAAAAABJRU5ErkJggg==" alt="n_{\mathrm{eff}}=1" title="n_{\mathrm{eff}}=1" class="math inline" /></li>
+<li>or the isolated raw constructive-interference fringe, with <img role="img" aria-label="n_{\mathrm{eff}}=2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAAOBAMAAABjvHmeAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVHZmEKsyIkTvu92Zic2ZjesdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAw0lEQVQYGWNgwAl0TwnglGNg4C1g+YxHmjuB4TQeaU4DhvsMDIzKzqYJOFStY2CoyDRgXACSZhI6DKKPhgJBLEiAgf0bA4OANQNTAIhzg2VCAohGAD4DIPssA6sCSCiM5QGIQgKXQewZDPwFDMLGHG+NJjsgyTEwMIM0s39gkONgW8DqANWNsLuRgRmo5gHDWWbeiNYGdMPZTnTIAB1swJArwqOAaTfn//9/oJaxLWAvCGPZgGI1MkdWmG0P72RkEQgbAMDVKxqATb3RAAAAAElFTkSuQmCC" alt="n_{\mathrm{eff}}=2" title="n_{\mathrm{eff}}=2" class="math inline" /></li>
+</ul>
+<p>For the refraction test, if the bright fringe transmits into the
+glass at <img role="img" aria-label="\theta_i\gtrsim 49^\circ" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAATBAMAAAA63aOfAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGaJIrvddhDNq0TvmTJ+KqhmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABO0lEQVQoFY2PsUsDMRTGP3LxGi25QifdDhELhUKxRRCK3NKKU0cnF12cXF0cDhcXQaGbk4Mudbk/QERxFrIUO54uuggKDgei+JI0rRwIviXf+35fXl4AVyJ2KneWm8bgm1EOABWyWL1t/aCfukBQR/HhHPJlFeigNLL5hQv4CnPwoyd4wAaO3TU+SKysKtxCqkfiIkPXcYiBmRC8Kv4JdqPnF06wOOErhjOp+DdYpvfztxunKNuEGM0PpcI7vA/tlhJsWQr3fJASr0Jm2u/G/M1y7v7HaDWwpXnjX8FT7IwSoh/ZHGqN5V4KvRlVB0dxuENCRLq1NaVwjWnzWR+X4CbpIJ3Ee6gZo1hJ4IW/GMmgdRc9701M/0Dz/a8YmNUqX3KBHDZc2wVUno37GWC9efg3L1CydT+O/1P8AG9ER3G+BZqaAAAAAElFTkSuQmCC" alt="\theta_i\gtrsim 49^\circ" title="\theta_i\gtrsim 49^\circ" class="math inline" /> together with the reference, the ordinary reading
+wins. If the bright fringe undergoes total internal reflection while the
+reference still transmits, the loaded-fringe reading is supported.</p>
+<p>For the time-of-flight test, if the measured delay matches the
+reference, the ordinary reading wins. If the delay approaches the <img role="img" aria-label="c/2" style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATBAMAAAB8awA1AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYiq4l2zRAy3Zm7RO8boHsfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAp0lEQVQYGWNggABuKA2hTFF4wQxs0QfhIgcYghn6FaBczgSGlQzcC6A8bgOGRwysHxgYGBWFGRh4QKI8BQwMTgyuDAyXQDz7CQxsBQwSDAweIF4RAwO/AojhAMSsCkDpBiCDUQBIKAHxfAYGDgYWIINXgEGBgcuAQZmhBcibfffiBgbmQKEGBl0g7/3//xuAFBAcAJNQghkqCOGyTUCWA7sLLsAMYwEArEEYhAJXyOgAAAAASUVORK5CYII=" alt="c/2" title="c/2" class="math inline" /> prediction in the
+equal-beam limit, the loaded-fringe reading is supported.</p>
+<h1 data-number="7" id="acknowledgments"><span class="header-section-number">7</span> Acknowledgments</h1>
+<p>We thank Celso L. Ladera of Universidad Simón Bolívar, Caracas, for
+introducing one of us (A.M.R.) to Dirac’s dictum on self-interference
+during his undergraduate optics course.</p>
+<h1 data-number="8" id="references"><span class="header-section-number">8</span> References</h1>
+<ol type="1">
+<li><p>Jackson, J. D. (1999). <em>Classical Electrodynamics</em>, 3rd
+ed. Wiley. Chapter 7 covers dielectric polarization, wave propagation in
+linear media, Snell’s law, reflection and refraction at plane
+interfaces, and total internal reflection with evanescent decay — the
+full toolbox used in the derivation and in both proposed tests.</p></li>
+<li><p>Hecht, E. (2017). <em>Optics</em>, 5th ed. Pearson. Standard
+undergraduate treatment of interference (including the Mach-Zehnder
+geometry), Snell’s law, reflection and refraction, and total internal
+reflection with evanescent waves.</p></li>
+<li><p>Dirac, P. A. M. (1958). <em>The Principles of Quantum
+Mechanics</em>, 4th ed. Oxford University Press. §I.3 on the
+superposition principle: “each photon then interferes only with
+itself.”</p></li>
+<li><p>Rodriguez, A. M. (2026). <em>Light Speed as an Emergent Property
+of Electromagnetic Superposition: Polarization Without Matter</em>.
+Preferred Frame. <a href="https://writing.preferredframe.com/doi/10.5281/zenodo.18396637" class="uri">https://writing.preferredframe.com/doi/10.5281/zenodo.18396637</a>.
+Precursor derivation of the effective refractive index and local light
+speed from coherent superposition of free electromagnetic
+fields.</p></li>
+</ol>
+</body>
+</html>
